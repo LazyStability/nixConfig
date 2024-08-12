@@ -17,6 +17,17 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.editor = false;
 
+  # Just using gnome
+  services.xserver = {
+  enable = true;
+  displayManager.gdm.enable = true;
+  desktopManager.gnome.enable = true;
+};
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "mynixos"; # Define your hostname.
@@ -29,12 +40,12 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Hyprland!!
-  programs.hyprland.enable = true;
-  # Caching is needed for Hyprland flake
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-  trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
+  # programs.hyprland.enable = true;
+  # # Caching is needed for Hyprland flake
+  # nix.settings = {
+  #   substituters = ["https://hyprland.cachix.org"];
+  # trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  # };
   
   # this is for the hyprland flake which i am currently not using
   # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -60,13 +71,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
   services.xserver.xkb = {
     layout = "de";
     variant = "";
@@ -80,10 +84,10 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
+  # services.pipewire = {
+  #   enable = true;
+  #   pulse.enable = true;
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -115,6 +119,8 @@
     veracrypt
     wireguard-tools
     nh
+    cryptsetup
+    keepassxc
   ];
   sessionVariables = {
     FLAKE = "/etc/nixos";

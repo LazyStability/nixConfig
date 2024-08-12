@@ -4,7 +4,7 @@
   imports = [
     ./user/shell/shell.nix
     ./user/Terminal/kitty.nix
-    ./user/wm/hyprland/default.nix
+    # ./user/wm/hyprland/default.nix
   ];
   home.username = "me";
   home.homeDirectory = "/home/me";
@@ -28,6 +28,7 @@
     armcord
     signal-desktop
     piper
+    swaynotificationcenter
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -51,6 +52,7 @@
     # ".screenrc".source = dotfiles/screenrc;
 
     ".config/nvim".source = ./user/editor/nvim;
+    ".config/ArmCord/storage/settings.json".source = ./user/Armcord/storage/settings.json;
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
