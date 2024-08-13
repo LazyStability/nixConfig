@@ -4,7 +4,7 @@
   imports = [
     ./user/shell/shell.nix
     ./user/Terminal/kitty.nix
-    # ./user/wm/hyprland/default.nix
+    ./user/wm/hyprland/default.nix
     # inputs.xremap-flake.nixosModules.default
   ];
   home.username = "me";
