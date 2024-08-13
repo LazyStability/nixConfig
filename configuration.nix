@@ -12,6 +12,11 @@
       ./nvidia.nix
     ];
 
+  #xremap user mode
+  # hardware.uinput.enable = true;
+  # users.groups.uinput.members = [ "me"];
+  # users.groups.input.members = [ "me"];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -40,7 +45,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Hyprland!!
-  # programs.hyprland.enable = true;
+  programs.hyprland.enable = true;
   # # Caching is needed for Hyprland flake
   # nix.settings = {
   #   substituters = ["https://hyprland.cachix.org"];

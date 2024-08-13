@@ -5,6 +5,7 @@
     ./user/shell/shell.nix
     ./user/Terminal/kitty.nix
     # ./user/wm/hyprland/default.nix
+    # inputs.xremap-flake.nixosModules.default
   ];
   home.username = "me";
   home.homeDirectory = "/home/me";
@@ -126,6 +127,12 @@
       lsf.enable = true;
     };
   };
+  
+  #configure xremap
+  # services.xremap = {
+  #   # withGnome = true;
+  #
+  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

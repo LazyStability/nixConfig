@@ -1,5 +1,5 @@
 {
-    "windowStyle": "transparent",
+    "windowStyle":"transparent",
     "channel": "stable",
     "armcordCSP": true,
     "minimizeToTray": false,
