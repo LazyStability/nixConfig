@@ -103,10 +103,6 @@
     isNormalUser = true;
     description = "mynix";
     extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-      tree
-    ];
   };
 
   environment = {

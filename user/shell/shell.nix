@@ -41,4 +41,29 @@ in
     ];
   };
 
+  # configure direnv
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      add_newline = true;
+      character = {
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[](bold red)";
+
+        # git branch 
+        # sudo enable = true
+        #[custom.unreal]
+        #symbol = "󰦱"  # symbol for this
+        #files = ["*.uproject"]       # can specify filters
+  };
+    };
+  };
+
 }
