@@ -1,11 +1,10 @@
 { config, pkgs, inputs, ... }:
-
 {
   imports = [
     ./user/shell/shell.nix
     ./user/Terminal/kitty.nix
     ./user/wm/hyprland/default.nix
-    # inputs.xremap-flake.nixosModules.default
+    inputs.xremap-flake.homeManagerModules.default
   ];
   home.username = "me";
   home.homeDirectory = "/home/me";
@@ -129,10 +128,31 @@
   };
   
   #configure xremap
-  # services.xremap = {
-  #   # withGnome = true;
-  #
-  # };
+  # Get Window name using `hyprctl clients` in Hyprland
+  # And `busctl --user call org.gnome.Shell /com/k0kubun/Xremap com.k0kubun.Xremap WMClasses` in gnome
+  # Gnome doesnt work see this https://github.com/xremap/xremap/issues/378
+  services.xremap = {
+    # withGnome = true;
+    withHypr = true;
+    yamlConfig = ''
+      modmap:
+        - name: main;
+          remap:
+            CapsLock: esc
+          application:
+            not: [kitty, org.gnome.console]
+
+        - name: terminal;
+          remap:
+            CapsLock:
+              held: CONTROL_L
+              alone: esc
+              alone_timeout_millis: 150
+          application:
+            only: [kitty, org.gnome.console]
+    '';
+
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

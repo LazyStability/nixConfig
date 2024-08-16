@@ -10,12 +10,13 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nvidia.nix
+      # inputs.xremap-flake.nixosModules.default
     ];
 
   #xremap user mode
-  # hardware.uinput.enable = true;
-  # users.groups.uinput.members = [ "me"];
-  # users.groups.input.members = [ "me"];
+  hardware.uinput.enable = true;
+  users.groups.uinput.members = [ "me"];
+  users.groups.input.members = [ "me"];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
