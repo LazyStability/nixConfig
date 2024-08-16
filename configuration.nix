@@ -118,7 +118,6 @@
     clang
     ffmpeg
     ripgrep
-    syncthing
     git
     zsh
     tmux
@@ -126,7 +125,6 @@
     wireguard-tools
     nh
     cryptsetup
-    keepassxc
   ];
   sessionVariables = {
     FLAKE = "/etc/nixos";
