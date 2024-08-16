@@ -73,6 +73,10 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
+  
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
