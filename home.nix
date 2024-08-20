@@ -53,7 +53,7 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
-    ".config/nvim".source = ./user/editor/nvim;
+    # ".config/nvim".source = ./user/editor/nvim;
     ".config/ArmCord/storage/settings.json".source = ./user/Armcord/storage/settings.json;
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -135,7 +135,7 @@
   # Gnome doesnt work see this https://github.com/xremap/xremap/issues/378
   services.xremap = {
     # withGnome = true;
-    withHypr = true;
+    withWlroots = true;
     yamlConfig = ''
       modmap:
         - name: main;
