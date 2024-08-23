@@ -159,6 +159,7 @@
     enable = true;
     enableZshIntegration = true;
   };
+  programs.wofi.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

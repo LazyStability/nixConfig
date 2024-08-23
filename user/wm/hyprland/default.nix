@@ -35,9 +35,10 @@
         bind =[
             # Start programms
             "$mainMod,RETURN,exec,$terminal"
-            "bind = $mainMod, C, killactive"
-            "$mainMod,M,exit"
+            "$mainMod, Q, killactive"
+            "$mainMod, M,exit"
             "$mainMod, E, exec, swaync-client -t -sw"
+            "$mainMod, I, exec, $menu"
 
             # Move focus with mainMod + arrow keys
             "bind = $mainMod, left, movefocus, l"
