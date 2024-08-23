@@ -27,14 +27,17 @@
         "exec-once" = [ 
             "[workspace 1 silent] $terminal"
             "[workspace 2 silent] $terminal"
+            "swaync"
             ];
         ####################
         ### KEYBINDINGSS ###
         ####################
         bind =[
+            # Start programms
             "$mainMod,RETURN,exec,$terminal"
             "bind = $mainMod, C, killactive"
             "$mainMod,M,exit"
+            "$mainMod, E, exec, swaync-client -t -sw"
 
             # Move focus with mainMod + arrow keys
             "bind = $mainMod, left, movefocus, l"
