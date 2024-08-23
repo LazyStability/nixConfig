@@ -13,6 +13,7 @@
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.resumeDevice ="/dev/disk/by-uuid/d6305a2b-6c27-4058-9e46-e485fd0ff9f1";
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/e3ed2f02-3ef5-48f6-9ef1-1faf2085135b";
