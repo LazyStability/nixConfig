@@ -2,14 +2,13 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, inputs, lib, pkgs, pkgs-unstable,  ... }:
+{ config, inputs, lib, pkgs, pkgs-unstable, systemSettings, userSettings,  ... }:
 
 {
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./nvidia.nix
+      (./. + ("/" + systemSettings.hosteName) + "/hardware-configuration.nix")
       # inputs.xremap-flake.nixosModules.default
     ];
 
@@ -23,6 +22,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.editor = false;
+  systemd.extraConfig = ''
+	[Sleep]
+	HibernateMode=shutdown
+  '';
 
   # Just using gnome
   services.xserver = {
@@ -37,7 +40,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "KronosNix"; # Define your hostname.
+  networking.hostName = "ThorNix"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -121,7 +124,6 @@
     ripgrep
     git
     zsh
-    tmux
     veracrypt
     wireguard-tools
     nh

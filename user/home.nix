@@ -1,9 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, userSettings, ... }:
 {
   imports = [
-    ./user/shell/shell.nix
-    ./user/Terminal/kitty.nix
-    ./user/wm/hyprland/default.nix
+    ./shell/shell.nix
+    (./.  + ("/Terminal/" + userSettings.terminal + ".nix" ))
+    ./wm/hyprland/default.nix
     inputs.xremap-flake.homeManagerModules.default
   ];
   home.username = "me";
@@ -54,7 +54,7 @@
     # ".screenrc".source = dotfiles/screenrc;
 
     # ".config/nvim".source = ./user/editor/nvim;
-    ".config/ArmCord/storage/settings.json".source = ./user/Armcord/storage/settings.json;
+    ".config/ArmCord/storage/settings.json".source = ./Armcord/storage/settings.json;
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose

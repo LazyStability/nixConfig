@@ -20,26 +20,34 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
-      hosteName = "Thor";
+      systemSettings = {
+	hosteName = "Thor";
+      };
+      userSettings = {
+	  terminal = "kitty";
+	};
     in{
       nixosConfigurations = {
         system = lib.nixosSystem{
           inherit system;
-	  modules = [(./. + "/system" + ("/" + hosteName) + "/configuration.nix")];
+	  modules = [./system/configuration.nix];
 	  specialArgs = {
 	    inherit inputs;
 	    inherit pkgs-unstable;
-	    inherit hosteName;
+	    inherit systemSettings;
+	    inherit userSettings;
 	  };
         };
      };
      homeConfigurations = {
        user = home-manager.lib.homeManagerConfiguration{
 	 inherit pkgs;
-	 modules = [./home.nix];
+	 modules = [./user/home.nix];
 	 extraSpecialArgs = {
 	   inherit inputs;
 	   inherit pkgs-unstable;
+	    inherit systemSettings;
+	    inherit userSettings;
 	 };
        };
      };
