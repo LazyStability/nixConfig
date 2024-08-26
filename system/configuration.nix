@@ -127,6 +127,9 @@
     veracrypt
     wireguard-tools
     nh
+    networkmanagerapplet
+    gnome.networkmanager-openvpn
+    blueberry
     cryptsetup
   ];
   sessionVariables = {
