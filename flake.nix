@@ -20,17 +20,27 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
-      systemSettings = {
-	hosteName = "Thor";
-      };
+      systemSettings = {};
       userSettings = {
 	  terminal = "kitty";
 	};
     in{
       nixosConfigurations = {
-        system = lib.nixosSystem{
+        Kronos = lib.nixosSystem{
           inherit system;
-	  modules = [./system/configuration.nix];
+	  modules = [./system/configuration.nix
+	  	     ./system/Kronos/hardware-configuration.nix];
+	  specialArgs = {
+	    inherit inputs;
+	    inherit pkgs-unstable;
+	    inherit systemSettings;
+	    inherit userSettings;
+	  };
+        };
+        Thor = lib.nixosSystem{
+          inherit system;
+	  modules = [./system/configuration.nix
+	  	     ./system/Thor/hardware-configuration.nix];
 	  specialArgs = {
 	    inherit inputs;
 	    inherit pkgs-unstable;
@@ -40,7 +50,7 @@
         };
      };
      homeConfigurations = {
-       user = home-manager.lib.homeManagerConfiguration{
+       me = home-manager.lib.homeManagerConfiguration{
 	 inherit pkgs;
 	 modules = [./user/home.nix];
 	 extraSpecialArgs = {

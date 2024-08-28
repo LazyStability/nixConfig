@@ -7,8 +7,7 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
-      (./. + ("/" + systemSettings.hosteName) + "/hardware-configuration.nix")
+      # hardware is included in the flake
       # inputs.xremap-flake.nixosModules.default
     ];
 
@@ -40,7 +39,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "ThorNix"; # Define your hostname.
+  # networking.hostName = systemSettings.hosteName; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.

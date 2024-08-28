@@ -10,6 +10,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usbhid" "sd_mod" ];
+  boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/7a241942-bc53-4e6b-a417-784cc9876503";
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -23,6 +24,10 @@
     { device = "/dev/disk/by-uuid/5E82-C479";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
+    };
+  fileSystems."/data" = 
+    { device = "/dev/disk/by-uuid/a4bbd3ac-d7fb-4d6b-a39d-8a62da90ce81";
+      fsType = "ext4";
     };
 
   swapDevices =
