@@ -13,7 +13,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     brave
     obsidian
     calibre
@@ -25,7 +25,6 @@
     yt-dlp
     lutris
     pavucontrol
-    armcord
     signal-desktop
     piper
     swaynotificationcenter
@@ -43,7 +42,10 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  ];
+  ]) ++
+  (with pkgs-unstable;[
+      armcord
+    ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

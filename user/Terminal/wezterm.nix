@@ -1,12 +1,11 @@
 {pkgs, lib, ...}:
-  let newWezterm =  pkgs.wezterm.overrideAttrs (old:{
+  let wezterm =  pkgs.wezterm.overrideAttrs (old:{
     version = "main";
     });
   in 
 {
   home.packages = [
-    newWezterm 
-    pkgs.wezterm
+    wezterm
   ];
   programs.wezterm = {
 	enable = true;
