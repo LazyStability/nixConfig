@@ -1,20 +1,19 @@
 {pkgs, lib, ...}:
   let newWezterm =  pkgs.wezterm.overrideAttrs (old:{
-    version = "git";
+    version = "main";
     });
-  in {
-    programs.wezterm.package = newWezterm;
-  }
+  in 
 {
-  home.packages = [pkgs.wezterm];
-  # pkgs.wezterm.overrideAttrs {
-  #   version = "git";
-  # };
+  home.packages = [
+    newWezterm 
+    pkgs.wezterm
+  ];
   programs.wezterm = {
 	enable = true;
 	enableZshIntegration = true;
 	extraConfig = ''
 	  return {
+		enable_wayland = true,
 		keys = {
 		-- Search for (git) hashes
 		{

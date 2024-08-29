@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, userSettings, ... }:
+{ config, pkgs, pkgs-unstable, inputs, userSettings, ... }:
 {
   imports = [
     ./shell/shell.nix

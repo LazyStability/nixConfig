@@ -15,6 +15,8 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  networking.hostName = "Kronos"; # Define your hostname.
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/e8b267e4-09f5-4e84-b3ac-a6c52c1e6de2";
       fsType = "ext4";
