@@ -115,8 +115,7 @@
   environment = {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  systemPackages = (with pkgs; [
     wget
     clang
     ffmpeg
@@ -130,7 +129,11 @@
     gnome.networkmanager-openvpn
     blueberry
     cryptsetup
-  ];
+  ])
+      ++
+		    (with pkgs-unstable; [
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      ]);
   sessionVariables = {
     FLAKE = "/etc/nixos";
     EDITOR = "nvim";
