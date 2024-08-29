@@ -22,7 +22,7 @@
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
       systemSettings = {};
       userSettings = {
-	  terminal = "kitty";
+	  terminal = "wezterm";
 	};
     in{
       nixosConfigurations = {

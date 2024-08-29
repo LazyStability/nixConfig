@@ -137,6 +137,10 @@
             binde = , H, togglespecialworkspace, scratchpad_network
             binde = , H, exec, if hyprctl clients | grep nm_connection-editor; then echo "scratchpad_network respawn not needed"; else nm-connection-editor; fi
 
+            ## QUICK CAPTURE ##
+            binde = , J, togglespecialworkspace, scratchpad_quick_capture
+            binde = , J, exec, if hyprctl clients | grep scratchpad_term; then echo "scratchpad_quick_capture respawn not needed"; else $terminal --class scratchpad_quick_capture; fi
+
             ## SCRATCHPAD1 ##
             binde = , K, togglespecialworkspace, scratchpad_1
 
