@@ -10,7 +10,7 @@
 		-- Search for (git) hashes
 		{
 			key = 'H',
-			mods = 'SHIFT|CTRL'
+			mods = 'SHIFT|CTRL',
 			action = wezterm.action.Search ( Regex = '[a-f0-9]{6,}')
 		}
 		}

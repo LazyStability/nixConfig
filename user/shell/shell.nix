@@ -2,9 +2,11 @@
 let
   # Shell aliases
   myShellAliases = {
-    ll = "ls -l";
     test = "cd ..";
     cat = "bat";
+    ls = "eza";
+    ll = "eza -l";
+    lt = "eza -T";
   };
 in
 {
@@ -39,6 +41,10 @@ in
     options = [
       "--cmd cd"
     ];
+  };
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # configure direnv
