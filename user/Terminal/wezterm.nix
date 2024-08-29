@@ -11,7 +11,7 @@
 		{
 			key = 'H',
 			mods = 'SHIFT|CTRL',
-			action = wezterm.action.Search ( Regex = '[a-f0-9]{6,}')
+			action = wezterm.action.Search { Regex = '[a-f0-9]{6,}'}
 		}
 		}
 	  }
