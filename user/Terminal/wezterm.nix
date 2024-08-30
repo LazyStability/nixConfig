@@ -1,14 +1,15 @@
 {pkgs, lib, ...}:
-  let wezterm =  pkgs.wezterm.overrideAttrs (old:{
-    version = "main";
-    });
-  in 
-{
-  home.packages = [
-    wezterm
-  ];
+#   let wezterm =  pkgs.wezterm.overrideAttrs (old:{
+#     version = "main";
+#     });
+#   in 
+# {
+  # home.packages = [
+  #   wezterm
+  # ];
   programs.wezterm = {
 	enable = true;
+	package = inputs.wezterm.package.${pkgs.system}.default;
 	enableZshIntegration = true;
 	extraConfig = ''
 	  return {

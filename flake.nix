@@ -12,6 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xremap-flake.url = "github:xremap/nix-flake";
+    wezterm-flake.url = "github:wez/wezterm?dir=nix";
   };
 
   outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, ...}@inputs: 
