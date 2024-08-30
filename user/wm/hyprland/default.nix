@@ -28,8 +28,6 @@
         # Autostart necessary processes (like notifications daemons, status bars, etc.)
         # Or execute your favorite apps at launch like this:
         "exec-once" = [ 
-            "[workspace 1 silent] $terminal"
-            "[workspace 2 silent] $terminal"
             "swaync"
             ];
         ####################
@@ -139,7 +137,7 @@
 
             ## QUICK CAPTURE ##
             binde = , J, togglespecialworkspace, scratchpad_quick_capture
-            binde = , J, exec, if hyprctl clients | grep scratchpad_term; then echo "scratchpad_quick_capture respawn not needed"; else $terminal --class scratchpad_quick_capture; fi
+            binde = , J, exec, if hyprctl clients | grep scratchpad_quick_capture; then echo "scratchpad_quick_capture respawn not needed"; else $terminal --class scratchpad_quick_capture -- sh /home/me/Scripts/quickcapture.sh; fi
 
             ## SCRATCHPAD1 ##
             binde = , K, togglespecialworkspace, scratchpad_1

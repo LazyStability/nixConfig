@@ -3,6 +3,7 @@
   imports = [
     ./shell/shell.nix
     (./.  + ("/Terminal/" + userSettings.terminal + ".nix" ))
+    ./Terminal/wezterm.nix
     ./wm/hyprland/default.nix
     inputs.xremap-flake.homeManagerModules.default
   ];
@@ -59,7 +60,7 @@
     ".config/ArmCord/storage/settings.json".source = ./Armcord/storage/settings.json;
 
     # Data symlinks
-    # "Scripts".source = ./Scripts;
+    "Scripts".source = ./Scripts;
     # "Dokumente".source = config.lib.file.mkOutOfStoreSymlink /data/Dokumente;
     # "Bilder".source = config.lib.file.mkOutOfStoreSymlink /data/Bilder;
     # "Musik".source = config.lib.file.mkOutOfStoreSymlink /data/Musik;
