@@ -29,6 +29,7 @@
         # Or execute your favorite apps at launch like this:
         "exec-once" = [ 
             "swaync"
+            "ags &"
             ];
         ####################
         ### KEYBINDINGSS ###

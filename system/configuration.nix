@@ -120,6 +120,7 @@
     clang
     ffmpeg
     ripgrep
+    ags
     git
     zsh
     veracrypt
