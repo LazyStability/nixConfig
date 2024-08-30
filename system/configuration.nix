@@ -8,7 +8,8 @@
   imports =
     [
       # hardware is included in the flake
-      # inputs.xremap-flake.nixosModules.default
+      # Login with greetd & Hyprland & ags
+      ./greetd/greetd.nix
     ];
 
   #xremap user mode
@@ -26,12 +27,6 @@
 	HibernateMode=shutdown
   '';
 
-  # Just using gnome
-  services.xserver = {
-  enable = true;
-  displayManager.gdm.enable = true;
-  desktopManager.gnome.enable = true;
-};
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -97,10 +92,10 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
