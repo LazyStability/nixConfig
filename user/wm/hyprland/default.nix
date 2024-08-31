@@ -41,6 +41,7 @@
             "$mainMod, M,exit"
             "$mainMod, E, exec, swaync-client -t -sw"
             "$mainMod, I, exec, $menu"
+            "$mainMod, U, exec, ags -t applauncher"
 
 
             # LDUR

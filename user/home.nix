@@ -5,6 +5,7 @@
     (./.  + ("/Terminal/" + userSettings.terminal + ".nix" ))
     ./Terminal/wezterm.nix
     ./wm/hyprland/default.nix
+    ./wm/ags/ags.nix
     inputs.xremap-flake.homeManagerModules.default
   ];
   home.username = "me";
