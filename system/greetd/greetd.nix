@@ -10,7 +10,10 @@
   # Enable hyprland & add ags to systempkgs, if not done so already
   programs.hyprland.enable = lib.mkForce true;
   environment = {
-    systemPackages = (with pkgs-unstable; [ags]);
+    systemPackages = (with pkgs-unstable; [
+      ags
+      greetd.tuigreet
+    ]);
 
     # Put the hyprland & ags files in /etc/greetd
     etc = {
@@ -18,13 +21,18 @@
       "greetd/greeter.js".source = ./greeter.js;
     };
   };
-  # Configure greetd to launch hyprland conf which then runs ags, taken from the example config on AGS wiki
+  # Run tuigreet, TODO: Try ReGreet
     services.greetd = {
       enable = true;
       settings = {
 	default_session = {
-	  command = "Hyprland --config /etc/greetd/hyprland.conf";
+	  command = "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --remember-session --time --cmd Hyprland";
+	  user = "greeter";
 	};
+	# initial_session = {
+	#   command = "Hyprland --config /etc/greetd/hyprland.conf";
+	#   user = "me";
+	# };
       };
     };
 }
