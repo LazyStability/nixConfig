@@ -8,6 +8,9 @@
   imports =
     [
       # hardware is included in the flake
+
+      # Hyprland & all needed dependencies systemwide
+      ./Desktop_Environment/hyprland.nix
       # Login with greetd & Hyprland & ags
       ./greetd/greetd.nix
     ];
@@ -43,16 +46,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Hyprland!!
-  programs.hyprland.enable = true;
-  # # Caching is needed for Hyprland flake
-  # nix.settings = {
-  #   substituters = ["https://hyprland.cachix.org"];
-  # trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  # };
-  
-  # this is for the hyprland flake which i am currently not using
-  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -79,6 +72,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Default keyboard layout
   services.xserver.xkb = {
     layout = "de";
     variant = "";
@@ -88,14 +82,6 @@
   console.keyMap = "de";
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
