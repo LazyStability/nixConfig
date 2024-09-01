@@ -5,7 +5,7 @@
     (./.  + ("/Terminal/" + userSettings.terminal + ".nix" ))
     ./Terminal/wezterm.nix
     ./wm/hyprland/default.nix
-    ./wm/ags/ags.nix
+    # ./wm/ags/ags.nix
     inputs.xremap-flake.homeManagerModules.default
   ];
   home.username = "me";
@@ -27,6 +27,7 @@
     yt-dlp
     lutris
     pavucontrol
+    wl-clipboard
     signal-desktop
     piper
     swaynotificationcenter
