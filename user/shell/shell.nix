@@ -14,7 +14,6 @@ in
   home.packages = with pkgs; [
     bat
     croc
-    fzf
     onefetch
     fastfetch
     tree
@@ -23,6 +22,7 @@ in
     hwinfo
     zoxide
   ];
+  # Shells
   programs.bash = {
     enable = false;
     shellAliases = myShellAliases;
@@ -34,6 +34,8 @@ in
     enableCompletion = true;
     shellAliases = myShellAliases;
   };
+
+  # Shell programms
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
@@ -52,6 +54,10 @@ in
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.starship = {
