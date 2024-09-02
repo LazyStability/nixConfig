@@ -2,7 +2,7 @@
 {
   imports = [
     ./shell/shell.nix
-    (./.  + ("/Terminal/" + userSettings.terminal + ".nix" ))
+    (./.  + ("/Terminal/" + userSettings.terminal + "/" + userSettings.terminal + ".nix" ))
     ./Terminal/wezterm.nix
     ./wm/hyprland/default.nix
     # ./wm/ags/ags.nix
@@ -17,6 +17,7 @@
 
   home.packages = (with pkgs; [
     brave
+    firefox
     obsidian
     calibre
     tor
@@ -133,7 +134,7 @@
               alone: esc
               alone_timeout_millis: 150
           application:
-            only: [kitty, org.gnome.console]
+            only: [kitty, org.gnome.console, firefox]
     '';
 
   };
