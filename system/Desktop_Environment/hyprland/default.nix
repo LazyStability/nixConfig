@@ -1,5 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 {
+  imports = [
+    ../../greetd/greetd.nix
+  ];
   # The following blocks are for the hyprland flake. that you would need to put into your flake.nix in inputs.hyprland
   # Caching so you don't have to build hyprland yourself.
   # nix.settings = {
@@ -22,6 +25,6 @@
   # Hyprland uses pipewire for screensharing, all pulseaudio application should still work
   services.pipewire = {
     enable = true;
-    pulse.enable = true;
+    pulse.enable = lib.mkDefault true;
   };
 }

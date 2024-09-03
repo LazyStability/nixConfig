@@ -4,15 +4,17 @@
 
 { config, inputs, lib, pkgs, pkgs-unstable, systemSettings, userSettings,  ... }:
 
+let DesktopEnvironmentPath = lib.path.append ./Desktop_Environment userSettings.wm;
+in
 {
   imports =
     [
       # hardware is included in the flake
 
-      # Hyprland & all needed dependencies systemwide
-      ./Desktop_Environment/hyprland.nix
+      # Installs dependencies for the Desktop environment
+      DesktopEnvironmentPath
       # Login with greetd & Hyprland & ags
-      ./greetd/greetd.nix
+      # ./greetd/greetd.nix
     ];
 
   #xremap user mode
@@ -45,7 +47,6 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";

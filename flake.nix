@@ -23,6 +23,9 @@
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
       systemSettings = {};
       userSettings = {
+	  # Either gnome or hyprland
+	  wm = "gnome";
+	  # Either kitty or wezterm
 	  terminal = "kitty";
 	};
     in{

@@ -1,11 +1,22 @@
-{ config, pkgs, pkgs-unstable, inputs, userSettings, ... }:
+{ config, pkgs, lib, pkgs-unstable, inputs, userSettings, ... }:
+let 
+  userTerminalPath = lib.path.append ./Terminal userSettings.terminal;
+  WmConfig = lib.path.append ./wm userSettings.wm;
+in
 {
   imports = [
     ./shell/shell.nix
-    (./.  + ("/Terminal/" + userSettings.terminal + "/" + userSettings.terminal + ".nix" ))
-    ./Terminal/wezterm.nix
-    ./wm/hyprland/default.nix
+
+    userTerminalPath
+    # ./Terminal/wezterm.nix
+
+    # Window managers
+    # This includes either ./wm/hyprland or ./wm/gnome
+    WmConfig
+    # (./. + ("/wm/" + userSettings.wm))
     # ./wm/ags/ags.nix
+
+
     inputs.xremap-flake.homeManagerModules.default
   ];
   home.username = "me";
@@ -19,7 +30,7 @@
     brave
     firefox
     obsidian
-    calibre
+    # calibre
     tor
     zathura
     zotero
