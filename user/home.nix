@@ -61,6 +61,14 @@ in
   ]) ++
   (with pkgs-unstable;[
       armcord
+
+      # nvim lsps
+      nil
+      llvmPackages_19.clang-unwrapped
+      stylua
+      lua-language-server
+      pyright
+      texlab
     ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
