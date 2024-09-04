@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./shell/shell.nix
+    ./git
 
     userTerminalPath
     # ./Terminal/wezterm.nix
@@ -108,20 +109,6 @@ in
   };
 
 
-  # configure git
-  programs.git = {
-    enable = true;
-    userName = "LazyStability";
-    userEmail = "Klysmus@online.de";
-    extraConfig = {
-      init.defaultBranch = "main";
-      safe.directory = [ 
-      "/etc/nixos"
-      "/etc/nixos/user/editor/nvim"
-      ];
-      lsf.enable = true;
-    };
-  };
   
   #configure xremap
   # Get Window name using `hyprctl clients` in Hyprland
