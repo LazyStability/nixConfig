@@ -107,6 +107,7 @@ in
   # $ nix search wget
   systemPackages = (with pkgs; [
     wget
+    steam-run
     clang
     ffmpeg
     ripgrep
