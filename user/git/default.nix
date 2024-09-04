@@ -8,7 +8,7 @@
     aliases = {
       l = "!git log";
       lo = "!git log --oneline";
-      lg = "!git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30";
+      lg = "!git log --pretty=format:\"%C(magenta)%h%Creset %G? -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30";
       s = "!git status";
       co = "!git checkout";
       cob = "!git checkout -b";
