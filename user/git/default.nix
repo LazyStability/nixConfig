@@ -25,7 +25,7 @@
       commit.gpgsign = true;
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      user.signingKey = "~/.ssh/github_kickstart.pub";
+      gpg.ssh.defaultKeyCommand = "ssh-add -L | grep -i 'Klysmus'"
 
       # sane defaults
       init.defaultBranch = "main";
