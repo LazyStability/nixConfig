@@ -106,25 +106,25 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   systemPackages = (with pkgs; [
-    wget
     steam-run
+    veracrypt
+  ])
+      ++
+		    (with pkgs-unstable; [
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
     clang
     ffmpeg
     ripgrep
     ags
     git
     zsh
-    veracrypt
     wireguard-tools
     nh
     networkmanagerapplet
     gnome.networkmanager-openvpn
     blueberry
     cryptsetup
-  ])
-      ++
-		    (with pkgs-unstable; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       ]);
   sessionVariables = {
     FLAKE = "/etc/nixos";
