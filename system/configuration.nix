@@ -139,6 +139,11 @@ in
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  # Steam
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+
   # https://nixos.wiki/wiki/WireGuard#Client_setup_2
   # networking.wg-quick.interfaces = {
   #  wg0 = {
