@@ -62,23 +62,6 @@ in
     keepassxc
     syncthing
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ]) ++
-  (with pkgs-unstable;[
-      armcord
-
-      # nvim lsps
-      nil
-      llvmPackages_19.clang-unwrapped
-      stylua
-      lua-language-server
-      pyright
-      texlab
     ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
