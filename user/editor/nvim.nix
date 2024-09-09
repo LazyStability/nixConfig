@@ -1,4 +1,10 @@
 {config, pkgs, pkgs-unstable, ...}:
+let 
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive) scheme-small
+      latexmk titlesec;
+  });
+  in
 {
   home.packages = (with pkgs-unstable; [
       lua-language-server
@@ -7,7 +13,7 @@
       nil
       llvmPackages_19.clang-unwrapped
       stylua
-      texlivePackages.latexmk
+      tex
   ]);
   # programs.neovim = {
   #   enable = true;
