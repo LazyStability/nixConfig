@@ -17,6 +17,8 @@ in
     # (./. + ("/wm/" + userSettings.wm))
     # ./wm/ags/ags.nix
 
+    ./editor/nvim.nix
+
 
     inputs.xremap-flake.homeManagerModules.default
   ];

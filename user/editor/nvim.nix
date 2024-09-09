@@ -2,7 +2,6 @@
 {
   home.packages = (with pkgs-unstable; [
       lua-language-server
-      rnix-lsp
       pyright
       texlab
       nil

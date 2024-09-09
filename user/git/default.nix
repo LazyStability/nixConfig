@@ -25,7 +25,7 @@
       commit.gpgsign = true;
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      gpg.ssh.defaultKeyCommand = "ssh-add -L | grep -i 'Klysmus'"
+      gpg.ssh.defaultKeyCommand = "ssh-add -L | grep -i 'Klysmus'";
 
       # sane defaults
       init.defaultBranch = "main";
