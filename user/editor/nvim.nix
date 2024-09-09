@@ -8,6 +8,7 @@
       nil
       llvmPackages_19.clang-unwrapped
       stylua
+      texlivePackages.latexmk
   ]);
   # programs.neovim = {
   #   enable = true;
