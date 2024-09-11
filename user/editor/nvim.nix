@@ -37,8 +37,8 @@ let
       #########
       {
         plugin = nvim-lspconfig;
-        config = ./lua/plugins/lspconfig.lua;
-        type = "lua";
+        # config = ./lua/plugins/lspconfig.lua;
+        # type = "lua";
       }
 
       ############
@@ -46,8 +46,8 @@ let
       ############
       {
         plugin = nvim-lint;
-        config = ./lua/plugins/lint.lua;
-        type = "lua";
+        # config = ./lua/plugins/lint.lua;
+        # type = "lua";
       }
 
       ###############
@@ -55,8 +55,8 @@ let
       ###############
       {
         plugin = conform-nvim;
-        config = ./lua/plugins/conform.lua;
-        type = "lua";
+        # config = ./lua/plugins/conform.lua;
+        # type = "lua";
       }
 
       ###########
@@ -64,8 +64,8 @@ let
       ###########
       {
         plugin = vimtex;
-        config = ./lua/plugins/vimtex.lua;
-        type = "lua";
+        # config = ./lua/plugins/vimtex.lua;
+        # type = "lua";
       }
 
       ####################
@@ -78,8 +78,8 @@ let
       #friendly-snippets
       {
         plugin = nvim-cmp;
-        config = ./lua/plugins/cmp.lua;
-        type = "lua";
+        # config = ./lua/plugins/cmp.lua;
+        # type = "lua";
       }
       {
         plugin = nvim-autopairs;
@@ -96,15 +96,15 @@ let
       telescope-fzf-native-nvim
       {
         plugin = telescope-nvim;
-        config = ./lua/plugins/telescope-fzf.lua;
-        type = "lua";
+        # config = ./lua/plugins/telescope-fzf.lua;
+        # type = "lua";
       }
       
 
       {
         plugin = which-key-nvim;
-        config = ./lua/plugins/which-key.lua;
-        type = "lua";
+        # config = ./lua/plugins/which-key.lua;
+        # type = "lua";
 
       }
       #########
@@ -115,8 +115,8 @@ let
       diffview-nvim
       {
         plugin = neogit;
-        config = ./lua/plugins/neogit.lua;
-        type = "lua";
+        # config = ./lua/plugins/neogit.lua;
+        # type = "lua";
       }
       {
         plugin = gitsigns-nvim;
@@ -128,8 +128,8 @@ let
       #############
       {
         plugin = lualine-nvim;
-        config = ./lua/plugins/lualine.lua;
-        type = "lua";
+        # config = ./lua/plugins/lualine.lua;
+        # type = "lua";
       }
 
       ###########
@@ -137,8 +137,8 @@ let
       ###########
       {
         plugin = tokyonight-nvim;
-        config = ./lua/plugins/tokyonight.lua;
-        type = "lua";
+        # config = ./lua/plugins/tokyonight.lua;
+        # type = "lua";
       }
 
       ###################
