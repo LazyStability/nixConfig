@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, inputs, userSettings,   ... }:
+{ pkgs, ... }:
 let armcord = pkgs.armcord.overrideAttrs (old:{
     version = "3.3.0";
     src = pkgs.fetchFromGitHub {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs-unstable, ... }:
+{ config, lib, pkgs-stable, ... }:
 {
   # hardware.graphics.enable = true;
   hardware.opengl = {

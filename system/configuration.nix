@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, inputs, lib, pkgs, pkgs-unstable, systemSettings, userSettings,  ... }:
+{ config, inputs, lib, pkgs, pkgs-stable, systemSettings, userSettings,  ... }:
 
 let DesktopEnvironmentPath = lib.path.append ./Desktop_Environment userSettings.wm;
 in
@@ -108,9 +108,6 @@ in
   systemPackages = (with pkgs; [
     steam-run
     veracrypt
-  ])
-      ++
-		    (with pkgs-unstable; [
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     clang
@@ -125,6 +122,9 @@ in
     gnome.networkmanager-openvpn
     blueberry
     cryptsetup
+  ])
+      ++
+		    (with pkgs-stable; [
       ]);
   sessionVariables = {
     FLAKE = "/etc/nixos";

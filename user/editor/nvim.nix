@@ -1,4 +1,4 @@
-{config, pkgs, pkgs-unstable, ...}:
+{config, pkgs, pkgs-stable, ...}:
 let 
   # Custom latex package
   tex = (pkgs.texlive.combine {
@@ -7,7 +7,7 @@ let
   });
   in
 {
-  home.packages = (with pkgs-unstable; [
+  home.packages = (with pkgs; [
       # lsps
       lua-language-server
       pyright

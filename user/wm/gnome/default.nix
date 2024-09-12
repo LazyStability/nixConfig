@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, inputs, userSettings, ... }:
+{ ... }:
 {
   dconf = {
     enable = true;

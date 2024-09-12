@@ -1,4 +1,4 @@
-{ config, pkgs, lib, pkgs-unstable, inputs, userSettings, ... }:
+{ config, pkgs, lib, pkgs-stable, inputs, userSettings, ... }:
 let 
   userTerminalPath = lib.path.append ./Terminal userSettings.terminal;
   WmConfig = lib.path.append ./wm userSettings.wm;
@@ -45,8 +45,6 @@ in
     obsidian
     vscode
     lutris
-  ]) ++
-  (with pkgs-unstable;[
     armcord
     brave
     firefox
@@ -63,6 +61,8 @@ in
     swaynotificationcenter
     keepassxc
     syncthing
+  ]) ++
+  (with pkgs-stable;[
 
     ]);
 

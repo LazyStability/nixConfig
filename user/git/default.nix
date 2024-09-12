@@ -1,4 +1,4 @@
-{ config, pkgs, lib, pkgs-unstable, inputs, userSettings, ... }:
+{ config, pkgs, lib, pkgs-stable, inputs, userSettings, ... }:
 {  # configure git
   programs.git = {
     enable = true;

@@ -2,25 +2,25 @@
   description = "My first flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:NixOs/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
 
     # hyprland.url = "github:hyprwm/Hyprland";
     
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xremap-flake.url = "github:xremap/nix-flake";
     wezterm-flake.url = "github:wez/wezterm?dir=nix";
   };
 
-  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, ...}@inputs: 
+  outputs = {self, nixpkgs, nixpkgs-stable, home-manager, ...}@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
       systemSettings = {};
       userSettings = {
 	  # Either gnome or hyprland
@@ -36,7 +36,7 @@
 	  	     ./system/Kronos/hardware-configuration.nix];
 	  specialArgs = {
 	    inherit inputs;
-	    inherit pkgs-unstable;
+	    inherit pkgs-stable;
 	    inherit systemSettings;
 	    inherit userSettings;
 	  };
@@ -47,7 +47,7 @@
 	  	     ./system/Thor/hardware-configuration.nix];
 	  specialArgs = {
 	    inherit inputs;
-	    inherit pkgs-unstable;
+	    inherit pkgs-stable;
 	    inherit systemSettings;
 	    inherit userSettings;
 	  };
@@ -59,7 +59,7 @@
 	 modules = [./user/home.nix];
 	 extraSpecialArgs = {
 	   inherit inputs;
-	   inherit pkgs-unstable;
+	   inherit pkgs-stable;
 	    inherit systemSettings;
 	    inherit userSettings;
 	 };
