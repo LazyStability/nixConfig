@@ -13,7 +13,7 @@
       co = "!git checkout";
       cob = "!git checkout -b";
       undo = "!git reset HEAD~1 --mixed";
-      save = "!git add -A && git commit -m 'chore: commit save point";
+      save = "!git add -A && git commit -m 'chore: commit save point'";
       cm = "!git add -A && git commit";
       cma = "!git add -A && git commit --amend";
       cmae = "!git add -A && git commit --amend --no-edit";
