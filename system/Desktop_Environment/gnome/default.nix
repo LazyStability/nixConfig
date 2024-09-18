@@ -11,7 +11,7 @@
     gnome-tour
     gnome-connections
     xterm
-  ]) ++ (with pkgs.gnome; [
+  ]) ++ (with pkgs; [
     # for packages that are pkgs.gnome.*
     epiphany # web browser
     geary # email reader

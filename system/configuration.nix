@@ -119,7 +119,7 @@ in
     wireguard-tools
     nh
     networkmanagerapplet
-    gnome.networkmanager-openvpn
+    networkmanager-openvpn
     blueberry
     cryptsetup
   ])

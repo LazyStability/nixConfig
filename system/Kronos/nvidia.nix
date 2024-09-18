@@ -1,7 +1,7 @@
 { config, lib, pkgs-stable, ... }:
 {
   # hardware.graphics.enable = true;
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     driSupport = true;
   };
