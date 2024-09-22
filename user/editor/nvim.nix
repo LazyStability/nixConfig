@@ -15,6 +15,7 @@ let
       nil
       llvmPackages_19.clang-unwrapped
       stylua
+      typescript-language-server
 
       # latex
       tex

@@ -3,7 +3,6 @@
   # hardware.graphics.enable = true;
   hardware.graphics = {
     enable = true;
-    driSupport = true;
   };
 
   # Load "nvidia" driver for Xorg and wayland

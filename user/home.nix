@@ -139,6 +139,7 @@ in
     '';
 
   };
+  services.ssh-agent.enable = true;
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
