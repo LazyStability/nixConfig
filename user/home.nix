@@ -54,7 +54,7 @@ in
     zotero
     prismlauncher
     yt-dlp
-    pavucontrol
+    pwvucontrol
     wl-clipboard
     signal-desktop
     piper

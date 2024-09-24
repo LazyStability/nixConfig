@@ -21,7 +21,7 @@
         "$terminal" = userSettings.terminal;
         "$fileManager" = "dolphin";
         "$menu" = "wofi --show drun";
-        "$audiomanager" = "class:^(org.pulseaudio.pavucontrol)";
+        "$audiomanager" = "pwvucontrol";
 
         # Sets "Windows" key as main modifier
         "$mainMod" = "SUPER";
