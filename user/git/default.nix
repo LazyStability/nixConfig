@@ -1,5 +1,16 @@
 { config, pkgs, lib, pkgs-stable, inputs, userSettings, ... }:
-{  # configure git
+{  
+  # Symlink public ssh keys
+  home.file =
+    {
+      ".ssh/allowed_signers".text = ''
+        * ${builtins.readFile ../ssh/uni.pub}
+        * ${builtins.readFile ../ssh/dev.pub}
+        '';
+      ".ssh/dev.pub".source = ../ssh/dev.pub;
+      ".ssh/uni.pub".source = ../ssh/uni.pub;
+  };
+  # configure git
   programs.git = {
     enable = true;
     userName = "LazyStability";
