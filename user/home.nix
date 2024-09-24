@@ -58,7 +58,6 @@ in
     piper
     swaynotificationcenter
     keepassxc
-    syncthing
   ]) ++
   (with pkgs-stable;[
 
