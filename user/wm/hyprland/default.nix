@@ -22,6 +22,9 @@
         "$fileManager" = "dolphin";
         "$menu" = "wofi --show drun";
         "$audiomanager" = "pwvucontrol";
+        "$monitor1" = "DP-2";
+        "$monitor2" = "DP-1";
+        "$browser" = "brave";
 
         # Sets "Windows" key as main modifier
         "$mainMod" = "SUPER";
