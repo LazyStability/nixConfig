@@ -16,6 +16,7 @@ let
       llvmPackages_19.clang-unwrapped
       stylua
       typescript-language-server
+      hyprls
 
       # latex
       tex
