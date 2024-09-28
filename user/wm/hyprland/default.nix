@@ -22,7 +22,8 @@
         "$fileManager" = "dolphin";
         "$menu" = "wofi --show drun";
         "$audiomanager" = "pwvucontrol";
-        "$audiomanagerclass" = "com.saivert.pwvucontrol";
+        "$bluetoothmanager" = "blueberry";
+        "$networkmanager" = "nm-connection-editor";
         "$monitor1" = "DP-2";
         "$monitor2" = "DP-1";
         "$browser" = "brave";
