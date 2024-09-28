@@ -24,7 +24,7 @@
       systemSettings = {};
       userSettings = {
 	  # Either gnome or hyprland
-	  wm = "gnome";
+	  wm = "hyprland";
 	  # Either kitty or wezterm
 	  terminal = "kitty";
 	};

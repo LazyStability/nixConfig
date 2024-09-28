@@ -8,15 +8,15 @@
     enable = true;
       settings = {
         # Setting up monitors, the third is a ghost monitor
-      #   monitor = [
-      #     "desc:Eizo Nanao Corporation S1901 45328108, 1280x1024@60,0x0,1"
-      #     "desc:Eizo Nanao Corporation EV2436W 42038045, 1920x1200@60,1280x0,1"
-      #     "Unknown-1,disabled"
-      # ];
         monitor = [
-          ",preferred,auto,auto"
+          "desc:Eizo Nanao Corporation EV2436W 42038045, 1920x1200@60,1280x0,1"
+          "desc:Eizo Nanao Corporation S1901 45328108, 1280x1024@60,0x0,1"
           "Unknown-1,disabled"
       ];
+      #   monitor = [
+      #     ",preferred,auto,auto"
+      #     "Unknown-1,disabled"
+      # ];
         # Global variables set using nix variables
         "$terminal" = userSettings.terminal;
         "$fileManager" = "dolphin";
