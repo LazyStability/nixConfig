@@ -22,6 +22,7 @@
         "$fileManager" = "dolphin";
         "$menu" = "wofi --show drun";
         "$audiomanager" = "pwvucontrol";
+        "$audiomanagerclass" = "com.saivert.pwvucontrol";
         "$monitor1" = "DP-2";
         "$monitor2" = "DP-1";
         "$browser" = "brave";
