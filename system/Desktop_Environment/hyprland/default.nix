@@ -4,7 +4,7 @@
     ../../greetd/greetd.nix
   ];
 
-  systemPackages = (with pkgs; [
+  environment.systemPackages = (with pkgs; [
     # For automounting cd or usbsticks
     udiskie
   ]);

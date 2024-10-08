@@ -11,26 +11,16 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usbhid" "sd_mod" ];
   environment.etc."crypttab".text = ''
-    arch  UUID=7a241942-bc53-4e6b-a417-784cc9876503 /etc/nixos/secrets/KronosArch
+    arch  UUID=7a241942-bc53-4e6b-a417-784cc9876503 /etc/nixos/secrets/password.key
     games UUID=1b355677-32ca-439c-8b66-eec5f1cb9e53 /etc/nixos/secrets/Games
     };
   '';
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   networking.hostName = "Kronos"; # Define your hostname.
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e8b267e4-09f5-4e84-b3ac-a6c52c1e6de2";
-      fsType = "ext4";
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5E82-C479";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
   fileSystems."/data" = 
     { device = "/dev/disk/by-uuid/a4bbd3ac-d7fb-4d6b-a39d-8a62da90ce81";
       fsType = "ext4";
@@ -39,10 +29,6 @@
     { device = "/dev/disk/by-uuid/992e9e57-3321-4cc0-873e-ad2f78e0e16a";
       fsType = "ext4";
     };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/c00d7f33-1a6f-49fa-985c-9a88c5abdd70"; }
-    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

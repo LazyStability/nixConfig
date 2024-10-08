@@ -13,6 +13,10 @@
     };
     xremap-flake.url = "github:xremap/nix-flake";
     wezterm-flake.url = "github:wez/wezterm?dir=nix";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {self, nixpkgs, nixpkgs-stable, home-manager, ...}@inputs: 
@@ -32,8 +36,12 @@
       nixosConfigurations = {
         Kronos = lib.nixosSystem{
           inherit system;
-	  modules = [./system/configuration.nix
-	  	     ./system/Kronos/hardware-configuration.nix];
+	  modules = [
+		    inputs.disko.nixosModules.default
+		    (import ./system/Kronos/disko.nix {device = "/dev/disk/by-id/wwn-0x5002538043584d30";})
+		    ./system/configuration.nix
+	  	    ./system/Kronos/hardware-configuration.nix
+	  ];
 	  specialArgs = {
 	    inherit inputs;
 	    inherit pkgs-stable;
