@@ -3,6 +3,11 @@
   imports = [
     ../../greetd/greetd.nix
   ];
+
+  systemPackages = (with pkgs; [
+    # For automounting cd or usbsticks
+    udiskie
+  ]);
   # The following blocks are for the hyprland flake. that you would need to put into your flake.nix in inputs.hyprland
   # Caching so you don't have to build hyprland yourself.
   # nix.settings = {
