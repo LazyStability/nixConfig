@@ -1,10 +1,8 @@
 {
   device ? throw "Set this to your disk device, e.g. /dev/sda",
-  inputs,
   ...
 }: {
   imports = [
-    inputs.disko.nixosModules.default
   ];
   disko.devices = {
     disk.main = {
@@ -41,7 +39,7 @@
 	      };
 	      content = {
 		type = "lvm_pv";
-		vg = "pool";
+		vg = "root_vg";
 	      };
             };
           };

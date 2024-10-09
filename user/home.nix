@@ -20,6 +20,7 @@ in
     ./editor/nvim.nix
 
 
+    inputs.impermanence.nixosModules.home-manager.impermanence
     inputs.xremap-flake.homeManagerModules.default
   ];
   home.username = "me";
@@ -73,10 +74,6 @@ in
 
     # Data symlinks
     "Scripts".source = ./Scripts;
-    # "Dokumente".source = config.lib.file.mkOutOfStoreSymlink /data/Dokumente;
-    # "Bilder".source = config.lib.file.mkOutOfStoreSymlink /data/Bilder;
-    # "Musik".source = config.lib.file.mkOutOfStoreSymlink /data/Musik;
-    # "Videos".source = config.lib.file.mkOutOfStoreSymlink /data/Videos;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -109,6 +106,16 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     FOO = "Bar";
+  };
+
+  home.persistence."/persist/home/me" = {
+    directories = [
+      {
+        directory = ".local/share/Steam";
+        method = "symlink";
+      }
+    ];
+    allowOther = true; # Allows other users to access these files
   };
 
 

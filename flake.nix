@@ -5,18 +5,19 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
 
-    # hyprland.url = "github:hyprwm/Hyprland";
-    
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xremap-flake.url = "github:xremap/nix-flake";
-    wezterm-flake.url = "github:wez/wezterm?dir=nix";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+    }; 
+    impermanence.url = "github:nix-community/impermanence";
+
+    xremap-flake.url = "github:xremap/nix-flake";
+    wezterm-flake.url = "github:wez/wezterm?dir=nix";
+    # hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {self, nixpkgs, nixpkgs-stable, home-manager, ...}@inputs: 
@@ -37,7 +38,8 @@
         Kronos = lib.nixosSystem{
           inherit system;
 	  modules = [
-		    (import ./system/Kronos/disko.nix {device = "/dev/disk/by-id/wwn-0x5002538043584d30"; inherit inputs;})
+		    inputs.disko.nixosModules.default
+		    (import ./system/Kronos/disko.nix {device = "/dev/disk/by-id/wwn-0x5002538043584d30"; /* inherit inputs; */})
 		    ./system/configuration.nix
 	  	    ./system/Kronos/hardware-configuration.nix
 	  ];

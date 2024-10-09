@@ -11,8 +11,8 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usbhid" "sd_mod" ];
   environment.etc."crypttab".text = ''
-    arch  UUID=7a241942-bc53-4e6b-a417-784cc9876503 /etc/nixos/secrets/password.key
-    games UUID=1b355677-32ca-439c-8b66-eec5f1cb9e53 /etc/nixos/secrets/Games
+    arch  UUID=7a241942-bc53-4e6b-a417-784cc9876503 /persist/system/etc/nixos/secrets/Kronos_Schlüssel
+    games UUID=1b355677-32ca-439c-8b66-eec5f1cb9e53 /persist/system/etc/nixos/secrets/Games
     };
   '';
   boot.initrd.kernelModules = [ "dm-snapshot" ];
@@ -24,10 +24,18 @@
   fileSystems."/data" = 
     { device = "/dev/disk/by-uuid/a4bbd3ac-d7fb-4d6b-a39d-8a62da90ce81";
       fsType = "ext4";
+      options = [
+        "nofail"
+        "x-systemd.device-timeout=9"
+      ];
     };
   fileSystems."/games" = 
     { device = "/dev/disk/by-uuid/992e9e57-3321-4cc0-873e-ad2f78e0e16a";
       fsType = "ext4";
+      options = [
+        "nofail"
+        "x-systemd.device-timeout=9"
+      ];
     };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

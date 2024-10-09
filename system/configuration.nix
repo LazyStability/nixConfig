@@ -15,6 +15,8 @@ in
       # Login with greetd & Hyprland & ags
       # ./greetd/greetd.nix
 
+      ./impermanence/default.nix
+
       inputs.home-manager.nixosModules.default
     ];
 
