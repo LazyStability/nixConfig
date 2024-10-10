@@ -21,7 +21,7 @@ in
 
 
     inputs.impermanence.nixosModules.home-manager.impermanence
-    inputs.xremap-flake.homeManagerModules.default
+    # inputs.xremap-flake.homeManagerModules.default
   ];
   home.username = "me";
   home.homeDirectory = "/home/me";
@@ -108,15 +108,15 @@ in
     FOO = "Bar";
   };
 
-  home.persistence."/persist/home/me" = {
-    directories = [
-      {
-        directory = ".local/share/Steam";
-        method = "symlink";
-      }
-    ];
-    allowOther = true; # Allows other users to access these files
-  };
+  # home.persistence."/persist/home/me" = {
+  #  directories = [
+  #    {
+  #      directory = ".local/share/Steam";
+  #      method = "symlink";
+  #    }
+  #  ];
+  #  allowOther = true; # Allows other users to access these files
+  # };
 
 
   
@@ -124,28 +124,28 @@ in
   # Get Window name using `hyprctl clients` in Hyprland
   # And `busctl --user call org.gnome.Shell /com/k0kubun/Xremap com.k0kubun.Xremap WMClasses` in gnome
   # Gnome doesnt work see this https://github.com/xremap/xremap/issues/378
-  services.xremap = {
+  # services.xremap = {
     # withGnome = true;
-    withWlroots = true;
-    yamlConfig = ''
-      modmap:
-        - name: main;
-          remap:
-            CapsLock: esc
-          application:
-            not: [kitty, org.gnome.console]
-
-        - name: terminal;
-          remap:
-            CapsLock:
-              held: CONTROL_L
-              alone: esc
-              alone_timeout_millis: 150
-          application:
-            only: [kitty, org.gnome.console, firefox]
-    '';
-
-  };
+  #  withWlroots = true;
+  #  yamlConfig = ''
+  #    modmap:
+  #      - name: main;
+  #        remap:
+  #          CapsLock: esc
+  #        application:
+  #          not: [kitty, org.gnome.console]
+#
+#        - name: terminal;
+#          remap:
+#            CapsLock:
+#              held: CONTROL_L
+#              alone: esc
+#              alone_timeout_millis: 150
+#          application:
+#            only: [kitty, org.gnome.console, firefox]
+#    '';
+#
+#  };
   services.ssh-agent.enable = true;
   programs.yazi = {
     enable = true;

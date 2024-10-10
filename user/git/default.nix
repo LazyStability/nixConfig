@@ -43,6 +43,7 @@
       safe.directory = [ 
         "/etc/nixos"
         "/etc/nixos/user/editor/nvim"
+	"/persist/etc/nixos"
       ];
     };
   };

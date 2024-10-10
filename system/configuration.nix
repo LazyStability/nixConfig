@@ -15,7 +15,7 @@ in
       # Login with greetd & Hyprland & ags
       # ./greetd/greetd.nix
 
-      ./impermanence/default.nix
+      # ./impermanence/default.nix
 
       inputs.home-manager.nixosModules.default
     ];
@@ -101,11 +101,12 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.me = {
     isNormalUser = true;
+    password = "12345";
     description = "mynix";
     extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
   };
   
-  # programs.fuse.userAllowOther = true;
+  programs.fuse.userAllowOther = true;
   home-manager = {
     extraSpecialArgs = {
       inherit pkgs;
@@ -123,7 +124,7 @@ in
   # $ nix search wget
   systemPackages = (with pkgs; [
     steam-run
-    veracrypt
+    # veracrypt
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     clang
@@ -143,7 +144,7 @@ in
 		    (with pkgs-stable; [
       ]);
   sessionVariables = {
-    FLAKE = "/etc/nixos";
+    FLAKE = "/persist/etc/nixos";
     EDITOR = "nvim";
     VISUAL = "nvim";
   };

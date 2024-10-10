@@ -7,13 +7,14 @@
   # The post mount hook to nuke the root partition
   boot.initrd.postDeviceCommands = lib.mkAfter  (builtins.readFile ../../Scripts/nukeRoot.sh);
 
-  # Persistant files, states which are needed
-  fileSystems."/persist".neededForBoot = true;
-  environment.persistence."/persist/system" = {
+   # Persistant files, states which are needed
+   fileSystems."/persist".neededForBoot = true;
+   environment.persistence."/persist/system" = {
     hideMounts = true;
     directories = [
       "/etc/nixos"
       "/var/log"
+      "/run/log"
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
@@ -22,7 +23,6 @@
     ];
     files = [
       "/etc/machine-id"
-      { file = "/var/keys/secret_file"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
     ];
-  };
+   };
 }

@@ -11,8 +11,8 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usbhid" "sd_mod" ];
   environment.etc."crypttab".text = ''
-    arch  UUID=7a241942-bc53-4e6b-a417-784cc9876503 /persist/system/etc/nixos/secrets/Kronos_Schlüssel
-    games UUID=1b355677-32ca-439c-8b66-eec5f1cb9e53 /persist/system/etc/nixos/secrets/Games
+    arch  UUID=7a241942-bc53-4e6b-a417-784cc9876503 /persist/etc/nixos/secrets/Kronos_Schlüssel noauto
+    games UUID=1b355677-32ca-439c-8b66-eec5f1cb9e53 /persist/etc/nixos/secrets/Games noauto
     };
   '';
   boot.initrd.kernelModules = [ "dm-snapshot" ];
