@@ -39,7 +39,7 @@
           inherit system;
 	  modules = [
 		    inputs.disko.nixosModules.default
-		    (import ./system/Kronos/disko.nix {device = "/dev/disk/by-id/wwn-0x5002538043584d30"; /* inherit inputs; */})
+		    (import ./system/disko.nix {device = "/dev/disk/by-id/wwn-0x5002538043584d30"; /* inherit inputs; */})
 		    ./system/configuration.nix
 	  	    ./system/Kronos/hardware-configuration.nix
 	  ];
