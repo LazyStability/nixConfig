@@ -12,11 +12,21 @@
   };
     extraConfig = ''
       clear_all_shortcuts yes
-      kitty_mod ctrl+shift
+      kitty_mod           ctrl+shift
 
       # copy & paste
       map kitty_mod+c copy_to_clipboard
       map kitty_mod+v paste_from_clipboard
+
+      ##########
+      ## Font ##
+      ##########
+
+      font_family      family="FiraCode Nerd Font"
+      bold_font        auto
+      italic_font      auto
+      bold_italic_font auto
+      disable_ligatures cursor
 
       ##########
       ## Tabs ##
