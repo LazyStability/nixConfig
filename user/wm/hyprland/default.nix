@@ -4,6 +4,9 @@
 # Or Setup specific stuff like monitors
 { config, pkgs, inputs, userSettings, ... }:
 {
+  imports = [
+    ./hyprpapaper.nix
+  ];
   home.packages = (with pkgs; [
     hyprshade
   ]);
