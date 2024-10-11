@@ -21,7 +21,8 @@ in {
     # ./greetd/greetd.nix
 
     # ./impermanence/default.nix
-    ./services/syncthing/default.nix
+    #./services/syncthing
+    #./services/wireguard
 
     inputs.home-manager.nixosModules.default
   ];
