@@ -40,6 +40,9 @@ in
     obsidian
     vscode
     lutris
+    mpv
+    obs-studio
+    gimp
     armcord
     brave
     firefox
