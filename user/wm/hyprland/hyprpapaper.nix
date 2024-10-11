@@ -1,4 +1,4 @@
-{...}:{
+{...}: {
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -6,8 +6,7 @@
       splash = false;
       splash_offset = 2.0;
 
-      preload =
-        [ "~/Bilder/Wallpaper/MinimalisticAbstract.jpg" "~/Bilder/Wallpaper/AbstraktWallpaper.jpg" ];
+      preload = ["~/Bilder/Wallpaper/MinimalisticAbstract.jpg" "~/Bilder/Wallpaper/AbstraktWallpaper.jpg"];
 
       wallpaper = [
         "DP-2,~/Bilder/Wallpaper/MinimalisticAbstract.jpg"

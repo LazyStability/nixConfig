@@ -1,39 +1,44 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, inputs, lib, pkgs, pkgs-stable, systemSettings, userSettings,  ... }:
-
-let DesktopEnvironmentPath = lib.path.append ./Desktop_Environment userSettings.wm;
-in
 {
-  imports =
-    [
-      # inputs.impermance.nixosModules.impermance
-      # Installs dependencies for the Desktop environment
-      DesktopEnvironmentPath
-      # Login with greetd & Hyprland & ags
-      # ./greetd/greetd.nix
+  config,
+  inputs,
+  lib,
+  pkgs,
+  pkgs-stable,
+  systemSettings,
+  userSettings,
+  ...
+}: let
+  DesktopEnvironmentPath = lib.path.append ./Desktop_Environment userSettings.wm;
+in {
+  imports = [
+    # inputs.impermance.nixosModules.impermance
+    # Installs dependencies for the Desktop environment
+    DesktopEnvironmentPath
+    # Login with greetd & Hyprland & ags
+    # ./greetd/greetd.nix
 
-      # ./impermanence/default.nix
-      ./services/syncthing/default.nix
+    # ./impermanence/default.nix
+    ./services/syncthing/default.nix
 
-      inputs.home-manager.nixosModules.default
-    ];
+    inputs.home-manager.nixosModules.default
+  ];
 
   #xremap user mode
   hardware.uinput.enable = true;
-  users.groups.uinput.members = [ "me"];
-  users.groups.input.members = [ "me"];
+  users.groups.uinput.members = ["me"];
+  users.groups.input.members = ["me"];
 
   # Use the systemd-boot EFI boot loader.
-  boot.supportedFilesystems = [ "btrfs" ];
+  boot.supportedFilesystems = ["btrfs"];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.editor = false;
   systemd.extraConfig = ''
-	[Sleep]
-	HibernateMode=shutdown
+    [Sleep]
+    HibernateMode=shutdown
   '';
 
   hardware.bluetooth = {
@@ -41,7 +46,7 @@ in
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # networking.hostName = systemSettings.hosteName; # Define your hostname.
   # Pick only one of the below networking options.
@@ -69,15 +74,15 @@ in
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
-  
+
   # Fonts
   fonts = {
-     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    packages = with pkgs; [
+      (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
     ];
     fontconfig = {
       defaultFonts = {
-	monospace = ["FireCode"];
+        monospace = ["FireCode"];
       };
     };
   };
@@ -104,9 +109,9 @@ in
     isNormalUser = true;
     password = "12345";
     description = "mynix";
-    extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["networkmanager" "wheel"]; # Enable ‘sudo’ for the user.
   };
-  
+
   programs.fuse.userAllowOther = true;
   home-manager = {
     extraSpecialArgs = {
@@ -121,39 +126,39 @@ in
   };
 
   environment = {
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  systemPackages = (with pkgs; [
-    steam-run
-    # veracrypt
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    clang
-    ffmpeg
-    ripgrep
-    ags
-    git
-    zsh
-    wireguard-tools
-    nh
-    networkmanagerapplet
-    networkmanager-openvpn
-    blueberry
-    cryptsetup
-  ])
-      ++
-		    (with pkgs-stable; [
-      ]);
-  sessionVariables = {
-    FLAKE = "/persist/etc/nixos";
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
+    # List packages installed in system profile. To search, run:
+    # $ nix search wget
+    systemPackages =
+      (with pkgs; [
+        steam-run
+        # veracrypt
+        neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        wget
+        clang
+        ffmpeg
+        ripgrep
+        ags
+        git
+        zsh
+        wireguard-tools
+        nh
+        networkmanagerapplet
+        networkmanager-openvpn
+        blueberry
+        cryptsetup
+      ])
+      ++ (with pkgs-stable; [
+        ]);
+    sessionVariables = {
+      FLAKE = "/persist/etc/nixos";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
   };
 
   # zsh main shell
   environment.shells = with pkgs; [zsh];
-  environment.pathsToLink = [ "/share/zsh"];
+  environment.pathsToLink = ["/share/zsh"];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
@@ -175,6 +180,4 @@ in
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
-

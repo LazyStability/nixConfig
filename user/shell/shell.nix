@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   # Shell aliases
   myShellAliases = {
     test = "cd ..";
@@ -8,8 +11,7 @@ let
     ll = "eza -l";
     lt = "eza -T";
   };
-in
-{
+in {
   # CLI Tools
   home.packages = with pkgs; [
     bat
@@ -74,8 +76,7 @@ in
         #[custom.unreal]
         #symbol = "󰦱"  # symbol for this
         #files = ["*.uproject"]       # can specify filters
-  };
+      };
     };
   };
-
 }

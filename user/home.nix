@@ -1,9 +1,15 @@
-{ config, pkgs, lib, pkgs-stable, inputs, userSettings, ... }:
-let 
+{
+  config,
+  pkgs,
+  lib,
+  pkgs-stable,
+  inputs,
+  userSettings,
+  ...
+}: let
   userTerminalPath = lib.path.append ./Terminal userSettings.terminal;
   WmConfig = lib.path.append ./wm userSettings.wm;
-in
-{
+in {
   imports = [
     ./shell/shell.nix
     ./git
@@ -19,7 +25,6 @@ in
 
     ./editor/nvim.nix
 
-
     inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
   ];
@@ -30,38 +35,38 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = (with pkgs; [
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-    obsidian
-    vscode
-    lutris
-    mpv
-    obs-studio
-    gimp
-    armcord
-    brave
-    firefox
-    # calibre
-    tor
-    zathura
-    zotero
-    prismlauncher
-    yt-dlp
-    pwvucontrol
-    wl-clipboard
-    signal-desktop
-    piper
-    swaynotificationcenter
-    keepassxc
-  ]) ++
-  (with pkgs-stable;[
-
-    ]);
+  home.packages =
+    (with pkgs; [
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
+      obsidian
+      vscode
+      lutris
+      mpv
+      obs-studio
+      gimp
+      armcord
+      brave
+      firefox
+      # calibre
+      tor
+      zathura
+      zotero
+      prismlauncher
+      yt-dlp
+      pwvucontrol
+      wl-clipboard
+      signal-desktop
+      piper
+      swaynotificationcenter
+      keepassxc
+    ])
+    ++ (with pkgs-stable; [
+      ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -120,14 +125,12 @@ in
   #  allowOther = true; # Allows other users to access these files
   # };
 
-
-  
   #configure xremap
   # Get Window name using `hyprctl clients` in Hyprland
   # And `busctl --user call org.gnome.Shell /com/k0kubun/Xremap com.k0kubun.Xremap WMClasses` in gnome
   # Gnome doesnt work see this https://github.com/xremap/xremap/issues/378
   # services.xremap = {
-    # withGnome = true;
+  # withGnome = true;
   #  withWlroots = true;
   #  yamlConfig = ''
   #    modmap:
@@ -136,18 +139,18 @@ in
   #          CapsLock: esc
   #        application:
   #          not: [kitty, org.gnome.console]
-#
-#        - name: terminal;
-#          remap:
-#            CapsLock:
-#              held: CONTROL_L
-#              alone: esc
-#              alone_timeout_millis: 150
-#          application:
-#            only: [kitty, org.gnome.console, firefox]
-#    '';
-#
-#  };
+  #
+  #        - name: terminal;
+  #          remap:
+  #            CapsLock:
+  #              held: CONTROL_L
+  #              alone: esc
+  #              alone_timeout_millis: 150
+  #          application:
+  #            only: [kitty, org.gnome.console, firefox]
+  #    '';
+  #
+  #  };
   services.ssh-agent.enable = true;
   programs.yazi = {
     enable = true;

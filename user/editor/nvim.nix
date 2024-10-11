@@ -1,30 +1,40 @@
-{config, pkgs, pkgs-stable, ...}:
-let 
-  # Custom latex package
-  tex = (pkgs.texlive.combine {
-    inherit (pkgs.texlive) scheme-small
-      latexmk titlesec;
-  });
-  in
 {
-  home.packages = (with pkgs; [
-      # lsps
-      lua-language-server
-      pyright
-      texlab
-      nil
-      llvmPackages_19.clang-unwrapped
-      stylua
-      typescript-language-server
-      hyprls
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}: let
+  # Custom latex package
+  tex = pkgs.texlive.combine {
+    inherit
+      (pkgs.texlive)
+      scheme-small
+      latexmk
+      titlesec
+      ;
+  };
+in {
+  home.packages = with pkgs; [
+    # lsps
+    lua-language-server
+    pyright
+    texlab
+    nil
+    llvmPackages_19.clang-unwrapped
+    stylua
+    typescript-language-server
+    hyprls
 
-      # latex
-      tex
+    #formatter
+    alejandra
 
-      # Utility
-      wl-clipboard
-      xclip
-  ]);
+    # latex
+    tex
+
+    # Utility
+    wl-clipboard
+    xclip
+  ];
   # programs.neovim = {
   #   enable = true;
   #
@@ -101,7 +111,7 @@ let
   #       # config = ./lua/plugins/telescope-fzf.lua;
   #       # type = "lua";
   #     }
-  #     
+  #
   #
   #     {
   #       plugin = which-key-nvim;
@@ -187,7 +197,7 @@ let
   #     }
   #   ];
   #
-  #   extraLuaConfig = '' 
+  #   extraLuaConfig = ''
   #     ${builtins.readFile ./lua/options.lua}
   #     ${builtins.readFile ./lua/keymaps.lua}
   #   '';

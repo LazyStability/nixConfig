@@ -1,20 +1,25 @@
-{ config, inputs, lib, pkgs, ... }:
 {
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../greetd/greetd.nix
   ];
 
-  environment.systemPackages = (with pkgs; [
+  environment.systemPackages = with pkgs; [
     # For automounting cd or usbsticks
     udiskie
-  ]);
+  ];
   # The following blocks are for the hyprland flake. that you would need to put into your flake.nix in inputs.hyprland
   # Caching so you don't have to build hyprland yourself.
   # nix.settings = {
   #   substituters = ["https://hyprland.cachix.org"];
   # trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   # };
-  
+
   # Overrides the hyprland package in nixpkgs with the one from the flake
   # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 

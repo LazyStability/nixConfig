@@ -1,5 +1,8 @@
-{pkgs, lib, ...}:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = [pkgs.kitty];
   home.file = {
     # ".config/kitty/relative_resize.py".source = ./relative_resize.py;
@@ -9,7 +12,7 @@
     enable = true;
     settings = {
       background_opacity = lib.mkForce "0.8";
-  };
+    };
     extraConfig = ''
       clear_all_shortcuts yes
       kitty_mod           ctrl+shift

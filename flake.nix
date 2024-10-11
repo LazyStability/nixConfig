@@ -12,7 +12,7 @@
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
-    }; 
+    };
     impermanence.url = "github:nix-community/impermanence";
 
     xremap-flake.url = "github:xremap/nix-flake";
@@ -20,59 +20,71 @@
     # hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = {self, nixpkgs, nixpkgs-stable, home-manager, ...}@inputs: 
-    let
-      lib = nixpkgs.lib;
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-      systemSettings = {};
-      userSettings = {
-	  # Either gnome or hyprland
-	  wm = "hyprland";
-	  # Either kitty or wezterm
-	  terminal = "kitty";
-	};
-    in{
-      nixosConfigurations = {
-        Kronos = lib.nixosSystem{
-          inherit system;
-	  modules = [
-		    inputs.disko.nixosModules.default
-		    (import ./system/disko.nix {device = "/dev/disk/by-id/wwn-0x5002538043584d30"; /* inherit inputs; */})
-		    ./system/configuration.nix
-	  	    ./system/Kronos/hardware-configuration.nix
-	  ];
-	  specialArgs = {
-	    inherit inputs;
-	    inherit pkgs-stable;
-	    inherit systemSettings;
-	    inherit userSettings;
-	  };
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-stable,
+    home-manager,
+    ...
+  } @ inputs: let
+    lib = nixpkgs.lib;
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+    systemSettings = {};
+    userSettings = {
+      # Either gnome or hyprland
+      wm = "hyprland";
+      # Either kitty or wezterm
+      terminal = "kitty";
+    };
+  in {
+    nixosConfigurations = {
+      Kronos = lib.nixosSystem {
+        inherit system;
+        modules = [
+          inputs.disko.nixosModules.default
+          (import ./system/disko.nix {
+            device = "/dev/disk/by-id/wwn-0x5002538043584d30";
+            /*
+            inherit inputs;
+            */
+          })
+          ./system/configuration.nix
+          ./system/Kronos/hardware-configuration.nix
+        ];
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs-stable;
+          inherit systemSettings;
+          inherit userSettings;
         };
-        Thor = lib.nixosSystem{
-          inherit system;
-	  modules = [./system/configuration.nix
-	  	     ./system/Thor/hardware-configuration.nix];
-	  specialArgs = {
-	    inherit inputs;
-	    inherit pkgs-stable;
-	    inherit systemSettings;
-	    inherit userSettings;
-	  };
+      };
+      Thor = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./system/configuration.nix
+          ./system/Thor/hardware-configuration.nix
+        ];
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs-stable;
+          inherit systemSettings;
+          inherit userSettings;
         };
-     };
-     homeConfigurations = {
-       me = home-manager.lib.homeManagerConfiguration{
-	 inherit pkgs;
-	 modules = [./user/home.nix];
-	 extraSpecialArgs = {
-	   inherit inputs;
-	   inherit pkgs-stable;
-	    inherit systemSettings;
-	    inherit userSettings;
-	 };
-       };
-     };
+      };
+    };
+    homeConfigurations = {
+      me = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [./user/home.nix];
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit pkgs-stable;
+          inherit systemSettings;
+          inherit userSettings;
+        };
+      };
+    };
   };
 }

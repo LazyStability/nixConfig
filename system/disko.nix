@@ -1,7 +1,4 @@
-{
-  device ? throw "Set this to your disk device, e.g. /dev/sda",
-  ...
-}: {
+{device ? throw "Set this to your disk device, e.g. /dev/sda", ...}: {
   imports = [
   ];
   disko.devices = {
@@ -24,23 +21,23 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = [ "umask=0077" ];
+              mountOptions = ["umask=0077"];
             };
           };
           luks = {
             size = "100%";
             content = {
               type = "luks";
-	      name = "luks";
-	      extraOpenArgs = [];
+              name = "luks";
+              extraOpenArgs = [];
               passwordFile = "/etc/nixos/secrets/password.key";
-	      settings = {
-		allowDiscards = true;
-	      };
-	      content = {
-		type = "lvm_pv";
-		vg = "root_vg";
-	      };
+              settings = {
+                allowDiscards = true;
+              };
+              content = {
+                type = "lvm_pv";
+                vg = "root_vg";
+              };
             };
           };
         };

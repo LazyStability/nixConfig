@@ -1,14 +1,20 @@
-{ config, pkgs, lib, pkgs-stable, inputs, userSettings, ... }:
-{  
+{
+  config,
+  pkgs,
+  lib,
+  pkgs-stable,
+  inputs,
+  userSettings,
+  ...
+}: {
   # Symlink public ssh keys
-  home.file =
-    {
-      ".ssh/allowed_signers".text = ''
-        * ${builtins.readFile ../ssh/uni.pub}
-        * ${builtins.readFile ../ssh/dev.pub}
-        '';
-      ".ssh/dev.pub".source = ../ssh/dev.pub;
-      ".ssh/uni.pub".source = ../ssh/uni.pub;
+  home.file = {
+    ".ssh/allowed_signers".text = ''
+      * ${builtins.readFile ../ssh/uni.pub}
+      * ${builtins.readFile ../ssh/dev.pub}
+    '';
+    ".ssh/dev.pub".source = ../ssh/dev.pub;
+    ".ssh/uni.pub".source = ../ssh/uni.pub;
   };
   # configure git
   programs.git = {
@@ -40,10 +46,10 @@
 
       # sane defaults
       init.defaultBranch = "main";
-      safe.directory = [ 
+      safe.directory = [
         "/etc/nixos"
         "/etc/nixos/user/editor/nvim"
-	"/persist/etc/nixos"
+        "/persist/etc/nixos"
       ];
     };
   };

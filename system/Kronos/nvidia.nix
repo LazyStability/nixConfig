@@ -1,5 +1,9 @@
-{ config, lib, pkgs-stable, ... }:
 {
+  config,
+  lib,
+  pkgs-stable,
+  ...
+}: {
   # hardware.graphics.enable = true;
   hardware.graphics = {
     enable = true;
