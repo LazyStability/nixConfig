@@ -4,6 +4,9 @@
 # Or Setup specific stuff like monitors
 { config, pkgs, inputs, userSettings, ... }:
 {
+  home.packages = (with pkgs; [
+    hyprshade
+  ]);
   wayland.windowManager.hyprland = {
     enable = true;
       settings = {
@@ -47,5 +50,6 @@
     ".config/hypr/windowsWorkspace.conf".source = ./windowsWorkspace.conf;
     ".config/hypr/autostart.conf".source = ./autostart.conf;
     ".config/hypr/hyprcursor.conf".source = ./hyprcursor.conf;
+    ".config/hypr/hyprshade.toml".source = ./hyprshade.toml;
   };
 }
