@@ -24,6 +24,8 @@ in {
     #./services/syncthing
     #./services/wireguard
 
+    ./gaming
+
     inputs.home-manager.nixosModules.default
   ];
 
@@ -162,11 +164,6 @@ in {
   environment.pathsToLink = ["/share/zsh"];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-
-  # Steam
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-  programs.gamemode.enable = true;
 
   # List services that you want to enable:
 

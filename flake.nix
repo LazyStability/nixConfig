@@ -18,6 +18,10 @@
     xremap-flake.url = "github:xremap/nix-flake";
     wezterm-flake.url = "github:wez/wezterm?dir=nix";
     # hyprland.url = "github:hyprwm/Hyprland";
+    umu = {
+      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

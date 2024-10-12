@@ -550,6 +550,7 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
+        "umu": "umu",
         "wezterm-flake": "wezterm-flake",
         "xremap-flake": "xremap-flake"
       }
@@ -621,6 +622,30 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
+      }
+    },
+    "umu": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "packaging/nix",
+        "lastModified": 1728710201,
+        "narHash": "sha256-yIfMuNXwahQwIA7ipEB6iV0h7niBEn2t7i94x7MoNzE=",
+        "ref": "refs/heads/main",
+        "rev": "582b83b196c35bad620f7cb9ae0a41dd772c7545",
+        "revCount": 766,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
+      },
+      "original": {
+        "dir": "packaging/nix",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
       }
     },
     "wezterm-flake": {

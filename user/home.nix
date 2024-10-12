@@ -24,6 +24,7 @@ in {
     # ./wm/ags/ags.nix
 
     ./editor/nvim.nix
+    ./Gaming
 
     inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
