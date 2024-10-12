@@ -1,6 +1,6 @@
 #!/bin/sh
 
-noteFilename="$HOME/notes/dailies/$(date +%y-%m-%d).md"
+noteFilename="$HOME/Dokumente/Personal/Tagebuch/Täglich/thisYear/$(date +%y-%m-%d).md"
 
 nvim -c "norm Go"\
 	-c "norm Go## $(date +%H:%M)"\
