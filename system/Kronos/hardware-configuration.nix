@@ -22,6 +22,7 @@
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
+  hardware.opengl.enable = true;
   networking.hostName = "Kronos"; # Define your hostname.
 
   fileSystems."/data" = {
