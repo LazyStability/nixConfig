@@ -23,6 +23,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:danth/stylix";
+
+    yazi.url = "github:sxyazi/yazi";
+  };
+  nixConfig = {
+    extra-substituters = [
+      "https://yazi.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+    ];
   };
 
   outputs = {

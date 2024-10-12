@@ -30,7 +30,7 @@
       # ];
       # Global variables set using nix variables
       "$terminal" = userSettings.terminal;
-      "$fileManager" = "dolphin";
+      "$filemanager" = "yazi";
       "$menu" = "wofi --show drun";
       "$audiomanager" = "pwvucontrol";
       "$bluetoothmanager" = "blueberry";

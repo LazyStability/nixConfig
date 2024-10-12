@@ -25,6 +25,7 @@ in {
 
     ./editor/nvim.nix
     ./Gaming
+    ./filemanager/yazi.nix
 
     inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
@@ -53,6 +54,7 @@ in {
       vesktop
       brave
       firefox
+
       # calibre
       tor
       zathura
