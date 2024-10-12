@@ -40,8 +40,8 @@
       map kitty_mod+R close_tab
 
       # Move in tabs
-      map kitty_mod+n move_tab_forward
-      map kitty_mod+p move_tab_backward
+      map kitty_mod+n next_tab
+      map kitty_mod+p previous_tab
 
       # Rename tab
       map kitty_mod+, set_tab_title
