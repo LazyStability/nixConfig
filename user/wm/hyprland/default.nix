@@ -38,6 +38,7 @@
       "$monitor1" = "DP-2";
       "$monitor2" = "DP-1";
       "$browser" = "brave";
+      "$discordClient" = "vesktop";
 
       # Sets "Windows" key as main modifier
       "$mainMod" = "SUPER";
