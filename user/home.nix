@@ -50,7 +50,7 @@ in {
       mpv
       obs-studio
       gimp
-      armcord
+      vesktop
       brave
       firefox
       # calibre
