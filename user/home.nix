@@ -26,6 +26,7 @@ in {
     ./editor/nvim.nix
     ./Gaming
     ./filemanager/yazi.nix
+    ./browser/firefox.nix
 
     inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
@@ -47,13 +48,13 @@ in {
       # '')
       obsidian
       vscode
+      kdePackages.okular
       lutris
       mpv
       obs-studio
       gimp
       vesktop
       brave
-      firefox
 
       # calibre
       tor
