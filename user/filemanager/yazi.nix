@@ -25,12 +25,18 @@
     package = inputs.yazi.packages.${pkgs.system}.default;
     enableZshIntegration = true;
     shellWrapperName = "y";
-    settings = {};
+    settings = {
+      preview = {
+        maxWidth = 1000;
+        maxHeight = 1000;
+      };
+    };
     plugins = {
       smart-enter = ./plugins/smart-enter.yazi;
       cmod = ./plugins/chmod.yazi;
       git = ./plugins/git.yazi;
       relative-motions = ./plugins/relative-motions.yazi;
+      max-preview = ./plugins/max-preview.yazi;
     };
     keymap = {
       manager.prepend_keymap = [
@@ -67,6 +73,11 @@
           on = "!";
           run = ''shell "$SHELL" --block --confirm'';
           desc = "Open Shell here";
+        }
+        {
+          on = "T";
+          run = "plugin --sync max-preview";
+          desc = "Maximize plugin";
         }
         #######################
         ## Relative Movement ##
