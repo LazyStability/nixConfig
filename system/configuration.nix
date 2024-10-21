@@ -21,7 +21,7 @@ in {
     # ./greetd/greetd.nix
 
     # ./impermanence/default.nix
-    #./services/syncthing
+    ./services/syncthing
     #./services/wireguard
 
     ./gaming
