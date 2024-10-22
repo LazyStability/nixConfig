@@ -165,6 +165,8 @@ in {
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  programs.thunderbird.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
