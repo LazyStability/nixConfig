@@ -14,6 +14,7 @@
   ];
   home.packages = with pkgs; [
     hyprshade
+    udiskie
   ];
   wayland.windowManager.hyprland = {
     enable = true;
