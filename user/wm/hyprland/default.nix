@@ -14,6 +14,7 @@
   ];
   home.packages = with pkgs; [
     hyprshade
+    hyprshot
     udiskie
   ];
   wayland.windowManager.hyprland = {
