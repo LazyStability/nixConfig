@@ -15,8 +15,8 @@
 
     # Steam terminal client
     # TODO: Overlay, steamcmd times out package does not build
-    # steamPackages.steamcmd
-    # steam-tui
+    steamPackages.steamcmd
+    steam-tui
 
     # better performance
     gamemode
