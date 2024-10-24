@@ -39,4 +39,12 @@
       ];
     };
   };
+  networking.networkmanager.ensureProfiles.profiles = {
+    vpnHar = {
+      connection = {
+        type = "wireguard";
+        id = "vpnHar";
+      };
+    };
+  };
 }
