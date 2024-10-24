@@ -107,10 +107,16 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  ###########
+  ## Users ##
+  ###########
+
+  # User Hardening
+  users.mutableUsers = false;
+  users.users.root.hashedPassword = "*";
   users.users.me = {
     isNormalUser = true;
-    password = "12345";
+    hashedPassword = "$y$j9T$cr3AwlwB1xsr7trhUULj./$hNmPq6jznKljbUI4KoMEWypjiFGzf.iITjZyy40MxE2";
     description = "mynix";
     extraGroups = ["networkmanager" "wheel"]; # Enable ‘sudo’ for the user.
   };
