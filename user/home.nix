@@ -91,12 +91,16 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    "Downloads".source = config.lib.file.mkOutOfStoreSymlink /data/Downloads;
-    "Dokumente".source = config.lib.file.mkOutOfStoreSymlink /data/Dokumente;
-    "Videos".source = config.lib.file.mkOutOfStoreSymlink /data/Videos;
-    "Musik".source = config.lib.file.mkOutOfStoreSymlink /data/Musik;
-    "Bilder".source = config.lib.file.mkOutOfStoreSymlink /data/Bilder;
-    "Software".source = config.lib.file.mkOutOfStoreSymlink /data/Software;
+  };
+  home.activation = {
+    myActivationAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      run ln -s $VERBOSE_ARG ${builtins.toPath /data/Downloads} $HOME
+      run ln -s $VERBOSE_ARG ${builtins.toPath /data/Dokumente} $HOME
+      run ln -s $VERBOSE_ARG ${builtins.toPath /data/Videos}    $HOME
+      run ln -s $VERBOSE_ARG ${builtins.toPath /data/Musik}     $HOME
+      run ln -s $VERBOSE_ARG ${builtins.toPath /data/Bilder}    $HOME
+      run ln -s $VERBOSE_ARG ${builtins.toPath /data/Software}  $HOME
+    '';
   };
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

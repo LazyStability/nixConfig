@@ -21,6 +21,7 @@ in {
     pyright
     texlab
     nixd
+    nil
     llvmPackages_19.clang-unwrapped
     stylua
     typescript-language-server
