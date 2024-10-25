@@ -2,7 +2,6 @@
   config,
   pkgs,
   pkgs-stable,
-  inputs,
   ...
 }: let
   # Custom latex package
@@ -21,7 +20,6 @@ in {
     pyright
     texlab
     nixd
-    nil
     llvmPackages_19.clang-unwrapped
     stylua
     typescript-language-server
@@ -37,7 +35,6 @@ in {
     wl-clipboard
     xclip
   ];
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   programs.neovim = {
     enable = true;
 
