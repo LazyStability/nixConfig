@@ -8,7 +8,7 @@
   tex = pkgs.texlive.combine {
     inherit
       (pkgs.texlive)
-      scheme-small
+      scheme-full
       latexmk
       titlesec
       ;
