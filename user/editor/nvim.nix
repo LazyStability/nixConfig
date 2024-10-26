@@ -23,6 +23,7 @@ in {
     llvmPackages_19.clang-unwrapped
     stylua
     typescript-language-server
+    nodePackages.bash-language-server
     hyprls
 
     #formatter
