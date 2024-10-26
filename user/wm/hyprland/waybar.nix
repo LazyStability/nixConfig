@@ -5,7 +5,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
+        height = 32;
         modules-left = ["cpu" "memory" "hyprland/submap"];
         modules-center = ["clock"];
         modules-right = ["privacy" "mpris" "wlr/taskbar" "temperature"];
@@ -23,6 +23,19 @@
           format-critical = "{temperatureC}°C {icon}";
           format = "{temperatureC}°C {icon}";
           format-icons = ["" "" ""];
+        };
+        mpris = {
+          player = "mpv";
+          format = "DEFAULT: {player_icon} {dynamic}";
+          format-paused = "DEFAULT: {status_icon} <i>{dynamic}</i>";
+          player-icons = {
+            default = "▶";
+            mpv = "🎵";
+          };
+          status-icons = {
+            paused = "⏸";
+          };
+          ignored-players = ["firefox"];
         };
       };
     };
