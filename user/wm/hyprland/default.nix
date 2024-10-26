@@ -11,6 +11,7 @@
 }: {
   imports = [
     ./hyprpapaper.nix
+    ./waybar.nix
   ];
   home.packages = with pkgs; [
     hyprshade
