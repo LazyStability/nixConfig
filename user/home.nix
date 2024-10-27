@@ -48,9 +48,12 @@ in {
       # '')
       obsidian
       vscode
+      # xdg default
       kdePackages.okular
-      lutris
+      imv
       mpv
+
+      lutris
       obs-studio
       gimp
       vesktop
@@ -172,6 +175,26 @@ in {
   #    '';
   #
   #  };
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = ["firefox-esr.desktop"];
+      "x-scheme-handler/http" = ["firefox-esr.desktop"];
+      "x-scheme-handler/https" = ["firefox-esr.desktop"];
+      "x-scheme-handler/about" = ["firefox-esr.desktop"];
+      "x-scheme-handler/unknown" = ["firefox-esr.desktop"];
+      "x-scheme-handler/ror2mm" = ["r2modman.desktop"];
+      "x-scheme-handler/chrome" = ["firefox-esr.desktop"];
+      "application/x-extension-htm" = ["firefox-esr.desktop"];
+      "application/x-extension-html" = ["firefox-esr.desktop"];
+      "application/x-extension-shtml" = ["firefox-esr.desktop"];
+      "application/xhtml+xml" = ["firefox-esr.desktop"];
+      "application/x-extension-xhtml" = ["firefox-esr.desktop"];
+      "application/x-extension-xht" = ["firefox-esr.desktop"];
+      "application/pdf" = ["org.kde.okular.desktop"];
+      "image/png" = ["imv.desktop"];
+    };
+  };
   services.ssh-agent.enable = true;
   programs.wofi.enable = true;
 
