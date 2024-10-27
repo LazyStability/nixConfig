@@ -8,14 +8,12 @@
 {
   home.packages = with pkgs; [
     # Steam stuff
-    steam
     steam-run
-    steamPackages.steam-runtime
     gamescope
 
     # Steam terminal client
     # TODO: Overlay, steamcmd times out package does not build
-    steamPackages.steamcmd
+    steamcmd
     steam-tui
 
     # better performance
