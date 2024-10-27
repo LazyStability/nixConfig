@@ -27,6 +27,7 @@ in {
     ./Gaming
     ./filemanager/yazi.nix
     ./browser/firefox.nix
+    ./dataLinks.nix
 
     inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
@@ -94,29 +95,6 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-  };
-  # TODO: Make a function that generates this from a path
-  home.activation = {
-    GenerateHomeLinks = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      # if [[ ! -h "$HOME/Downloads" ]]; then
-        run ln -s $VERBOSE_ARG ${builtins.toPath /data/Downloads} $HOME
-      # fi
-      # if [[ ! -h "$HOME/Dokumente" ]]; then
-        run ln -s $VERBOSE_ARG ${builtins.toPath /data/Dokumente} $HOME
-      # fi
-      # if [[ ! -h "$HOME/Videos" ]]; then
-        run ln -s $VERBOSE_ARG ${builtins.toPath /data/Videos}    $HOME
-      # fi
-      # if [[ ! -h "$HOME/Musik" ]]; then
-        run ln -s $VERBOSE_ARG ${builtins.toPath /data/Musik}     $HOME
-      # fi
-      # if [[ ! -h "$HOME/Bilder" ]]; then
-        run ln -s $VERBOSE_ARG ${builtins.toPath /data/Bilder}    $HOME
-      # fi
-      # if [[ ! -h "$HOME/Software" ]]; then
-        run ln -s $VERBOSE_ARG ${builtins.toPath /data/Software}  $HOME
-      # fi
-    '';
   };
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
