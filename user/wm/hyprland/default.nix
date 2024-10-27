@@ -33,14 +33,14 @@
       # ];
       # Global variables set using nix variables
       "$terminal" = userSettings.terminal;
-      "$filemanager" = "yazi";
+      "$filemanager" = "yazi-standalone";
       "$menu" = "wofi --show drun";
       "$audiomanager" = "pwvucontrol";
       "$bluetoothmanager" = "blueberry";
       "$networkmanager" = "nm-connection-editor";
       "$monitor1" = "DP-2";
       "$monitor2" = "DP-1";
-      "$browser" = "brave";
+      "$browser" = "firefox-esr";
       "$discordClient" = "vesktop";
 
       # Sets "Windows" key as main modifier
@@ -52,7 +52,7 @@
       source = ~/.config/hypr/looks.conf
       source = ~/.config/hypr/windowsWorkspace.conf
       source = ~/.config/hypr/autostart.conf
-      source = ~/.config/hypr/hyprcursor.conf
+      # source = ~/.config/hypr/hyprcursor.conf
     '';
   };
   # Symlinks the rest of the config to the ~/.config/hypr directory

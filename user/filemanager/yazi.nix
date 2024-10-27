@@ -1,8 +1,15 @@
 {
   pkgs,
   inputs,
+  userSettings,
   ...
-}: {
+}: let
+  yaziDesktopItem = pkgs.makeDesktopItem {
+    name = "yazi-standalone";
+    desktopName = "Yazi, Terminal filemanager";
+    exec = "${userSettings.terminal} -e yazi";
+  };
+in {
   home.packages = with pkgs; [
     fd
     ffmpegthumbnailer
@@ -16,6 +23,7 @@
     imagemagick
     xdragon
     exiftool
+    yaziDesktopItem
   ];
   # Use stylix
   # stylix.targets.yazi.enable = false; # true;

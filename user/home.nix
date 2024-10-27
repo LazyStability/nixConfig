@@ -171,6 +171,9 @@ in {
       "application/x-extension-xht" = ["firefox-esr.desktop"];
       "application/pdf" = ["org.kde.okular.desktop"];
       "image/png" = ["imv.desktop"];
+      "image/gif" = ["imv.desktop"];
+      "image/jpeg" = ["imv.desktop"];
+      "inode/directory" = ["yazi-standalone.desktop"];
     };
   };
   services.ssh-agent.enable = true;
