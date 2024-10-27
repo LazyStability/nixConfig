@@ -49,7 +49,18 @@ in {
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    trusted-substituters = [
+      "https://cache.nixos.org/"
+      "https://hydra.nixos.org/"
+      "https://yazi.cachix.org"
+    ];
+    trusted-public-keys = [
+      "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
+      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+    ];
+  };
 
   # networking.hostName = systemSettings.hosteName; # Define your hostname.
   # Pick only one of the below networking options.

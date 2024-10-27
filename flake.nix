@@ -26,14 +26,14 @@
 
     yazi.url = "github:sxyazi/yazi";
   };
-  nixConfig = {
-    extra-substituters = [
-      "https://yazi.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
-    ];
-  };
+  # nixConfig = {
+  #   extra-substituters = [
+  #     "https://yazi.cachix.org"
+  #   ];
+  #   extra-trusted-public-keys = [
+  #     "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+  #   ];
+  # };
 
   outputs = {
     self,

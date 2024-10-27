@@ -92,26 +92,27 @@ in {
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
+  # TODO: Make a function that generates this from a path
   home.activation = {
     GenerateHomeLinks = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      if [[ ! -h "$HOME/Downloads" ]]; then
+      # if [[ ! -h "$HOME/Downloads" ]]; then
         run ln -s $VERBOSE_ARG ${builtins.toPath /data/Downloads} $HOME
-      fi
-      if [[ ! -h "$HOME/Dokumente" ]]; then
+      # fi
+      # if [[ ! -h "$HOME/Dokumente" ]]; then
         run ln -s $VERBOSE_ARG ${builtins.toPath /data/Dokumente} $HOME
-      fi
-      if [[ ! -h "$HOME/Videos" ]]; then
+      # fi
+      # if [[ ! -h "$HOME/Videos" ]]; then
         run ln -s $VERBOSE_ARG ${builtins.toPath /data/Videos}    $HOME
-      fi
-      if [[ ! -h "$HOME/Musik" ]]; then
+      # fi
+      # if [[ ! -h "$HOME/Musik" ]]; then
         run ln -s $VERBOSE_ARG ${builtins.toPath /data/Musik}     $HOME
-      fi
-      if [[ ! -h "$HOME/Bilder" ]]; then
+      # fi
+      # if [[ ! -h "$HOME/Bilder" ]]; then
         run ln -s $VERBOSE_ARG ${builtins.toPath /data/Bilder}    $HOME
-      fi
-      if [[ ! -h "$HOME/Software" ]]; then
+      # fi
+      # if [[ ! -h "$HOME/Software" ]]; then
         run ln -s $VERBOSE_ARG ${builtins.toPath /data/Software}  $HOME
-      fi
+      # fi
     '';
   };
   # Home Manager can also manage your environment variables through
