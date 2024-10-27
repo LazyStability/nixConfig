@@ -173,10 +173,6 @@ in {
   #
   #  };
   services.ssh-agent.enable = true;
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
-  };
   programs.wofi.enable = true;
 
   # Let Home Manager install and manage itself.
