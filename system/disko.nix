@@ -30,7 +30,7 @@
               type = "luks";
               name = "luks";
               extraOpenArgs = [];
-              passwordFile = "/etc/nixos/secrets/password.key";
+              passwordFile = "/etc/secrets/password.key";
               settings = {
                 allowDiscards = true;
               };

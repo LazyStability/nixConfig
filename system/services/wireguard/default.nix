@@ -15,7 +15,7 @@
       # Note: The private key can also be included inline via the privateKey option,
       # but this makes the private key world-readable; thus, using privateKeyFile is
       # recommended.
-      privateKeyFile = "/persist/etc/nixos/secrets/ginyu_kronos.skey";
+      privateKeyFile = "/persist/etc/secrets/ginyu_kronos.skey";
 
       peers = [
         # For a client configuration, one peer entry for the server will suffice.
@@ -23,7 +23,7 @@
         {
           # Public key of the server (not a file path).
           publicKey = "6DTlU9LOxaXhcZCGXxrZ9sKrKAwicEAEZ2aA1erRXHA=";
-          presharedKeyFile = "/persist/etc/nixos/secrets/ginyu_kronos.psk";
+          presharedKeyFile = "/persist/etc/secrets/ginyu_kronos.psk";
 
           # Forward all the traffic via VPN.
           allowedIPs = ["0.0.0.0/0" "::/0"];
