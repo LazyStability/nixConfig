@@ -173,7 +173,7 @@ in {
       "image/png" = ["imv.desktop"];
       "image/gif" = ["imv.desktop"];
       "image/jpeg" = ["imv.desktop"];
-      "inode/directory" = ["yazi-standalone.desktop"];
+      # "inode/directory" = ["yazi-standalone.desktop"];
     };
   };
   services.ssh-agent.enable = true;

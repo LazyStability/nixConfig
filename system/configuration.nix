@@ -22,6 +22,7 @@ in {
 
     # ./impermanence/default.nix
     ./services/syncthing
+    ./Stylix
     #./services/wireguard
 
     ./gaming
@@ -173,7 +174,7 @@ in {
       FLAKE = "/persist/etc/nixos";
       EDITOR = "nvim";
       VISUAL = "nvim";
-      NIXOS_OZONE_WL = 1;
+      NIXOS_OZONE_WL = 0;
     };
   };
 
