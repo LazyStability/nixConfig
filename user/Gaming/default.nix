@@ -7,13 +7,14 @@
 # TODO: Overlay proton-ge
 let
   prevHeroic = pkgs.heroic.overrideAttrs (oldAttr: rec {
-    pname = "heroic";
+    pname = "Heroic-old";
     version = "2.14.1";
     src = pkgs.fetchFromGitHub {
       owner = "Heroic-Games-Launcher";
       repo = "HeroicGamesLauncher";
       rev = "v${version}";
       hash = "sha256-AnyltqNP+XyVzgCobM3g6DIXntD3spKecYtCRx+8oic=";
+      name = "${pname}-${version}";
     };
   });
 in {
@@ -40,7 +41,7 @@ in {
     mangohud
 
     # Launcher
-    prevHeroic
+    # prevHeroic
     lutris
     r2modman
 
