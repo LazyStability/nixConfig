@@ -24,16 +24,16 @@
 
   networking.hostName = "Kronos"; # Define your hostname.
 
-  fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/a4bbd3ac-d7fb-4d6b-a39d-8a62da90ce81";
+  fileSystems."/games" = {
+    device = "/dev/disk/by-uuid/992e9e57-3321-4cc0-873e-ad2f78e0e16a";
     fsType = "ext4";
     options = [
       "nofail"
       "x-systemd.device-timeout=9"
     ];
   };
-  fileSystems."/games" = {
-    device = "/dev/disk/by-uuid/992e9e57-3321-4cc0-873e-ad2f78e0e16a";
+  fileSystems."/data" = {
+    device = "/dev/disk/by-uuid/a4bbd3ac-d7fb-4d6b-a39d-8a62da90ce81";
     fsType = "ext4";
     options = [
       "nofail"
