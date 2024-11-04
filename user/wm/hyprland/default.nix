@@ -33,7 +33,7 @@
       # ];
       # Global variables set using nix variables
       "$terminal" = userSettings.terminal;
-      "$filemanager" = "yazi-standalone";
+      "$filemanager" = "yazi";
       "$menu" = "wofi --show drun";
       "$audiomanager" = "pwvucontrol";
       "$bluetoothmanager" = "blueberry";

@@ -3,13 +3,7 @@
   inputs,
   userSettings,
   ...
-}: let
-  yaziDesktopItem = pkgs.makeDesktopItem {
-    name = "yazi-standalone";
-    desktopName = "Yazi, Terminal filemanager";
-    exec = "${userSettings.terminal} -e yazi";
-  };
-in {
+}: {
   home.packages = with pkgs; [
     fd
     ffmpegthumbnailer
@@ -23,7 +17,6 @@ in {
     imagemagick
     xdragon
     exiftool
-    yaziDesktopItem
   ];
   # Use stylix
   # stylix.targets.yazi.enable = false; # true;
@@ -82,10 +75,21 @@ in {
           run = ''shell "$SHELL" --block --confirm'';
           desc = "Open Shell here";
         }
+        ################
+        ## Max Preview##
+        ################
         {
           on = "T";
           run = "plugin --sync max-preview";
           desc = "Maximize plugin";
+        }
+        ###########
+        ## Chmod ##
+        ###########
+        {
+          on = ["c" "m"];
+          run = "plugin chmod";
+          desc = "Chmod on selected files";
         }
         #######################
         ## Relative Movement ##
