@@ -24,7 +24,6 @@ in {
     gamescope
 
     # Steam terminal client
-    # TODO: Overlay, steamcmd times out package does not build
     steamcmd
     steam-tui
 
@@ -42,6 +41,7 @@ in {
 
     # Launcher
     # prevHeroic
+    heroic
     lutris
     r2modman
 
