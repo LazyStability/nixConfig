@@ -60,7 +60,7 @@
     ".config/hypr/looks.conf".source = ./looks.conf;
     ".config/hypr/windowsWorkspace.conf".source = ./windowsWorkspace.conf;
     ".config/hypr/autostart.conf".source = ./autostart.conf;
-    ".config/hypr/hyprcursor.conf".source = ./hyprcursor.conf;
+    # ".config/hypr/hyprcursor.conf".source = ./hyprcursor.conf;
     ".config/hypr/hyprshade.toml".source = ./hyprshade.toml;
   };
 }
