@@ -54,11 +54,11 @@ in {
       imv
       mpv
 
-      lutris
       obs-studio
       gimp
       vesktop
       brave
+      nautilus
 
       # calibre
       tor

@@ -11,7 +11,11 @@
 
   environment.systemPackages = with pkgs; [
     # For automounting cd or usbsticks
+    # Usage https://github.com/coldfix/udiskie/wiki/Usage
+    # udiskie-umount and udiskie-mount for manuel (de)mounting
+    udiskie
   ];
+  services.udisks2.enable = true;
   # The following blocks are for the hyprland flake. that you would need to put into your flake.nix in inputs.hyprland
   # Caching so you don't have to build hyprland yourself.
   # nix.settings = {
