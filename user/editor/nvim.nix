@@ -36,6 +36,7 @@ in {
     wl-clipboard
     xclip
   ];
+  stylix.targets.neovim.enable = false;
   programs.neovim = {
     enable = true;
 

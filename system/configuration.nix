@@ -91,18 +91,6 @@ in {
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Fonts
-  fonts = {
-    packages = with pkgs; [
-      (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
-    ];
-    fontconfig = {
-      defaultFonts = {
-        monospace = ["FireCode"];
-      };
-    };
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

@@ -28,6 +28,7 @@ in {
     ./filemanager/yazi.nix
     ./browser/firefox.nix
     ./dataLinks.nix
+    ./Messenger/vesktop.nix
 
     inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
@@ -56,7 +57,6 @@ in {
 
       obs-studio
       gimp
-      vesktop
       brave
       nautilus
 
@@ -85,7 +85,6 @@ in {
     # ".screenrc".source = dotfiles/screenrc;
 
     # ".config/nvim".source = ./user/editor/nvim;
-    ".config/ArmCord/storage/settings.json".source = ./Armcord/storage/settings.json;
 
     # Data symlinks
     "Scripts".source = ./Scripts;
