@@ -13,12 +13,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.3.0";
-
-      # Optional but recommended to limit the size of your system closure.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     impermanence.url = "github:nix-community/impermanence";
 
     xremap-flake.url = "github:xremap/nix-flake";
