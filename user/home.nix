@@ -28,7 +28,7 @@ in {
     ./filemanager/yazi.nix
     ./browser/firefox.nix
     ./dataLinks.nix
-    ./Messenger/vesktop.nix
+    ./Messenger
 
     inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
