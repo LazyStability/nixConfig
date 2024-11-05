@@ -5,11 +5,31 @@
   config,
   lib,
   modulesPath,
+  pkgs,
+  inputs,
   ...
-}: {
+}: let
+  newerSbctl = pkgs.sbctl.overrideAttrs (oldAttr: rec {
+    pname = "sbctl";
+    version = "0.15.4";
+    patches = [];
+    databasePath = "/etc/secureboot";
+    ldflags = ["-s" "-w" "-X github.com/foxboron/sbctl.DatabasePath=${databasePath}" "-X github.com/foxboron/sbctl.Version=${version}"];
+
+    src = pkgs.fetchFromGitHub {
+      owner = "Foxboron";
+      repo = pname;
+      rev = version;
+      hash = "sha256-p6Y55vtAVqBoaFbCjdF8OWu53kshEBFgodofmyyqygI=";
+    };
+    vendorHash = "sha256-3tlK8SDWBWF4Xsp8YJysXLGZSoMQ/zuEugBeYIaqd9Q=";
+    doCheck = false;
+  });
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./nvidia.nix
+    inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "ahci" "xhci_pci" "usbhid" "sd_mod"];
@@ -39,6 +59,14 @@
       "nofail"
       "x-systemd.device-timeout=9"
     ];
+  };
+
+  # Secure boot
+  environment.systemPackages = [newerSbctl];
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
