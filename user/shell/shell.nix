@@ -70,13 +70,19 @@ in {
       character = {
         success_symbol = "[➜](bold green)";
         error_symbol = "[](bold red)";
-
-        # git branch 
-        # sudo enable = true
-        #[custom.unreal]
-        #symbol = "󰦱"  # symbol for this
-        #files = ["*.uproject"]       # can specify filters
       };
+      nix_shell = {
+        format = ''via [$symbol$state]($style)'';
+      };
+      directory.substitutions = {
+        Dokumente = "󰈙 ";
+        Downloads = " ";
+        Musik = " ";
+        Bilder = " ";
+      };
+      #[custom.unreal]
+      #symbol = "󰦱"  # symbol for this
+      #files = ["*.uproject"]       # can specify filters
     };
   };
 }
