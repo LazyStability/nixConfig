@@ -163,7 +163,6 @@ in {
       FLAKE = "/persist/etc/nixos";
       EDITOR = "nvim";
       VISUAL = "nvim";
-      NIXOS_OZONE_WL = 1;
     };
   };
 
