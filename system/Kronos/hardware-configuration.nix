@@ -33,7 +33,7 @@
     ];
   };
   fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/a4bbd3ac-d7fb-4d6b-a39d-8a62da90ce81";
+    device = "/dev/volgroup0/lv_data";
     fsType = "ext4";
     options = [
       "nofail"
