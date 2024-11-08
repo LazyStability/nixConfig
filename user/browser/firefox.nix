@@ -89,32 +89,6 @@
         ];
         Add = [
           # Adds a search engine, Name and URLTemplate are mandatory options
-          {
-            Name = "nixPackages";
-            URLTemplate = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
-            # TODO: Pls fix icons
-            # IconURL = "https://github.com/NixOS/nixos-artwork/blob/master/logo/nix-snowflake-colours.svg";
-            # IconURL = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            # alias = "@nxpk";
-            Description = "Handy to search nixpkgs for a desired package";
-          }
-          {
-            Name = "nixOptions";
-            URLTemplate = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
-            # TODO: Pls fix icons and aliases
-            # IconURL = "https://github.com/NixOS/nixos-artwork/blob/master/logo/nix-snowflake-colours.svg";
-            # IconURL = "file://${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            # alias = "@nxopt";
-            Description = "Handy to search nixpkgs for a desired option";
-          }
-          {
-            Name = "Github";
-            URLTemplate = "https://github.com/search?q={searchTerms}";
-            # TODO: Pls fix icons and aliases
-            # IconURL = "";
-            # alias = "@gh";
-            Description = "Search github repositories";
-          }
         ];
       };
       FirefoxSuggest = {
@@ -254,6 +228,69 @@
           }
         ];
         extensions = [];
+      };
+      search.engines = {
+        "Nix Packages" = {
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = ["@np"];
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+        };
+        "Nix Options" = {
+          definedAliases = ["@no"];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          urls = [
+            {
+              template = "https://search.nixos.org/options";
+              params = [
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+        };
+        "Home manager" = {
+          definedAliases = ["@hm"];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          urls = [
+            {
+              template = "https://home-manager-options.extranix.com";
+              params = [
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+        };
+
+        "Github" = {
+          definedAliases = ["@gh"];
+          icon = "";
+          urls = [
+            {
+              template = "https://github.com/search";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+        };
       };
     };
   };
