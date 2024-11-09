@@ -6,5 +6,6 @@
     "L+ /home/me/Dokumente - - - - /data/Dokumente"
     "L+ /home/me/Downloads - - - - /data/Downloads"
     "L+ /home/me/Software - - - - /data/Software"
+    "L+ /home/me/Games - - - - /games"
   ];
 }
