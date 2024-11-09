@@ -23,6 +23,7 @@ in {
     pandoc
     hwinfo
     zoxide
+    btop
   ];
   # Shells
   programs.bash = {
