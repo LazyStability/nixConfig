@@ -23,7 +23,7 @@ in {
     # ./impermanence/default.nix
     ./services/syncthing
     ./Stylix
-    #./services/wireguard
+    ./services/wireguard
 
     ./gaming
 
@@ -150,7 +150,6 @@ in {
         ags
         git
         zsh
-        wireguard-tools
         nh
         networkmanagerapplet
         networkmanager-openvpn
