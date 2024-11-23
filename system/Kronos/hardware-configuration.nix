@@ -14,8 +14,8 @@
 
   boot.initrd.availableKernelModules = ["nvme" "ahci" "xhci_pci" "usbhid" "sd_mod"];
   environment.etc."crypttab".text = ''
-    arch  UUID=7a241942-bc53-4e6b-a417-784cc9876503 /persist/etc/secrets/ArchKey
-    games UUID=1b355677-32ca-439c-8b66-eec5f1cb9e53 /persist/etc/secrets/Games
+    data  UUID=22138b0d-5278-48c4-9ba4-c4286a3952a1 /persist/etc/secrets/ArchKey
+    games UUID=c9a276cf-101b-4a6b-8ad2-128db28735b9 /persist/etc/secrets/Games
   '';
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-amd"];
@@ -24,19 +24,22 @@
   networking.hostName = "Kronos"; # Define your hostname.
 
   fileSystems."/games" = {
-    device = "/dev/disk/by-uuid/992e9e57-3321-4cc0-873e-ad2f78e0e16a";
+    device = "/dev/disk/by-uuid/e6d45a8e-8c4c-41e4-bfd6-6b264abeed08";
     fsType = "ext4";
     options = [
       "nofail"
+      "noatime"
       "x-systemd.device-timeout=9"
     ];
   };
   fileSystems."/data" = {
-    device = "/dev/volgroup0/lv_data";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/99d95a7f-e257-4462-8663-c593f36d3484";
+    fsType = "btrfs";
     options = [
       "nofail"
       "x-systemd.device-timeout=9"
+      "compress=zstd"
+      "subvol=data"
     ];
   };
 
