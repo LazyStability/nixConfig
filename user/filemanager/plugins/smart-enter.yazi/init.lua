@@ -1,3 +1,4 @@
+--- @sync entry
 --Smart enter
 return {
   entry = function()

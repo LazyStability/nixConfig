@@ -67,7 +67,7 @@
         }
         {
           on = "l";
-          run = "plugin --sync smart-enter";
+          run = "plugin smart-enter";
           desc = "Enter the child directory, or open the file";
         }
         {
@@ -80,7 +80,7 @@
         ################
         {
           on = "T";
-          run = "plugin --sync max-preview";
+          run = "plugin  max-preview";
           desc = "Maximize plugin";
         }
         ###########
