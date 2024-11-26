@@ -24,8 +24,9 @@ in {
     gamescope
 
     # Steam terminal client
-    steamcmd
-    steam-tui
+    # Needs to be build from source, takes about 2 min and I cant even use it because steam does not verify my passwort :(
+    # steamcmd
+    # steam-tui
 
     # better performance
     gamemode
