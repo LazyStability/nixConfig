@@ -174,29 +174,8 @@ in {
       #
       #
       {
-        plugin = nvim-treesitter.withPlugins (p: [
-          p.bash
-          p.c
-          p.cpp
-          p.html
-          p.git_config
-          p.git_rebase
-          p.gitattributes
-          p.gitcommit
-          p.gitignore
-          p.lua
-          p.luadoc
-          p.markdown
-          p.markdown_inline
-          p.nix
-          p.python
-          p.json
-          p.vim
-          p.vimdoc
-          p.latex
-        ]);
+        plugin = nvim-treesitter.withAllGrammars;
         # config = ; # TODO:;
-        type = "lua";
       }
     ];
     #
@@ -204,5 +183,10 @@ in {
     #     ${builtins.readFile ./lua/options.lua}
     #     ${builtins.readFile ./lua/keymaps.lua}
     #   '';
+  };
+  # Treesitter is linked into the expected directory so Lazy.nvim can pick it up
+  home.file."./.local/share/nvim/nix-plugins/nvim-treesitter/" = {
+    recursive = true;
+    source = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
   };
 }
