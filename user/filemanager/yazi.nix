@@ -33,11 +33,15 @@
       };
     };
     plugins = {
+      # Get these plugins from here
+      # https://github.com/yazi-rs/plugins
       smart-enter = ./plugins/smart-enter.yazi;
-      cmod = ./plugins/chmod.yazi;
-      git = ./plugins/git.yazi;
-      relative-motions = ./plugins/relative-motions.yazi;
+      smart-filter = ./plugins/smart-filter.yazi;
       max-preview = ./plugins/max-preview.yazi;
+      git = ./plugins/git.yazi;
+      cmod = ./plugins/chmod.yazi;
+      # https://github.com/dedukun/relative-motions.yazi
+      relative-motions = ./plugins/relative-motions.yazi;
     };
     keymap = {
       manager.prepend_keymap = [
@@ -138,6 +142,11 @@
           on = ["9"];
           run = "plugin relative-motions --args=9";
           desc = "Move in relative steps";
+        }
+        {
+          on = ["F"];
+          run = "plugin smart-filter";
+          desc = "Smart filter";
         }
       ];
     };
