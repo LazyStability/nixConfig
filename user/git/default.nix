@@ -31,9 +31,12 @@
       cob = "!git checkout -b";
       undo = "!git reset HEAD~1 --mixed";
       save = "!git add -A && git commit -m 'chore: commit save point'";
-      cm = "!git add -A && git commit";
-      cma = "!git add -A && git commit --amend";
-      cmae = "!git add -A && git commit --amend --no-edit";
+      cm = "!git commit";
+      cma = "!git commit --amend";
+      cmae = "!git commit --amend --no-edit";
+      acm = "!git add -A && git commit";
+      acma = "!git add -A && git commit --amend";
+      acmae = "!git add -A && git commit --amend --no-edit";
       br = ''!git branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate'';
       del = "!git branch -d";
     };
