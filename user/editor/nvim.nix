@@ -173,10 +173,10 @@ in {
       #     }
       #
       #
-      {
-        plugin = nvim-treesitter.withAllGrammars;
-        # config = ; # TODO:;
-      }
+      # {
+      #   plugin = nvim-treesitter.withAllGrammars;
+      #   # config = ; # TODO:;
+      # }
     ];
     #
     #   extraLuaConfig = ''
