@@ -189,4 +189,15 @@ in {
     recursive = true;
     source = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
   };
+  home.file."~/.config/nvim/lua/nix-treesitter.lua".text = let
+    grammarsPath = pkgs.symlinkJoin {
+      name = "nvim-treesitter-grammars";
+      paths = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
+    };
+  in ''
+      -- also make sure to append treesitter since it bundles some languages
+    vim.opt.runtimepath:append("${pkgs.vimPlugins.nvim-treesitter}")
+    -- append all *.so files
+    vim.opt.runtimepath:append("${grammarsPath}")
+  '';
 }
