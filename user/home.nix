@@ -54,6 +54,7 @@ in {
       kdePackages.okular
       imv
       mpv
+      calcure
 
       obs-studio
       gimp
