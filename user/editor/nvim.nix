@@ -26,9 +26,6 @@ in {
     nodePackages.bash-language-server
     hyprls
 
-    # Debugger
-    delve
-
     #formatter
     alejandra
 
