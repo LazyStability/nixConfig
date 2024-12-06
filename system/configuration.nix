@@ -172,6 +172,14 @@ in {
   users.defaultUserShell = pkgs.zsh;
 
   programs.thunderbird.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   # List services that you want to enable:
 
