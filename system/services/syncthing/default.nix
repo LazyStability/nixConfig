@@ -20,6 +20,7 @@
     settings = {
       devices = {
         "fedoralaptop" = {id = "Q3EZAQ7-GV27IJU-PT5TRZA-2VG3XG4-SATOQJR-D2DE62L-VUE45D4-PWWOMQP";};
+        "Phone" = {id = "6PXOBHV-E7HZAF2-4C2DZGF-STWF2GR-V5WRT5X-2Y3NEWD-4QO5XPL-3X7DAQ2";};
       };
       folders = {
         "Zettelkasten" = {
@@ -57,6 +58,13 @@
         "Bilder" = {
           path = "/home/me/Bilder/";
           devices = ["fedoralaptop"];
+        };
+        "Kalendar" = {
+          path = "/var/lib/radicale";
+          devices = [
+            "fedoralaptop"
+            "Phone"
+          ];
         };
       };
     };

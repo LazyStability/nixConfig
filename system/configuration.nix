@@ -21,9 +21,10 @@ in {
     # ./greetd/greetd.nix
 
     # ./impermanence/default.nix
-    ./services/syncthing
     ./Stylix
+    ./services/syncthing
     ./services/wireguard
+    ./services/radicale
 
     ./gaming
 
