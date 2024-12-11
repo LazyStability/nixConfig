@@ -64,6 +64,7 @@ in {
 
       # calibre
       tor
+      saber
       zathura
       zotero
       prismlauncher
