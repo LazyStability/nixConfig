@@ -26,6 +26,10 @@ in {
     nodePackages.bash-language-server
     hyprls
 
+    # Markdown
+    pandoc
+    live-server
+
     #formatter
     alejandra
 
