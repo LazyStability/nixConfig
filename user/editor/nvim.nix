@@ -26,6 +26,11 @@ in {
     nodePackages.bash-language-server
     hyprls
 
+    # typst
+    typst
+    tinymist
+    typstyle
+
     # Markdown
     pandoc
     live-server
