@@ -81,8 +81,8 @@ in {
   ###########
   stylix.fonts = {
     monospace = {
-      name = "FireCode";
-      package = with pkgs; (nerdfonts.override {fonts = ["FiraCode"];});
+      name = "FiraCode";
+      package = pkgs.nerd-fonts.fira-code;
     };
     sansSerif = {
       name = "DejaVu Sans";
