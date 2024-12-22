@@ -160,7 +160,6 @@ in {
       ++ (with pkgs-stable; [
         ]);
     sessionVariables = {
-      FLAKE = "/persist/etc/nixos";
       EDITOR = "nvim";
       VISUAL = "nvim";
     };

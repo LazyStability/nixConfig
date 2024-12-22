@@ -66,7 +66,7 @@
             */
           })
           ./system/configuration.nix
-          ./Hosts/Kronos/hardware-configuration.nix
+          ./Hosts/Kronos
         ];
         specialArgs = {
           inherit inputs;
@@ -79,7 +79,7 @@
         inherit system;
         modules = [
           ./system/configuration.nix
-          ./Hosts/Thor/hardware-configuration.nix
+          ./Hosts/Thor
         ];
         specialArgs = {
           inherit inputs;
