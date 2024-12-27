@@ -20,6 +20,7 @@
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
+  hardware.keyboard.zsa.enable = true;
 
   networking.hostName = "Kronos"; # Define your hostname.
 

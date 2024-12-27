@@ -56,6 +56,7 @@ in {
       mpv
       glance
       wealthfolio
+      keymapp
 
       obs-studio
       gimp
