@@ -27,10 +27,10 @@ in {
     ./Gaming
     ./filemanager/yazi.nix
     ./browser/firefox.nix
-    ./dataLinks.nix
+    # ./dataLinks.nix
     ./Messenger
 
-    inputs.impermanence.nixosModules.home-manager.impermanence
+    # inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
   ];
   home.username = "me";
@@ -82,41 +82,11 @@ in {
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # ".config/nvim".source = ./user/editor/nvim;
-
     # Data symlinks
     "Scripts".source = ./Scripts;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/me/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     EDITOR = "nvim";
-    FOO = "Bar";
   };
 
   # home.persistence."/persist/home/me" = {
@@ -129,32 +99,6 @@ in {
   #  allowOther = true; # Allows other users to access these files
   # };
 
-  #configure xremap
-  # Get Window name using `hyprctl clients` in Hyprland
-  # And `busctl --user call org.gnome.Shell /com/k0kubun/Xremap com.k0kubun.Xremap WMClasses` in gnome
-  # Gnome doesnt work see this https://github.com/xremap/xremap/issues/378
-  # services.xremap = {
-  # withGnome = true;
-  #  withWlroots = true;
-  #  yamlConfig = ''
-  #    modmap:
-  #      - name: main;
-  #        remap:
-  #          CapsLock: esc
-  #        application:
-  #          not: [kitty, org.gnome.console]
-  #
-  #        - name: terminal;
-  #          remap:
-  #            CapsLock:
-  #              held: CONTROL_L
-  #              alone: esc
-  #              alone_timeout_millis: 150
-  #          application:
-  #            only: [kitty, org.gnome.console, firefox]
-  #    '';
-  #
-  #  };
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {

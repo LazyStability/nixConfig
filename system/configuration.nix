@@ -23,7 +23,7 @@ in {
     # ./impermanence/default.nix
     ./Stylix
     ./services/syncthing
-    ./services/wireguard
+    # ./services/wireguard
     ./services/radicale
 
     ./gaming
