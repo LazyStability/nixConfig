@@ -33,7 +33,7 @@ in {
 
     # Compatibility layer
     wineWowPackages.waylandFull
-    inputs.umu.packages.${pkgs.system}.umu
+    # inputs.umu.packages.${pkgs.system}.umu
     #A Vulkan-based translation layer for Direct3D 9/10/11 for wine
     dxvk
 
