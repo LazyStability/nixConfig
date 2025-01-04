@@ -24,7 +24,7 @@
     };
     stylix.url = "github:danth/stylix";
 
-    yazi.url = "github:sxyazi/yazi";
+    # yazi.url = "github:sxyazi/yazi";
   };
   # nixConfig = {
   #   extra-substituters = [
