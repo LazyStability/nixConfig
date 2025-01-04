@@ -18,7 +18,7 @@ in {
     # lsps
     lua-language-server
     pyright
-    texlab
+    # texlab
     nixd
     llvmPackages_19.clang-unwrapped
     stylua
@@ -39,7 +39,7 @@ in {
     alejandra
 
     # latex
-    tex
+    # tex
 
     # Utility
     wl-clipboard
