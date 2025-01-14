@@ -5,19 +5,7 @@
   ...
 }:
 # TODO: Overlay proton-ge
-let
-  prevHeroic = pkgs.heroic.overrideAttrs (oldAttr: rec {
-    pname = "Heroic-old";
-    version = "2.14.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "Heroic-Games-Launcher";
-      repo = "HeroicGamesLauncher";
-      rev = "v${version}";
-      hash = "sha256-AnyltqNP+XyVzgCobM3g6DIXntD3spKecYtCRx+8oic=";
-      name = "${pname}-${version}";
-    };
-  });
-in {
+{
   home.packages = with pkgs; [
     # Steam stuff
     steam-run
@@ -32,7 +20,7 @@ in {
     gamemode
 
     # Compatibility layer
-    wineWowPackages.waylandFull
+    # wineWowPackages.waylandFull
     # inputs.umu.packages.${pkgs.system}.umu
     #A Vulkan-based translation layer for Direct3D 9/10/11 for wine
     dxvk
@@ -43,7 +31,7 @@ in {
     # Launcher
     # prevHeroic
     heroic
-    lutris
+    # lutris
     r2modman
 
     # Better Eldenring
