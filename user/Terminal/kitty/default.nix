@@ -107,6 +107,9 @@
       map kitty_mod+z combine : toggle_layout stack : scroll_prompt_to_bottom
       tab_title_template "{' #' if layout_name == 'stack' else '  '}{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}  "
 
+      # delete whole word
+      map ctrl+backspace send_text all \x17
+
     '';
   };
 }
