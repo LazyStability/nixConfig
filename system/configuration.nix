@@ -156,6 +156,7 @@ in {
         networkmanager-openvpn
         blueberry
         cryptsetup
+        piper
       ])
       ++ (with pkgs-stable; [
         ]);
@@ -182,6 +183,8 @@ in {
   };
 
   # List services that you want to enable:
+  # Mouse
+  services.ratbagd.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
