@@ -29,6 +29,7 @@ in {
     ./browser/firefox.nix
     ./dataLinks.nix
     ./Messenger
+    ./Scripts
 
     # inputs.impermanence.nixosModules.home-manager.impermanence
     # inputs.xremap-flake.homeManagerModules.default
