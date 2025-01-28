@@ -185,6 +185,7 @@ in {
   # List services that you want to enable:
   # Mouse
   services.ratbagd.enable = true;
+  services.playerctld.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
