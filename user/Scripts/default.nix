@@ -7,8 +7,10 @@
     Useragent = "AnyConnect-compatible OpenConnect VPN Agent";
     vpnname = "uni";
   };
+  quickcapture = pkgs.callPackage ./quickcapture.nix {};
 in {
   home.packages = [
     univpn
+    quickcapture
   ];
 }
