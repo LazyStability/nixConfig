@@ -146,6 +146,7 @@
 
           # My password manager
           (extension "keepassxc-browser" "keepassxc-browser@keepassxc.org")
+          (extension "vimium-c" "vimium-c@gdh1995.cn")
         ];
 
       # Very nice policy, enforces stuff on extensions, which allows us to configure them
