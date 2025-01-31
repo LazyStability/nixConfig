@@ -163,6 +163,7 @@ in {
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      NIXOS_OZONE_PLATFORM = 1;
     };
   };
 
