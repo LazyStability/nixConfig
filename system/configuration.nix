@@ -152,6 +152,7 @@ in {
         git
         zsh
         nh
+        wireshark
         networkmanagerapplet
         networkmanager-openvpn
         blueberry
@@ -173,6 +174,7 @@ in {
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  programs.wireshark.enable = true;
   programs.thunderbird.enable = true;
   virtualisation.docker = {
     enable = true;
