@@ -59,12 +59,9 @@
           path = "/home/me/Bilder/";
           devices = ["fedoralaptop"];
         };
-        "Kalendar" = {
-          path = "/var/lib/radicale";
-          devices = [
-            "fedoralaptop"
-            "Phone"
-          ];
+        "Local Thunderbird" = {
+          path = "/home/me/.thunderbird/b0b2l4n9.default-default/Mail/Local\ Folders";
+          devices = ["fedoralaptop"];
         };
       };
     };
