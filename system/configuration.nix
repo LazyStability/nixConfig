@@ -24,7 +24,7 @@ in {
     ./Stylix
     ./services/syncthing
     # ./services/wireguard
-    ./services/radicale
+    # ./services/radicale
 
     ./gaming
 
