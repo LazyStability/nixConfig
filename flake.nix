@@ -13,10 +13,8 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
+    # impermanence.url = "github:nix-community/impermanence";
 
-    xremap-flake.url = "github:xremap/nix-flake";
-    wezterm-flake.url = "github:wez/wezterm?dir=nix";
     # hyprland.url = "github:hyprwm/Hyprland";
     # umu = {
     #   url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
