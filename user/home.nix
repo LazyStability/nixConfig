@@ -27,7 +27,7 @@ in {
     ./Gaming
     ./filemanager/yazi.nix
     ./browser/firefox.nix
-    ./dataLinks.nix
+    # ./dataLinks.nix
     ./Messenger
     ./Scripts
 
