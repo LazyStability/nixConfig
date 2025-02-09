@@ -14,6 +14,7 @@
     ./waybar.nix
   ];
   home.packages = with pkgs; [
+    hyprsunset
     hyprshade
     hyprshot
   ];
@@ -61,6 +62,6 @@
     ".config/hypr/windowsWorkspace.conf".source = ./windowsWorkspace.conf;
     ".config/hypr/autostart.conf".source = ./autostart.conf;
     # ".config/hypr/hyprcursor.conf".source = ./hyprcursor.conf;
-    ".config/hypr/hyprshade.toml".source = ./hyprshade.toml;
+    # ".config/hypr/hyprshade.toml".source = ./hyprshade.toml;
   };
 }
