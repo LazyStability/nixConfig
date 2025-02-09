@@ -47,6 +47,9 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.graphics.enable = true;
   hardware.keyboard.zsa.enable = true;
+
+  # Fixes suspend issues
+  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;

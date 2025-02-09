@@ -12,6 +12,9 @@
   # Load "nvidia" driver for Xorg and wayland
   services.xserver.videoDrivers = ["nvidia"];
 
+  # Fixes suspend issues
+  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+
   hardware.nvidia = {
     # Modesetting is required
     modesetting.enable = true;
