@@ -29,6 +29,7 @@
   # Enable hyprland
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
 
     # These are the default values, I just put them here for completion
     xwayland.enable = true;

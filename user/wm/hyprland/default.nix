@@ -20,6 +20,9 @@
   ];
   wayland.windowManager.hyprland = {
     enable = true;
+    package = null;
+    portalPackage = null;
+    systemd.enable = false;
     settings = {
       # Setting up monitors, the third is a ghost monitor
       monitor = [
