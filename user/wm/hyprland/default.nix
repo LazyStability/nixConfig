@@ -18,6 +18,14 @@
     hyprshade
     hyprshot
   ];
+  gtk = {
+    enable = true;
+
+    iconTheme = {
+      name = "Colloid";
+      package = pkgs.colloid-icon-theme;
+    };
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
