@@ -23,8 +23,8 @@
     enable = true;
 
     iconTheme = {
-      name = "Colloid";
-      package = pkgs.colloid-icon-theme;
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
     };
   };
   # Enable menu
