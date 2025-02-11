@@ -28,9 +28,6 @@
       FLAKE = "/etc/nixos";
     };
   };
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-  };
 
   ################
   ## Networking ##

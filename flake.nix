@@ -70,6 +70,7 @@
           inherit pkgs-stable;
           inherit systemSettings;
           inherit userSettings;
+          inherit self;
         };
       };
       Thor = lib.nixosSystem {
@@ -82,6 +83,7 @@
           inherit pkgs-stable;
           inherit systemSettings;
           inherit userSettings;
+          inherit self;
         };
       };
     };

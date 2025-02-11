@@ -4,10 +4,19 @@
 {
   pkgs,
   pkgs-stable,
+  self,
   ...
 }: {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Enables the new cli and flakes
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+  };
+
+  # Links the configuration with its git rev
+  system.configurationRevision = self.rev or "dirty";
 
   # Default keyboard layout
   services.xserver.xkb = {
