@@ -30,6 +30,7 @@
       acmae = "!git add -A && git commit --amend --no-edit";
       br = ''!git branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate'';
       del = "!git branch -d";
+      recommit = "!git commit -e --file=$(git rev-parse --git-dir)/COMMIT_EDITMSG";
     };
     extraConfig = {
       # git signing
