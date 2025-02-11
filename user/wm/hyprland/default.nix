@@ -18,6 +18,7 @@
     hyprshade
     hyprshot
   ];
+  # choose gtk theme
   gtk = {
     enable = true;
 
@@ -26,6 +27,9 @@
       package = pkgs.colloid-icon-theme;
     };
   };
+  # Enable menu
+  programs.wofi.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;

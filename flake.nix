@@ -63,7 +63,6 @@
             inherit inputs;
             */
           })
-          ./system/configuration.nix
           ./Hosts/Kronos
         ];
         specialArgs = {
@@ -76,7 +75,6 @@
       Thor = lib.nixosSystem {
         inherit system;
         modules = [
-          ./system/configuration.nix
           ./Hosts/Thor
         ];
         specialArgs = {

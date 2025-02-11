@@ -13,6 +13,7 @@ in {
   imports = [
     ./shell/shell.nix
     ./git
+    ./ssh
 
     userTerminalPath
     # ./Terminal/wezterm.nix
@@ -122,8 +123,6 @@ in {
       # "inode/directory" = ["yazi-standalone.desktop"];
     };
   };
-  services.ssh-agent.enable = true;
-  programs.wofi.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
