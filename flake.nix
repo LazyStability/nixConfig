@@ -48,13 +48,6 @@
       Kronos = lib.nixosSystem {
         inherit system;
         modules = [
-          inputs.disko.nixosModules.default
-          (import ./system/disko.nix {
-            device = "/dev/disk/by-id/wwn-0x5002538043584d30";
-            /*
-            inherit inputs;
-            */
-          })
           ./Hosts/Kronos
         ];
         specialArgs = {
