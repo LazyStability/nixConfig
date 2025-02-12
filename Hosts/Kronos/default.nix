@@ -36,6 +36,7 @@
       FLAKE = "/persist/etc/nixos";
     };
   };
+  networking.hostName = "Kronos"; # Define your hostname.
 
   ################
   ## Networking ##

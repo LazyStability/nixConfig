@@ -32,6 +32,7 @@
       FLAKE = "/etc/nixos";
     };
   };
+  networking.hostName = "Thor"; # Define your hostname.
 
   ################
   ## Networking ##

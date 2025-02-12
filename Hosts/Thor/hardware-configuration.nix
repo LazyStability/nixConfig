@@ -13,12 +13,9 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod"];
-  boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/f9d118f6-3f15-47de-bef5-c893095bac4f";
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
-
-  networking.hostName = "Thor"; # Define your hostname.
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
