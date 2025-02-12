@@ -19,7 +19,7 @@
 
     ../../system/services/zsh
     ../../system/services/bluetooth
-    ../../system/services/syncthing
+    # ../../system/services/syncthing
 
     inputs.home-manager.nixosModules.default
   ];
