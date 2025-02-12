@@ -24,6 +24,8 @@
     variant = "";
   };
 
+  services.journald.extraConfig = "SystemMaxFileSize=50M";
+
   # Configure console keymap
   console.keyMap = "de";
   # Enable CUPS to print documents.
