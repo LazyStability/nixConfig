@@ -73,6 +73,7 @@ in {
       piper
       swaynotificationcenter
       keepassxc
+      remmina
     ])
     ++ (with pkgs-stable; [
       ]);

@@ -78,6 +78,7 @@ in {
       piper
       swaynotificationcenter
       keepassxc
+      freerdp
     ])
     ++ (with pkgs-stable; [
       ]);
