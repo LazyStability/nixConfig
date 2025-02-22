@@ -9,6 +9,7 @@
 }: let
   userTerminalPath = lib.path.append ../../user/Terminal userSettings.terminal;
   WmConfig = lib.path.append ../../user/wm userSettings.wm;
+  monitor = [];
 in {
   imports = [
     ../../user/shell
@@ -19,7 +20,14 @@ in {
 
     # Window managers
     # This includes either ./wm/hyprland or ./wm/gnome
-    WmConfig
+    # WmConfig
+    (import ../../user/wm/hyprland {
+      monitor = monitor;
+      inputs = inputs;
+      pkgs = pkgs;
+      userSettings = userSettings;
+      config = config;
+    })
 
     ../../user/editor/nvim.nix
     ../../user/Gaming
