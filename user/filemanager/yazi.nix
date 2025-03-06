@@ -147,6 +147,14 @@
           run = "plugin smart-filter";
           desc = "Smart filter";
         }
+        {
+          on = ["<C-e>"];
+          run = ''
+            shell -- paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
+            thunderbird -compose "attachment='$paths'"
+          '';
+          desc = "send file via thunderbird";
+        }
       ];
     };
     initLua = ''
