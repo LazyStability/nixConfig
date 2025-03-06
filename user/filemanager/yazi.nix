@@ -53,7 +53,7 @@
         {
           on = ["g" "r"];
           run = ''
-            shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
+            shell -- ya emit cd "$(git rev-parse --show-toplevel)"
           '';
           desc = "Go to [g]it [r]oot";
         }
@@ -61,7 +61,7 @@
           on = "y";
           run = [
             ''
-              shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm
+              shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list
             ''
             "yank"
           ];
@@ -99,47 +99,47 @@
         #######################
         {
           on = ["1"];
-          run = "plugin relative-motions --args=1";
+          run = "plugin relative-motions 1";
           desc = "Move in relative steps";
         }
         {
           on = ["2"];
-          run = "plugin relative-motions --args=2";
+          run = "plugin relative-motions 2";
           desc = "Move in relative steps";
         }
         {
           on = ["3"];
-          run = "plugin relative-motions --args=3";
+          run = "plugin relative-motions 3";
           desc = "Move in relative steps";
         }
         {
           on = ["4"];
-          run = "plugin relative-motions --args=4";
+          run = "plugin relative-motions 4";
           desc = "Move in relative steps";
         }
         {
           on = ["5"];
-          run = "plugin relative-motions --args=5";
+          run = "plugin relative-motions 5";
           desc = "Move in relative steps";
         }
         {
           on = ["6"];
-          run = "plugin relative-motions --args=6";
+          run = "plugin relative-motions 6";
           desc = "Move in relative steps";
         }
         {
           on = ["7"];
-          run = "plugin relative-motions --args=7";
+          run = "plugin relative-motions 7";
           desc = "Move in relative steps";
         }
         {
           on = ["8"];
-          run = "plugin relative-motions --args=8";
+          run = "plugin relative-motions 8";
           desc = "Move in relative steps";
         }
         {
           on = ["9"];
-          run = "plugin relative-motions --args=9";
+          run = "plugin relative-motions 9";
           desc = "Move in relative steps";
         }
         {

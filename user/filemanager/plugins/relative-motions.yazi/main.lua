@@ -1,3 +1,4 @@
+-- stylua: ignore--- @since 25.2.7
 -- stylua: ignore
 local MOTIONS_AND_OP_KEYS = {
 	{ on = "0" }, { on = "1" }, { on = "2" }, { on = "3" }, { on = "4" },
@@ -77,10 +78,14 @@ local render_motion = ya.sync(function(_, motion_num, motion_cmd)
       motion_span = ui.Span(string.format(' %3d%s ', motion_num, motion_cmd))
     end
 
+    local status_config = THEME.status
+    local separator_open = status_config.separator_open or status_config.sep_right.open
+    local separator_close = status_config.separator_close or status_config.sep_right.close
+
     return ui.Line {
-      ui.Span(THEME.status.separator_open):fg(style.main.bg),
+      ui.Span(separator_open):fg(style.main.bg),
       motion_span:style(style.main),
-      ui.Span(THEME.status.separator_close):fg(style.main.bg),
+      ui.Span(separator_close):fg(style.main.bg),
       ui.Span ' ',
     }
   end
@@ -270,7 +275,7 @@ return {
 
     if cmd == 'g' then
       if direction == 'g' then
-        ya.manager_emit('arrow', { -99999999 })
+        ya.manager_emit('arrow', { 'top' })
         ya.manager_emit('arrow', { lines - 1 })
         render_clear()
         return
@@ -302,7 +307,7 @@ return {
         ya.manager_emit('enter', {})
         local file_idx = get_cache_or_first_dir()
         if file_idx then
-          ya.manager_emit('arrow', { -99999999 })
+          ya.manager_emit('arrow', { 'top' })
           ya.manager_emit('arrow', { file_idx })
         end
       end
