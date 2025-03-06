@@ -9,7 +9,10 @@
 }: let
   userTerminalPath = lib.path.append ../../user/Terminal userSettings.terminal;
   WmConfig = lib.path.append ../../user/wm userSettings.wm;
-  monitor = [];
+  monitor = [
+    "DP-1, 2560x1440@60, 0x0, 1"
+    "Unknown-1,disabled"
+  ];
 in {
   imports = [
     ../../user/shell
