@@ -47,6 +47,7 @@
         ffmpeg
         ripgrep
         ags
+        gh
         git
         zsh
         nh
