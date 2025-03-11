@@ -36,6 +36,7 @@ in {
     ../../user/Gaming
     ../../user/filemanager/yazi.nix
     ../../user/browser/firefox/firefox.nix
+    ../../user/browser/zen/zen.nix
     ../../user/Messenger
     ../../user/Scripts
 

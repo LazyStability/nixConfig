@@ -2,6 +2,13 @@
   pkgs,
   lib,
 }: {
+  # Allows communication between the browser and other apps
+  nativeMessagingHosts = [
+    # Gnome shell native connector
+    #TODO: make this an option with nix module system
+    # pkgs.gnome-browser-connector
+    pkgs.keepassxc
+  ];
   # Enforced on all profiles
   # See here all available fields
   # https://github.com/mozilla/policy-templates/blob/master/linux/policies.json
@@ -123,7 +130,7 @@
         name = uuid;
         value = {
           install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
-          installation_mode = "normal_installed";
+          installation_mode = "force_installed";
         };
       };
     in
@@ -141,6 +148,15 @@
         # My password manager
         (extension "keepassxc-browser" "keepassxc-browser@keepassxc.org")
         (extension "vimium-c" "vimium-c@gdh1995.cn")
+
+        # zotero is not in firefox store
+        {
+          name = "zotero@chnm.gmu.edu";
+          value = {
+            install_url = "https://www.zotero.org/download/connector/dl?browser=firefox";
+            install_mode = "normal_installed";
+          };
+        }
       ];
 
     # Very nice policy, enforces stuff on extensions, which allows us to configure them
