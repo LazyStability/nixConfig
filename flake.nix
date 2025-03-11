@@ -25,6 +25,12 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.systems.follows = "systems";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # yazi.url = "github:sxyazi/yazi";
   };
   outputs = {
     self,
