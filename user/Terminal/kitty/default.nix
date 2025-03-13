@@ -8,108 +8,162 @@
     # ".config/kitty/relative_resize.py".source = ./relative_resize.py;
     ".config/kitty/Broadcast.py".source = ./Broadcast.py;
   };
+  stylix.targets.kitty.enable = false;
   programs.kitty = {
     enable = true;
     settings = {
       background_opacity = lib.mkForce "0.8";
     };
-    extraConfig = ''
-      clear_all_shortcuts yes
-      kitty_mod           ctrl+shift
+    extraConfig =
+      ''
+        clear_all_shortcuts yes
+        kitty_mod           ctrl+shift
 
-      # copy & paste
-      map kitty_mod+c copy_to_clipboard
-      map kitty_mod+v paste_from_clipboard
+        # copy & paste
+        map kitty_mod+c copy_to_clipboard
+        map kitty_mod+v paste_from_clipboard
 
-      ##########
-      ## Font ##
-      ##########
+        ##########
+        ## Font ##
+        ##########
 
-      font_family      family="FiraCode Nerd Font"
-      bold_font        auto
-      italic_font      auto
-      bold_italic_font auto
-      disable_ligatures cursor
+        font_family      family="FiraCode Nerd Font"
+        bold_font        auto
+        italic_font      auto
+        bold_italic_font auto
+        disable_ligatures cursor
 
-      ##########
-      ## Tabs ##
-      ##########
+        ##########
+        ## Tabs ##
+        ##########
 
-      # open tabs
-      map kitty_mod+t new_tab
-      map kitty_mod+R close_tab
+        # open tabs
+        map kitty_mod+t new_tab
+        map kitty_mod+R close_tab
 
-      # Move in tabs
-      map kitty_mod+n next_tab
-      map kitty_mod+p previous_tab
+        # Move in tabs
+        map kitty_mod+n next_tab
+        map kitty_mod+p previous_tab
 
-      # Rename tab
-      map kitty_mod+, set_tab_title
+        # Rename tab
+        map kitty_mod+, set_tab_title
 
-      # Broadcast to all windows
-      map f1 launch --allow-remote-control kitty +kitten broadcast
+        # Broadcast to all windows
+        map f1 launch --allow-remote-control kitty +kitten broadcast
 
-      #############
-      ## Windows ##
-      #############
-      # Open splits
-      map kitty_mod+SPACE launch --location=hsplit --cwd=current
-      map kitty_mod+ENTER launch --location=vsplit --cwd=current
+        #############
+        ## Windows ##
+        #############
+        # Open splits
+        map kitty_mod+SPACE launch --location=hsplit --cwd=current
+        map kitty_mod+ENTER launch --location=vsplit --cwd=current
 
-      # Close windows
-      map kitty_mod+Q close_window
+        # Close windows
+        map kitty_mod+Q close_window
 
-      # Kitty navigation
-      map kitty_mod+j neighboring_window down
-      map kitty_mod+k neighboring_window up
-      map kitty_mod+h neighboring_window left
-      map kitty_mod+l neighboring_window right
+        # Kitty navigation
+        map kitty_mod+j neighboring_window down
+        map kitty_mod+k neighboring_window up
+        map kitty_mod+h neighboring_window left
+        map kitty_mod+l neighboring_window right
 
-      # Unset the mapping to pass the keys to neovim
-      map --when-focus-on var:IS_NVIM kitty_mod+j
-      map --when-focus-on var:IS_NVIM kitty_mod+k
-      map --when-focus-on var:IS_NVIM kitty_mod+h
-      map --when-focus-on var:IS_NVIM kitty_mod+l
+        # Unset the mapping to pass the keys to neovim
+        map --when-focus-on var:IS_NVIM kitty_mod+j
+        map --when-focus-on var:IS_NVIM kitty_mod+k
+        map --when-focus-on var:IS_NVIM kitty_mod+h
+        map --when-focus-on var:IS_NVIM kitty_mod+l
 
-      # the 3 here is the resize amount, adjust as needed
-      map alt+j kitten relative_resize.py down  3
-      map alt+k kitten relative_resize.py up    3
-      map alt+h kitten relative_resize.py left  3
-      map alt+l kitten relative_resize.py right 3
+        # the 3 here is the resize amount, adjust as needed
+        map alt+j kitten relative_resize.py down  3
+        map alt+k kitten relative_resize.py up    3
+        map alt+h kitten relative_resize.py left  3
+        map alt+l kitten relative_resize.py right 3
 
-      map --when-focus-on var:IS_NVIM alt+j
-      map --when-focus-on var:IS_NVIM alt+k
-      map --when-focus-on var:IS_NVIM alt+h
-      map --when-focus-on var:IS_NVIM al
+        map --when-focus-on var:IS_NVIM alt+j
+        map --when-focus-on var:IS_NVIM alt+k
+        map --when-focus-on var:IS_NVIM alt+h
+        map --when-focus-on var:IS_NVIM al
 
-      # For linux only:
-      allow_remote_control yes
-      listen_on unix:@mykitty
+        # For linux only:
+        allow_remote_control yes
+        listen_on unix:@mykitty
 
-      shell_integration enabled
-      # kitty-scrollback.nvim Kitten alias
-      action_alias kitty_scrollback_nvim kitten /home/me/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py
+        shell_integration enabled
+        # kitty-scrollback.nvim Kitten alias
+        action_alias kitty_scrollback_nvim kitten /home/me/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py
 
-      # Browse scrollback buffer in nvim
-      map kitty_mod+b kitty_scrollback_nvim
-      # Browse output of the last shell command in nvim
-      map kitty_mod+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
-      # Show clicked command output in nvim
-      mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
+        # Browse scrollback buffer in nvim
+        map kitty_mod+b kitty_scrollback_nvim
+        # Browse output of the last shell command in nvim
+        map kitty_mod+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
+        # Show clicked command output in nvim
+        mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
 
 
-      # Other unix systems:
-      # allow_remote_control yes
-      # listen_on unix:/tmp/mykittyt+l
+        # Other unix systems:
+        # allow_remote_control yes
+        # listen_on unix:/tmp/mykittyt+l
 
-      # Layouts
-      enabled_layouts splits,stack
-      map kitty_mod+z combine : toggle_layout stack : scroll_prompt_to_bottom
-      tab_title_template "{' #' if layout_name == 'stack' else '  '}{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}  "
+        # Layouts
+        enabled_layouts splits,stack
+        map kitty_mod+z combine : toggle_layout stack : scroll_prompt_to_bottom
+        tab_title_template "{' #' if layout_name == 'stack' else '  '}{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}  "
 
-      # delete whole word
-      map ctrl+backspace send_text all \x17
+        # delete whole word
+        map ctrl+backspace send_text all \x17
 
-    '';
+      ''
+      + ''
+        # vim:ft=kitty
+
+        ## name: Tokyo Night Moon
+        ## license: MIT
+        ## author: Folke Lemaitre
+        ## upstream: https://github.com/folke/tokyonight.nvim/raw/main/extras/kitty/tokyonight_moon.conf
+
+
+        background #222436
+        foreground #c8d3f5
+        selection_background #2d3f76
+        selection_foreground #c8d3f5
+        url_color #4fd6be
+        cursor #c8d3f5
+        cursor_text_color #222436
+
+        # Tabs
+        active_tab_background #82aaff
+        active_tab_foreground #1e2030
+        inactive_tab_background #2f334d
+        inactive_tab_foreground #545c7e
+        #tab_bar_background #1b1d2b
+
+        # Windows
+        active_border_color #82aaff
+        inactive_border_color #2f334d
+
+        # normal
+        color0 #1b1d2b
+        color1 #ff757f
+        color2 #c3e88d
+        color3 #ffc777
+        color4 #82aaff
+        color5 #c099ff
+        color6 #86e1fc
+        color7 #828bb8
+
+        # bright
+        color8  #444a73
+        color9  #ff8d94
+        color10 #c7fb6d
+        color11 #ffd8ab
+        color12 #9ab8ff
+        color13 #caabff
+        color14 #b2ebff
+        color15 #c8d3f5
+
+        # extended colors
+        color16 #ff966c
+        color17 #c53b53
+      '';
   };
 }
