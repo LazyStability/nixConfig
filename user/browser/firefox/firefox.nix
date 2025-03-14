@@ -9,9 +9,11 @@
     package =
       pkgs.wrapFirefox pkgs.firefox-esr-unwrapped
       (import ../firefox-wrapping.nix {
-        lib = lib;
-        pkgs = pkgs;
+        inherit pkgs lib;
+        isZen = false;
       });
-    profiles = import ../firefox-profile.nix {pkgs = pkgs;};
+    profiles = import ../firefox-profile.nix {
+      inherit pkgs;
+    };
   };
 }

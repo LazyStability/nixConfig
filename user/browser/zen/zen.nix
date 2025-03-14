@@ -13,9 +13,11 @@
     package =
       pkgs.wrapFirefox inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped
       (import ../firefox-wrapping.nix {
-        lib = lib;
-        pkgs = pkgs;
+        isZen = true;
+        inherit pkgs lib;
       });
-    profiles = import ../firefox-profile.nix {pkgs = pkgs;};
+    profiles = import ../firefox-profile.nix {
+      inherit pkgs;
+    };
   };
 }
