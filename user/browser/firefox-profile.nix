@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  userChrome ? "",
+  userContent ? "",
+  ...
+}: {
   ##############
   ## Profiles ##
   ##############
@@ -7,6 +12,8 @@
     name = "me"; # name as listed in about:profiles
     isDefault = true; # can be omitted; true if profile ID is 0
     id = 0; # 0 is the default profile; see also option "isDefault"
+    userChrome = userChrome;
+    userContent = userContent;
     settings = {
       # specify profile-specific preferences here; check about:config for options
       "browser.contentblocking.category" = {
