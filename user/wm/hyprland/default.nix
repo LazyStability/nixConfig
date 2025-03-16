@@ -15,6 +15,8 @@
     ./waybar.nix
   ];
   home.packages = with pkgs; [
+    swaynotificationcenter
+    pwvucontrol
     hyprsunset
     hyprshade
     hyprshot

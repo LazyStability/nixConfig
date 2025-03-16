@@ -1,55 +1,14 @@
 {
-  config,
   pkgs,
-  lib,
   pkgs-stable,
-  inputs,
-  userSettings,
   ...
-}: let
-  userTerminalPath = lib.path.append ./Terminal userSettings.terminal;
-  WmConfig = lib.path.append ./wm userSettings.wm;
-in {
-  imports = [
-    ./shell/shell.nix
-    ./git
-    ./ssh
-
-    userTerminalPath
-    # ./Terminal/wezterm.nix
-
-    # Window managers
-    # This includes either ./wm/hyprland or ./wm/gnome
-    WmConfig
-    # (./. + ("/wm/" + userSettings.wm))
-    # ./wm/ags/ags.nix
-
-    ./editor/nvim.nix
-    ./Gaming
-    ./filemanager/yazi.nix
-    ./browser/firefox.nix
-    # ./dataLinks.nix
-    ./Messenger
-    ./Scripts
-
-    # inputs.impermanence.nixosModules.home-manager.impermanence
-    # inputs.xremap-flake.homeManagerModules.default
-  ];
-  home.username = "me";
-  home.homeDirectory = "/home/me";
-
+}: {
   home.stateVersion = "23.11"; # Dont change without reading release change, might break
 
   nixpkgs.config.allowUnfree = true;
 
   home.packages =
     (with pkgs; [
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
       obsidian
       vscode
       # xdg default
@@ -72,13 +31,11 @@ in {
       zotero
       prismlauncher
       yt-dlp
-      pwvucontrol
       wl-clipboard
       signal-desktop
       piper
-      swaynotificationcenter
       keepassxc
-      freerdp
+      remmina
     ])
     ++ (with pkgs-stable; [
       ]);
