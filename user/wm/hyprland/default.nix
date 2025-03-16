@@ -64,6 +64,7 @@
       source = ~/.config/hypr/windowsWorkspace.conf
       source = ~/.config/hypr/autostart.conf
       # source = ~/.config/hypr/hyprcursor.conf
+      source = ~/.config/hypr/test.conf
     '';
   };
   # Symlinks the rest of the config to the ~/.config/hypr directory
