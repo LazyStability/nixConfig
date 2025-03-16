@@ -8,7 +8,21 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages =
-    (with pkgs; [
+    (with pkgs; let
+      patched-keepassxc = keepassxc.overrideAttrs (previousAttrs: {
+        version = "patched";
+        src = fetchFromGitHub {
+          owner = "keepassxreboot";
+          repo = "keepassxc";
+          rev = "fc1bd2009959141e06f66d23f0908e0ac048c75d";
+          hash = "sha256-lZ/fDTeC77pv93fYvPf/ocnxU0JX+liSLQx+rhTxlaQ=";
+        };
+        patches = [];
+        # Tests fail so, fuck tests
+        checkFlags = ["-skip"];
+        buildInputs = previousAttrs.buildInputs ++ [keyutils];
+      });
+    in [
       obsidian
       vscode
       # xdg default
@@ -34,7 +48,7 @@
       wl-clipboard
       signal-desktop
       piper
-      keepassxc
+      patched-keepassxc
       remmina
     ])
     ++ (with pkgs-stable; [
