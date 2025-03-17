@@ -44,8 +44,8 @@
     pkgs = nixpkgs.legacyPackages.${system};
     systemSettings = {};
     userSettings = {
-      # Either gnome or hyprland
-      wm = "hyprland";
+      # Either gnome, KDE or hyprland
+      wm = "KDE";
       # Either kitty or wezterm
       terminal = "kitty";
     };

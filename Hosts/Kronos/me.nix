@@ -13,7 +13,7 @@
     "desc:Eizo Nanao Corporation S1901 45328108, 1280x1024@60,0x0,1"
     "Unknown-1,disabled"
   ];
-  # WmConfig = lib.path.append ../../user/wm userSettings.wm {monitor = monitor;};
+  WmConfig = lib.path.append ../../user/wm userSettings.wm;
 in {
   imports = [
     ../../user/shell
@@ -23,8 +23,8 @@ in {
     userTerminalPath
 
     # Window managers
-    # This includes either ./wm/hyprland or ./wm/gnome
-    (import ../../user/wm/hyprland {
+    # This includes either ./wm/hyprland or ./wm/gnome or ./wm/KDE
+    (import WmConfig {
       monitor = monitor;
       inputs = inputs;
       pkgs = pkgs;

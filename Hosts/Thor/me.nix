@@ -23,8 +23,8 @@ in {
 
     # Window managers
     # This includes either ./wm/hyprland or ./wm/gnome
-    # WmConfig
-    (import ../../user/wm/hyprland {
+
+    (import WmConfig {
       monitor = monitor;
       inputs = inputs;
       pkgs = pkgs;
