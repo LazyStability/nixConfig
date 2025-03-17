@@ -32,60 +32,66 @@
 
     # yazi.url = "github:sxyazi/yazi";
   };
-  outputs = {
-    self,
-    nixpkgs,
-    # nixpkgs-stable,
-    home-manager,
-    ...
-  } @ inputs: let
-    lib = nixpkgs.lib;
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    systemSettings = {};
-    userSettings = {
-      # Either gnome, KDE or hyprland
-      wm = "hyprland";
-      # Either kitty or wezterm
-      terminal = "kitty";
-    };
-  in {
-    nixosConfigurations = {
-      Kronos = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./Hosts/Kronos
-        ];
-        specialArgs = {
-          inherit inputs;
-          inherit systemSettings;
-          inherit userSettings;
-          inherit self;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      systemSettings = { };
+      userSettings = {
+        # Either gnome, KDE or hyprland
+        wm = "hyprland";
+        # Either kitty or wezterm
+        terminal = "kitty";
+      };
+    in
+    {
+      nixosConfigurations = {
+        Kronos = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./Hosts/Kronos
+          ];
+          specialArgs = {
+            inherit inputs;
+            inherit systemSettings;
+            inherit userSettings;
+            inherit self;
+          };
+        };
+        Thor = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./Hosts/Thor
+          ];
+          specialArgs = {
+            inherit inputs;
+            inherit systemSettings;
+            inherit userSettings;
+            inherit self;
+          };
         };
       };
-      Thor = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./Hosts/Thor
-        ];
-        specialArgs = {
-          inherit inputs;
-          inherit systemSettings;
-          inherit userSettings;
-          inherit self;
+      homeConfigurations = {
+        me = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./user/home.nix ];
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit systemSettings;
+            inherit userSettings;
+          };
         };
       };
+      # Is going to be deprecated
+      formatter.${system} = pkgs.nixfmt-rfc-style;
+      # wrapped by treefmt-nix
+      # formatter.${system} = pkgs.nixfmt-tree;
     };
-    homeConfigurations = {
-      me = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [./user/home.nix];
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit systemSettings;
-          inherit userSettings;
-        };
-      };
-    };
-  };
 }

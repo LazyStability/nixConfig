@@ -2,7 +2,8 @@
   pkgs,
   lib,
   isZen ? false,
-}: {
+}:
+{
   # Allows communication between the browser and other apps
   nativeMessagingHosts = [
     # Gnome shell native connector
@@ -126,15 +127,17 @@
     ################
 
     # Helper function copied from https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265/17
-    ExtensionSettings = with builtins; let
-      extension = shortId: uuid: {
-        name = uuid;
-        value = {
-          install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
-          installation_mode = "force_installed";
+    ExtensionSettings =
+      with builtins;
+      let
+        extension = shortId: uuid: {
+          name = uuid;
+          value = {
+            install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
+            installation_mode = "force_installed";
+          };
         };
-      };
-    in
+      in
       listToAttrs (
         [
           # To add additional extensions, find it on addons.mozilla.org, find
@@ -161,9 +164,8 @@
           }
         ]
         ++
-        # zen extensions
-        lib.optional isZen
-        (extension "transparent_zen" "{91aa3897-2634-4a8a-9092-279db23a7689}")
+          # zen extensions
+          lib.optional isZen (extension "transparent_zen" "{91aa3897-2634-4a8a-9092-279db23a7689}")
       );
 
     # Very nice policy, enforces stuff on extensions, which allows us to configure them

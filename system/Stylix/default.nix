@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   Ember = {
     base16Scheme = {
       scheme = "Ember";
@@ -64,7 +65,8 @@
   ## Select theme here ##
   #######################
   selectedTheme = Tokyo-night;
-in {
+in
+{
   imports = [
     inputs.stylix.nixosModules.stylix
   ];

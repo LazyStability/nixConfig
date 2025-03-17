@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.ssh-agent.enable = true;
   # Symlink public ssh keys
   home.file = {

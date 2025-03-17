@@ -1,5 +1,9 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.vesktop pkgs.element-desktop];
+{ pkgs, ... }:
+{
+  home.packages = [
+    pkgs.vesktop
+    pkgs.element-desktop
+  ];
   stylix.targets.vesktop.enable = true;
 
   xdg.configFile."vesktop/settings.json" = {

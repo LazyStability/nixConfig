@@ -3,17 +3,18 @@
   lib,
   pkgs-stable,
   ...
-}: {
+}:
+{
   # hardware.graphics.enable = true;
   hardware.graphics = {
     enable = true;
   };
 
   # Load "nvidia" driver for Xorg and wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Fixes suspend issues
-  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
   hardware.nvidia = {
     # Modesetting is required

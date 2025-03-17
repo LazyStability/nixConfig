@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.waybar = {
     enable = true;
     settings = {
@@ -6,9 +7,18 @@
         layer = "top";
         position = "top";
         height = 32;
-        modules-left = ["cpu" "memory" "hyprland/submap"];
-        modules-center = ["clock"];
-        modules-right = ["privacy" "mpris" "wlr/taskbar" "temperature"];
+        modules-left = [
+          "cpu"
+          "memory"
+          "hyprland/submap"
+        ];
+        modules-center = [ "clock" ];
+        modules-right = [
+          "privacy"
+          "mpris"
+          "wlr/taskbar"
+          "temperature"
+        ];
 
         cpu = {
           format = "{usage}% ";
@@ -22,7 +32,11 @@
           critical-threshold = 80;
           format-critical = "{temperatureC}°C {icon}";
           format = "{temperatureC}°C {icon}";
-          format-icons = ["" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
         };
         mpris = {
           player = "mpv";
@@ -35,7 +49,7 @@
           status-icons = {
             paused = "⏸";
           };
-          ignored-players = ["firefox"];
+          ignored-players = [ "firefox" ];
         };
       };
     };

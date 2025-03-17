@@ -2,8 +2,9 @@
   pkgs,
   lib,
   ...
-}: {
-  home.packages = [pkgs.kitty];
+}:
+{
+  home.packages = [ pkgs.kitty ];
   home.file = {
     # ".config/kitty/relative_resize.py".source = ./relative_resize.py;
     ".config/kitty/Broadcast.py".source = ./Broadcast.py;

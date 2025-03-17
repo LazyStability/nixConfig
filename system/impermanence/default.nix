@@ -2,7 +2,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     inputs.impermanence.nixosModules.impermanence
   ];

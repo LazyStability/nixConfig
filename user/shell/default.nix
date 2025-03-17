@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   # Shell aliases
   myShellAliases = {
     test = "cd ..";
@@ -11,7 +12,8 @@
     ll = "eza -l";
     lt = "eza -T";
   };
-in {
+in
+{
   # CLI Tools
   home.packages = with pkgs; [
     bat

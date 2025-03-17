@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   univpn = pkgs.callPackage ./univpn.nix {
     entryname = "Unizugang";
     database = "/home/me/Dokumente/Software/Keepass/Uni.kdbx";
@@ -7,8 +8,9 @@
     Useragent = "AnyConnect-compatible OpenConnect VPN Agent";
     vpnname = "uni";
   };
-  quickcapture = pkgs.callPackage ./quickcapture.nix {};
-in {
+  quickcapture = pkgs.callPackage ./quickcapture.nix { };
+in
+{
   home.packages = [
     univpn
     quickcapture

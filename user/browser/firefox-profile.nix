@@ -3,7 +3,8 @@
   userChrome ? "",
   userContent ? "",
   ...
-}: {
+}:
+{
   ##############
   ## Profiles ##
   ##############
@@ -47,7 +48,7 @@
           url = "https://nixos.org";
         }
       ];
-      extensions = [];
+      extensions = [ ];
     };
     search = {
       force = true;
@@ -55,7 +56,7 @@
       engines = {
         "Nix Packages" = {
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = ["@np"];
+          definedAliases = [ "@np" ];
           urls = [
             {
               template = "https://search.nixos.org/packages";
@@ -69,7 +70,7 @@
           ];
         };
         "Nix Options" = {
-          definedAliases = ["@no"];
+          definedAliases = [ "@no" ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           urls = [
             {
@@ -84,7 +85,7 @@
           ];
         };
         "Home manager" = {
-          definedAliases = ["@hm"];
+          definedAliases = [ "@hm" ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
           urls = [
             {
@@ -100,7 +101,7 @@
         };
 
         "Github" = {
-          definedAliases = ["@gh"];
+          definedAliases = [ "@gh" ];
           icon = "";
           urls = [
             {

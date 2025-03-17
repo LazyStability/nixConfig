@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   networking.firewall = {
-    allowedUDPPorts = [51820]; # Clients and peers can use the same port, see listenport
+    allowedUDPPorts = [ 51820 ]; # Clients and peers can use the same port, see listenport
   };
-  environment.systemPackages = [pkgs.wireguard-tools];
+  environment.systemPackages = [ pkgs.wireguard-tools ];
   # Enable WireGuard
   # networking.wg-quick.interfaces = {
   #   # "wg0" is the network interface name. You can name the interface arbitrarily.

@@ -6,13 +6,17 @@
   pkgs-stable,
   self,
   ...
-}: {
+}:
+{
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Enables the new cli and flakes
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # Links the configuration with its git rev
@@ -59,7 +63,7 @@
         piper
       ])
       ++ (with pkgs-stable; [
-        ]);
+      ]);
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";

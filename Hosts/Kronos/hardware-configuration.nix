@@ -6,20 +6,27 @@
   lib,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./nvidia.nix
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "ahci" "xhci_pci" "usbhid" "sd_mod"];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "ahci"
+    "xhci_pci"
+    "usbhid"
+    "sd_mod"
+  ];
   environment.etc."crypttab".text = ''
     data  UUID=22138b0d-5278-48c4-9ba4-c4286a3952a1 /persist/etc/secrets/ArchKey
     games UUID=c9a276cf-101b-4a6b-8ad2-128db28735b9 /persist/etc/secrets/Games
   '';
-  boot.initrd.kernelModules = ["dm-snapshot"];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
   hardware.keyboard.zsa.enable = true;
 
   fileSystems."/games" = {

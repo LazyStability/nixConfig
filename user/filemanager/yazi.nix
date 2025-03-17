@@ -3,7 +3,8 @@
   inputs,
   userSettings,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     fd
     ffmpegthumbnailer
@@ -46,12 +47,16 @@
       manager.prepend_keymap = [
         {
           on = "<C-y>";
-          run = ''            shell 'dragon -x -i -T "$@"' --confirm
+          run = ''
+            shell 'dragon -x -i -T "$@"' --confirm
           '';
           desc = "drag-and-drop paste window for browsers";
         }
         {
-          on = ["g" "r"];
+          on = [
+            "g"
+            "r"
+          ];
           run = ''
             shell -- ya emit cd "$(git rev-parse --show-toplevel)"
           '';
@@ -90,7 +95,10 @@
         ## Chmod ##
         ###########
         {
-          on = ["c" "m"];
+          on = [
+            "c"
+            "m"
+          ];
           run = "plugin chmod";
           desc = "Chmod on selected files";
         }
@@ -98,57 +106,57 @@
         ## Relative Movement ##
         #######################
         {
-          on = ["1"];
+          on = [ "1" ];
           run = "plugin relative-motions 1";
           desc = "Move in relative steps";
         }
         {
-          on = ["2"];
+          on = [ "2" ];
           run = "plugin relative-motions 2";
           desc = "Move in relative steps";
         }
         {
-          on = ["3"];
+          on = [ "3" ];
           run = "plugin relative-motions 3";
           desc = "Move in relative steps";
         }
         {
-          on = ["4"];
+          on = [ "4" ];
           run = "plugin relative-motions 4";
           desc = "Move in relative steps";
         }
         {
-          on = ["5"];
+          on = [ "5" ];
           run = "plugin relative-motions 5";
           desc = "Move in relative steps";
         }
         {
-          on = ["6"];
+          on = [ "6" ];
           run = "plugin relative-motions 6";
           desc = "Move in relative steps";
         }
         {
-          on = ["7"];
+          on = [ "7" ];
           run = "plugin relative-motions 7";
           desc = "Move in relative steps";
         }
         {
-          on = ["8"];
+          on = [ "8" ];
           run = "plugin relative-motions 8";
           desc = "Move in relative steps";
         }
         {
-          on = ["9"];
+          on = [ "9" ];
           run = "plugin relative-motions 9";
           desc = "Move in relative steps";
         }
         {
-          on = ["F"];
+          on = [ "F" ];
           run = "plugin smart-filter";
           desc = "Smart filter";
         }
         {
-          on = ["<C-e>"];
+          on = [ "<C-e>" ];
           run = ''
             shell -- paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
             thunderbird -compose "attachment='$paths'"

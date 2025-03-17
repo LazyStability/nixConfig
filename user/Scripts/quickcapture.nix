@@ -4,7 +4,7 @@
 }:
 writeShellApplication {
   name = "quickcapture";
-  runtimeInputs = [neovim];
+  runtimeInputs = [ neovim ];
   text = ''
     cd "$HOME/Dokumente/Personal"
     noteFilename="./Tagebuch/Täglich/thisYear/$(date +%Y-%m-%d).md"

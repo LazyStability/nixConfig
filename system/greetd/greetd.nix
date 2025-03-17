@@ -10,7 +10,8 @@
   pkgs,
   pkgs-stable,
   ...
-}: {
+}:
+{
   # Enable hyprland & add ags to systempkgs, if not done so already
   programs.hyprland.enable = lib.mkForce true;
   environment = {

@@ -9,7 +9,8 @@
   userSettings,
   monitor,
   ...
-}: {
+}:
+{
   imports = [
     ./hyprpapaper.nix
     ./waybar.nix

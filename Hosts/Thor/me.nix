@@ -6,14 +6,16 @@
   inputs,
   userSettings,
   ...
-}: let
+}:
+let
   userTerminalPath = lib.path.append ../../user/Terminal userSettings.terminal;
   WmConfig = lib.path.append ../../user/wm userSettings.wm;
   monitor = [
     "DP-1, 2560x1440@60, 0x0, 1"
     "Unknown-1,disabled"
   ];
-in {
+in
+{
   imports = [
     ../../user/shell
     ../../user/git

@@ -6,7 +6,8 @@
   inputs,
   userSettings,
   ...
-}: {
+}:
+{
   # configure git
   programs.git = {
     enable = true;

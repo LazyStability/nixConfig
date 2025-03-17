@@ -3,17 +3,18 @@
   pkgs,
   pkgs-stable,
   ...
-}: let
+}:
+let
   # Custom latex package
   tex = pkgs.texlive.combine {
-    inherit
-      (pkgs.texlive)
+    inherit (pkgs.texlive)
       scheme-full
       latexmk
       titlesec
       ;
   };
-in {
+in
+{
   home.packages = with pkgs; [
     # lsps
     lua-language-server
@@ -36,7 +37,7 @@ in {
     live-server
 
     #formatter
-    alejandra
+    nixfmt-rfc-style
 
     # latex
     # tex

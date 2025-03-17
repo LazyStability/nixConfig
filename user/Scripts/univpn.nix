@@ -11,7 +11,10 @@
 }:
 writeShellApplication {
   name = "${vpnname}vpn";
-  runtimeInputs = [openconnect wireguard-tools];
+  runtimeInputs = [
+    openconnect
+    wireguard-tools
+  ];
   text = ''
     # Check whether the file exists
     if [ ! -f ${database} ]; then

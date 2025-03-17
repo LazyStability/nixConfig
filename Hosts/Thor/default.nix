@@ -5,28 +5,31 @@
   inputs,
   userSettings,
   ...
-}: {
-  imports = let
-    DesktopEnvironmentPath = lib.path.append ../../system/Desktop_Environment userSettings.wm;
-  in [
-    ./hardware-configuration.nix
+}:
+{
+  imports =
+    let
+      DesktopEnvironmentPath = lib.path.append ../../system/Desktop_Environment userSettings.wm;
+    in
+    [
+      ./hardware-configuration.nix
 
-    ../../system/configuration.nix
-    DesktopEnvironmentPath
+      ../../system/configuration.nix
+      DesktopEnvironmentPath
 
-    ../../system/Stylix
-    ../../system/gaming
+      ../../system/Stylix
+      ../../system/gaming
 
-    ../../system/services/zsh
-    ../../system/services/bluetooth
-    ../../system/services/syncthing
-    inputs.disko.nixosModules.default
-    (import ../../system/disko.nix {
-      device = "/dev/disk/by-id/wwn-0x5002538d41022ecc";
-    })
+      ../../system/services/zsh
+      ../../system/services/bluetooth
+      ../../system/services/syncthing
+      inputs.disko.nixosModules.default
+      (import ../../system/disko.nix {
+        device = "/dev/disk/by-id/wwn-0x5002538d41022ecc";
+      })
 
-    inputs.home-manager.nixosModules.default
-  ];
+      inputs.home-manager.nixosModules.default
+    ];
   environment = {
     sessionVariables = {
       FLAKE = "/etc/nixos";
@@ -65,7 +68,7 @@
     LC_TIME = "de_DE.UTF-8";
   };
   # Use the systemd-boot EFI boot loader.
-  boot.supportedFilesystems = ["btrfs"];
+  boot.supportedFilesystems = [ "btrfs" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.editor = false;
@@ -84,7 +87,10 @@
     isNormalUser = true;
     hashedPassword = "$y$j9T$cr3AwlwB1xsr7trhUULj./$hNmPq6jznKljbUI4KoMEWypjiFGzf.iITjZyy40MxE2";
     description = "mynix";
-    extraGroups = ["networkmanager" "wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ]; # Enable ‘sudo’ for the user.
   };
 
   programs.fuse.userAllowOther = true;

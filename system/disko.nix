@@ -1,4 +1,8 @@
-{device ? throw "Set this to your disk device, e.g. /dev/sda", ...}: {
+{
+  device ? throw "Set this to your disk device, e.g. /dev/sda",
+  ...
+}:
+{
   imports = [
   ];
   disko.devices = {
@@ -21,7 +25,7 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = ["umask=0077"];
+              mountOptions = [ "umask=0077" ];
             };
           };
           luks = {
@@ -29,7 +33,7 @@
             content = {
               type = "luks";
               name = "luks";
-              extraOpenArgs = [];
+              extraOpenArgs = [ ];
               passwordFile = "/etc/secrets/password.key";
               settings = {
                 allowDiscards = true;
@@ -58,7 +62,7 @@
             size = "100%FREE";
             content = {
               type = "btrfs";
-              extraArgs = ["-f"];
+              extraArgs = [ "-f" ];
 
               subvolumes = {
                 "/root" = {
@@ -66,12 +70,18 @@
                 };
 
                 "/persist" = {
-                  mountOptions = ["subvol=persist" "noatime"];
+                  mountOptions = [
+                    "subvol=persist"
+                    "noatime"
+                  ];
                   mountpoint = "/persist";
                 };
 
                 "/nix" = {
-                  mountOptions = ["subvol=nix" "noatime"];
+                  mountOptions = [
+                    "subvol=nix"
+                    "noatime"
+                  ];
                   mountpoint = "/nix";
                 };
               };

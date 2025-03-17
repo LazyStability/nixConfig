@@ -6,7 +6,8 @@
   inputs,
   userSettings,
   ...
-}: let
+}:
+let
   userTerminalPath = lib.path.append ../../user/Terminal userSettings.terminal;
   monitor = [
     "desc:Eizo Nanao Corporation EV2436W 42038045, 1920x1200@60,1280x0,1"
@@ -14,7 +15,8 @@
     "Unknown-1,disabled"
   ];
   WmConfig = lib.path.append ../../user/wm userSettings.wm;
-in {
+in
+{
   imports = [
     ../../user/shell
     ../../user/git

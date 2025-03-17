@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   systemd.user.tmpfiles.rules = [
     "L+ /home/me/Musik - - - - /data/Musik"
     "L+ /home/me/Bilder - - - - /data/Bilder"
