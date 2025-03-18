@@ -9,7 +9,7 @@
     # Gnome shell native connector
     #TODO: make this an option with nix module system
     # pkgs.gnome-browser-connector
-    pkgs.keepassxc
+    # pkgs.keepassxc
   ];
   # Enforced on all profiles
   # See here all available fields
