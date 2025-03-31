@@ -39,7 +39,7 @@ in
     ../../user/Gaming
     ../../user/filemanager/yazi.nix
     ../../user/browser/zen/zen.nix
-    ../../user/browser/firefox/firefox.nix
+    # ../../user/browser/firefox/firefox.nix
     ../../user/dataLinks.nix
     ../../user/Messenger
     ../../user/Scripts

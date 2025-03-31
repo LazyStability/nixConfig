@@ -38,7 +38,7 @@ in
     ../../user/editor/nvim.nix
     ../../user/Gaming
     ../../user/filemanager/yazi.nix
-    ../../user/browser/firefox/firefox.nix
+    # ../../user/browser/firefox/firefox.nix
     ../../user/browser/zen/zen.nix
     ../../user/Messenger
     ../../user/Scripts

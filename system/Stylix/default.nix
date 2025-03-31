@@ -29,6 +29,7 @@ let
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Amber";
+      size = 24;
     };
   };
   Tokyo-night = {
@@ -59,6 +60,7 @@ let
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
+      size = 24;
     };
   };
   #######################

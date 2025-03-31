@@ -29,6 +29,10 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nebula-theme = {
+      url = "github:JustAdumbPrsn/Nebula-A-Minimal-Theme-for-Zen-Browser";
+      flake = false;
+    };
 
     # yazi.url = "github:sxyazi/yazi";
   };
