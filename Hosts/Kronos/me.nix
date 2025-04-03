@@ -9,10 +9,22 @@
 }:
 let
   userTerminalPath = lib.path.append ../../user/Terminal userSettings.terminal;
-  monitor = [
-    "desc:Eizo Nanao Corporation EV2436W 42038045, 1920x1200@60,1280x0,1"
-    "desc:Eizo Nanao Corporation S1901 45328108, 1280x1024@60,0x0,1"
-    "Unknown-1,disabled"
+  monitors = [
+    {
+      name = "DP-2";
+      enable = true;
+      mode = "1920x1200";
+      position = "1280x0";
+      rate = "60";
+      primary = true;
+    }
+    {
+      name = "DP-1";
+      enable = true;
+      mode = "1280x1024";
+      position = "0x0";
+      rate = "60.00";
+    }
   ];
   WmConfig = lib.path.append ../../user/wm userSettings.wm;
 in
@@ -27,11 +39,12 @@ in
     # Window managers
     # This includes either ./wm/hyprland or ./wm/gnome or ./wm/KDE
     (import WmConfig {
-      monitor = monitor;
+      monitor = monitors;
       inputs = inputs;
       pkgs = pkgs;
       userSettings = userSettings;
       config = config;
+      lib = lib;
     })
 
     ../../user/home.nix
@@ -48,4 +61,5 @@ in
   ];
   home.username = "me";
   home.homeDirectory = "/home/me";
+
 }
