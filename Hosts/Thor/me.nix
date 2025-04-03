@@ -5,6 +5,7 @@
   pkgs-stable,
   inputs,
   userSettings,
+  osConfig,
   ...
 }:
 let
@@ -38,6 +39,7 @@ in
       lib = lib;
       userSettings = userSettings;
       config = config;
+      osConfig = osConfig;
     })
 
     ../../user/home.nix

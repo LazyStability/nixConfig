@@ -4,9 +4,9 @@
 # Or Setup specific stuff like monitors
 {
   config,
+  osConfig,
   pkgs,
   inputs,
-  userSettings,
   monitor,
   lib,
   ...
@@ -89,16 +89,24 @@ in
         # Setting up monitors, the third is a ghost monitor
         monitor = monitor-hypr;
         # Global variables set using nix variables
-        "$EXIT" = "exec, uwsm stop";
-        "$terminal" = userSettings.terminal;
+        "$EXIT" = "exec, loginctl terminate-user $(whoami)";
+        # Use the os config flag found here
+        # This ensures all programms are started by uwsm if, it is active
+        # REF: https://github.com/nix-community/home-manager/issues/393#issuecomment-1259996423
+        "$PREFIX" = lib.optionalString osConfig.programs.hyprland.withUWSM "uwsm app --";
+        "$terminal" = "kitty";
         "$filemanager" = "yazi";
-        "$menu" = "wofi --show drun";
+        "$menu" =
+          if osConfig.programs.hyprland.withUWSM then
+            "uwsm app -- $(wofi --show drun --define=drun-print_desktop_file=true)"
+          else
+            "wofi --show drun";
         "$audiomanager" = "pwvucontrol";
         "$bluetoothmanager" = "blueberry";
         "$networkmanager" = "nm-connection-editor";
         "$monitor1" = monitor-1;
         "$monitor2" = monitor-2;
-        "$browser" = "firefox-esr";
+        "$browser" = "zen";
         "$discordClient" = "vesktop";
 
         # Sets "Windows" key as main modifier
