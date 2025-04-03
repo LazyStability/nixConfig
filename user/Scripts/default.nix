@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, userSettings, ... }:
 let
   univpn = pkgs.callPackage ./univpn.nix {
     entryname = "Unizugang";
@@ -9,10 +9,14 @@ let
     vpnname = "uni";
   };
   quickcapture = pkgs.callPackage ./quickcapture.nix { };
+  linkhandler = pkgs.callPackage ./linkhandler.nix { userSettings = userSettings; };
+  qndl = pkgs.callPackage ./qndl.nix { };
 in
 {
   home.packages = [
     univpn
     quickcapture
+    linkhandler
+    qndl
   ];
 }
