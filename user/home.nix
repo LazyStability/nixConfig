@@ -54,6 +54,7 @@
         piper
         patched-keepassxc
         remmina
+        newsboat
       ]
     )
     ++ (with pkgs-stable; [
