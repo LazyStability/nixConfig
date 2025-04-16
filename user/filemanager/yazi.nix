@@ -32,16 +32,15 @@
         maxHeight = 1000;
       };
     };
-    plugins = {
+    plugins = with pkgs.yaziPlugins; {
       # Get these plugins from here
       # https://github.com/yazi-rs/plugins
-      smart-enter = ./plugins/smart-enter.yazi;
-      smart-filter = ./plugins/smart-filter.yazi;
-      max-preview = ./plugins/max-preview.yazi;
-      git = ./plugins/git.yazi;
-      cmod = ./plugins/chmod.yazi;
-      # https://github.com/dedukun/relative-motions.yazi
-      relative-motions = ./plugins/relative-motions.yazi;
+      toggle-pane = toggle-pane;
+      relative-motions = relative-motions;
+      chmod = chmod;
+      smart-enter = smart-enter;
+      smart-filter = smart-filter;
+      git = git;
     };
     keymap = {
       manager.prepend_keymap = [
@@ -88,8 +87,8 @@
         ################
         {
           on = "T";
-          run = "plugin  max-preview";
-          desc = "Maximize plugin";
+          run = "plugin toggle-pane max-preview";
+          desc = "Maximize or restore the preview pane";
         }
         ###########
         ## Chmod ##
