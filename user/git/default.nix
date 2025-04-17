@@ -12,7 +12,7 @@
   programs.git = {
     enable = true;
     userName = "LazyStability";
-    userEmail = "Klysmus@online.de";
+    userEmail = "LazilyStable@proton.me";
     lfs.enable = true;
     aliases = {
       l = "!git log";
