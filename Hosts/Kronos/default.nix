@@ -35,7 +35,7 @@
     ];
   environment = {
     sessionVariables = {
-      FLAKE = "/persist/etc/nixos";
+      NH_FLAKE = "/persist/etc/nixos";
     };
   };
   networking.hostName = "Kronos"; # Define your hostname.

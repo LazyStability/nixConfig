@@ -4,6 +4,7 @@
 {
   pkgs,
   pkgs-stable,
+  lib,
   self,
   ...
 }:
@@ -42,6 +43,33 @@
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     systemPackages =
+      let
+        patched-nh = pkgs.nh.overrideAttrs (old: rec {
+          pname = "nh";
+          version = "4.0.0-beta.11";
+
+          src = pkgs.fetchFromGitHub {
+            owner = "nix-community";
+            repo = "nh";
+            tag = "v${version}";
+            hash = "sha256-ILEarFQp89V6RWr5GRU/ip9dB1SEqUFQGs1QMPrk9TQ=";
+          };
+
+          preFixup = ''
+            mkdir completions
+            $out/bin/nh completions bash > completions/nh.bash
+            $out/bin/nh completions zsh > completions/nh.zsh
+            $out/bin/nh completions fish > completions/nh.fish
+
+            installShellCompletion completions/*
+          '';
+
+          cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+            inherit pname version src;
+            hash = "sha256-GnRLUV5dyQgcjBBQXzjW0dvfHqIrlBlIup4b7oL8InI=";
+          };
+        });
+      in
       (with pkgs; [
         steam-run
         # veracrypt
@@ -54,7 +82,7 @@
         gh
         git
         zsh
-        nh
+        patched-nh
         wireshark
         networkmanagerapplet
         networkmanager-openvpn

@@ -32,7 +32,7 @@
     ];
   environment = {
     sessionVariables = {
-      FLAKE = "/etc/nixos";
+      NH_FLAKE = "/etc/nixos";
     };
   };
   networking.hostName = "Thor"; # Define your hostname.
