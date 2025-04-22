@@ -138,34 +138,34 @@
           };
         };
       in
-      listToAttrs (
-        [
-          # To add additional extensions, find it on addons.mozilla.org, find
-          # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
-          # The UUID can be foun after installing it in
-          # about:debugging#/runtime/this-firefox
+      listToAttrs ([
+        # To add additional extensions, find it on addons.mozilla.org, find
+        # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
+        # The UUID can be foun after installing it in
+        # about:debugging#/runtime/this-firefox
 
-          # These three are recommended by Arkenfox
-          (extension "ublock-origin" "uBlock0@raymondhill.net")
-          (extension "multi-account-containers" "@testpilot-containers")
-          (extension "skip-redirect" "skipredirect@sblask")
+        # These three are recommended by Arkenfox
+        (extension "ublock-origin" "uBlock0@raymondhill.net")
+        (extension "multi-account-containers" "@testpilot-containers")
+        (extension "skip-redirect" "skipredirect@sblask")
 
-          # My password manager
-          (extension "keepassxc-browser" "keepassxc-browser@keepassxc.org")
-          (extension "vimium-c" "vimium-c@gdh1995.cn")
+        # My password manager
+        (extension "keepassxc-browser" "keepassxc-browser@keepassxc.org")
+        (extension "vimium-c" "vimium-c@gdh1995.cn")
 
-          # zotero is not in firefox store
-          {
-            name = "zotero@chnm.gmu.edu";
-            value = {
-              install_url = "https://www.zotero.org/download/connector/dl?browser=firefox";
-              install_mode = "normal_installed";
-            };
-          }
-        ]
-        ++
-          # zen extensions
-          lib.optional isZen (extension "transparent_zen" "{91aa3897-2634-4a8a-9092-279db23a7689}")
+        # zotero is not in firefox store
+        {
+          name = "zotero@chnm.gmu.edu";
+          value = {
+            install_url = "https://www.zotero.org/download/connector/dl?browser=firefox";
+            install_mode = "normal_installed";
+          };
+        }
+      ]
+      # ++
+      # zen extensions
+      # WARN: This extension makes it hard to read some websites
+      # lib.optional isZen (extension "transparent_zen" "{91aa3897-2634-4a8a-9092-279db23a7689}")
       );
 
     # Very nice policy, enforces stuff on extensions, which allows us to configure them

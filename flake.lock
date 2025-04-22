@@ -262,19 +262,19 @@
         "type": "github"
       }
     },
-    "nebula-theme": {
+    "natsumi-theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1744786418,
-        "narHash": "sha256-FI6PEJxXcP2med+WotuH2KvVpUVpE7MQtB6V1RvjnRU=",
-        "owner": "JustAdumbPrsn",
-        "repo": "Nebula-A-Minimal-Theme-for-Zen-Browser",
-        "rev": "6f08111e745d10c0ec112d8e69b7b71d195598c8",
+        "lastModified": 1743703685,
+        "narHash": "sha256-yIoDpIxIwvprbu9R9g6mhaB1Y2052bWAZ0VWFAy40hM=",
+        "owner": "greeeen-dev",
+        "repo": "natsumi-browser",
+        "rev": "176b783ff6afb629638b8fdda723083ad416e636",
         "type": "github"
       },
       "original": {
-        "owner": "JustAdumbPrsn",
-        "repo": "Nebula-A-Minimal-Theme-for-Zen-Browser",
+        "owner": "greeeen-dev",
+        "repo": "natsumi-browser",
         "type": "github"
       }
     },
@@ -322,7 +322,7 @@
         "disko": "disko",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "nebula-theme": "nebula-theme",
+        "natsumi-theme": "natsumi-theme",
         "nixpkgs": "nixpkgs",
         "stylix": "stylix",
         "systems": "systems",

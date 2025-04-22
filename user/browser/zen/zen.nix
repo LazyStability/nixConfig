@@ -18,12 +18,13 @@
     );
     profiles = import ../firefox-profile.nix {
       inherit pkgs;
-      userChrome = ''@import "Nebula/Nebula.css";'';
-      userContent = ''@import "Nebula/Nebula-content.css";'';
+      userChrome = ''@import "natsumi/natsumi.css";'';
+      userContent = ''@import "natsumi-pages/natsumi-pages.css";'';
     };
   };
   # Install a theme for zen
   home.file = {
-    ".zen/me/chrome/Nebula".source = inputs.nebula-theme + "/Nebula";
+    ".zen/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
+    ".zen/me/chrome/natsumi-pages".source = inputs.natsumi-theme + "/natsumi-pages";
   };
 }
