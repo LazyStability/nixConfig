@@ -105,6 +105,7 @@
   age = {
     identityPaths = [ "/home/me/.ssh/dev" ];
     secrets = {
+      dungeondraft-key.file = ../secrets/dungeondraft-key.age;
       Games.file = ../secrets/Games.age;
       ArchKey.file = ../secrets/ArchKey.age;
     };

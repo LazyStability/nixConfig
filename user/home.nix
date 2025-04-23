@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-stable,
+  osConfig,
   ...
 }:
 {
@@ -25,6 +26,9 @@
           checkFlags = [ "-skip" ];
           buildInputs = previousAttrs.buildInputs ++ [ keyutils ];
         });
+        dungeondraft = pkgs.callPackage ../packages/dungeondraft.nix {
+          purchaseKey = osConfig.age.secrets.dungeondraft-key.file;
+        };
       in
       [
         obsidian
@@ -53,6 +57,7 @@
         signal-desktop
         piper
         patched-keepassxc
+        dungeondraft
         remmina
         newsboat
       ]

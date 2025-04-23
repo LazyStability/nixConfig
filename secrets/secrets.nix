@@ -5,6 +5,7 @@ let
   systems = [ ];
 in
 {
+  "dungeondraft-key.age".publicKeys = [ user1 ];
   "userpassword.age".publicKeys = [ user1 ];
   "Games.age".publicKeys = [ user1 ];
   "ArchKey.age".publicKeys = [ user1 ];
