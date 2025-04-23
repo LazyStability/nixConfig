@@ -33,12 +33,10 @@
       url = "github:greeeen-dev/natsumi-browser";
       flake = false;
     };
-    agenix = {
-      url = "github:ryantm/agenix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
-
     # yazi.url = "github:sxyazi/yazi";
   };
   outputs =
@@ -53,7 +51,6 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       systemSettings = { };
-      agenix = inputs.agenix.packages.${system}.default;
       userSettings = {
         # Either gnome, KDE or hyprland
         wm = "hyprland";
@@ -71,7 +68,6 @@
           specialArgs = {
             inherit
               inputs
-              agenix
               systemSettings
               userSettings
               self
@@ -86,7 +82,6 @@
           specialArgs = {
             inherit
               inputs
-              agenix
               systemSettings
               userSettings
               self

@@ -26,9 +26,7 @@
           checkFlags = [ "-skip" ];
           buildInputs = previousAttrs.buildInputs ++ [ keyutils ];
         });
-        dungeondraft = pkgs.callPackage ../packages/dungeondraft.nix {
-          purchaseKey = osConfig.age.secrets.dungeondraft-key.file;
-        };
+        dungeondraft = pkgs.callPackage ../packages/dungeondraft.nix { };
       in
       [
         obsidian

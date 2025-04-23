@@ -34,7 +34,7 @@
               type = "luks";
               name = "luks";
               extraOpenArgs = [ ];
-              passwordFile = "/etc/secrets/password.key";
+              passwordFile = "/run/secrets/luks_password";
               settings = {
                 allowDiscards = true;
               };
@@ -73,6 +73,8 @@
                   mountOptions = [
                     "subvol=persist"
                     "noatime"
+
+                    # "x-initrd.mount"
                   ];
                   mountpoint = "/persist";
                 };
@@ -91,4 +93,5 @@
       };
     };
   };
+  fileSystems."/persist".neededForBoot = true;
 }

@@ -18,7 +18,7 @@
   runCommand,
   makeWrapper,
   zenity,
-  purchaseKey,
+  purchaseKey ? "000000",
 }:
 stdenv.mkDerivation rec {
   pname = "dungeondraft";

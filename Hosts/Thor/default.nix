@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   lib,
   pkgs-stable,
   inputs,
@@ -21,6 +22,7 @@
       ../../system/gaming
 
       ../../system/services/zsh
+      ../../system/secrets/sops.nix
       ../../system/services/bluetooth
       ../../system/services/syncthing
       inputs.disko.nixosModules.default
@@ -85,7 +87,7 @@
   users.users.root.hashedPassword = "*";
   users.users.me = {
     isNormalUser = true;
-    hashedPassword = "$y$j9T$cr3AwlwB1xsr7trhUULj./$hNmPq6jznKljbUI4KoMEWypjiFGzf.iITjZyy40MxE2";
+    hashedPasswordFile = config.sops.secrets.user-password.path;
     description = "mynix";
     extraGroups = [
       "networkmanager"
