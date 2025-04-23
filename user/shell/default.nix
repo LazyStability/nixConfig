@@ -78,10 +78,10 @@ in
         format = ''via [$symbol$state]($style)'';
       };
       directory.substitutions = {
-        Dokumente = "󰈙 ";
-        Downloads = " ";
-        Musik = " ";
-        Bilder = " ";
+        "~/Dokumente" = "󰈙 ";
+        "~/Downloads" = " ";
+        "~/Musik" = " ";
+        "~/Bilder" = " ";
       };
       #[custom.unreal]
       #symbol = "󰦱"  # symbol for this
