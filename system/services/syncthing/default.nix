@@ -104,6 +104,13 @@
             "Odin"
           ];
         };
+        "newsboat" = {
+          path = "/home/me/.newsboat";
+          devices = [
+            "fedoralaptop"
+            "Odin"
+          ];
+        };
       };
     };
   };
