@@ -33,6 +33,11 @@
       url = "github:greeeen-dev/natsumi-browser";
       flake = false;
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     # yazi.url = "github:sxyazi/yazi";
   };
@@ -48,6 +53,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       systemSettings = { };
+      agenix = inputs.agenix.packages.${system}.default;
       userSettings = {
         # Either gnome, KDE or hyprland
         wm = "hyprland";
@@ -63,10 +69,13 @@
             ./Hosts/Kronos
           ];
           specialArgs = {
-            inherit inputs;
-            inherit systemSettings;
-            inherit userSettings;
-            inherit self;
+            inherit
+              inputs
+              agenix
+              systemSettings
+              userSettings
+              self
+              ;
           };
         };
         Thor = lib.nixosSystem {
@@ -75,10 +84,13 @@
             ./Hosts/Thor
           ];
           specialArgs = {
-            inherit inputs;
-            inherit systemSettings;
-            inherit userSettings;
-            inherit self;
+            inherit
+              inputs
+              agenix
+              systemSettings
+              userSettings
+              self
+              ;
           };
         };
       };
@@ -87,9 +99,11 @@
           inherit pkgs;
           modules = [ ./user/home.nix ];
           extraSpecialArgs = {
-            inherit inputs;
-            inherit systemSettings;
-            inherit userSettings;
+            inherit
+              inputs
+              systemSettings
+              userSettings
+              ;
           };
         };
       };

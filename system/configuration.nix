@@ -6,6 +6,8 @@
   pkgs-stable,
   lib,
   self,
+  agenix,
+  inputs,
   ...
 }:
 {
@@ -89,6 +91,7 @@
         blueberry
         cryptsetup
         piper
+        agenix
       ])
       ++ (with pkgs-stable; [
       ]);
@@ -96,6 +99,14 @@
       EDITOR = "nvim";
       VISUAL = "nvim";
       NIXOS_OZONE_PLATFORM = 1;
+    };
+  };
+  imports = [ inputs.agenix.nixosModules.age ];
+  age = {
+    identityPaths = [ "/home/me/.ssh/dev" ];
+    secrets = {
+      Games.file = ../secrets/Games.age;
+      ArchKey.file = ../secrets/ArchKey.age;
     };
   };
   # This option defines the first version of NixOS you have installed on this particular machine,
