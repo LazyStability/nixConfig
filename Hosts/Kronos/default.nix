@@ -27,6 +27,7 @@
       ../../system/services/bluetooth
       ../../system/services/syncthing
       ../../system/services/kde-connect.nix
+      ../../system/services/wireguard/default.nix
       inputs.disko.nixosModules.default
       (import ../../system/disko.nix {
         device = "/dev/disk/by-id/wwn-0x5002538043584d30";

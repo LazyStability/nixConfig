@@ -1,56 +1,95 @@
-{ pkgs, ... }:
+{ config, ... }:
 {
   networking.firewall = {
-    allowedUDPPorts = [ 51820 ]; # Clients and peers can use the same port, see listenport
+    allowedUDPPorts = [ 51820 ];
   };
-  environment.systemPackages = [ pkgs.wireguard-tools ];
-  # Enable WireGuard
-  # networking.wg-quick.interfaces = {
-  #   # "wg0" is the network interface name. You can name the interface arbitrarily.
-  #   ginyu_kronos = {
-  #     # Determines the IP address and subnet of the client's end of the tunnel interface.
-  #     address = ["0.100.0.7/24"];
-  #     listenPort = 51820; # to match firewall allowedUDPPorts (without this wg uses random port numbers)
-  #
-  #     # Path to the private key file.
-  #     #
-  #     # Note: The private key can also be included inline via the privateKey option,
-  #     # but this makes the private key world-readable; thus, using privateKeyFile is
-  #     # recommended.
-  #     privateKeyFile = "/persist/etc/secrets/ginyu_kronos.skey";
-  #
-  #     peers = [
-  #       # For a client configuration, one peer entry for the server will suffice.
-  #
-  #       {
-  #         # Public key of the server (not a file path).
-  #         publicKey = "6DTlU9LOxaXhcZCGXxrZ9sKrKAwicEAEZ2aA1erRXHA=";
-  #         presharedKeyFile = "/persist/etc/secrets/ginyu_kronos.psk";
-  #
-  #         # Forward all the traffic via VPN.
-  #         allowedIPs = ["0.0.0.0/0" "::/0"];
-  #         # Or forward only particular subnets
-  #         #allowedIPs = [ "10.100.0.1" "91.108.12.0/22" ];
-  #
-  #         # Set this to the server IP and port.
-  #         endpoint = "46.38.253.180:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
-  #
-  #         # Send keepalives every 25 seconds. Important to keep NAT tables alive.
-  #         persistentKeepalive = 25;
-  #       }
-  #     ];
-  #   };
-  # };
-  # networking.networkmanager.ensureProfiles.profiles = {
-  #   vpnHar = {
-  #     connection = {
-  #       type = "wireguard";
-  #       id = "vpnHar";
-  #     };
-  #   };
-  # };
-
-  systemd.tmpfiles.rules = [
-    "L /etc/wireguard - - - - /persist/etc/secrets/wireguard"
-  ];
+  networking.networkmanager.ensureProfiles.profiles = {
+    ginyu_kronos = {
+      connection = {
+        autoconnect = false;
+        id = "ginyu_kronos";
+        interface-name = "ginyu_kronos";
+        type = "wireguard";
+        uuid = "53043470-cb25-4cfb-9892-f2a914a6b10e";
+      };
+      ipv4 = {
+        address1 = config.sops.secrets."ginyu_kronos/address1".path;
+        method = "manual";
+      };
+      ipv6 = {
+        addr-gen-mode = "stable-privacy";
+        method = "ignore";
+      };
+      proxy = { };
+      wireguard = {
+        listen-port = 51820;
+        private-key = config.sops.secrets."ginyu_kronos/private-key".path;
+      };
+      "wireguard-peer.EXTUNJXrupOHvBTZ2hWYsih40Wq5R9F5tIOVsGVSkhI=" = {
+        allowed-ips = "0.0.0.0/16;";
+        endpoint = config.sops.secrets."ginyu_kronos/endpoint".path;
+        persistent-keepalive = "25";
+        preshared-key = config.sops.secrets."ginyu_kronos/preshared-key".path;
+        preshared-key-flags = "0";
+      };
+    };
+    itsec = {
+      connection = {
+        autoconnect = false;
+        id = "itsec";
+        interface-name = "itsec";
+        type = "wireguard";
+        uuid = "77b38ed8-662a-47ae-b689-7e8d55377c43";
+      };
+      ipv4 = {
+        address1 = config.sops.secrets."itsec/address1".path;
+        method = "manual";
+      };
+      ipv6 = {
+        addr-gen-mode = "default";
+        method = "disabled";
+      };
+      proxy = { };
+      wireguard = {
+        mtu = "1420";
+        listen-port = 51820;
+        private-key = config.sops.secrets."itsec/private-key".path;
+      };
+      "wireguard-peer.t82G6BbTu8jrxBixXuL4I+izIwEDmX45VsZu8iwHxVQ=" = {
+        allowed-ips = config.sops.secrets."itsec/allowed-ips".path;
+        endpoint = config.sops.secrets."itsec/endpoint".path;
+        preshared-key = config.sops.secrets."itsec/preshared-key".path;
+        preshared-key-flags = "0";
+      };
+    };
+    split_har = {
+      connection = {
+        autoconnect = true;
+        id = "split_har";
+        interface-name = "split_har";
+        type = "wireguard";
+        uuid = "337f30c9-0f49-4e8b-9c54-b313d6505050";
+      };
+      ipv4 = {
+        address1 = config.sops.secrets."split_har/address1".path;
+        method = "manual";
+      };
+      ipv6 = {
+        addr-gen-mode = "default";
+        method = "disabled";
+      };
+      proxy = { };
+      wireguard = {
+        listen-port = 51820;
+        private-key = config.sops.secrets."split_har/private-key".path;
+      };
+      "wireguard-peer.CDotto29pbswL1hTrcUkU8Y52vZc2keRxtOBQWcRAS4=" = {
+        allowed-ips = config.sops.secrets."split_har/allowed-ips".path;
+        endpoint = config.sops.secrets."split_har/endpoint".path;
+        persistent-keepalive = "25";
+        preshared-key = config.sops.secrets."split_har/endpoint".path;
+        preshared-key-flags = "0";
+      };
+    };
+  };
 }
