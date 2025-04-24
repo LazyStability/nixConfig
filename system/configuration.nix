@@ -36,7 +36,7 @@
   console.keyMap = "de";
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
+  networking.firewall.checkReversePath = "loose";
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
