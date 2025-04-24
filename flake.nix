@@ -102,6 +102,12 @@
           };
         };
       };
+      devShells.${system}.default = pkgs.mkShellNoCC {
+        packages = with pkgs; [
+          sops
+          git-credential-keepassxc
+        ];
+      };
       # Is going to be deprecated
       formatter.${system} = pkgs.nixfmt-rfc-style;
       # wrapped by treefmt-nix
