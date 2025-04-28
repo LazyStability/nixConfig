@@ -31,6 +31,7 @@ in
 
     [
       swaynotificationcenter
+      networkmanager_dmenu
       pwvucontrol
       hyprsunset
       hyprshade
@@ -103,7 +104,7 @@ in
             "wofi --show drun";
         "$audiomanager" = "pwvucontrol";
         "$bluetoothmanager" = "blueberry";
-        "$networkmanager" = "nm-connection-editor";
+        "$networkmanager" = "networkmanager_dmenu";
         "$monitor1" = monitor-1;
         "$monitor2" = monitor-2;
         "$browser" = "zen";
