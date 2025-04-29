@@ -97,6 +97,7 @@ in
         "$PREFIX" = lib.optionalString osConfig.programs.hyprland.withUWSM "uwsm app --";
         "$terminal" = "kitty";
         "$filemanager" = "yazi";
+        "$music-player" = "rmpc";
         "$menu" =
           if osConfig.programs.hyprland.withUWSM then
             "uwsm app -- $(wofi --show drun --define=drun-print_desktop_file=true)"

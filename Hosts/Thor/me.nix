@@ -43,6 +43,8 @@ in
     })
 
     ../../user/home.nix
+    ../../user/Video/mpv.nix
+    ../../user/Music/mpd.nix
     ../../user/editor/nvim.nix
     ../../user/Gaming
     ../../user/filemanager/yazi.nix
