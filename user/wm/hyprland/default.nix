@@ -24,12 +24,12 @@ in
   imports = [
     ./hyprpapaper.nix
     ./waybar.nix
+    ./swaync.nix
   ];
   home.packages =
     with pkgs;
 
     [
-      swaynotificationcenter
       networkmanager_dmenu
       pwvucontrol
       hyprsunset
