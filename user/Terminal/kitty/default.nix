@@ -74,6 +74,7 @@
         map --when-focus-on var:IS_NVIM kitty_mod+h
         map --when-focus-on var:IS_NVIM kitty_mod+l
 
+
         # the 3 here is the resize amount, adjust as needed
         map alt+j kitten relative_resize.py down  3
         map alt+k kitten relative_resize.py up    3
@@ -100,7 +101,6 @@
         # Show clicked command output in nvim
         mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
 
-
         # Other unix systems:
         # allow_remote_control yes
         # listen_on unix:/tmp/mykittyt+l
@@ -113,6 +113,59 @@
         # delete whole word
         map ctrl+backspace send_text all \x17
 
+        #################
+        ## Kitty Hints ##
+        #################
+        # Taken from here: https://github.com/ghostty-org/ghostty/discussions/2394
+        # files/paths
+        map kitty_mod+o>f    kitten hints --program editor --type regex --regex "[a-zA-Z0-9./_~-]+"
+        map kitty_mod+i>f    kitten hints --program - --type regex --regex "[a-zA-Z0-9./_~-]+"
+        map kitty_mod+y>f    kitten hints --program @ --type regex --regex "[a-zA-Z0-9./_~-]+"
+
+        # hashes
+        map kitty_mod+i>h    kitten hints --program - --type hash
+        map kitty_mod+y>h    kitten hints --program @ --type hash
+        map kitty_mod+o>h    kitten hints --program plumb --type hash
+
+        # URLs
+        map kitty_mod+i>u    kitten hints --program - --type url
+        map kitty_mod+y>u    kitten hints --program @ --type url
+        map kitty_mod+o>u    kitten hints --program plumb --type url
+
+        # words
+        map kitty_mod+i>w    kitten hints --program - --type word
+        map kitty_mod+y>w    kitten hints --program @ --type word
+        map kitty_mod+o>w    kitten hints --program plumb --type word
+
+        # addresses (pointers)
+        map kitty_mod+i>a    kitten hints --program - --type regex --regex "0x[a-fA-F0-9]+"
+        map kitty_mod+y>a    kitten hints --program @ --type regex --regex "0x[a-fA-F0-9]+"
+        map kitty_mod+o>a    kitten hints --program plumb --type regex --regex "0x[a-fA-F0-9]+"
+
+        # MSCs
+        map kitty_mod+i>m    kitten hints --program - --type regex --regex "(?i:MSC)[0-9]{3,4}"
+        map kitty_mod+y>m    kitten hints --program @ --type regex --regex "(?i:MSC)[0-9]{3,4}"
+        map kitty_mod+o>m    kitten hints --program plumb --type regex --regex "(?i:MSC)[0-9]{3,4}"
+
+        # CVEs / GHSAs
+        map kitty_mod+i>c    kitten hints --program - --type regex --regex "(CVE-[0-9]{1,5}-[0-9]{1,5}|GHSA-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4})"
+        map kitty_mod+y>c    kitten hints --program @ --type regex --regex "(CVE-[0-9]{1,5}-[0-9]{1,5}|GHSA-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4})"
+        map kitty_mod+o>c    kitten hints --program plumb --type regex --regex "(CVE-[0-9]{1,5}-[0-9]{1,5}|GHSA-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4})"
+
+        # ELEMENTSEC / MATRIXSEC
+        map kitty_mod+i>s    kitten hints --program - --type regex --regex "((ELEMENT|MATRIX)SEC-[0-9]{4}-[0-9]{3,5})"
+        map kitty_mod+y>s    kitten hints --program @ --type regex --regex "((ELEMENT|MATRIX)SEC-[0-9]{4}-[0-9]{3,5})"
+        map kitty_mod+o>s    kitten hints --program plumb --type regex --regex "((ELEMENT|MATRIX)SEC-[0-9]{4}-[0-9]{3,5})"
+
+        # IPFS
+        map kitty_mod+i>i    kitten hints --program - --type regex --regex "(?:ipfs://)?Qm[a-zA-Z0-9]{44}"
+        map kitty_mod+y>i    kitten hints --program @ --type regex --regex "(?:ipfs://)?Qm[a-zA-Z0-9]{44}"
+        map kitty_mod+o>i    kitten hints --program plumb --type regex --regex "(?:ipfs://)?Qm[a-zA-Z0-9]{44}"
+
+        # RFCs
+        map kitty_mod+i>r    kitten hints --program - --type regex --regex "(?i:RFC)[ -]?[0-9]{3,4}"
+        map kitty_mod+y>r    kitten hints --program @ --type regex --regex "(?i:RFC)[ -]?[0-9]{3,4}"
+        map kitty_mod+o>r    kitten hints --program plumb --type regex --regex "(?i:RFC)[ -]?[0-9]{3,4}"
       ''
       + ''
         # vim:ft=kitty
