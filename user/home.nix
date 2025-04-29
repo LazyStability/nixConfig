@@ -58,6 +58,7 @@
         dungeondraft
         remmina
         newsboat
+        w3m
       ]
     )
     ++ (with pkgs-stable; [
