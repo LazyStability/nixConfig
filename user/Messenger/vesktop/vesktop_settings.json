@@ -1,6 +1,12 @@
 {
--   "splashColor": "rgb(192, 202, 245)",
--   "splashBackground": "rgb(36, 40, 59)",
-    "tray": false,
-    "hardwareAcceleration": false
+    "discordBranch": "stable",
+    "minimizeToTray": false,
+    "arRPC": true,
+    "splashColor": "rgb(223, 224, 226)",
+    "splashBackground": "rgba(0, 0, 0, 0)",
+    "transparencyOption": "epic banana",
+    "spellCheckLanguages": [
+        "de",
+        "de-DE"
+    ]
 }
