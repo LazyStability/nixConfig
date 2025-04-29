@@ -34,7 +34,6 @@
         # xdg default
         kdePackages.okular
         imv
-        mpv
         glance
         wealthfolio
         keymapp
