@@ -38,6 +38,7 @@
         keymapp
 
         obs-studio
+        sonusmix
         gimp
         brave
         nautilus
