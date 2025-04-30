@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  isZen ? false,
 }:
 {
   # Allows communication between the browser and other apps

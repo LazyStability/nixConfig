@@ -110,7 +110,7 @@
         '';
         packages = with pkgs; [
           sops
-          git-credential-keepassxc
+          (git-credential-keepassxc.override { withNotification = true; })
           # Formatter
           treefmt
           nixfmt-rfc-style
