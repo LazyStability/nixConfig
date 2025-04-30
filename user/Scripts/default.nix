@@ -11,6 +11,7 @@ let
   quickcapture = pkgs.callPackage ./quickcapture.nix { };
   linkhandler = pkgs.callPackage ./linkhandler.nix { userSettings = userSettings; };
   qndl = pkgs.callPackage ./qndl.nix { };
+  rssget = pkgs.callPackage ./rssget.nix { };
 in
 {
   home.packages = [
@@ -18,5 +19,6 @@ in
     quickcapture
     linkhandler
     qndl
+    rssget
   ];
 }
