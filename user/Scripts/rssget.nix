@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  rssadd = pkgs.callPackage ./rssadd.nix { };
+in
 writeShellApplication {
 
   # Feed script a url or file location.
@@ -17,6 +20,7 @@ writeShellApplication {
   runtimeInputs = [
     pkgs.wl-clipboard
     pkgs.curl
+    rssadd
   ];
   text = ''
     # Searches the website for RSS feeds and adds them to newsboat url list. Can
@@ -89,18 +93,22 @@ writeShellApplication {
     }
 
     getGitlabRss () {
-    	local url="''${1%/}"
-    	echo "''${url}.atom"
+        local url="''${1%/}"
+
+        url=''${url%/-/tree/*}
+        url=''${url%/-/blob/*}
+
+        echo "''${url}.atom"
     }
 
     getMediumRss () {
         # shellcheck disable=SC2001
-    	echo "$1" | sed 's|/tag/|/feed/|'
+        echo "$1" | sed 's|/tag/|/feed/|'
     }
 
 
     if [ -z "''${1-}" ]; then
-    	url="$(wl-paste)"
+        url="$(wl-paste)"
         [ -z "$url" ] && echo "usage: $0 url 'tag1 tag2 tag3'" && exit 1
     else
     	url="$1"
@@ -132,5 +140,6 @@ writeShellApplication {
     [ "$(echo "''${list[*]}" | wc -l)" -eq 1 ] && chosen_link="''${list[*]}" || chosen_link=$(printf '%s\n' "''${list[@]}" | wofi -d -p "Choose a feed:")
     tags="''${2-}"
     echo "$chosen_link" "$tags"
+    rssadd "$chosen_link" "$tags"
   '';
 }
