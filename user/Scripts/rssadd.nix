@@ -1,18 +1,11 @@
 # Credit to Luke Smith
-# https://github.com/LukeSmithxyz/voidrice/blob/ed9633da3f876b6c9dae13434fb7ea30208a5b5f/.local/bin/linkhandler
+# https://github.com/LukeSmithxyz/voidrice/blob/ed9633da3f876b6c9dae13434fb7ea30208a5b5f/.local/bin/rssadd
 {
   writeShellApplication,
   pkgs,
   ...
 }:
 writeShellApplication {
-
-  # Feed script a url or file location.
-  # If an image, it will view in sxiv,
-  # if a video or gif, it will view in mpv
-  # if a music file or pdf, it will download,
-  # otherwise it opens link in browser.
-
   name = "rssadd";
   runtimeInputs = [
     pkgs.wl-clipboard
