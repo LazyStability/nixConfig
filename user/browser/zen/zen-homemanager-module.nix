@@ -410,7 +410,7 @@ in
                     let
                       bookmarkSubmodule =
                         types.submodule (
-                          { config, name, ... }:
+                          { name, ... }:
                           {
                             options = {
                               name = mkOption {
@@ -446,7 +446,7 @@ in
 
                       directoryType =
                         types.submodule (
-                          { config, name, ... }:
+                          { name, ... }:
                           {
                             options = {
                               name = mkOption {

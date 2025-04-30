@@ -4,9 +4,7 @@
 {
   pkgs,
   pkgs-stable,
-  lib,
   self,
-  inputs,
   ...
 }:
 {
@@ -45,7 +43,7 @@
     # $ nix search wget
     systemPackages =
       let
-        patched-nh = pkgs.nh.overrideAttrs (old: rec {
+        patched-nh = pkgs.nh.overrideAttrs (_old: rec {
           pname = "nh";
           version = "4.0.0-beta.11";
 

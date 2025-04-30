@@ -1,10 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
-  pkgs-stable,
-  inputs,
-  userSettings,
   ...
 }:
 {

@@ -1,7 +1,5 @@
 {
   pkgs,
-  inputs,
-  lib,
   ...
 }:
 # TODO: Overlay proton-ge

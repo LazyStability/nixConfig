@@ -3,10 +3,8 @@
 # Mainly terminal, mainMod
 # Or Setup specific stuff like monitors
 {
-  config,
   osConfig,
   pkgs,
-  inputs,
   monitor,
   lib,
   ...

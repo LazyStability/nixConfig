@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
   # Open ports in the firewall.
   # Syncthing ports: 8384 for remote access to GUI

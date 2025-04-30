@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  lib,
   ...
 }:
 #   let wezterm =  pkgs.wezterm.overrideAttrs (old:{

@@ -111,10 +111,14 @@
         packages = with pkgs; [
           sops
           git-credential-keepassxc
+          # Formatter
+          treefmt
+          nixfmt-rfc-style
+          deadnix
         ];
       };
       # Is going to be deprecated
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      formatter.${system} = pkgs.treefmt;
       # wrapped by treefmt-nix
       # formatter.${system} = pkgs.nixfmt-tree;
     };
