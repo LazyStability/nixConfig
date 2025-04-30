@@ -45,7 +45,7 @@
 
         # calibre
         tor
-        saber
+        reddit-tui
         zathura
         zotero
         prismlauncher
