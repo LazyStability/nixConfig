@@ -1,7 +1,9 @@
 # Credit to Luke Smith
 # https://github.com/LukeSmithxyz/voidrice/blob/ed9633da3f876b6c9dae13434fb7ea30208a5b5f/.local/bin/linkhandler
 {
-  userSettings,
+  userSettings ? {
+    terminal = "kitty";
+  },
   writeShellApplication,
   pkgs,
   ...
@@ -34,11 +36,11 @@ writeShellApplication {
     	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtube.com/shorts*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*)
     		setsid -f mpv -quiet "$url" >/dev/null 2>&1 ;;
     	*png|*jpg|*jpe|*jpeg|*gif|*webp)
-    		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && nsxiv -a "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 & ;;
+    		([ -f "$url" ] && nsxiv -a "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && nsxiv -a "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
     	*pdf|*cbz|*cbr)
-    		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && zathura "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 & ;;
+    		([ -f "$url" ] && zathura "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && zathura "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
     	*mp3|*flac|*opus|*mp3?source*)
-    		qndl "$url" 'curl -LO'  >/dev/null 2>&1 ;;
+    		([ -f "$url" ] && setsid -f mpv -quiet "$url" >/dev/null 2>&1) || qndl "$url" 'curl -LO'  >/dev/null 2>&1 ;;
     	*)
     		([ -f "$url" ] && setsid -f ${userSettings.terminal} -e "$EDITOR" "$url" >/dev/null 2>&1) || setsid -f xdg-open "$url" >/dev/null 2>&1
     esac
