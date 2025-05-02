@@ -46,6 +46,17 @@
         map kitty_mod+n next_tab
         map kitty_mod+p previous_tab
 
+        map kitty_mod+1 goto_tab 1
+        map kitty_mod+2 goto_tab 2
+        map kitty_mod+3 goto_tab 3
+        map kitty_mod+4 goto_tab 4
+        map kitty_mod+5 goto_tab 5
+        map kitty_mod+6 goto_tab 6
+        map kitty_mod+7 goto_tab 7
+        map kitty_mod+8 goto_tab 8
+        map kitty_mod+9 goto_tab 9
+        map kitty_mod+0 goto_tab 0
+
         # Rename tab
         map kitty_mod+, set_tab_title
 
