@@ -22,7 +22,11 @@ writeShellApplication {
                     notify-send "That doesn't look like a full URL." && exit 1
     fi
 
-    RSSFILE="''${XDG_CONFIG_HOME:-$HOME}/.newsboat/urls"
+    if [ -f "$XDG_CONFIG_HOME/newsboat/urls" ]; then
+            RSSFILE="$XDG_CONFIG_HOME/newsboat/urls"
+    else
+            RSSFILE="$HOME/.newsboat/urls"
+    fi
     if awk '{print $1}' "$RSSFILE" | grep "^$url$" >/dev/null; then
             notify-send "You already have this RSS feed."
     else

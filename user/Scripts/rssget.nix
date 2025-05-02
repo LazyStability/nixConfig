@@ -56,7 +56,7 @@ writeShellApplication {
     getYoutubeRss() {
     	local url=$1
 
-    	feed_url=$(curl --silent "$url" | grep -oh 'https:\/\/www.youtube.com\/feeds\/videos.xml[^\"]*' | sort -u)
+    	feed_url=$(curl --silent "$url" | grep -oh 'https://www.youtube.com/feeds/videos.xml[^\"]*' | sort -u)
 
     	echo "$feed_url"
     }
@@ -109,7 +109,10 @@ writeShellApplication {
 
     declare -a list=()
 
-    yt_regex="^(http(s)?://)?((w){3}\.)?(youtube\.com|invidio\.us|invidious\.flokinet\.to|invidious\.materialio\.us|iv\.datura\.network|invidious\.perennialte\.ch|invidious\.fdn\.fr|invidious\.private\.coffee|invidious\.protokolla\.fi|invidious\.privacyredirect\.com|yt\.artemislena\.eu|yt\.drgnz\.club|invidious\.incogniweb\.net|yewtu\.be|inv\.tux\.pizza|invidious\.reallyaweso\.me|iv\.melmac\.space|inv\.us\.projectsegfau\.lt|inv\.nadeko\.net|invidious\.darkness\.services|invidious\.jing\.rocks|invidious\.privacydev\.net|inv\.in\.projectsegfau\.lt|invidious\.drgns\.space)/(channel|user|c).+"
+    # original regex from luke smith, didnt work for me
+    # old_yt_regex="^(http(s)?://)?((w){3}\.)?(youtube\.com|invidio\.us|invidious\.flokinet\.to|invidious\.materialio\.us|iv\.datura\.network|invidious\.perennialte\.ch|invidious\.fdn\.fr|invidious\.private\.coffee|invidious\.protokolla\.fi|invidious\.privacyredirect\.com|yt\.artemislena\.eu|yt\.drgnz\.club|invidious\.incogniweb\.net|yewtu\.be|inv\.tux\.pizza|invidious\.reallyaweso\.me|iv\.melmac\.space|inv\.us\.projectsegfau\.lt|inv\.nadeko\.net|invidious\.darkness\.services|invidious\.jing\.rocks|invidious\.privacydev\.net|inv\.in\.projectsegfau\.lt|invidious\.drgns\.space)/(channel|user|c).+"
+
+    yt_regex="^(http(s)?://)?((w){3}\.)youtube\.com/@[a-zA-Z0-9]+/?"
     reddit_regex="^(http(s)?://)?((w){3}\.)?reddit\.com.*"
     vimeo_regex="^(http(s)?://)?((w){3}.)?vimeo\.com.*"
     if echo "$url" | grep -Ex "$yt_regex" >/dev/null ; then
