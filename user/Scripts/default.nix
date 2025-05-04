@@ -17,6 +17,7 @@ let
   linkhandler = pkgs.callPackage ./linkhandler.nix { userSettings = userSettings; };
   qndl = pkgs.callPackage ./qndl.nix { };
   rssget = pkgs.callPackage ./rssget.nix { config = config; };
+  windowswitcher = pkgs.callPackage ./window-quickswitcher.nix { config = config; };
 in
 {
   home.packages = [
@@ -25,5 +26,6 @@ in
     linkhandler
     qndl
     rssget
+    windowswitcher
   ];
 }
