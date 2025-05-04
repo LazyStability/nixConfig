@@ -4,6 +4,7 @@
 # Or Setup specific stuff like monitors
 {
   osConfig,
+  config,
   pkgs,
   monitor,
   lib,
@@ -45,7 +46,7 @@ in
     };
   };
   # Enable menu
-  programs.wofi.enable = true;
+  programs.fuzzel.enable = true;
 
   # Needed for dual monitor setup to tell xwayland, which steam relies upon which monitor is the correct one to use
   systemd.user.services.Primary-Monitor = {
@@ -97,8 +98,12 @@ in
         "$filemanager" = "yazi";
         "$music-player" = "rmpc";
         "$menu" =
-          if osConfig.programs.hyprland.withUWSM then
+          if osConfig.programs.hyprland.withUWSM && config.programs.wofi.enable then
             "uwsm app -- $(wofi --show drun --define=drun-print_desktop_file=true)"
+          else if osConfig.programs.hyprland.withUWSM && config.programs.fuzzel.enable then
+            "fuzzel --launch-prefix=\"uwsm app -- \""
+          else if config.programs.fuzzel.enable then
+            "fuzzel --show drun"
           else
             "wofi --show drun";
         "$audiomanager" = "pwvucontrol";

@@ -2,11 +2,13 @@
 # https://github.com/LukeSmithxyz/voidrice/blob/ed9633da3f876b6c9dae13434fb7ea30208a5b5f/.local/bin/rssget
 {
   writeShellApplication,
+  config,
   pkgs,
   ...
 }:
 let
   rssadd = pkgs.callPackage ./rssadd.nix { };
+  applauncher = if config.programs.fuzzel.enable then "fuzzel" else "wofi";
 in
 writeShellApplication {
   name = "rssget";
@@ -133,7 +135,7 @@ writeShellApplication {
     	list=( "$(getlink "$url")" )
     fi
 
-    [ "$(echo "''${list[*]}" | wc -l)" -eq 1 ] && chosen_link="''${list[*]}" || chosen_link=$(printf '%s\n' "''${list[@]}" | wofi -d -p "Choose a feed:")
+    [ "$(echo "''${list[*]}" | wc -l)" -eq 1 ] && chosen_link="''${list[*]}" || chosen_link=$(printf '%s\n' "''${list[@]}" | ${applauncher} -d -p "Choose a feed:")
     tags="''${2-}"
     echo "$chosen_link" "$tags"
     rssadd "$chosen_link" "$tags"
