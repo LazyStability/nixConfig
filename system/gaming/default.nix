@@ -6,4 +6,5 @@
   };
 
   programs.gamemode.enable = true;
+  programs.gpu-screen-recorder.enable = true;
 }

@@ -53,6 +53,7 @@ in
     ../../user/Music/mpd.nix
     ../../user/editor/nvim.nix
     ../../user/Gaming
+    ../../user/Gaming/screen-recording.nix
     ../../user/filemanager/yazi.nix
     ../../user/browser/zen/zen.nix
     # ../../user/browser/firefox/firefox.nix
@@ -64,5 +65,7 @@ in
   ];
   home.username = "me";
   home.homeDirectory = "/home/me";
-
+  myHomeModules.gaming.screen-recording = {
+    enable = true;
+  };
 }
