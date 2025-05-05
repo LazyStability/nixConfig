@@ -39,7 +39,7 @@
         ##########
 
         # open tabs
-        map kitty_mod+t new_tab
+        map kitty_mod+t new_tab_with_cwd
         map kitty_mod+R close_tab
 
         # Move in tabs
