@@ -12,12 +12,24 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Enables the new cli and flakes
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+  nix = {
+    # Garbage collection on the nix store
+    gc = {
+      automatic = true;
+      persistent = true;
+      options = "--delete-older-than 7d";
+    };
+    # Auto optimizes the store to save diskspace
+    optimise.automatic = true;
+    optimise.persistent = true;
+
+    # Enables the new cli and flakes
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
   };
 
   # Links the configuration with its git rev
@@ -110,6 +122,7 @@
       NIXOS_OZONE_PLATFORM = 1;
     };
   };
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #

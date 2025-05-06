@@ -106,6 +106,12 @@
     };
   };
 
+  nix.gc = {
+    automatic = true;
+    persistent = true;
+    frequency = "weekly";
+    options = "--delete-older-than 7d";
+  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
