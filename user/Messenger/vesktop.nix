@@ -1,8 +1,28 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  loading-gif = ./start-up.gif;
+in
 {
 
   programs.vesktop = {
     enable = true;
+    package = pkgs.vesktop.overrideAttrs (old: {
+      buildInputs = [ pkgs.curl ] ++ old.buildInputs;
+      src = pkgs.fetchFromGitHub {
+        owner = old.src.owner;
+        repo = old.src.repo;
+        rev = old.src.rev;
+        hash = "sha256-raFG+IvPoOPB0spnMbYpVbo6RcjRfksg9rjynRwppMw=";
+        postFetch = ''
+          cp ${loading-gif} $out/static/shiggy.gif
+        '';
+      };
+    });
     settings = {
       appBadge = false;
       checkUpdates = false;
