@@ -132,7 +132,7 @@ in
         Description = "A shadowplay equivelant using gpu-screen-recorder as a replay service";
         Documentation = [ "gpu-screen-recorder --help" ];
       };
-      Install.WantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = [ "default.target" ];
       Service =
         let
           cfgsh = cfg.shadowplay;
