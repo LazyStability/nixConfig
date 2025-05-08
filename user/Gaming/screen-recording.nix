@@ -155,6 +155,7 @@ in
           '';
 
           ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${cfg.videoDirectory}";
+          TimeoutStopSec = "5s";
           KillSignal = "SIGINT";
           Restart = "on-failure";
           RestartSec = "5s";
