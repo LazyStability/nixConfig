@@ -19,7 +19,6 @@ writeShellApplication {
   name = "linkhandler";
   runtimeInputs = [
     pkgs.wl-clipboard
-    pkgs.mpv
     pkgs.curl
     pkgs.zathura
     pkgs.nsxiv
