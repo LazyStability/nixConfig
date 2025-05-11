@@ -21,6 +21,7 @@ writeShellApplication {
             # SOUNDFILE="test" ||
             # [[ "$SWAYNC_HINT_STRING:sound_name:" =~ $regex ]]
             # SOUNDFILE="$SWAYNC_HINT"
+        [[ $(swaync-client --get-dnd) == "true" ]] && exit 0
             if [ -n "''${SWAYNC_HINT_SOUND_FILE:-}" ]; then
                 echo "$TEST"
                 SOUNDFILE="$SWAYNC_HINT_SOUND_FILE"
