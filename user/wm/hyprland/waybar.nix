@@ -1,7 +1,14 @@
-{ ... }:
+{ lib, ... }:
 {
   programs.waybar = {
     enable = true;
+    style = lib.mkAfter ''
+      window#waybar {
+        background: transparent;
+        color: #c6d0f5;
+        margin: 2px 2px;
+      }
+    '';
     settings = {
       mainBar = {
         layer = "top";
@@ -10,13 +17,12 @@
         modules-left = [
           "cpu"
           "memory"
+          "privacy"
           "hyprland/submap"
         ];
         modules-center = [ "clock" ];
         modules-right = [
-          "privacy"
           "mpris"
-          "wlr/taskbar"
           "temperature"
         ];
 
@@ -40,7 +46,7 @@
         };
         mpris = {
           player = "mpv";
-          format = "DEFAULT: {player_icon} {dynamic}";
+          format = "{player_icon} {dynamic}";
           format-paused = "DEFAULT: {status_icon} <i>{dynamic}</i>";
           player-icons = {
             default = "▶";
