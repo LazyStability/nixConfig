@@ -20,6 +20,7 @@
     ./git
     ./ssh
     ./Messenger
+    ./browser
   ];
   home.packages =
     (

@@ -9,7 +9,6 @@
     ./zen-homemanager-module.nix
   ];
   programs.zen-browser = {
-    enable = true;
     package = pkgs.wrapFirefox inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped (
       import ../firefox-wrapping.nix {
         isZen = true;
