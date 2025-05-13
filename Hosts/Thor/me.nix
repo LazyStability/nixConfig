@@ -22,15 +22,12 @@ in
     # This includes either ./wm/hyprland or ./wm/gnome
 
     ../../user/home.nix
-    ../../user/Video/mpv.nix
-    ../../user/Music/mpd.nix
     ../../user/editor/nvim.nix
     ../../user/Gaming
     ../../user/filemanager/yazi.nix
     # ../../user/browser/firefox/firefox.nix
     ../../user/browser/zen/zen.nix
     ../../user/Messenger
-    ../../user/Scripts
 
     # inputs.impermanence.nixosModules.home-manager.impermanence
   ];

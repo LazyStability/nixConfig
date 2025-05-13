@@ -1,12 +1,41 @@
-{ ... }:
+{ config, lib, ... }:
+let
+  cfg = config.myHomeModules.dataLinks;
+in
 {
-  systemd.user.tmpfiles.rules = [
-    "L+ /home/me/Musik - - - - /data/Musik"
-    "L+ /home/me/Bilder - - - - /data/Bilder"
-    "L+ /home/me/Videos - - - - /data/Videos"
-    "L+ /home/me/Dokumente - - - - /data/Dokumente"
-    "L+ /home/me/Downloads - - - - /data/Downloads"
-    "L+ /home/me/Software - - - - /data/Software"
-    "L+ /home/me/Games - - - - /games"
-  ];
+  options.myHomeModules.dataLinks = {
+    enable = lib.mkEnableOption "dataLinks";
+    dataPath = lib.mkOption {
+      default = "/data";
+      type = lib.types.str;
+      description = "Partition were all the data directories reside";
+    };
+    dataDirectoryList = lib.mkOption {
+      default = [
+        "Musik"
+        "Bilder"
+        "Videos"
+        "Dokumente"
+        "Downloads"
+        "Software"
+      ];
+      type = lib.types.listOf lib.types.str;
+      description = "All the Directories which should be linked to home";
+    };
+    gamesPath = lib.mkOption {
+      default = "/games";
+      type = lib.types.str;
+      description = "partition were Games reside";
+    };
+  };
+  config = lib.mkIf cfg.enable {
+    systemd.user.tmpfiles.rules =
+      let
+        createSystemdTmpfileRule = subDir: "L+ /home/me/${subDir} - - - - /${cfg.dataPath}/${subDir}";
+      in
+      lib.map createSystemdTmpfileRule cfg.dataDirectoryList
+      ++
+        # TODO: Use the same function as above to generate from gamesPath
+        [ "L+ /home/me/Games - - - - ${cfg.gamesPath}" ];
+  };
 }

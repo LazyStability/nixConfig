@@ -8,7 +8,13 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  imports = [ ./wm/desktop-environment-module.nix ];
+  imports = [
+    ./wm/desktop-environment-module.nix
+    ./Music/mpd.nix
+    ./Video/mpv.nix
+    ./Scripts/default.nix
+    ./dataLinks.nix
+  ];
   home.packages =
     (
       with pkgs;
