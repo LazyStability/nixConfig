@@ -9,16 +9,6 @@
 }:
 let
   userTerminalPath = lib.path.append ../../user/Terminal userSettings.terminal;
-  WmConfig = lib.path.append ../../user/wm userSettings.wm;
-  monitor = [
-    {
-      name = "DP-1";
-      enable = true;
-      mode = "2560x1440";
-      position = "0x0";
-      rate = "60.00";
-    }
-  ];
 in
 {
   imports = [
@@ -30,16 +20,6 @@ in
 
     # Window managers
     # This includes either ./wm/hyprland or ./wm/gnome
-
-    (import WmConfig {
-      monitor = monitor;
-      inputs = inputs;
-      pkgs = pkgs;
-      lib = lib;
-      userSettings = userSettings;
-      config = config;
-      osConfig = osConfig;
-    })
 
     ../../user/home.nix
     ../../user/Video/mpv.nix

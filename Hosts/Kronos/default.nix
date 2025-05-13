@@ -8,34 +8,29 @@
   ...
 }:
 {
-  imports =
-    let
-      DesktopEnvironmentPath = lib.path.append ../../system/Desktop_Environment userSettings.wm;
-    in
-    [
-      ./nvidia.nix
-      ./hardware-configuration.nix
+  imports = [
+    ./nvidia.nix
+    ./hardware-configuration.nix
 
-      ../../system/configuration.nix
-      DesktopEnvironmentPath
+    ../../system/configuration.nix
 
-      ../../system/Stylix
-      ../../system/gaming
-      ../../system/secrets/sops.nix
+    ../../system/Stylix
+    ../../system/gaming
+    ../../system/secrets/sops.nix
 
-      ../../system/services/zsh
-      ../../system/services/bluetooth
-      ../../system/services/syncthing
-      ../../system/services/kde-connect.nix
-      ../../system/services/wireguard/default.nix
-      inputs.disko.nixosModules.default
-      (import ../../system/disko.nix {
-        device = "/dev/disk/by-id/wwn-0x5002538043584d30";
-        # inherit inputs;
-      })
+    ../../system/services/zsh
+    ../../system/services/bluetooth
+    ../../system/services/syncthing
+    ../../system/services/kde-connect.nix
+    ../../system/services/wireguard/default.nix
+    inputs.disko.nixosModules.default
+    (import ../../system/disko.nix {
+      device = "/dev/disk/by-id/wwn-0x5002538043584d30";
+      # inherit inputs;
+    })
 
-      inputs.home-manager.nixosModules.default
-    ];
+    inputs.home-manager.nixosModules.default
+  ];
   environment = {
     sessionVariables = {
       NH_FLAKE = "/persist/etc/nixos";
@@ -110,6 +105,26 @@
     users = {
       "me" = import ./me.nix;
     };
+  };
+  myModules.desktopEnvironment = {
+    select = "hyprland";
+    monitors = [
+      {
+        name = "DP-2";
+        enable = true;
+        mode = "1920x1200";
+        position = "1280x0";
+        rate = "60";
+        primary = true;
+      }
+      {
+        name = "DP-1";
+        enable = true;
+        mode = "1280x1024";
+        position = "0x0";
+        rate = "60";
+      }
+    ];
   };
 
   programs.wireshark.enable = true;

@@ -8,6 +8,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  imports = [ ./wm/desktop-environment-module.nix ];
   home.packages =
     (
       with pkgs;

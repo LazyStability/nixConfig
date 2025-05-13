@@ -9,6 +9,7 @@
   ...
 }:
 {
+  imports = [ ./Desktop_Environment/desktop-environment-module.nix ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

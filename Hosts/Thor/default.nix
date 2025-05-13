@@ -10,13 +10,11 @@
 {
   imports =
     let
-      DesktopEnvironmentPath = lib.path.append ../../system/Desktop_Environment userSettings.wm;
     in
     [
       ./hardware-configuration.nix
 
       ../../system/configuration.nix
-      DesktopEnvironmentPath
 
       ../../system/Stylix
       ../../system/gaming
@@ -108,6 +106,18 @@
     };
   };
 
+  myModules.desktopEnvironment = {
+    select = "hyprland";
+    monitors = [
+      {
+        name = "DP-1";
+        enable = true;
+        mode = "2560x1440";
+        position = "0x0";
+        rate = "60";
+      }
+    ];
+  };
   programs.wireshark.enable = true;
   programs.thunderbird.enable = true;
 

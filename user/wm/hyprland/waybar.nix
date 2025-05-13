@@ -1,7 +1,6 @@
 { lib, ... }:
 {
   programs.waybar = {
-    enable = true;
     style = lib.mkAfter ''
       window#waybar {
         background: transparent;

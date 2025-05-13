@@ -9,24 +9,6 @@
 }:
 let
   userTerminalPath = lib.path.append ../../user/Terminal userSettings.terminal;
-  monitors = [
-    {
-      name = "DP-2";
-      enable = true;
-      mode = "1920x1200";
-      position = "1280x0";
-      rate = "60";
-      primary = true;
-    }
-    {
-      name = "DP-1";
-      enable = true;
-      mode = "1280x1024";
-      position = "0x0";
-      rate = "60.00";
-    }
-  ];
-  WmConfig = lib.path.append ../../user/wm userSettings.wm;
 in
 {
   imports = [
@@ -38,15 +20,6 @@ in
 
     # Window managers
     # This includes either ./wm/hyprland or ./wm/gnome or ./wm/KDE
-    (import WmConfig {
-      monitor = monitors;
-      inputs = inputs;
-      pkgs = pkgs;
-      userSettings = userSettings;
-      config = config;
-      lib = lib;
-      osConfig = osConfig;
-    })
 
     ../../user/home.nix
     ../../user/Video/mpv.nix

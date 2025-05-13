@@ -1,14 +1,28 @@
 {
   config,
-  pkgs,
   lib,
-  userSettings,
+  pkgs,
   ...
 }:
 let
   mkTuple = lib.hm.gvariant.mkTuple;
+
+  terminal =
+    if config.programs.kitty.enable then
+      "kitty"
+    else if config.programs.wezterm.enable then
+      "wezterm"
+    else
+      throw "no known terminal enabled (kitty,wezterm)";
 in
 {
+
+  config = lib.mkIf (config.myHomeModules.desktopEnvironment.select == "hyprland") {
+    dconf = {
+      enable = true;
+      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    };
+  };
   home.packages = [
     pkgs.wmctrl
     pkgs.gnomeExtensions.zen
@@ -227,12 +241,12 @@ in
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "Launch Terminal";
-      command = userSettings.terminal;
+      command = terminal;
       binding = "<Super>Return";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       name = "Launch Home Folder";
-      command = "${userSettings.terminal} zsh -fdc yazi";
+      command = "${terminal} zsh -fdc yazi";
       binding = "<Super>e";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {

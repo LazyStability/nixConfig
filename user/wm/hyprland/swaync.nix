@@ -10,7 +10,6 @@ in
 {
   # Settings from here https://github.com/ArtemChandragupta/NixFlake/blob/55394763321e4ba3fc13167738103c387a306747/home-modules/hyprland/swaync/default.nix
   services.swaync = {
-    enable = true;
     settings = {
       "$schema" = "${pkgs.swaynotificationcenter}/etc/xdg/swaync/configSchema.json";
       positionX = "right";
