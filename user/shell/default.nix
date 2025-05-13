@@ -79,7 +79,10 @@ in
       directory.substitutions = {
         "~/Dokumente" = "󰈙 ";
         "~/Downloads" = " ";
+        "~/.config/nvim" = "";
         "~/Musik" = " ";
+        "~/Software" = "";
+        "~/Games" = "󰊗";
         "~/Bilder" = " ";
       };
       #[custom.unreal]
