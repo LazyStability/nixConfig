@@ -65,7 +65,7 @@ in
   ];
   home.username = "me";
   home.homeDirectory = "/home/me";
-  myHomeModules.gaming.screen-recording = {
+  myHomeModules.gaming.screenRecording = {
     enable = true;
   };
 }

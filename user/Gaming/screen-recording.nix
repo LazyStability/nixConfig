@@ -6,10 +6,10 @@
   ...
 }:
 let
-  cfg = config.myHomeModules.gaming.screen-recording;
+  cfg = config.myHomeModules.gaming.screenRecording;
 in
 {
-  options.myHomeModules.gaming.screen-recording = {
+  options.myHomeModules.gaming.screenRecording = {
     enable = lib.mkEnableOption "Enable screen recording";
     bitrate = lib.mkOption {
       default = "auto";
