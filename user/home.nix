@@ -21,6 +21,7 @@
     ./ssh
     ./Messenger
     ./browser
+    ./editor/nvim.nix
   ];
   home.packages =
     (

@@ -10,7 +10,6 @@
 {
   imports = [
     ../../user/home.nix
-    ../../user/editor/nvim.nix
     ../../user/Gaming
 
   ];
