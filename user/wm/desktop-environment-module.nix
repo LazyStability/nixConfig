@@ -9,9 +9,7 @@ let
   subDirsIn =
     dir:
     builtins.mapAttrs (name: _: import (dir + "/${name}")) (
-      lib.filterAttrs (name: _: !lib.hasSuffix ".nix" name && name != "desktopUtils") (
-        builtins.readDir dir
-      )
+      lib.filterAttrs (name: type: type == "directory" && name != "desktopUtils") (builtins.readDir dir)
     );
   monitorType = lib.types.submodule {
     options = {

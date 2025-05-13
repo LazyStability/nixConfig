@@ -1,17 +1,16 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 {
-  home.packages = [ pkgs.kitty ];
-  home.file = {
+  home.file = lib.mkIf config.programs.kitty.enable {
     # ".config/kitty/relative_resize.py".source = ./relative_resize.py;
     ".config/kitty/Broadcast.py".source = ./Broadcast.py;
   };
   stylix.targets.kitty.enable = false;
   programs.kitty = {
-    enable = true;
     settings = {
       # background_opacity = lib.mkForce "0.9";
     };

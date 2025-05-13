@@ -21,7 +21,6 @@
   # stylix.targets.yazi.enable = false; # true;
 
   programs.yazi = {
-    enable = true;
     enableZshIntegration = true;
     shellWrapperName = "y";
     settings = {

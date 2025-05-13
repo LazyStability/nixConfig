@@ -14,6 +14,8 @@
     ./Video/mpv.nix
     ./Scripts/default.nix
     ./dataLinks.nix
+    ./Terminal
+    ./Gaming/screen-recording.nix
   ];
   home.packages =
     (
