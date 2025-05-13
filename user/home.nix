@@ -16,6 +16,10 @@
     ./dataLinks.nix
     ./Terminal
     ./Gaming/screen-recording.nix
+    ./shell
+    ./git
+    ./ssh
+    ./Messenger
   ];
   home.packages =
     (

@@ -9,16 +9,11 @@
 }:
 {
   imports = [
-    ../../user/shell
-    ../../user/git
-    ../../user/ssh
-
     ../../user/home.nix
     ../../user/editor/nvim.nix
     ../../user/Gaming
     ../../user/browser/zen/zen.nix
     # ../../user/browser/firefox/firefox.nix
-    ../../user/Messenger
 
     # inputs.impermanence.nixosModules.home-manager.impermanence
   ];
