@@ -20,6 +20,7 @@
     ./git
     ./ssh
     ./Messenger
+    ./filemanager/yazi.nix
     ./browser
     ./editor/nvim.nix
   ];
