@@ -1,9 +1,7 @@
 # Credit to Luke Smith
 # https://github.com/LukeSmithxyz/voidrice/blob/ed9633da3f876b6c9dae13434fb7ea30208a5b5f/.local/bin/linkhandler
 {
-  userSettings ? {
-    terminal = "kitty";
-  },
+  config,
   writeShellApplication,
   pkgs,
   ...
@@ -23,25 +21,36 @@ writeShellApplication {
     pkgs.zathura
     pkgs.nsxiv
   ];
-  text = ''
+  text =
+    let
+      terminal =
+        if config.programs.kitty.enable then
+          "kitty"
+        else if config.programs.wezterm.enable then
+          "wezterm"
+        else
+          "";
 
-    if [ -z "''${1-}" ]; then
-    	url="$(wl-paste)"
-    else
-    	url="$1"
-    fi
+    in
+    ''
 
-    case "$url" in
-    	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtube.com/shorts*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*)
-    		setsid -f mpv -quiet "$url" >/dev/null 2>&1 ;;
-    	*png|*jpg|*jpe|*jpeg|*gif|*webp)
-    		([ -f "$url" ] && nsxiv -a "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && nsxiv -a "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
-    	*pdf|*cbz|*cbr)
-    		([ -f "$url" ] && zathura "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && zathura "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
-    	*mp3|*flac|*opus|*mp3?source*)
-    		([ -f "$url" ] && setsid -f mpv -quiet "$url" >/dev/null 2>&1) || qndl "$url" 'curl -LO'  >/dev/null 2>&1 ;;
-    	*)
-    		([ -f "$url" ] && setsid -f ${userSettings.terminal} -e "$EDITOR" "$url" >/dev/null 2>&1) || setsid -f xdg-open "$url" >/dev/null 2>&1
-    esac
-  '';
+      if [ -z "''${1-}" ]; then
+      	url="$(wl-paste)"
+      else
+      	url="$1"
+      fi
+
+      case "$url" in
+      	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtube.com/shorts*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*)
+      		setsid -f mpv -quiet "$url" >/dev/null 2>&1 ;;
+      	*png|*jpg|*jpe|*jpeg|*gif|*webp)
+      		([ -f "$url" ] && nsxiv -a "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && nsxiv -a "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
+      	*pdf|*cbz|*cbr)
+      		([ -f "$url" ] && zathura "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && zathura "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
+      	*mp3|*flac|*opus|*mp3?source*)
+      		([ -f "$url" ] && setsid -f mpv -quiet "$url" >/dev/null 2>&1) || qndl "$url" 'curl -LO'  >/dev/null 2>&1 ;;
+      	*)
+      		([ -f "$url" ] && setsid -f ${terminal} -e "$EDITOR" "$url" >/dev/null 2>&1) || setsid -f xdg-open "$url" >/dev/null 2>&1
+      esac
+    '';
 }

@@ -50,13 +50,6 @@
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      systemSettings = { };
-      userSettings = {
-        # Either gnome, KDE or hyprland
-        wm = "hyprland";
-        # Either kitty or wezterm
-        terminal = "kitty";
-      };
     in
     {
       nixosConfigurations = {
@@ -68,8 +61,6 @@
           specialArgs = {
             inherit
               inputs
-              systemSettings
-              userSettings
               self
               ;
           };
@@ -82,8 +73,6 @@
           specialArgs = {
             inherit
               inputs
-              systemSettings
-              userSettings
               self
               ;
           };
@@ -96,8 +85,6 @@
           extraSpecialArgs = {
             inherit
               inputs
-              systemSettings
-              userSettings
               ;
           };
         };

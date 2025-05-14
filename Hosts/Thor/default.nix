@@ -4,7 +4,6 @@
   lib,
   pkgs-stable,
   inputs,
-  userSettings,
   ...
 }:
 {
@@ -99,7 +98,6 @@
       inherit pkgs;
       inherit pkgs-stable;
       inherit inputs;
-      inherit userSettings;
     };
     users = {
       "me" = import ./me.nix;

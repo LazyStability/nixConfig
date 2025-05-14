@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  userSettings,
   ...
 }:
 let
@@ -14,7 +13,7 @@ let
     vpnname = "uni";
   };
   quickcapture = pkgs.callPackage ./quickcapture.nix { };
-  linkhandler = pkgs.callPackage ./linkhandler.nix { userSettings = userSettings; };
+  linkhandler = pkgs.callPackage ./linkhandler.nix { config = config; };
   qndl = pkgs.callPackage ./qndl.nix { };
   rssget = pkgs.callPackage ./rssget.nix { config = config; };
   windowswitcher = pkgs.callPackage ./window-quickswitcher.nix { config = config; };
