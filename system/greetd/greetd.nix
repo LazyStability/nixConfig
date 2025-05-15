@@ -7,6 +7,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }:
 {
@@ -28,7 +29,7 @@
   services.greetd = {
     enable = lib.mkDefault false;
     settings = {
-      default_session = {
+      default_session = lib.mkIf (!config.programs.uwsm.enable) {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --remember-session --time --cmd Hyprland";
         user = "greeter";
       };
