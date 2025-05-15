@@ -113,8 +113,10 @@ in
               "fuzzel --launch-prefix=\"uwsm app -- \""
             else if config.programs.fuzzel.enable then
               "fuzzel --show drun"
+            else if config.programs.wofi.enable then
+              "wofi --show drun"
             else
-              "wofi --show drun";
+              builtins.throw "No supported applauncher actived. Use programs.wofi.enable or programs.fuzzel.enable.";
           "$audiomanager" = "pwvucontrol";
           "$bluetoothmanager" = "blueberry";
           "$networkmanager" = "networkmanager_dmenu";

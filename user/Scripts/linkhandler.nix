@@ -29,7 +29,9 @@ writeShellApplication {
         else if config.programs.wezterm.enable then
           "wezterm"
         else
-          "";
+
+          builtins.throw
+            "No supported terminal active. Use programs.kitty.enable or programs.wezterm.enable.";
 
     in
     ''

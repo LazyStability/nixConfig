@@ -3,7 +3,13 @@
 { writeShellApplication, config, ... }:
 
 let
-  applauncher = if config.programs.fuzzel.enable then "fuzzel" else "wofi";
+  applauncher =
+    if config.programs.fuzzel.enable then
+      "fuzzel"
+    else if config.programs.wofi.enable then
+      "wofi"
+    else
+      builtins.throw "No supported applauncher actived. Use programs.wofi.enable or programs.fuzzel.enable.";
 in
 writeShellApplication
 
