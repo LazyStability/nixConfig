@@ -90,9 +90,10 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "adbusers"
+      "kvm"
     ]; # Enable ‘sudo’ for the user.
   };
-
   programs.fuse.userAllowOther = true;
   home-manager = {
     extraSpecialArgs = {
@@ -127,6 +128,8 @@
 
   programs.wireshark.enable = true;
   programs.thunderbird.enable = true;
+
+  programs.adb.enable = true;
 
   # List services that you want to enable:
   # Mouse
