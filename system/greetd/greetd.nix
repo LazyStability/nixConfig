@@ -29,10 +29,20 @@
   services.greetd = {
     enable = lib.mkDefault false;
     settings = {
-      default_session = lib.mkIf (!config.programs.uwsm.enable) {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --remember-session --time --cmd Hyprland";
-        user = "greeter";
-      };
+      default_session = (
+        lib.mkMerge [
+          (lib.mkIf (!config.programs.uwsm.enable) {
+            command = "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --remember-session --time -cmd Hyprland";
+          })
+
+          (lib.mkIf config.programs.uwsm.enable {
+            command = "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --remember-session --time --cmd uwsm start  -- Hyprland";
+          })
+          {
+            user = "greeter";
+          }
+        ]
+      );
       # initial_session = {
       #   command = "Hyprland --config /etc/greetd/hyprland.conf";
       #   user = "me";

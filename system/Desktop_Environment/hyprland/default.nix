@@ -27,11 +27,10 @@
     # Overrides the hyprland package in nixpkgs with the one from the flake
     # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
-    # Enable uwsm, a session manager. Its purpose is to have all applications and services not depend on the compositor itself.
-    programs.uwsm.enable = true;
     # Enable hyprland
     programs.hyprland = {
       enable = true;
+      # Enable uwsm, a session manager. Its purpose is to have all applications and services not depend on the compositor itself.
       withUWSM = true;
 
       # These are the default values, I just put them here for completion
