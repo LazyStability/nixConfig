@@ -9,7 +9,10 @@
   ...
 }:
 {
-  imports = [ ./Desktop_Environment/desktop-environment-module.nix ];
+  imports = [
+    ./Desktop_Environment/desktop-environment-module.nix
+    ./services/android-webcam/default.nix
+  ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

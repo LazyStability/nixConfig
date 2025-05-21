@@ -1,6 +1,8 @@
 {
   pkgs,
   config,
+  osConfig,
+  lib,
   ...
 }:
 let
@@ -17,14 +19,21 @@ let
   qndl = pkgs.callPackage ./qndl.nix { };
   rssget = pkgs.callPackage ./rssget.nix { config = config; };
   windowswitcher = pkgs.callPackage ./window-quickswitcher.nix { config = config; };
+  android-webcam = pkgs.callPackage ./android-webcam.nix { };
 in
 {
-  home.packages = [
-    univpn
-    quickcapture
-    linkhandler
-    qndl
-    rssget
-    windowswitcher
+  home = lib.mkMerge [
+    {
+      packages = [
+        univpn
+        quickcapture
+        linkhandler
+        qndl
+        rssget
+        android-webcam
+        windowswitcher
+      ];
+    }
+    { packages = (lib.mkIf osConfig.myModules.android-webcam.enable [ android-webcam ]); }
   ];
 }
