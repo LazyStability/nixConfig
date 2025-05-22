@@ -92,6 +92,7 @@
       "wheel"
       "adbusers"
       "kvm"
+      "ydotool"
     ]; # Enable ‘sudo’ for the user.
   };
   programs.fuse.userAllowOther = true;
@@ -127,6 +128,7 @@
   };
 
   programs.wireshark.enable = true;
+  programs.ydotool.enable = true;
   programs.thunderbird.enable = true;
 
   programs.adb.enable = true;
