@@ -25,6 +25,7 @@ in
     ./hyprpapaper.nix
     ./waybar.nix
     ./swaync.nix
+    ./hyprlock.nix
   ];
 
   config = lib.mkIf (config.myHomeModules.desktopEnvironment.select == "hyprland") {
@@ -51,6 +52,7 @@ in
     programs = {
       fuzzel.enable = true;
       waybar.enable = true;
+      hyprlock.enable = true;
     };
     services = {
       hyprpaper.enable = true;
