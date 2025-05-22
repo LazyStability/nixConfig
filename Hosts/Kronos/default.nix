@@ -127,16 +127,20 @@
     ];
   };
 
-  programs.wireshark.enable = true;
-  programs.ydotool.enable = true;
-  programs.thunderbird.enable = true;
+  programs = {
+    wireshark.enable = true;
+    ydotool.enable = true;
+    thunderbird.enable = true;
 
-  programs.adb.enable = true;
+    adb.enable = true;
+  };
 
   # List services that you want to enable:
   # Mouse
-  services.ratbagd.enable = true;
-  services.playerctld.enable = true;
+  services = {
+    ratbagd.enable = true;
+    playerctld.enable = true;
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
