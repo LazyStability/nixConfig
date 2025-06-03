@@ -44,7 +44,7 @@
         {
           on = "<C-y>";
           run = ''
-            shell 'dragon -x -i -T "$@"' --confirm
+            shell 'dragon-drop -x  -T "$@"' 
           '';
           desc = "drag-and-drop paste window for browsers";
         }
