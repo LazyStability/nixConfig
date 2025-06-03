@@ -57,6 +57,14 @@
           sopsFile = ./Data_disk_keyfile.bin;
           format = "binary";
         };
+        "samba/login_data" = {
+          sopsFile = ./samba.yaml;
+          format = "yaml";
+        };
+        "samba/destination" = {
+          sopsFile = ./samba.yaml;
+          format = "yaml";
+        };
       } // wireguard-keys;
     };
 }

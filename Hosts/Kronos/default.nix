@@ -106,25 +106,28 @@
       "me" = import ./me.nix;
     };
   };
-  myModules.desktopEnvironment = {
-    select = "hyprland";
-    monitors = [
-      {
-        name = "DP-2";
-        enable = true;
-        mode = "1920x1200";
-        position = "1280x0";
-        rate = "60";
-        primary = true;
-      }
-      {
-        name = "DP-1";
-        enable = true;
-        mode = "1280x1024";
-        position = "0x0";
-        rate = "60";
-      }
-    ];
+  myModules = {
+    disks.samba.enable = true;
+    desktopEnvironment = {
+      select = "hyprland";
+      monitors = [
+        {
+          name = "DP-2";
+          enable = true;
+          mode = "1920x1200";
+          position = "1280x0";
+          rate = "60";
+          primary = true;
+        }
+        {
+          name = "DP-1";
+          enable = true;
+          mode = "1280x1024";
+          position = "0x0";
+          rate = "60";
+        }
+      ];
+    };
   };
 
   programs = {

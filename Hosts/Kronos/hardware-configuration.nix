@@ -5,6 +5,7 @@
   config,
   lib,
   modulesPath,
+  pkgs,
   ...
 }:
 {
@@ -25,6 +26,7 @@
     data  UUID=22138b0d-5278-48c4-9ba4-c4286a3952a1 ${config.sops.secrets.ArchKey.path}
     games UUID=c9a276cf-101b-4a6b-8ad2-128db28735b9 ${config.sops.secrets.Games.path}
   '';
+
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];

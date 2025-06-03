@@ -12,6 +12,7 @@
   imports = [
     ./Desktop_Environment/desktop-environment-module.nix
     ./services/android-webcam/default.nix
+    ./disk/samba.nix
   ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
