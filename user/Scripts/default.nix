@@ -20,6 +20,7 @@ let
   rssget = pkgs.callPackage ./rssget.nix { config = config; };
   windowswitcher = pkgs.callPackage ./window-quickswitcher.nix { config = config; };
   android-webcam = pkgs.callPackage ./android-webcam.nix { };
+  bookmark = pkgs.callPackage ./bookmark.nix { config = config; };
 in
 {
   home = lib.mkMerge [
@@ -31,6 +32,7 @@ in
         qndl
         rssget
         android-webcam
+        bookmark
         windowswitcher
       ];
     }
