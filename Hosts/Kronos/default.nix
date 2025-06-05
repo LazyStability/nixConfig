@@ -127,6 +127,7 @@
     thunderbird.enable = true;
 
     adb.enable = true;
+    kdeconnect.enable = true;
   };
 
   # List services that you want to enable:

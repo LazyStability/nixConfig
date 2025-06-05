@@ -1,7 +1,6 @@
-{ ... }:
+{ config, lib, ... }:
 {
-  programs.kdeconnect.enable = true;
-  networking.firewall = rec {
+  networking.firewall = lib.mkIf config.programs.kdeconnect.enable (rec {
     allowedTCPPortRanges = [
       {
         from = 1714;
@@ -9,5 +8,5 @@
       }
     ];
     allowedUDPPortRanges = allowedTCPPortRanges;
-  };
+  });
 }
