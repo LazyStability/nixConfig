@@ -11,8 +11,10 @@
     21027
   ];
 
-  services.syncthing = {
+  services.syncthing = lib.mkIf config.services.syncthing.enable {
     systemService = true;
+    cert = config.sops.secrets."syncthing/cert".path;
+    key = config.sops.secrets."syncthing/key".path;
     user = lib.mkDefault "me";
     group = lib.mkDefault "users";
     dataDir = lib.mkDefault "/home/me/";

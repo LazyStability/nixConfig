@@ -57,6 +57,16 @@
           sopsFile = ./Data_disk_keyfile.bin;
           format = "binary";
         };
+        "syncthing/key" = {
+          sopsFile = ./syncthing.yaml;
+          format = "yaml";
+          owner = "me";
+        };
+        "syncthing/cert" = {
+          sopsFile = ./syncthing.yaml;
+          format = "yaml";
+          owner = "me";
+        };
         "samba/login_data" = {
           sopsFile = ./samba.yaml;
           format = "yaml";
