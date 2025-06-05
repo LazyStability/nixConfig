@@ -52,7 +52,7 @@
           checkFlags = [ "-skip" ];
           buildInputs = previousAttrs.buildInputs ++ [ keyutils ];
         });
-        dungeondraft = pkgs.callPackage ../packages/dungeondraft.nix { };
+        dungeondraft = pkgs.callPackage ../packages/dungeondraft { };
       in
       [
         obsidian
