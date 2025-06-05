@@ -8,8 +8,8 @@ let
   cfg = config.myModules.desktopEnvironment;
   subDirsIn =
     dir:
-    builtins.mapAttrs (name: _: import (dir + "/${name}")) (
-      lib.filterAttrs (name: type: type == "directory") (builtins.readDir dir)
+    lib.attrsets.mapAttrsToList (name: _: name) (
+      lib.filterAttrs (name: type: type == "directory" && name != "desktopUtils") (builtins.readDir dir)
     );
   monitorType = lib.types.submodule {
     options = {
@@ -51,7 +51,7 @@ in
     # Gets every non nix file, which hopefully are all directories
     select = lib.mkOption {
       default = null;
-      type = lib.types.enum ((builtins.attrNames (subDirsIn ./.)) ++ [ null ]);
+      type = lib.types.enum ((subDirsIn ./.) ++ [ null ]);
       description = ''
         Select the desktop environment that should be used.
       '';
