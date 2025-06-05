@@ -12,16 +12,8 @@
     in
     [
       ./hardware-configuration.nix
-
       ../../system/configuration.nix
 
-      ../../system/Stylix
-      ../../system/gaming
-
-      ../../system/services/zsh
-      ../../system/secrets/sops.nix
-      ../../system/services/bluetooth
-      ../../system/services/syncthing
       inputs.disko.nixosModules.default
       (import ../../system/disko.nix {
         device = "/dev/disk/by-id/wwn-0x5002538d41022ecc";
@@ -121,8 +113,11 @@
 
   # List services that you want to enable:
   # Mouse
-  services.ratbagd.enable = true;
-  services.playerctld.enable = true;
+  services = {
+    ratbagd.enable = true;
+    playerctld.enable = true;
+    syncthing.enable = true;
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

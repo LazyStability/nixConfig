@@ -77,5 +77,4 @@ in
       type = lib.types.listOf monitorType;
     };
   };
-  imports = lib.attrsets.mapAttrsToList (name: value: value) (subDirsIn ./.);
 }

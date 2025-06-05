@@ -4,7 +4,6 @@
 { ... }:
 {
   services.radicale = {
-    enable = true;
     settings = {
       server = {
         hosts = [ "localhost:5232" ];

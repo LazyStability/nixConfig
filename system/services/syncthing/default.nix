@@ -1,28 +1,28 @@
-{ ... }:
+{ lib, config, ... }:
 {
   # Open ports in the firewall.
   # Syncthing ports: 8384 for remote access to GUI
   # 22000 TCP and/or UDP for sync traffic
   # 21027/UDP for discovery
   # source: https://docs.syncthing.net/users/firewall.html
-  networking.firewall.allowedTCPPorts = [ 22000 ];
-  networking.firewall.allowedUDPPorts = [
+  networking.firewall.allowedTCPPorts = lib.mkIf config.services.syncthing.enable [ 22000 ];
+  networking.firewall.allowedUDPPorts = lib.mkIf config.services.syncthing.enable [
     22000
     21027
   ];
 
   services.syncthing = {
-    enable = true;
     systemService = true;
-    user = "me";
-    group = "wheel";
-    dataDir = "/home/me/";
-    configDir = "/home/me/.config/syncthing";
+    user = lib.mkDefault "me";
+    group = lib.mkDefault "users";
+    dataDir = lib.mkDefault "/home/me/";
+    configDir = lib.mkDefault "/home/me/.config/syncthing";
     relay.enable = false;
     overrideDevices = true; # overrides any devices added or deleted through the WebUI
     overrideFolders = true; # overrides any folders added or deleted through the WebUI
     settings = {
-      devices = {
+      options.relaysEnabled = false;
+      devices = lib.mkDefault {
         "fedoralaptop" = {
           id = "Q3EZAQ7-GV27IJU-PT5TRZA-2VG3XG4-SATOQJR-D2DE62L-VUE45D4-PWWOMQP";
         };
@@ -33,7 +33,7 @@
           id = "YSRATIN-DMODHZK-KDQQJD7-57BQRNV-M3CBV6F-X2FG3BR-N35YK4H-JBMF4QL";
         };
       };
-      folders = {
+      folders = lib.mkDefault {
         "Zettelkasten" = {
           path = "/home/me/Dokumente/Zettelkasten";
           devices = [
