@@ -1,6 +1,5 @@
 { pkgs, ... }:
 # https://wiki.nixos.org/wiki/MPD
-# TODO:
 {
   services.mpd = {
     enable = true;

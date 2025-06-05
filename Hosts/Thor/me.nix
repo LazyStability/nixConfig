@@ -9,7 +9,6 @@
 {
   imports = [
     ../../user/home.nix
-    ../../user/Gaming
 
   ];
   home.username = "me";

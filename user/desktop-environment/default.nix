@@ -8,7 +8,7 @@ let
   cfg = config.myHomeModules.desktopEnvironment;
   subDirsIn =
     dir:
-    builtins.mapAttrs (name: _: import (dir + "/${name}")) (
+    lib.attrsets.mapAttrsToList (name: _: name) (
       lib.filterAttrs (name: type: type == "directory" && name != "desktopUtils") (builtins.readDir dir)
     );
   monitorType = lib.types.submodule {
@@ -51,7 +51,7 @@ in
 
     select = lib.mkOption {
       default = osConfig.myModules.desktopEnvironment.select;
-      type = lib.types.enum ((builtins.attrNames (subDirsIn ./.)) ++ [ null ]);
+      type = lib.types.enum ((subDirsIn ./.) ++ [ null ]);
       description = ''
         Select the desktop environment that should be used.
       '';
@@ -61,5 +61,4 @@ in
       type = lib.types.listOf monitorType;
     };
   };
-  imports = lib.attrsets.mapAttrsToList (name: value: value) (subDirsIn ./.);
 }
