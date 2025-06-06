@@ -153,20 +153,21 @@
         (extension "keepassxc-browser" "keepassxc-browser@keepassxc.org")
         (extension "vimium-c" "vimium-c@gdh1995.cn")
 
-        # zotero is not in firefox store
-        {
-          name = "zotero@chnm.gmu.edu";
-          value = {
-            install_url = "https://www.zotero.org/download/connector/dl?browser=firefox";
-            install_mode = "normal_installed";
-          };
-        }
       ]
-      # ++
+
       # zen extensions
+      # ++
+
       # WARN: This extension makes it hard to read some websites
       # lib.optional isZen (extension "transparent_zen" "{91aa3897-2634-4a8a-9092-279db23a7689}")
-      );
+      )
+      # zotero is not in firefox store
+      // {
+        "zotero@chnm.gmu.edu" = {
+          install_url = "https://www.zotero.org/download/connector/dl?browser=firefox";
+          installation_mode = "normal_installed";
+        };
+      };
 
     # Very nice policy, enforces stuff on extensions, which allows us to configure them
     # Taken from https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265/26
