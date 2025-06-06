@@ -149,9 +149,6 @@
         (extension "multi-account-containers" "@testpilot-containers")
         (extension "skip-redirect" "skipredirect@sblask")
 
-        # leakuidator+
-        (extension "3964927" "{672bc418-04a2-430c-ae37-778a1da768b9}")
-
         # My password manager
         (extension "keepassxc-browser" "keepassxc-browser@keepassxc.org")
         (extension "vimium-c" "vimium-c@gdh1995.cn")
