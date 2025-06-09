@@ -22,10 +22,9 @@ writeShellApplication {
             # [[ "$SWAYNC_HINT_STRING:sound_name:" =~ $regex ]]
             # SOUNDFILE="$SWAYNC_HINT"
         [[ $(swaync-client --get-dnd) == "true" ]] && exit 0
-            if [ -n "''${SWAYNC_HINT_SOUND_FILE:-}" ]; then
-                echo "$TEST"
+            set +u
+            if [ -n "$SWAYNC_HINT_SOUND_FILE" ]; then
                 SOUNDFILE="$SWAYNC_HINT_SOUND_FILE"
-                SOUNDFILE="/run/current-system/sw/share/sounds/freedesktop/stereo/dialog-error.oga"
             elif [[ " ''${HAS_NOTIFICATION_SOUND[*]} " =~ [[:space:]]''${SWAYNC_APP_NAME}[[:space:]] ]] ; then
                 exit 0
             else
@@ -33,6 +32,7 @@ writeShellApplication {
             fi
             ;;
     esac
+    set -u
     mpv --really-quiet "$SOUNDFILE" 
   '';
 }
