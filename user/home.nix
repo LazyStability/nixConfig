@@ -83,7 +83,6 @@
         patched-keepassxc
         dungeondraft
         remmina
-        newsboat
         w3m
 
       ]
