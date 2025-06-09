@@ -21,6 +21,7 @@ let
   windowswitcher = pkgs.callPackage ./window-quickswitcher.nix { config = config; };
   android-webcam = pkgs.callPackage ./android-webcam.nix { };
   bookmark = pkgs.callPackage ./bookmark.nix { config = config; };
+  emoji-picker = pkgs.callPackage ./emoji-picker.nix { config = config; };
 in
 {
   home = lib.mkMerge [
@@ -34,6 +35,7 @@ in
         android-webcam
         bookmark
         windowswitcher
+        emoji-picker
       ];
     }
     { packages = (lib.mkIf osConfig.myModules.android-webcam.enable [ android-webcam ]); }
