@@ -116,17 +116,11 @@
         clang
         ffmpeg
         ripgrep
-        ags
         gh
         git
         zsh
         patched-nh
-        wireshark
-        networkmanagerapplet
-        networkmanager-openvpn
-        blueberry
         cryptsetup
-        piper
 
         (pkgs.runCommand "gpu-screen-recorder"
           {

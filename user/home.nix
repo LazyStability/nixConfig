@@ -63,6 +63,10 @@
         glance
         wealthfolio
         keymapp
+        piper
+        networkmanagerapplet
+        networkmanager-openvpn
+        blueberry
 
         obs-studio
         sonusmix
