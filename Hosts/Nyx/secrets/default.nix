@@ -32,9 +32,9 @@
       wireguard-keys = lib.attrsets.mergeAttrsList (
         # TODO: These need to be filled here and in the wireguard file
         builtins.map (fill-interface) [
-          "ginyu_nyx"
+          # "ginyu_nyx"
           "itsec"
-          "split_har"
+          # "split_har"
         ]
       );
     in

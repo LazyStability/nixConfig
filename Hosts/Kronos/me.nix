@@ -16,6 +16,7 @@
     dataLinks.enable = true;
     gaming.screenRecording = {
       enable = true;
+      shadowplay.enable = true;
     };
   };
   programs.kitty.enable = true;

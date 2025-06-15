@@ -77,6 +77,18 @@
               ;
           };
         };
+        Nyx = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./Hosts/Nyx
+          ];
+          specialArgs = {
+            inherit
+              inputs
+              self
+              ;
+          };
+        };
       };
       homeConfigurations = {
         me = home-manager.lib.homeManagerConfiguration {

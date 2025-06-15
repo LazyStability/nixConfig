@@ -85,7 +85,6 @@
         signal-desktop
         piper
         patched-keepassxc
-        dungeondraft
         remmina
         w3m
 

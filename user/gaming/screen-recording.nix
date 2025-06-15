@@ -69,7 +69,7 @@ in
     };
     shadowplay = {
       enable = lib.mkOption {
-        default = true;
+        default = false;
         type = lib.types.bool;
         description = "Enable shadowplay like systemd service";
       };
