@@ -17,6 +17,7 @@
     gaming.screenRecording = {
       enable = false;
     };
+    desktopEnvironment.powerSavingMode.enable = true;
   };
   programs.kitty.enable = true;
   programs.yazi.enable = true;

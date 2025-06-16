@@ -60,5 +60,10 @@ in
       default = osConfig.myModules.desktopEnvironment.monitors;
       type = lib.types.listOf monitorType;
     };
+    powerSavingMode.enable = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+      description = "Whether to enable powersaving mode, does currently work only with hyprland";
+    };
   };
 }

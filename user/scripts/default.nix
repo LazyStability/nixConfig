@@ -22,6 +22,7 @@ let
   android-webcam = pkgs.callPackage ./android-webcam.nix { };
   bookmark = pkgs.callPackage ./bookmark.nix { config = config; };
   emoji-picker = pkgs.callPackage ./emoji-picker.nix { config = config; };
+  move-workspace-to-monitor = pkgs.callPackage ./move-workpace-to-monitor.nix { config = config; };
 in
 {
   home = lib.mkMerge [
@@ -35,6 +36,7 @@ in
         android-webcam
         bookmark
         windowswitcher
+        move-workspace-to-monitor
         emoji-picker
       ];
     }

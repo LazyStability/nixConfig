@@ -55,7 +55,7 @@ in
       hyprlock.enable = true;
     };
     services = {
-      hyprpaper.enable = true;
+      hyprpaper.enable = lib.mkForce (!cfg.powerSavingMode.enable);
       swaync.enable = true;
     };
 
@@ -129,25 +129,19 @@ in
 
           # Sets "Windows" key as main modifier
           "$mainMod" = "SUPER";
+          #Energy savings
+          #See https://wiki.hypr.land/Configuring/Performance/#how-do-i-make-hyprland-draw-as-little-power-as-possible-on-my-laptop
+          decoration = {
+            shadow.enabled = !cfg.powerSavingMode.enable;
+            blur.enabled = !cfg.powerSavingMode.enable;
+          };
+          misc = {
+            vfr = cfg.powerSavingMode.enable;
+            disable_autoreload = cfg.powerSavingMode.enable;
+          };
         };
       # Source the rest of the config
-      extraConfig = ''
-        source = ~/.config/hypr/input.conf
-        source = ~/.config/hypr/looks.conf
-        source = ~/.config/hypr/windowsWorkspace.conf
-        source = ~/.config/hypr/autostart.conf
-        # source = ~/.config/hypr/hyprcursor.conf
-        source = ~/.config/hypr/test.conf
-      '';
-    };
-    # Symlinks the rest of the config to the ~/.config/hypr directory
-    home.file = {
-      ".config/hypr/input.conf".source = ./input.conf;
-      ".config/hypr/looks.conf".source = ./looks.conf;
-      ".config/hypr/windowsWorkspace.conf".source = ./windowsWorkspace.conf;
-      ".config/hypr/autostart.conf".source = ./autostart.conf;
-      # ".config/hypr/hyprcursor.conf".source = ./hyprcursor.conf;
-      # ".config/hypr/hyprshade.toml".source = ./hyprshade.toml;
+      extraConfig = builtins.readFile ./hyprland.conf;
     };
   };
 }
