@@ -6,11 +6,13 @@
 }:
 {
   home.file = lib.mkIf config.programs.kitty.enable {
-    # ".config/kitty/relative_resize.py".source = ./relative_resize.py;
+    ".config/kitty/relative_resize.py".source = ./relative_resize.py;
     ".config/kitty/Broadcast.py".source = ./Broadcast.py;
+    ".config/kitty/split_window.py".source = ./split_window.py;
+    ".config/kitty/neighboring_window.py".source = ./neighboring_window.py;
   };
   stylix.targets.kitty.enable = false;
-  programs.kitty = {
+  programs.kitty = lib.mkIf config.programs.kitty.enable {
     settings = {
       # background_opacity = lib.mkForce "0.9";
     };
