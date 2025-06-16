@@ -1,7 +1,23 @@
 keys:
-  - &personal age1rnfnwj9f7alwmpekhfwtrmpsq8hwwyql8qxks8uysq76zxps6dwq84kxuv
+  - &kronos age1rnfnwj9f7alwmpekhfwtrmpsq8hwwyql8qxks8uysq76zxps6dwq84kxuv
+  - &nyx age1cchyax4lttttjqvvc6r9kcm9d095gvr2f4k9zjkfl8lathat4pns8vpwwv
+  - &thor age1kfeslxmhmwvl42v4kwqte2d9mux8yydz0q530vwdzpdcmlygdppqv6xfvy
 creation_rules:
   - path_regex: system/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
     key_groups:
       - age:
-          - *personal
+          - *kronos
+          - *nyx
+          - *thor
+  - path_regex: Hosts/Kronos/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
+    key_groups:
+      - age:
+          - *kronos
+  - path_regex: Hosts/Nyx/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
+    key_groups:
+      - age:
+          - *nyx
+  - path_regex: Hosts/Thor/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
+    key_groups:
+      - age:
+          - *thor

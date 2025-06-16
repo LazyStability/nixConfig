@@ -12,6 +12,7 @@
     in
     [
       ./hardware-configuration.nix
+      ./secrets
       ../../system/configuration.nix
 
       inputs.disko.nixosModules.default

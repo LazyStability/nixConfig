@@ -9,6 +9,7 @@
 {
   imports = [
     ./nvidia.nix
+    ./secrets
     ./hardware-configuration.nix
 
     ../../system/configuration.nix
@@ -99,6 +100,7 @@
   };
   myModules = {
     disks.samba.enable = true;
+    wireguard.enable = true;
     desktopEnvironment = {
       select = "hyprland";
       monitors = [
