@@ -36,8 +36,7 @@
           })
 
           (lib.mkIf config.programs.uwsm.enable {
-            command = 
-	    "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --time --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+            command = "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --time --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
           })
           {
             user = "greeter";
