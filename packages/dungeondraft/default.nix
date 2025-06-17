@@ -15,51 +15,20 @@
   zlib,
   libkrb5,
   udev,
-  runCommand,
+  requireFile,
   makeWrapper,
   zenity,
-  purchaseKey ? "000000",
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "dungeondraft";
   version = "1.1.0.6";
 
-  src =
-    runCommand "${pname}-src.deb"
-      {
-        outputHashMode = "recursive";
-        outputHashAlgo = "sha256";
-        outputHash = "sha256-afo+3iJ19BsUSJ8fomGvjYL5kWFx4XzDCuiVTDGeGCQ=";
-        nativeBuildInputs = [
-          curl
-          jq
-        ];
-        # Env Variables
-        SSL_CERT_FILE = "${cacert}/etc/ssl/certs/ca-bundle.crt";
-        CURL_CA_BUNDLE = "${cacert}/etc/ssl/certs/ca-bundle.crt";
-
-        USERAGENT = builtins.concatStringsSep " " [
-          "User-Agent: Mozilla/5.0 (X11; Linux ${stdenv.hostPlatform.linuxArch})"
-          "AppleWebKit/537.36 (KHTML, like Gecko)"
-          "Chrome/77.0.3865.75"
-          "Safari/537.36"
-        ];
-      }
-      ''
-        TARGET_URL=$(curl \
-          --compressed \
-          --header 'Host: www.humblebundle.com' \
-          --header 'Accept: application/json, text/plain, */*' \
-          --header 'Origin: https://www.humblebundle.com' \
-          --header 'Content-Type: application/json;charset=UTF-8' \
-          --header "$USERAGENT" \
-          --header "Accept-Language: en-US,en;q=0.9" \
-          "https://www.humblebundle.com/api/v1/order/${purchaseKey}?wallet_data=true&all_tpkds=true" \
-          | jq -r '.subproducts[].downloads[].download_struct[] | select(.name | contains(".deb")) | .url.web | select(. | contains("${version}"))')
-
-        echo "$TARGET_URL"
-        curl "$TARGET_URL" > $out
-      '';
+  src = requireFile {
+    name = "Dungeondraft-${finalAttrs.version}-Linux64.deb";
+    url = "https://dungeondraft.net/";
+    # hash = "sha256-ffT2zOQWKb6W6dQGuKbfejNCl6dondo4CB6JKTReVDs=";
+    sha256 = "0fslbqs2k28y10wdm7b8lybl4cvsvykbh1nlx6bbwa8nwk6gdx3x";
+  };
 
   dontBuild = true;
   dontConfigure = true;
@@ -101,4 +70,4 @@ stdenv.mkDerivation rec {
     sed -i "s|Path=/opt/Dungeondraft|Path=$out/opt/Dungeondraft|g" $out/share/applications/Dungeondraft.desktop
     sed -i "s|Icon=/opt/Dungeondraft/Dungeondraft.png|Icon=$out/opt/Dungeondraft/Dungeondraft.png|g" $out/share/applications/Dungeondraft.desktop
   '';
-}
+})

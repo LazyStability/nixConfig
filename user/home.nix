@@ -75,6 +75,7 @@
         nautilus
 
         # calibre
+        dungeondraft
         tor
         reddit-tui
         zathura
