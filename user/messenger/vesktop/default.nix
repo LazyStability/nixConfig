@@ -17,7 +17,7 @@ in
         owner = old.src.owner;
         repo = old.src.repo;
         rev = old.src.rev;
-        hash = "sha256-raFG+IvPoOPB0spnMbYpVbo6RcjRfksg9rjynRwppMw=";
+        hash = "sha256-sxljzPHUphaQ6G79HZmcBYfxmrG2fRuK4ZhhQUNw/HE=";
         postFetch = ''
           cp ${loading-gif} $out/static/shiggy.gif
         '';
