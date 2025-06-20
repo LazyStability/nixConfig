@@ -127,7 +127,7 @@
   # Mouse
   services = {
     ratbagd.enable = true;
-    syncthing.enable = false;
+    syncthing.enable = true;
     playerctld.enable = true;
     # Handle lid behaviour
     logind = {

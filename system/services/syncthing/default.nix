@@ -24,96 +24,107 @@
     overrideFolders = true; # overrides any folders added or deleted through the WebUI
     settings = {
       options.relaysEnabled = false;
-      devices = lib.mkDefault {
-        "fedoralaptop" = {
-          id = "Q3EZAQ7-GV27IJU-PT5TRZA-2VG3XG4-SATOQJR-D2DE62L-VUE45D4-PWWOMQP";
-        };
-        "Phone" = {
-          id = "6PXOBHV-E7HZAF2-4C2DZGF-STWF2GR-V5WRT5X-2Y3NEWD-4QO5XPL-3X7DAQ2";
-        };
-        "Odin" = {
-          id = "YSRATIN-DMODHZK-KDQQJD7-57BQRNV-M3CBV6F-X2FG3BR-N35YK4H-JBMF4QL";
-        };
-      };
-      folders = lib.mkDefault {
-        "Zettelkasten" = {
-          path = "/home/me/Dokumente/Zettelkasten";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "Personal" = {
-          path = "/home/me/Dokumente/Personal";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "Books" = {
-          path = "/home/me/Dokumente/Books";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "dnd" = {
-          path = "/home/me/Dokumente/DNDVault";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "Uni" = {
-          path = "/home/me/Dokumente/Uni";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "OffDokumente" = {
-          path = "/home/me/Dokumente/Offizielle_Dokumente/";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "Keepass" = {
-          path = "/home/me/Dokumente/Software/Keepass/";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "Videos" = {
-          path = "/home/me/Videos/";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "Bilder" = {
-          path = "/home/me/Bilder/";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "Local Thunderbird" = {
-          path = "/home/me/.thunderbird/b0b2l4n9.default-default/Mail/Local\ Folders";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-        "newsboat" = {
-          path = "/home/me/.newsboat";
-          devices = [
-            "fedoralaptop"
-            "Odin"
-          ];
-        };
-      };
+      devices = lib.attrsets.removeAttrs {
+        "Nyx".id = "KD7KT6J-L5UPE5U-62W5G7C-UB7WZTQ-QM5TYJJ-6Q7ZZYR-UDRG67K-7IIATAE";
+        "Phone".id = "6PXOBHV-E7HZAF2-4C2DZGF-STWF2GR-V5WRT5X-2Y3NEWD-4QO5XPL-3X7DAQ2";
+
+        "Odin".id = "YSRATIN-DMODHZK-KDQQJD7-57BQRNV-M3CBV6F-X2FG3BR-N35YK4H-JBMF4QL";
+        "Kronos".id = "6RJ6Y7O-PNYWAZJ-DRG5OMC-5UUYE54-KKEMXAP-5W7MOK6-ORYPH52-M4QQBQG";
+        # "Thor".id = "";
+      } [ config.networking.hostName ];
+      folders = (
+        with lib.lists;
+        {
+          "Zettelkasten" = {
+            path = "/home/me/Dokumente/Zettelkasten";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "Personal" = {
+            path = "/home/me/Dokumente/Personal";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "Books" = {
+            path = "/home/me/Dokumente/Books";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "dnd" = {
+            path = "/home/me/Dokumente/DNDVault";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "Uni" = {
+            path = "/home/me/Dokumente/Uni";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "OffDokumente" = {
+            path = "/home/me/Dokumente/Offizielle_Dokumente/";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "Keepass" = {
+            path = "/home/me/Dokumente/Software/Keepass/";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "Videos" = {
+            path = "/home/me/Videos/";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "Bilder" = {
+            path = "/home/me/Bilder/";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "Local Thunderbird" = {
+            path = "/home/me/.thunderbird/b0b2l4n9.default-default/Mail/Local\ Folders";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+          "newsboat" = {
+            path = "/home/me/.newsboat";
+            devices = remove config.networking.hostName [
+              "Nyx"
+              "Odin"
+              "Kronos"
+            ];
+          };
+        }
+      );
     };
   };
 }
