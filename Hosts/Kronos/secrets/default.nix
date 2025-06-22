@@ -31,7 +31,7 @@
         };
       wireguard-keys = lib.attrsets.mergeAttrsList (
         builtins.map (fill-interface) [
-          "ginyu_kronos"
+          "ginyu"
           "itsec"
           "split_har"
         ]
