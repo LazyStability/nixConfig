@@ -27,7 +27,7 @@
       devices = lib.attrsets.removeAttrs {
         "Nyx".id = "KD7KT6J-L5UPE5U-62W5G7C-UB7WZTQ-QM5TYJJ-6Q7ZZYR-UDRG67K-7IIATAE";
         "Phone".id = "6PXOBHV-E7HZAF2-4C2DZGF-STWF2GR-V5WRT5X-2Y3NEWD-4QO5XPL-3X7DAQ2";
-
+        "Thor".id = "L3QDZNA-BI4XHKD-BGDOMPD-7K6JIPZ-4QOSSM5-GVZJUUP-YVMYIIM-L2RRIAI";
         "Odin".id = "YSRATIN-DMODHZK-KDQQJD7-57BQRNV-M3CBV6F-X2FG3BR-N35YK4H-JBMF4QL";
         "Kronos".id = "6RJ6Y7O-PNYWAZJ-DRG5OMC-5UUYE54-KKEMXAP-5W7MOK6-ORYPH52-M4QQBQG";
         # "Thor".id = "";
@@ -39,6 +39,7 @@
             path = "/home/me/Dokumente/Zettelkasten";
             devices = remove config.networking.hostName [
               "Nyx"
+              "Thor"
               "Odin"
               "Kronos"
             ];
@@ -47,6 +48,7 @@
             path = "/home/me/Dokumente/Personal";
             devices = remove config.networking.hostName [
               "Nyx"
+              "Thor"
               "Odin"
               "Kronos"
             ];
@@ -55,6 +57,7 @@
             path = "/home/me/Dokumente/Books";
             devices = remove config.networking.hostName [
               "Nyx"
+              "Thor"
               "Odin"
               "Kronos"
             ];
@@ -63,6 +66,7 @@
             path = "/home/me/Dokumente/DNDVault";
             devices = remove config.networking.hostName [
               "Nyx"
+              "Thor"
               "Odin"
               "Kronos"
             ];
@@ -71,6 +75,7 @@
             path = "/home/me/Dokumente/Uni";
             devices = remove config.networking.hostName [
               "Nyx"
+              "Thor"
               "Odin"
               "Kronos"
             ];
@@ -79,6 +84,7 @@
             path = "/home/me/Dokumente/Offizielle_Dokumente/";
             devices = remove config.networking.hostName [
               "Nyx"
+              "Thor"
               "Odin"
               "Kronos"
             ];
@@ -88,6 +94,7 @@
             devices = remove config.networking.hostName [
               "Nyx"
               "Odin"
+              "Thor"
               "Kronos"
             ];
           };
@@ -103,6 +110,7 @@
             path = "/home/me/Bilder/";
             devices = remove config.networking.hostName [
               "Nyx"
+              "Thor"
               "Odin"
               "Kronos"
             ];
@@ -112,6 +120,7 @@
             devices = remove config.networking.hostName [
               "Nyx"
               "Odin"
+              "Thor"
               "Kronos"
             ];
           };
@@ -120,6 +129,7 @@
             devices = remove config.networking.hostName [
               "Nyx"
               "Odin"
+              "Thor"
               "Kronos"
             ];
           };
