@@ -88,6 +88,18 @@
               ;
           };
         };
+        OdinNix = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./Hosts/Odin/configuration.nix
+          ];
+          specialArgs = {
+            inherit
+              inputs
+              self
+              ;
+          };
+        };
       };
       homeConfigurations = {
         me = home-manager.lib.homeManagerConfiguration {

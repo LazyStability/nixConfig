@@ -2,6 +2,7 @@ keys:
   - &kronos age1rnfnwj9f7alwmpekhfwtrmpsq8hwwyql8qxks8uysq76zxps6dwq84kxuv
   - &nyx age1cchyax4lttttjqvvc6r9kcm9d095gvr2f4k9zjkfl8lathat4pns8vpwwv
   - &thor age1kfeslxmhmwvl42v4kwqte2d9mux8yydz0q530vwdzpdcmlygdppqv6xfvy
+  - &odin age1lnvshyzr3jva7kvfcfmym0hc5j64k4emea9qv9s5mtx8mesu9cesnza4tt
 creation_rules:
   - path_regex: system/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
     key_groups:
@@ -9,6 +10,7 @@ creation_rules:
           - *kronos
           - *nyx
           - *thor
+          - *odin
   - path_regex: Hosts/Kronos/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
     key_groups:
       - age:
@@ -21,3 +23,7 @@ creation_rules:
     key_groups:
       - age:
           - *thor
+  - path_regex: Hosts/Odin/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
+    key_groups:
+      - age:
+          - *odin
