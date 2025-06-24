@@ -10,6 +10,7 @@
   ...
 }:
 {
+  # Imports all default.nix files in subdirectories
   imports =
     let
       go =
@@ -35,6 +36,7 @@
         (lib.lists.flatten (recurse "" set));
     in
     (flatten (go ./.));
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
