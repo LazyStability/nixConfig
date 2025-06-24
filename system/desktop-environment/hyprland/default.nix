@@ -42,9 +42,14 @@
 
     # Hyprland uses pipewire for screensharing, all pulseaudio application should still work
     security.rtkit.enable = true;
-    services.pipewire = {
+    services.pipewire = lib.mkDefault {
       enable = true;
-      pulse.enable = lib.mkDefault true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+
     };
   };
 }
