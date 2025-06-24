@@ -100,6 +100,7 @@
   };
   myModules = {
     disks.samba.enable = true;
+    gaming.enable = true;
     wireguard.enable = true;
     desktopEnvironment = {
       select = "hyprland";
