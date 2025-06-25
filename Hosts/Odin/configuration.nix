@@ -125,10 +125,13 @@
       select = "kde";
     };
   };
-  services.syncthing = {
-    enable = false;
-    cert = lib.mkForce null;
-    key = lib.mkForce null;
+  services = {
+    radicale.enable = true;
+    syncthing = {
+      enable = false;
+      cert = lib.mkForce null;
+      key = lib.mkForce null;
+    };
   };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
