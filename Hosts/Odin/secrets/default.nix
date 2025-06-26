@@ -19,6 +19,7 @@
     defaultSopsFormat = "yaml";
 
     secrets = {
+      "paperless-admin" = { };
       "syncthing/key" = {
       };
       "syncthing/cert" = {
