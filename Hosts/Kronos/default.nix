@@ -84,6 +84,7 @@
       "wheel"
       "adbusers"
       "kvm"
+      "wireshark"
       "ydotool"
     ]; # Enable ‘sudo’ for the user.
   };
@@ -126,6 +127,7 @@
 
   programs = {
     wireshark.enable = true;
+    wireshark.package = pkgs.wireshark;
     ydotool.enable = true;
     thunderbird.enable = true;
 
