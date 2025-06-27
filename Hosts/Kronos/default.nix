@@ -130,6 +130,9 @@
     wireshark.package = pkgs.wireshark;
     ydotool.enable = true;
     thunderbird.enable = true;
+    firejail = {
+      enable = true;
+    };
 
     adb.enable = true;
     kdeconnect.enable = true;
