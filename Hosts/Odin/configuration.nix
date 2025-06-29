@@ -42,7 +42,26 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    nameservers = [
+      "192.168.105.30"
+      "fdc3:c37b:a1e0:0:b2f2:8ff:fede:8265"
+      "fritz.box"
+    ];
+    interfaces.ens33 = {
+      ipv4.addresses = [
+        {
+          address = "192.168.105.51";
+          prefixLength = 24;
+        }
+      ];
+    };
+    defaultGateway = {
+      address = "192.168.105.30";
+      interface = "ens33";
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
