@@ -23,6 +23,7 @@ let
   bookmark = pkgs.callPackage ./bookmark.nix { config = config; };
   emoji-picker = pkgs.callPackage ./emoji-picker.nix { config = config; };
   move-workspace-to-monitor = pkgs.callPackage ./move-workpace-to-monitor.nix { config = config; };
+  hypr-binds = pkgs.callPackage ./hypr-binds.nix { config = config; };
 in
 {
   home = lib.mkMerge [
@@ -38,6 +39,7 @@ in
         windowswitcher
         move-workspace-to-monitor
         emoji-picker
+        hypr-binds
       ];
     }
     { packages = (lib.mkIf osConfig.myModules.android-webcam.enable [ android-webcam ]); }
