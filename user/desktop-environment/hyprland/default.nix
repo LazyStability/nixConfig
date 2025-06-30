@@ -95,6 +95,19 @@ in
             Monitor:
             (Monitor.name + "," + Monitor.mode + "@" + Monitor.rate + "," + Monitor.position + "," + "1")
           );
+
+          windowswitcher = lib.getExe (
+            pkgs.callPackage ../../scripts/window-quickswitcher.nix { config = config; }
+          );
+          move-workspace-to-monitor = lib.getExe (
+            pkgs.callPackage ../../scripts/move-workpace-to-monitor.nix {
+              config = config;
+            }
+          );
+          hypr-binds = lib.getExe (pkgs.callPackage ../../scripts/hypr-binds.nix { config = config; });
+          hypr-lid-switch = lib.getExe (
+            pkgs.callPackage ../../scripts/hyprland-switch-behaviour.nix { config = config; }
+          );
         in
         {
           # Setting up monitors, the third is a ghost monitor
@@ -126,6 +139,12 @@ in
           "$monitor2" = monitor-2;
           "$browser" = "zen";
           "$discordClient" = "vesktop";
+
+          # Hyprland Scripts
+          "$hypr-binds" = hypr-binds;
+          "$hypr-lid-switch" = hypr-lid-switch;
+          "$move-workspace-to-monitor" = move-workspace-to-monitor;
+          "$windowswitcher" = windowswitcher;
 
           # Sets "Windows" key as main modifier
           "$mainMod" = "SUPER";
