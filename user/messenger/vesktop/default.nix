@@ -9,6 +9,9 @@ let
 in
 {
 
+  services.mpd-discord-rpc = {
+    enable = false;
+  };
   programs.vesktop = {
     enable = true;
     package = pkgs.vesktop.overrideAttrs (old: {
