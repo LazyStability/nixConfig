@@ -99,7 +99,6 @@
 
   myModules = {
 
-    wireguard.enable = false;
     desktopEnvironment = {
 
       select = "hyprland";

@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
 
     ../../system/configuration.nix
+    ./wireguard.nix
 
     inputs.disko.nixosModules.default
     (import ../../system/disko.nix {
@@ -26,16 +27,20 @@
       NH_FLAKE = "/persist/etc/nixos";
     };
   };
-  networking.hostName = "Nyx"; # Define your hostname.
 
   ################
   ## Networking ##
   ################
-  # networking.hostName = systemSettings.hosteName; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  systemd.services.NetworkManager-wait-online.enable = false; # Takes forever on boot and is not necessary
+  networking = {
+    hostName = "Nyx"; # Define your hostname.
+    networkmanager = {
+      enable = true; # Easiest to use and most distros use this by default.
+      wifi.powersave = true;
+    };
+  };
+  # systemd.services.NetworkManager-wait-online.enable = false; # Takes forever on boot and is not necessary
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

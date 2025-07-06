@@ -75,7 +75,12 @@
   console.keyMap = "de";
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  networking.firewall.checkReversePath = "loose";
+  networking = {
+    firewall.checkReversePath = "loose";
+    hosts = {
+      "192.168.105.51" = [ "OdinNix" ];
+    };
+  };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 

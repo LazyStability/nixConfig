@@ -13,55 +13,35 @@
       pkgs.sops
     ];
   };
-  sops =
-    let
-      fill-interface =
-        name:
-        let
-          wireguard-connection-secrets = {
-            sopsFile = ./secrets.yaml;
-          };
-        in
-        {
-          "${name}/address1" = wireguard-connection-secrets;
-          "${name}/private-key" = wireguard-connection-secrets;
-          "${name}/allowed-ips" = wireguard-connection-secrets;
-          "${name}/endpoint" = wireguard-connection-secrets;
-          "${name}/preshared-key" = wireguard-connection-secrets;
-        };
-      wireguard-keys = lib.attrsets.mergeAttrsList (
-        builtins.map (fill-interface) [
-          "ginyu"
-          "itsec"
-          "split_har"
-        ]
-      );
-    in
-    {
-      age.keyFile = "/persist/etc/ssh/github_kickstart_age";
-      defaultSopsFile = ./secrets.yaml;
-      defaultSopsFormat = "yaml";
+  sops = {
+    age.keyFile = "/persist/etc/ssh/github_kickstart_age";
+    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFormat = "yaml";
 
-      secrets = {
-        user-password.neededForUsers = true;
-        Games = {
-          sopsFile = ./Games.bin;
-          format = "binary";
-        };
-        ArchKey = {
-          sopsFile = ./ArchKey.bin;
-          format = "binary";
-        };
-        Data_disk_keyfile = {
-          sopsFile = ./Data_disk_keyfile.bin;
-          format = "binary";
-        };
-        "syncthing/key" = {
-          owner = "me";
-        };
-        "syncthing/cert" = {
-          owner = "me";
-        };
-      } // wireguard-keys;
+    secrets = {
+      user-password.neededForUsers = true;
+      Games = {
+        sopsFile = ./Games.bin;
+        format = "binary";
+      };
+      ArchKey = {
+        sopsFile = ./ArchKey.bin;
+        format = "binary";
+      };
+      Data_disk_keyfile = {
+        sopsFile = ./Data_disk_keyfile.bin;
+        format = "binary";
+      };
+      "syncthing/key" = {
+        owner = "me";
+      };
+      "syncthing/cert" = {
+        owner = "me";
+      };
+      "wg-ginyu.conf" = {
+        sopsFile = ./wg-ginyu.bin;
+        format = "binary";
+      };
     };
+  };
 }
