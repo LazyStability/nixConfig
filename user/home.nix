@@ -118,7 +118,7 @@
       "application/xhtml+xml" = [ "zen.desktop" ];
       "application/x-extension-xhtml" = [ "zen.desktop" ];
       "application/x-extension-xht" = [ "zen.desktop" ];
-      "application/pdf" = [ "org.kde.okular.desktop" ];
+      "application/pdf" = [ "sioyek.desktop" ];
       "image/png" = [ "imv.desktop" ];
       "image/gif" = [ "imv.desktop" ];
       "image/jpeg" = [ "imv.desktop" ];
