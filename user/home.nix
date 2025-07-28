@@ -88,6 +88,7 @@
         patched-keepassxc
         remmina
         w3m
+        komikku
 
       ]
     )
