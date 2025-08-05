@@ -33,7 +33,7 @@ writeShellApplication {
     currentpath=$(pwd)
     cd "''${path-$HOME/Videos}" || exit 1
     notify-send "⏳ Queuing $base..."
-    [ -z "''${cmd-}" ] && cmd="yt-dlp --embed-metadata -ic"
+    [ -z "''${cmd-}" ] && cmd="yt-dlp --embed-metadata --extractor-args=youtube:player_client=mweb -ic"
     $cmd "$url" 1>/dev/null &
     cd "$currentpath" || exit 1
     wait
