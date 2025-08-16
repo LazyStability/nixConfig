@@ -21,8 +21,21 @@
 
     config = {
       profile = "high-quality";
-      ytdl-format = "bestvideo+bestaudio";
+      ytdl-format = "bestvideo+bestaudio/best";
       input-gamepad = "yes";
+      # YT-dlp
+      script-opts = "ytdl_hook-ytdl_path=\"/home/me/.nix-profile/bin/yt-dlp\"";
+
+      # Problems with yt-dlp
+      # Cookie settings
+      # ytdl-raw-options-append="cookies=~/Sources/Credentials/cookies.txt";
+      # cookies="yes";
+      # cookies-file="~/Sources/Credentials/cookies.txt";
+
+      # Basic player
+      ytdl-raw-options-append = "extractor-args=youtube:player_client=mweb";
+      # This one is more reliable, but does need authentification
+      # ytdl-raw-options-append="extractor-args=youtube:player-client=web_creator;po_token=web_creator.gvs+PO_TOKEN_HERE"";
     };
     extraInput = ''
       # left and right (dpad or left stick axis) will move time by 30 seconds increment
