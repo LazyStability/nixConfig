@@ -17,6 +17,7 @@
     # better performance
     gamemode
     archipelago
+    ryubing
 
     # Compatibility layer
     # wineWowPackages.waylandFull
