@@ -76,6 +76,7 @@
 
         # calibre
         dungeondraft
+        rnote
         tor
         reddit-tui
         zathura
