@@ -21,5 +21,6 @@
   };
   programs.kitty.enable = true;
   programs.yazi.enable = true;
-  programs.zen-browser.enable = true;
+  # programs.zen-browser.enable = true;
+  programs.firefox.enable = true;
 }
