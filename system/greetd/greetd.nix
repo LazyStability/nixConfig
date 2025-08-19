@@ -16,7 +16,7 @@
   environment = {
     systemPackages = with pkgs; [
       # ags
-      greetd.tuigreet
+      tuigreet
     ];
 
     # Put the hyprland & ags files in /etc/greetd
@@ -32,11 +32,11 @@
       default_session = (
         lib.mkMerge [
           (lib.mkIf (!config.programs.uwsm.enable) {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --time -cmd Hyprland";
+            command = "${pkgs.tuigreet}/bin/tuigreet -d --r --user-menu --time -cmd Hyprland";
           })
 
           (lib.mkIf config.programs.uwsm.enable {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet -d --r --user-menu --time --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+            command = "${pkgs.tuigreet}/bin/tuigreet -d --r --user-menu --time --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
           })
           {
             user = "greeter";

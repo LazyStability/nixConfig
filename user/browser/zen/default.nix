@@ -8,6 +8,7 @@
   imports = [
     ./zen-homemanager-module.nix
   ];
+  stylix.targets.zen-browser.profileNames = [ "me" ];
   programs.zen-browser = {
     package = pkgs.wrapFirefox inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped (
       import ../firefox-wrapping.nix {

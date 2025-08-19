@@ -12,7 +12,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # Fixes suspend issues
-  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  # boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
   hardware.nvidia = {
     # Modesetting is required
@@ -26,7 +26,7 @@
     powerManagement.finegrained = false;
 
     # Open source drivers still beta
-    open = false;
+    open = true;
 
     # Enable Nvidia settings menu
     # accesable via 'nvidia-settings'

@@ -4,6 +4,7 @@
   ...
 }:
 {
+  stylix.targets.firefox.profileNames = [ "me" ];
   programs.firefox = {
     # Use the ESR for more policies for example search engines
     package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped (
