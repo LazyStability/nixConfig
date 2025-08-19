@@ -40,7 +40,7 @@
       git = git;
     };
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           on = "<C-y>";
           run = ''
