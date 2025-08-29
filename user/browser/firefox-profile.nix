@@ -52,7 +52,7 @@
     };
     search = {
       force = true;
-      default = "DuckDuckGo";
+      default = "ddg";
       engines = {
         "Nix Packages" = {
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
@@ -115,8 +115,8 @@
             }
           ];
         };
-        "Google".metaData.hidden = true;
-        "Bing".metaData.hidden = true;
+        "google".metaData.hidden = true;
+        "bing".metaData.hidden = true;
       };
     };
   };
