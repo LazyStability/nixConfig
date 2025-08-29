@@ -8,17 +8,25 @@
   stylix.targets.firefox.enable = false;
   programs.firefox = {
     # Use the ESR for more policies for example search engines
-    package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped (
-      import ../firefox-wrapping.nix {
-        inherit pkgs lib;
-        isZen = false;
-      }
+    package = (
+      lib.mkDefault (
+        pkgs.wrapFirefox pkgs.firefox-esr-unwrapped (
+          import ../firefox-wrapping.nix {
+            inherit pkgs lib;
+          }
+        )
+      )
     );
-    profiles = import ../firefox-profile.nix {
-      inherit pkgs;
-      userChrome = ''@import "natsumi/natsumi.css";'';
-      userContent = ''@import "natsumi/natsumi-pages.css";'';
-    };
+    profiles = (
+      lib.mkMerge [
+        (import ../firefox-profile.nix {
+          inherit pkgs;
+          userChrome = ''@import "natsumi/natsumi.css";'';
+          userContent = ''@import "natsumi/natsumi-pages.css";'';
+        })
+        (import ../firefox-vertical-tabs.nix { })
+      ]
+    );
   };
   # Install a theme for firefox
   home.file = {
