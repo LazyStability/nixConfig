@@ -23,10 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     natsumi-theme = {
       url = "github:greeeen-dev/natsumi-browser";
       flake = false;
