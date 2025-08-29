@@ -18,13 +18,15 @@
     );
     profiles = import ../firefox-profile.nix {
       inherit pkgs;
-      userChrome = ''@import "natsumi/natsumi.css";'';
-      userContent = ''@import "natsumi/natsumi-pages.css";'';
+      # WARNING: natsumi does not support zen browser anymore
+      # userChrome = ''@import "natsumi/natsumi.css";'';
+      # userContent = ''@import "natsumi/natsumi-pages.css";'';
     };
   };
   # Install a theme for zen
-  home.file = {
-    ".zen/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
-    ".zen/me/chrome/natsumi-config.css".source = inputs.natsumi-theme + "/natsumi-config.css";
-  };
+  # WARNING: natsumi does not support zen browser anymore
+  # home.file = {
+  #   ".zen/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
+  #   ".zen/me/chrome/natsumi-config.css".source = inputs.natsumi-theme + "/natsumi-config.css";
+  # };
 }
