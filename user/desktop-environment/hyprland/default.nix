@@ -137,7 +137,13 @@ in
           "$networkmanager" = "networkmanager_dmenu";
           "$monitor1" = monitor-1;
           "$monitor2" = monitor-2;
-          "$browser" = "zen";
+          "$browser" =
+            if config.programs.floorp.enable then
+              "floorp.desktop"
+            else if config.programs.firefox.enable then
+              "firefox.desktop"
+            else
+              "brave.desktop";
           "$discordClient" = "vesktop";
 
           # Hyprland Scripts

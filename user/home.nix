@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-stable,
+  config,
   lib,
   ...
 }:
@@ -106,26 +107,36 @@
 
   xdg.mimeApps = {
     enable = true;
-    defaultApplications = {
-      "text/html" = [ "zen.desktop" ];
-      "x-scheme-handler/http" = [ "zen.desktop" ];
-      "x-scheme-handler/https" = [ "zen.desktop" ];
-      "x-scheme-handler/about" = [ "zen.desktop" ];
-      "x-scheme-handler/unknown" = [ "zen.desktop" ];
-      "x-scheme-handler/ror2mm" = [ "r2modman.desktop" ];
-      "x-scheme-handler/chrome" = [ "zen.desktop" ];
-      "application/x-extension-htm" = [ "zen.desktop" ];
-      "application/x-extension-html" = [ "zen.desktop" ];
-      "application/x-extension-shtml" = [ "zen.desktop" ];
-      "application/xhtml+xml" = [ "zen.desktop" ];
-      "application/x-extension-xhtml" = [ "zen.desktop" ];
-      "application/x-extension-xht" = [ "zen.desktop" ];
-      "application/pdf" = [ "sioyek.desktop" ];
-      "image/png" = [ "imv.desktop" ];
-      "image/gif" = [ "imv.desktop" ];
-      "image/jpeg" = [ "imv.desktop" ];
-      # "inode/directory" = ["yazi-standalone.desktop"];
-    };
+    defaultApplications =
+      let
+        browser =
+          if config.programs.floorp.enable then
+            "floorp.desktop"
+          else if config.programs.firefox.enable then
+            "firefox.desktop"
+          else
+            "brave.desktop";
+      in
+      {
+        "text/html" = [ browser ];
+        "x-scheme-handler/http" = [ browser ];
+        "x-scheme-handler/https" = [ browser ];
+        "x-scheme-handler/about" = [ browser ];
+        "x-scheme-handler/unknown" = [ browser ];
+        "x-scheme-handler/ror2mm" = [ "r2modman.desktop" ];
+        "x-scheme-handler/chrome" = [ browser ];
+        "application/x-extension-htm" = [ browser ];
+        "application/x-extension-html" = [ browser ];
+        "application/x-extension-shtml" = [ browser ];
+        "application/xhtml+xml" = [ browser ];
+        "application/x-extension-xhtml" = [ browser ];
+        "application/x-extension-xht" = [ browser ];
+        "application/pdf" = [ "sioyek.desktop" ];
+        "image/png" = [ "imv.desktop" ];
+        "image/gif" = [ "imv.desktop" ];
+        "image/jpeg" = [ "imv.desktop" ];
+        # "inode/directory" = ["yazi-standalone.desktop"];
+      };
   };
 
   nix.gc = {
