@@ -2,6 +2,7 @@
   lib,
   pkgs,
   inputs,
+  config,
   ...
 }:
 {
@@ -26,12 +27,22 @@
           userContent = ''@import "natsumi/natsumi-pages.css";'';
         })
         (import ../firefox-vertical-tabs.nix { })
+
+        (import ../natsumi-settings.nix { })
+
+        {
+          me.settings = {
+            "natsumi.browser.type" = "floorp";
+          };
+        }
       ]
     );
   };
   # Install a theme for firefox
-  home.file = {
-    ".floorp/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
-    ".floorp/me/chrome/natsumi-config.css".source = inputs.natsumi-theme + "/natsumi-config.css";
-  };
+  home.file = (
+    lib.mkIf config.programs.floorp.enable {
+      ".floorp/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
+      ".floorp/me/chrome/natsumi-config.css".source = inputs.natsumi-theme + "/natsumi-config.css";
+    }
+  );
 }

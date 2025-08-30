@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   inputs,
@@ -25,13 +26,22 @@
           userContent = ''@import "natsumi/natsumi-pages.css";'';
         })
         (import ../firefox-vertical-tabs.nix { })
+
+        (import ../natsumi-settings.nix { })
+        {
+          me.settings = {
+            "natsumi.browser.type" = "firefox";
+          };
+        }
       ]
     );
   };
   # Install a theme for firefox
-  home.file = {
-    ".mozilla/firefox/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
-    ".mozilla/firefox/me/chrome/natsumi-config.css".source =
-      inputs.natsumi-theme + "/natsumi-config.css";
-  };
+  home.file = (
+    lib.mkIf config.programs.firefox.enable {
+      ".mozilla/firefox/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
+      ".mozilla/firefox/me/chrome/natsumi-config.css".source =
+        inputs.natsumi-theme + "/natsumi-config.css";
+    }
+  );
 }
