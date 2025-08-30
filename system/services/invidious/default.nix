@@ -1,7 +1,7 @@
 { ... }:
 {
   services.invidious = {
-    enable = true;
+    enable = false;
     nginx.enable = false;
     port = 12345;
 
