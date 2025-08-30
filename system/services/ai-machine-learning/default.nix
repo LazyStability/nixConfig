@@ -14,6 +14,8 @@
     };
   };
   services.open-webui = {
+    # Tests do not pass for some reason
+    enable = lib.mkForce false;
     port = 11111;
     environment = {
       WEBUI_AUTH = "False";

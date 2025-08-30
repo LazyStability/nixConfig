@@ -142,7 +142,7 @@
   nix.gc = {
     automatic = true;
     persistent = true;
-    frequency = "weekly";
+    dates = "weekly";
     options = "--delete-older-than 7d";
   };
   # Let Home Manager install and manage itself.
