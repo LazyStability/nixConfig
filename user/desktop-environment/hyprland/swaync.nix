@@ -5,10 +5,9 @@
   ...
 }:
 let
-  script = pkgs.callPackage ./swaync-soundscript.nix { };
+  script = pkgs.callPackage ./swaync-soundscript.nix { }; # Settings from here https://github.com/ArtemChandragupta/NixFlake/blob/55394763321e4ba3fc13167738103c387a306747/home-modules/hyprland/swaync/default.nix
 in
 {
-  # Settings from here https://github.com/ArtemChandragupta/NixFlake/blob/55394763321e4ba3fc13167738103c387a306747/home-modules/hyprland/swaync/default.nix
   services.swaync = {
     settings = {
       "$schema" = "${pkgs.swaynotificationcenter}/etc/xdg/swaync/configSchema.json";
