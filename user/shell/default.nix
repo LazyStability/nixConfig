@@ -38,12 +38,17 @@ in
     enableCompletion = true;
     shellAliases = myShellAliases;
   };
+  programs.nushell = {
+    enable = true;
+    shellAliases = myShellAliases;
+  };
 
   # Shell programms
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+    enableNushellIntegration = true;
     options = [
       "--cmd cd"
     ];
@@ -51,11 +56,13 @@ in
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
+    # enableNushellIntegration = true;
   };
 
   # configure direnv
   programs.direnv = {
     enable = true;
+    enableNushellIntegration = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
@@ -66,6 +73,7 @@ in
 
   programs.starship = {
     enable = true;
+    enableNushellIntegration = true;
     enableZshIntegration = true;
     settings = {
       add_newline = true;
