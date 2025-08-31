@@ -79,6 +79,7 @@
         dungeondraft
         rnote
         wiki-tui
+        hyperfine
         tor
         reddit-tui
         zathura
