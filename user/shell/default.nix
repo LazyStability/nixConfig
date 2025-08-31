@@ -25,6 +25,8 @@ in
     hwinfo
     zoxide
     btop
+    # For autocompletes
+    carapace
   ];
   # Shells
   programs.bash = {
@@ -33,6 +35,7 @@ in
   };
   programs.zsh = {
     enable = true;
+
     autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
@@ -40,7 +43,14 @@ in
   };
   programs.nushell = {
     enable = true;
-    shellAliases = myShellAliases;
+    configFile.text = ''
+      source ~/.cache/carapace/init.nu
+    '';
+    envFile.text = ''
+      $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+      mkdir ~/.cache/carapace
+      carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
+    '';
   };
 
   # Shell programms
