@@ -122,6 +122,7 @@
     };
   };
 
+  virtualisation.docker.enable = true;
   programs = {
     wireshark.enable = true;
     wireshark.package = pkgs.wireshark;
