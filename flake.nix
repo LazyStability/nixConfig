@@ -31,6 +31,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote.url = "github:nix-community/lanzaboote";
     # yazi.url = "github:sxyazi/yazi";
   };
   outputs =

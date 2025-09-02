@@ -15,6 +15,7 @@
     ./wireguard.nix
 
     inputs.disko.nixosModules.default
+    inputs.lanzaboote.nixosModules.lanzaboote
     (import ../../system/disko.nix {
       device = "/dev/disk/by-id/nvme-eui.002538da21a048cb";
       # inherit inputs;
@@ -26,6 +27,17 @@
     sessionVariables = {
       NH_FLAKE = "/persist/etc/nixos";
     };
+  };
+  
+  #################
+  ## Secure Boot ##
+  #################
+  boot = {
+    loader.systemd-boot.enable = lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+     };
   };
 
   ################
@@ -65,7 +77,8 @@
   };
   # Use the systemd-boot EFI boot loader.
   boot.supportedFilesystems = [ "btrfs" ];
-  boot.loader.systemd-boot.enable = true;
+  # Disabled because of lanzaboote
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.editor = false;
   ###########
