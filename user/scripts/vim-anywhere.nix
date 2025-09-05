@@ -29,7 +29,7 @@ writeShellApplication {
 	echo 
 	chmod o-rwx "$TMPFILE"
 
-	${terminalCommand} -- nvim "$TMPFILE" -c "startinsert"
+	${terminalCommand} -- nvim "$TMPFILE" -c "startinsert" || exit 1
 
 	sleep .2
 	# Does not support unicode, but I rarely need that.

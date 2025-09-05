@@ -10,7 +10,7 @@ writeShellApplication {
     let
       terminalCommand =
         if config.programs.kitty.enable then
-          "kitty --class vim-anywhere"
+          "kitty --class scratchpad_quick_capture"
         else if config.programs.wezterm.enable then
           "wezterm"
         else
