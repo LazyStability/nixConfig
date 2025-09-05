@@ -94,7 +94,7 @@
   };
 
   myModules = {
-
+    gaming.enable = true;
     desktopEnvironment = {
 
       select = "hyprland";
