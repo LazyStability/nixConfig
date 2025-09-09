@@ -83,6 +83,7 @@
         tor
         reddit-tui
         zathura
+        anki
         zotero
         prismlauncher
         yt-dlp
