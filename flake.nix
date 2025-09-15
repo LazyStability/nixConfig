@@ -130,5 +130,6 @@
       formatter.${system} = pkgs.treefmt;
       # wrapped by treefmt-nix
       # formatter.${system} = pkgs.nixfmt-tree;
+      packages.${system}.nvim = pkgs.callPackage ./packages/nvim/neovim.nix { };
     };
 }
