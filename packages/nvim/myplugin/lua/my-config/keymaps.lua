@@ -27,8 +27,8 @@ vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("v", "<leader>d", '"_d')
 
 -- Navigate quickfix list
-vim.keymap.set("n", "<leader>n", "<cmd>cnext<CR>zz", { desc = "[p]revious item in the quickfix list" })
-vim.keymap.set("n", "<leader>p", "<cmd>cprev<CR>zz", { desc = "[n]ext item in the quickfix list" })
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "[p]revious item in the quickfix list" })
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "[n]ext item in the quickfix list" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "next item in the location list" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "previous item in the location list" })
 
@@ -64,15 +64,6 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 -- Better indenting in visual mode
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
-
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<CS-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<CS-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<CS-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<CS-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Copy Full File-Path
 vim.keymap.set("n", "<leader>pa", function()
