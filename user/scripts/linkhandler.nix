@@ -6,6 +6,14 @@
   pkgs,
   ...
 }:
+let
+  mpv-wrapper = writeShellApplication {
+    name = "mpv-wrapper";
+    text = ''
+      mpv -quiet "$1" >/dev/null 2>&1 || notify-send "ERROR: mpv cannot play this file"
+    '';
+  };
+in
 writeShellApplication {
 
   # Feed script a url or file location.
@@ -20,6 +28,7 @@ writeShellApplication {
     pkgs.curl
     pkgs.zathura
     pkgs.nsxiv
+    mpv-wrapper
   ];
   text =
     let
@@ -44,13 +53,13 @@ writeShellApplication {
 
       case "$url" in
       	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtube.com/shorts*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*)
-      		setsid -f mpv -quiet "$url" >/dev/null 2>&1 ;;
+      		setsid -f mpv-wrapper "$url" ;;
       	*png|*jpg|*jpe|*jpeg|*gif|*webp)
       		([ -f "$url" ] && nsxiv -a "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && nsxiv -a "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
       	*pdf|*cbz|*cbr)
       		([ -f "$url" ] && zathura "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && zathura "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
       	*mp3|*flac|*opus|*mp3?source*)
-      		([ -f "$url" ] && setsid -f mpv -quiet "$url" >/dev/null 2>&1) || qndl "$url" 'curl -LO'  >/dev/null 2>&1 ;;
+      		([ -f "$url" ] && setsid -f mpv-wrapper "$url" ) || qndl "$url" 'curl -LO'  >/dev/null 2>&1 ;;
       	*)
       		([ -f "$url" ] && setsid -f ${terminal} -e "$EDITOR" "$url" >/dev/null 2>&1) || setsid -f xdg-open "$url" >/dev/null 2>&1
       esac
