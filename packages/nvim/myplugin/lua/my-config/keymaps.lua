@@ -19,6 +19,27 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- Copy & cut to system clipboard
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
+vim.keymap.set("n", "<leader>d", '"_d')
+vim.keymap.set("v", "<leader>d", '"_d')
+
+-- Navigate quickfix list
+vim.keymap.set("n", "<leader>n", "<cmd>cnext<CR>zz", { desc = "[p]revious item in the quickfix list" })
+vim.keymap.set("n", "<leader>p", "<cmd>cprev<CR>zz", { desc = "[n]ext item in the quickfix list" })
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "next item in the location list" })
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "previous item in the location list" })
+
+-- Replace current word in whole file
+vim.keymap.set(
+	"n",
+	"<leader>r",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "[r]eplace current hovered word in whole file" }
+)
+
 -- Quality of life changes
 -- Centering after down a page
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
