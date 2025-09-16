@@ -5,6 +5,8 @@
   makeWrapper,
   runCommandLocal,
   vimPlugins,
+  vimUtils,
+  fetchFromGitHub,
   lib,
 }:
 let
@@ -42,7 +44,17 @@ let
     conform-nvim
     # Auto close pairs of brackets or similar symbols
     # nvim-autopairs
-    # surround-nvim
+
+    # Surround selection or delete surrounding
+    (vimUtils.buildVimPlugin {
+      name = "nvim-surround";
+      src = fetchFromGitHub {
+        owner = "kylechui";
+        repo = "nvim-surround";
+        rev = "a868c256c861044beb9794b4dd126480dcdfbdad";
+        hash = "sha256-sbLPR1x3lP8Dg+neFeO0elnHFT55rCY3F1uGGtU1nAU=";
+      };
+    })
     # Show a tree of all changes
     undotree
 

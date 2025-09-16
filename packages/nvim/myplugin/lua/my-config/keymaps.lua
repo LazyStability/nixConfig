@@ -229,8 +229,17 @@ vim.list_extend(require("my-config.lazy.specs"), {
 			require("kitty-scrollback").setup({})
 		end,
 	},
-  {
-    "vim-nix",
-    ft = { "nix" },
-  },
+	{
+		"vim-nix",
+		ft = { "nix" },
+	},
+	{
+		"vimplugin-nvim-surround",
+		-- event = "VeryLazy",
+		after = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
 })
