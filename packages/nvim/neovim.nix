@@ -29,12 +29,14 @@ let
     ## Quality of life stuff ##
     # Nice html functionality in non-native fileformats
     nvim-ts-autotag
-    # Set intend rules based on similar files in the same directory
-    # vim-sleuth
 
     ## UI ##
-    # catppuccin-nvim
-		tokyonight-nvim
+    # Theme
+    catppuccin-nvim
+    tokyonight-nvim
+
+    nvim-web-devicons
+
     # Notification window
     fidget-nvim
   ];
@@ -42,7 +44,9 @@ let
     ## Quality of life changes ##
     # Format
     conform-nvim
+    mini-sessions
     # Auto close pairs of brackets or similar symbols
+    mini-pairs
     # nvim-autopairs
 
     # Surround selection or delete surrounding
@@ -60,11 +64,13 @@ let
 
     # Magit like git integration in neovim
     neogit
+    diffview-nvim
+
     # shows git changes & enables partial commiting
     gitsigns-nvim
+
     # comment-nvim
-		vim-nix
-    
+    vim-nix
 
     ## Interaction with the terminal ##
     # Use nvim as a scrollback buffer in kitty

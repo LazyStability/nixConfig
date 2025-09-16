@@ -162,6 +162,18 @@ vim.list_extend(require("my-config.lazy.specs"), {
 		end,
 	},
 	{
+		"neogit",
+		after = function()
+			require("my-config.lazy").packadd("plenary.nvim")
+			require("my-config.lazy").packadd("diffview.nvim")
+			require("diffview").setup()
+			require("neogit").setup({
+				integrations = { diffview = true },
+				vim.keymap.set("n", "<leader>hn", "<cmd>Neogit<cr>", { desc = "open [n]eogit" }),
+			})
+		end,
+	},
+	{
 		"undotree",
 		after = function()
 			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Show the [U]ndotree" })
