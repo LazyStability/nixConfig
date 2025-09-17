@@ -14,13 +14,21 @@
   stylix.targets.kitty.enable = false;
   programs.kitty = lib.mkIf config.programs.kitty.enable {
     package = (
-      pkgs.kitty.overrideAttrs (oldAttrs: {
+      pkgs.kitty.overrideAttrs (oldAttrs: rec {
+        version = "nightly";
         src = pkgs.fetchFromGitHub {
           owner = oldAttrs.src.owner;
           repo = oldAttrs.src.repo;
           rev = "e1d8565fb68570113fef979a68ef70fbe99e67c0";
           hash = "sha256-sQcoZwp/JohAPNwny1cd7PAVOZv3PvQ1XKDEKtqB0DU=";
         };
+        goModules =
+          (pkgs.buildGo124Module {
+            pname = "kitty-go-modules";
+            inherit version src;
+            vendorHash = "sha256-4H8NX84uwmqQZXwmw52Odsvj8FHlrYxyHcPcMFjOnbM=";
+          }).goModules;
+
       })
     );
     settings = {
