@@ -20,6 +20,7 @@
   # Use stylix
   # stylix.targets.yazi.enable = false; # true;
 
+  # TODO: Use wrapping provided by nixpkgs instead of homemanager
   programs.yazi = {
     enableZshIntegration = true;
     shellWrapperName = "y";
