@@ -36,108 +36,107 @@
     in
     (flatten (go ./.));
 
-  home.packages =
-    (
-      with pkgs;
-      let
-        patched-keepassxc = keepassxc.overrideAttrs (previousAttrs: {
-          version = "patched";
-          src = fetchFromGitHub {
-            owner = "keepassxreboot";
-            repo = "keepassxc";
-            rev = "fc1bd2009959141e06f66d23f0908e0ac048c75d";
-            hash = "sha256-lZ/fDTeC77pv93fYvPf/ocnxU0JX+liSLQx+rhTxlaQ=";
-          };
-          patches = [ ];
-          # Tests fail so, fuck tests
-          checkFlags = [ "-skip" ];
-          buildInputs = previousAttrs.buildInputs ++ [ keyutils ];
-        });
-        dungeondraft = pkgs.callPackage ../packages/dungeondraft { };
-      in
-      [
-        obsidian
-        vscode
-        # xdg default
-        kdePackages.okular
-        imv
-        glance
-        wealthfolio
-        keymapp
-        piper
-        networkmanagerapplet
-        networkmanager-openvpn
-        blueberry
+  home.packages = (
+    with pkgs;
+    let
+      patched-keepassxc = keepassxc.overrideAttrs (previousAttrs: {
+        version = "patched";
+        src = fetchFromGitHub {
+          owner = "keepassxreboot";
+          repo = "keepassxc";
+          rev = "fc1bd2009959141e06f66d23f0908e0ac048c75d";
+          hash = "sha256-lZ/fDTeC77pv93fYvPf/ocnxU0JX+liSLQx+rhTxlaQ=";
+        };
+        patches = [ ];
+        # Tests fail so, fuck tests
+        checkFlags = [ "-skip" ];
+        buildInputs = previousAttrs.buildInputs ++ [ keyutils ];
+      });
+      dungeondraft = pkgs.callPackage ../packages/dungeondraft { };
+      kitty-sessionizer = pkgs.callPackage ../packages/kitty-sessionizer { };
+      # From here https://github.com/Builditluc/wiki-tui/issues/267#issuecomment-3223496743
+      patched-wiki-tui = wiki-tui.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
+          gnugrep
+          findutils
+          gnused
+        ];
+        postPatch = (old.postPatch or "") + ''
+          set -e
+          UA='wiki-tui/0.9.1 (+https://github.com/Builditluc/wiki-tui; contact: you@example.com)'
 
-        obs-studio
-        sonusmix
-        gimp
-        brave
-        nautilus
+          # For each Rust file in wiki-api/, add a UA header on request builders like:
+          #   Client::... .get(endpoint|url) ...
+          while IFS= read -r -d "" f; do
+            changed=0
 
-        # calibre
-        dungeondraft
-        rnote
-        # From here https://github.com/Builditluc/wiki-tui/issues/267#issuecomment-3223496743
-        (wiki-tui.overrideAttrs (old: {
-          nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
-            gnugrep
-            findutils
-            gnused
-          ];
-          postPatch = (old.postPatch or "") + ''
-            set -e
-            UA='wiki-tui/0.9.1 (+https://github.com/Builditluc/wiki-tui; contact: you@example.com)'
-
-            # For each Rust file in wiki-api/, add a UA header on request builders like:
-            #   Client::... .get(endpoint|url) ...
-            while IFS= read -r -d "" f; do
-              changed=0
-
-              # Inject header after common patterns of .get(...)
-              for pat in '.get(endpoint)' '.get(&endpoint)' '.get(url)' '.get(&url)'; do
-                if grep -q "$pat" "$f"; then
-                  substituteInPlace "$f" --replace "$pat" "$pat.header(reqwest::header::USER_AGENT, \"$UA\")"
-                  changed=1
-                fi
-              done
-
-              # If we added headers, ensure USER_AGENT is imported (idempotent)
-              if [ "$changed" = 1 ] && ! grep -q 'header::USER_AGENT' "$f"; then
-                sed -i '1 i use reqwest::header::USER_AGENT;' "$f"
-              fi
-            done < <(find wiki-api -type f -name '*.rs' -print0)
-
-            # Also add origin=* wherever the Action API base params are set (avoids CORS oddities)
-            for f in $(grep -RIl --include='*.rs' '("formatversion", "2")' wiki-api || true); do
-              if ! grep -q '("origin"' "$f"; then
-                substituteInPlace "$f" \
-                  --replace '("formatversion", "2"),' \
-                            '("formatversion", "2"), ("origin","*"),'
+            # Inject header after common patterns of .get(...)
+            for pat in '.get(endpoint)' '.get(&endpoint)' '.get(url)' '.get(&url)'; do
+              if grep -q "$pat" "$f"; then
+                substituteInPlace "$f" --replace "$pat" "$pat.header(reqwest::header::USER_AGENT, \"$UA\")"
+                changed=1
               fi
             done
-          '';
-        }))
-        hyperfine
-        tor
-        reddit-tui
-        zathura
-        anki
-        zotero
-        prismlauncher
-        yt-dlp
-        wl-clipboard
-        signal-desktop
-        piper
-        patched-keepassxc
-        remmina
-        w3m
-        komikku
 
-      ]
-    )
-    ++ (with pkgs-stable; [
-    ]);
+            # If we added headers, ensure USER_AGENT is imported (idempotent)
+            if [ "$changed" = 1 ] && ! grep -q 'header::USER_AGENT' "$f"; then
+              sed -i '1 i use reqwest::header::USER_AGENT;' "$f"
+            fi
+          done < <(find wiki-api -type f -name '*.rs' -print0)
+
+          # Also add origin=* wherever the Action API base params are set (avoids CORS oddities)
+          for f in $(grep -RIl --include='*.rs' '("formatversion", "2")' wiki-api || true); do
+            if ! grep -q '("origin"' "$f"; then
+              substituteInPlace "$f" \
+                --replace '("formatversion", "2"),' \
+                          '("formatversion", "2"), ("origin","*"),'
+            fi
+          done
+        '';
+      });
+    in
+    [
+      obsidian
+      vscode
+      # xdg default
+      kdePackages.okular
+      imv
+      glance
+      wealthfolio
+      keymapp
+      piper
+      networkmanagerapplet
+      networkmanager-openvpn
+      blueberry
+
+      obs-studio
+      sonusmix
+      gimp
+      brave
+      nautilus
+
+      # calibre
+      dungeondraft
+      rnote
+      hyperfine
+      tor
+      reddit-tui
+      zathura
+      anki
+      zotero
+      prismlauncher
+      yt-dlp
+      wl-clipboard
+      signal-desktop
+      piper
+      patched-keepassxc
+      remmina
+      w3m
+      komikku
+      kitty-sessionizer
+      patched-wiki-tui
+    ]
+  );
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
