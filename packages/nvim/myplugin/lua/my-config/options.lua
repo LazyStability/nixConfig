@@ -97,4 +97,13 @@ vim.opt.scrolloff = 10
 -- line numbers in Netrw
 vim.cmd [[let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro']]
 
+
+vim.list_extend(require("my-config.lazy.specs"), {
+	{
+    "mini.sessions",
+    after = function()
+      require("mini.sessions").setup()
+    end
+  }
+})
 -- vim: ts=2 sts=2 sw=2 et
