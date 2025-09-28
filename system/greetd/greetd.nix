@@ -29,14 +29,26 @@
   services.greetd = {
     enable = lib.mkDefault false;
     settings = {
+      initial_session = (
+        lib.mkMerge [
+          (lib.mkIf (!config.programs.uwsm.enable) {
+            command = "Hyprland";
+            user = "me";
+          })
+          (lib.mkIf config.programs.uwsm.enable {
+            command = "${pkgs.uwsm}/bin/uwsm start -F /run/current-system/sw/bin/Hyprland";
+            user = "me";
+          })
+        ]
+        );
       default_session = (
         lib.mkMerge [
           (lib.mkIf (!config.programs.uwsm.enable) {
-            command = "${pkgs.tuigreet}/bin/tuigreet -d --r --user-menu --time -cmd Hyprland";
+            command = "${pkgs.tuigreet}/bin/tuigreet -d --remember --remember-user-session --user-menu --time -cmd Hyprland";
           })
 
           (lib.mkIf config.programs.uwsm.enable {
-            command = "${pkgs.tuigreet}/bin/tuigreet -d --r --user-menu --time --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+            command = "${pkgs.tuigreet}/bin/tuigreet -d --remember --remember-user-session --user-menu --time --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
           })
           {
             user = "greeter";
