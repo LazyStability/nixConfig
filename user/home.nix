@@ -97,6 +97,7 @@
     in
     [
       obsidian
+      localsend
       vscode
       # xdg default
       kdePackages.okular
