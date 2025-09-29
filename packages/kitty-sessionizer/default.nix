@@ -13,8 +13,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "LazyStability";
     repo = "kitty-sessionizer";
-    rev = "f04ea0bc7c690944180ad34c7c40f354527697fc";
-    sha256 = "sha256-prg3kmL6sHNqMgV98GHZXhQOmFVSsDk4yAot0wHgonw=";
+    rev = "bff958214fef6a171fdaf2766bbdc0f315d01c0b";
+    sha256 = "sha256-Uf8rWl/gKWlh3fXejMthyxv7z2DyizwaFsIGpnDZ274=";
   };
   buildInputs = [
     bash
