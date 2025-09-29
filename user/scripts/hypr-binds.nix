@@ -1,65 +1,113 @@
+# Script taken from omarchy: https://github.com/basecamp/omarchy/blob/251997cf54825a60029bb3cb7ac92f78d9ee1bcf/bin/omarchy-menu-keybindings
+# A script to display Hyprland keybindings defined in your configuration
+
+# Fetch dynamic keybindings from Hyprland
+#
+# Also do some pre-processing:
+# - Remove standard Omarchy bin path prefix
+# - Remove nix store prefix
+# - Remove uwsm prefix
+# - Map numeric modifier key mask to a textual rendition
+# - Output comma-separated values that the parser can understand
 {
   lib,
   jq,
-  pkgs,
   config,
   writeShellScriptBin,
-  cmdcolor ? "cyan",
-  modkeyStyle ? "<b>$MOD$KEY</b> <i>$DESCRIPTION</i>",
-  dispatch ? true,
 }:
 let
-  modmasks = {
-    "0" = "";
-    "1" = "SHIFT+";
-    "4" = "CTRL+";
-    "5" = "SHIFT+CTRL+";
-    "8" = "ALT+";
-    "64" = "SUPER+";
-    "65" = "SUPER+SHIFT+";
-    "68" = "SUPER+CTRL+";
-  };
-  keycodes = {
-    "59" = "Comma";
-    "60" = "Dot";
-  };
-
   launcherCommand =
     if config.programs.fuzzel.enable then
       "fuzzel --match-mode fzf --dmenu --width 100 -p 'Hypr binds'"
     else if config.programs.wofi.enable then
       "wofi --matching fuzzy --dmenu -i -p 'Hypr binds'"
+    # else if config.programs.walker.enable then
+    #   ''walker --dmenu -p 'Keybindings' -w 800 -h "$menu_height"''
     else
       builtins.throw "No supported applauncher actived. Use programs.wofi.enable or programs.fuzzel.enable.";
-  style =
-    let
-      modkey =
-        builtins.replaceStrings
-          [ "$MOD" "$KEY" "$DESCRIPTION" ]
-          [ "\\(.mod)" "\\(if .key == \"\" then .code else .key end)" "\\(.desc)" ]
-          modkeyStyle;
-    in
-    ''${modkey} <span color=\"${cmdcolor}\">\(.dp) \(.arg)</span>'';
 in
 writeShellScriptBin "hypr-binds" ''
-  hyprctl binds -j |
-    ${lib.getExe jq} -r '
-      map({mod:.modmask|tostring,key:.key,code:.keycode|tostring,desc:.description,dp:.dispatcher,arg:.arg,sub:.submap}) |
-      map(.mod |= ${builtins.toJSON modmasks} [.]) |
-      map(.code |= ${builtins.toJSON keycodes} [.]) |
-      sort_by(.mod) | .[] |
-      select(.sub == "") |
-      "${style}" ' | ${launcherCommand} |
-    # extract the command (dispatcher + arg)
-    sed -n 's/.*<span color=\"${cmdcolor}\">\(.*\)<\/span>.*/\1/p' |
-    ${
-      if dispatch then
-        ''
-          # add double quotes to the string so it can be piped to hyprctl dispatch
-          sed -e 's/^/"/g' -e 's/$/"/g' |
-          xargs -n1 hyprctl dispatch
-        ''
-      else
-        "xargs"
-    }
+
+  dynamic_bindings() {
+    hyprctl -j binds | \
+      ${lib.getExe jq} -r '.[] | {modmask, key, keycode, description, dispatcher, arg} | "\(.modmask),\(.key)@\(.keycode),\(.description),\(.dispatcher),\(.arg)"' | \
+      sed -r \
+          -e 's/null//' \
+          -e 's,~/.local/share/omarchy/bin/,,' \
+          -e 's,/nix/store/[0-9a-zA-Z\-]+/bin/,,' \
+          -e '/submap\,reset/d' \
+          -e 's,uwsm app -- ,,' \
+          -e 's/@0//' \
+          -e 's/,@/,code:/' \
+          -e 's/^0,/,/' \
+          -e 's/^1,/SHIFT,/' \
+          -e 's/^4,/CTRL,/' \
+          -e 's/^5,/SHIFT CTRL,/' \
+          -e 's/^8,/ALT,/' \
+          -e 's/^9,/SHIFT ALT,/' \
+          -e 's/^12,/CTRL ALT,/' \
+          -e 's/^13,/SHIFT CTRL ALT,/' \
+          -e 's/^64,/SUPER,/' \
+          -e 's/^65,/SUPER SHIFT,/' \
+          -e 's/^68,/SUPER CTRL,/' \
+          -e 's/^69,/SUPER SHIFT CTRL,/' \
+          -e 's/^72,/SUPER ALT,/' \
+          -e 's/^73,/SUPER SHIFT ALT,/' \
+          -e 's/^76,/SUPER CTRL ALT,/' \
+          -e 's/^77,/SUPER SHIFT CTRL ALT,/'
+  }
+
+  # Parse and format keybindings
+  #
+  # `awk` does the heavy lifting:
+  # - Set the field separator to a comma ','.
+  # - Joins the key combination (e.g., "SUPER + Q").
+  # - Joins the command that the key executes.
+  # - Prints everything in a nicely aligned format.
+  parse_bindings() {
+    awk -F, '
+  {
+      # Combine the modifier and key (first two fields)
+      key_combo = $1 " + " $2;
+
+      # Clean up: strip leading "+" if present, trim spaces
+      gsub(/^[ \t]*\+?[ \t]*/, "", key_combo);
+      gsub(/[ \t]+$/, "", key_combo);
+
+      # Use description, if set
+      action = $3;
+
+      if (action == "") {
+          # Reconstruct the command from the remaining fields
+          for (i = 4; i <= NF; i++) {
+              action = action $i (i < NF ? "," : "");
+          }
+
+          # Clean up trailing commas, remove leading "exec, ", and trim
+          sub(/,$/, "", action);
+          gsub(/(^|,)[[:space:]]*exec[[:space:]]*,?/, "", action);
+          gsub(/^[ \t]+|[ \t]+$/, "", action);
+          gsub(/[ \t]+/, " ", key_combo);  # Collapse multiple spaces to one
+
+          # Escape XML entities
+          gsub(/&/, "\\&amp;", action);
+          gsub(/</, "\\&lt;", action);
+          gsub(/>/, "\\&gt;", action);
+          gsub(/"/, "\\&quot;", action);
+          gsub(/'"'"'/, "\\&apos;", action);
+      }
+
+      if (action != "") {
+          printf "%-35s → %s\n", key_combo, action;
+      }
+  }'
+  }
+
+  monitor_height=$(hyprctl monitors -j | ${lib.getExe jq} -r '.[] | select(.focused == true) | .height')
+  menu_height=$((monitor_height * 40 / 100))
+
+  dynamic_bindings | \
+    sort -u | \
+    parse_bindings | \
+    ${launcherCommand}
 ''
