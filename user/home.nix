@@ -145,6 +145,7 @@
   };
   home.sessionVariables = {
     EDITOR = "nvim";
+    TERMINAL = "kitty";
   };
 
   xdg.mimeApps = {
