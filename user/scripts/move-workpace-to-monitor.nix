@@ -1,5 +1,3 @@
-# Credit to end-4
-# https://github.com/end-4/dots-hyprland/blob/main/.local/bin/fuzzel-emoji
 {
   writeShellApplication,
   config,
