@@ -111,7 +111,6 @@
       blueberry
 
       obs-studio
-      sonusmix
       gimp
       brave
       nautilus

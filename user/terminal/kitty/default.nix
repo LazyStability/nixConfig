@@ -15,18 +15,18 @@
   programs.kitty = lib.mkIf config.programs.kitty.enable {
     package = (
       pkgs.kitty.overrideAttrs (oldAttrs: rec {
-        version = "nightly";
+        version = "0.43.1";
         src = pkgs.fetchFromGitHub {
           owner = oldAttrs.src.owner;
           repo = oldAttrs.src.repo;
-          rev = "6ab8e7b4c8de80fc969ff0c1f1f8e8fdf1b2bd4e";
-          hash = "sha256-CsWktReyTDBA0UBQmnHFwLY7MzLDXLS5ZTrW1KiORVc=";
+          rev = "7f24dd68c98d8f4712457560f25e8056cce52ec8";
+          hash = "sha256-Wd61Q1sG55oDxPuHJpmvSWuptwJIuzgn2sB/dzNRc1c=";
         };
         goModules =
           (pkgs.buildGo124Module {
             pname = "kitty-go-modules";
             inherit version src;
-            vendorHash = "sha256-jq0BympW1+FwOeCJKSm16Jn8wqqu+R0n1c4ibr7Ipso=";
+            vendorHash = "sha256-bjtzvEQmpsrwD0BArw9N6/HqMB3T5xeqxpx89FV7p2A=";
           }).goModules;
 
       })
