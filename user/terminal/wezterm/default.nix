@@ -3,14 +3,7 @@
   inputs,
   ...
 }:
-#   let wezterm =  pkgs.wezterm.overrideAttrs (old:{
-#     version = "main";
-#     });
-#   in
 {
-  # home.packages = [
-  #   wezterm
-  # ];
   programs.wezterm = {
     package = inputs.wezterm-flake.packages.${pkgs.system}.default;
     enableZshIntegration = true;

@@ -1,19 +1,7 @@
 {
-  config,
   pkgs,
-  pkgs-stable,
   ...
 }:
-let
-  # Custom latex package
-  tex = pkgs.texlive.combine {
-    inherit (pkgs.texlive)
-      scheme-full
-      latexmk
-      titlesec
-      ;
-  };
-in
 {
   home.packages = with pkgs; [
     # lsps

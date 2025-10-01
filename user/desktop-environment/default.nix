@@ -5,7 +5,6 @@
   ...
 }:
 let
-  cfg = config.myHomeModules.desktopEnvironment;
   subDirsIn =
     dir:
     lib.attrsets.mapAttrsToList (name: _: name) (

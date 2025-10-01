@@ -1,27 +1,23 @@
 {
   pkgs,
   config,
-  lib,
   pkgs-stable,
   inputs,
   ...
 }:
 {
-  imports =
-    let
-    in
-    [
-      ./hardware-configuration.nix
-      ./secrets
-      ../../system/configuration.nix
+  imports = [
+    ./hardware-configuration.nix
+    ./secrets
+    ../../system/configuration.nix
 
-      inputs.disko.nixosModules.default
-      (import ../../system/disko.nix {
-        device = "/dev/disk/by-id/wwn-0x5002538d41022ecc";
-      })
+    inputs.disko.nixosModules.default
+    (import ../../system/disko.nix {
+      device = "/dev/disk/by-id/wwn-0x5002538d41022ecc";
+    })
 
-      inputs.home-manager.nixosModules.default
-    ];
+    inputs.home-manager.nixosModules.default
+  ];
   environment = {
     sessionVariables = {
       NH_FLAKE = "/etc/nixos";

@@ -2,7 +2,7 @@
   rustPlatform,
   fetchFromSourcehut,
 }:
-rustPlatform.buildRustPackage (finalAttrs: {
+rustPlatform.buildRustPackage (_finalAttrs: {
 
   pname = "filter-youtube-shorts";
   version = "0.0.1";

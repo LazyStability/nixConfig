@@ -1,5 +1,5 @@
 # default.nix
 let
-  pkgs = import <nixpkgs> {};
+  pkgs = import <nixpkgs> { };
 in
-  pkgs.callPackage ./neovim.nix {}
+pkgs.callPackage ./neovim.nix { }

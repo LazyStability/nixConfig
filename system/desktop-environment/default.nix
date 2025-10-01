@@ -1,11 +1,9 @@
 {
-  pkgs,
   config,
   lib,
   ...
 }:
 let
-  cfg = config.myModules.desktopEnvironment;
   subDirsIn =
     dir:
     lib.attrsets.mapAttrsToList (name: _: name) (

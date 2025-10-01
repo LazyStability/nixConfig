@@ -40,7 +40,7 @@
             user = "me";
           })
         ]
-        );
+      );
       default_session = (
         lib.mkMerge [
           (lib.mkIf (!config.programs.uwsm.enable) {

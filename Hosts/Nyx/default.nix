@@ -28,7 +28,7 @@
       NH_FLAKE = "/persist/etc/nixos";
     };
   };
-  
+
   #################
   ## Secure Boot ##
   #################
@@ -37,7 +37,7 @@
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
-     };
+    };
   };
 
   ################

@@ -1,7 +1,7 @@
 {
   writeShellApplication,
   neovim,
-  config
+  config,
 }:
 writeShellApplication {
   name = "quickcapture";
@@ -19,14 +19,14 @@ writeShellApplication {
             "No supported terminal active. Use programs.kitty.enable or programs.wezterm.enable.";
 
     in
-  ''
-    cd "$HOME/Dokumente/Personal"
-    noteFilename="./Tagebuch/Täglich/thisYear/$(date +%Y-%m-%d).md"
+    ''
+      cd "$HOME/Dokumente/Personal"
+      noteFilename="./Tagebuch/Täglich/thisYear/$(date +%Y-%m-%d).md"
 
-    ${terminalCommand} -- nvim  -c "norm Go## $(date +%H:%M)"\
-          -c "norm Go"\
-          -c "startinsert" "$noteFilename"
+      ${terminalCommand} -- nvim  -c "norm Go## $(date +%H:%M)"\
+            -c "norm Go"\
+            -c "startinsert" "$noteFilename"
 
-    exit
-  '';
+      exit
+    '';
 }
