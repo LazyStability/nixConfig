@@ -139,8 +139,7 @@
   # Mouse
   services = {
     ratbagd.enable = true;
-    ollama.enable = true;
-    open-webui.enable = true;
+    # llama-cpp.enable = true;
     syncthing.enable = true;
     playerctld.enable = true;
   };
