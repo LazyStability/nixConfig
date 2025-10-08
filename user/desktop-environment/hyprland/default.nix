@@ -168,11 +168,11 @@ in
       # Source the rest of the config
       # extraConfig = builtins.readFile ./hyprland.conf;
       extraConfig = ''
-        source ~/.config/hypr/autostart.conf
-        source ~/.config/hypr/input.conf
-        source ~/.config/hypr/keymaps.conf
-        source ~/.config/hypr/lookandfeel.conf
-        source ~/.config/hypr/windowrules.conf
+        source =~/.config/hypr/autostart.conf
+        source =~/.config/hypr/input.conf
+        source =~/.config/hypr/keymaps.conf
+        source =~/.config/hypr/lookandfeel.conf
+        source =~/.config/hypr/windowrules.conf
       '';
     };
   };
