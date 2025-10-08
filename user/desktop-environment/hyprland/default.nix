@@ -25,7 +25,6 @@ in
     ./hyprpapaper.nix
     ./waybar.nix
     ./swaync.nix
-    ./hyprlock.nix
   ];
 
   config = lib.mkIf (config.myHomeModules.desktopEnvironment.select == "hyprland") {
@@ -38,6 +37,7 @@ in
         hyprsunset
         hyprshade
         hyprshot
+        hyprlock
       ];
     # choose gtk theme
     gtk = {
@@ -52,7 +52,7 @@ in
     programs = {
       fuzzel.enable = true;
       waybar.enable = true;
-      hyprlock.enable = true;
+      # hyprlock.enable = true;
     };
     services = {
       hyprpaper.enable = lib.mkForce (!cfg.powerSavingMode.enable);
