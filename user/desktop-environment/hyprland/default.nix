@@ -22,7 +22,6 @@ let
 in
 {
   imports = [
-    ./hyprpapaper.nix
     ./waybar.nix
     ./swaync.nix
   ];
@@ -38,6 +37,7 @@ in
         hyprshade
         hyprshot
         hyprlock
+        hyprpaper
       ];
     # choose gtk theme
     gtk = {
@@ -55,7 +55,7 @@ in
       # hyprlock.enable = true;
     };
     services = {
-      hyprpaper.enable = lib.mkForce (!cfg.powerSavingMode.enable);
+      # hyprpaper.enable = lib.mkForce (!cfg.powerSavingMode.enable);
       swaync.enable = true;
     };
 
