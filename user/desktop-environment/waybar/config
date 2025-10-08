@@ -1,0 +1,113 @@
+[
+  {
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-charging": " {capacity}%",
+      "format-icons": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "format-plugged": " {capacity}%",
+      "states": {
+        "critical": 20,
+        "good": 95,
+        "warning": 30
+      }
+    },
+    "bluetooth": {
+      "format": "<span color='#00BFFF'>  </span>{status} ",
+      "format-connected": "<span color='#00BFFF'>  </span> {num_connections}",
+      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+    "clock": {
+      "format": "{:%H:%M}",
+      "interval": 60,
+      "tooltip": true,
+      "tooltip-format": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+      "format": "{usage}% "
+    },
+    "height": 32,
+    "layer": "top",
+    "memory": {
+      "format": "{}% "
+    },
+    "modules-center": [
+      "clock"
+    ],
+    "modules-left": [
+      "cpu",
+      "memory",
+      "bluetooth",
+      "privacy",
+      "hyprland/submap"
+    ],
+    "modules-right": [
+      "mpd",
+      "battery",
+      "temperature",
+      "network"
+    ],
+    "mpd": {
+      "consume-icons": {
+        "on": " "
+      },
+      "format": "{stateIcon} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+      "format-disconnected": "",
+      "format-stopped": "",
+      "interval": 10,
+      "random-icons": {
+        "off": "<span color=\"#f53c3c\"></span> ",
+        "on": " "
+      },
+      "repeat-icons": {
+        "on": " "
+      },
+      "single-icons": {
+        "on": "1 "
+      },
+      "state-icons": {
+        "paused": "",
+        "playing": ""
+      },
+      "tooltip": true,
+      "tooltip-format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) "
+    },
+    "network": {
+      "format-alt": "<span color='#00FFFF'> 󰤨  </span>{signalStrength}% ",
+      "format-disconnected": "<span color='#FF4040'>   </span>Disconnected ",
+      "format-ethernet": "<span color='#7FFF00'>  </span>Wired ",
+      "format-linked": "<span color='#FFA500'> 󱘖  </span>{ifname} (No IP) ",
+      "format-wifi": "<span color='#00FFFF'> 󰤨  </span>{essid} ",
+      "interval": 1,
+      "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}"
+    },
+    "position": "top",
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{temperatureC}°C {icon}",
+      "format-critical": "{temperatureC}°C {icon}",
+      "format-icons": [
+        "",
+        "",
+        ""
+      ],
+      "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      "thermal-zone": 2
+    }
+  }
+]

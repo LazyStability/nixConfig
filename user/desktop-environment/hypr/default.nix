@@ -22,7 +22,6 @@ let
 in
 {
   imports = [
-    ./waybar.nix
     ./swaync.nix
   ];
 
@@ -51,7 +50,7 @@ in
     # Enable all the utils
     programs = {
       fuzzel.enable = true;
-      waybar.enable = true;
+      # waybar.enable = true;
       # hyprlock.enable = true;
     };
     services = {
