@@ -37,6 +37,7 @@ in
         hyprshot
         hyprlock
         hyprpaper
+        waybar
       ];
     # choose gtk theme
     gtk = {
