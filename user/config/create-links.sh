@@ -21,6 +21,6 @@ mkdir -p "$HOME"/.config/hypr
 
 # symlink nvim ~/.config/nvim
 # symlink git ~/.config/git
-ln -s hypr/*.conf "$HOME"/.config/hypr
+ln -s "$SCRIPT_DIR"/hypr/*.conf "$HOME"/.config/hypr
 symlink waybar "$HOME"/.config/waybar
 
