@@ -39,6 +39,30 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # This alllows nix to run binary programs which expect these libraries in FHS compliant paths
+  # See here for more info: https://wiki.nixos.org/wiki/Nix-ld
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # List by default
+      zlib
+      zstd
+      stdenv.cc.cc
+      curl
+      openssl
+      attr
+      libssh
+      bzip2
+      libxml2
+      acl
+      libsodium
+      util-linux
+      glib
+      xz
+      systemd
+    ];
+  };
+
   nix = {
     # Garbage collection on the nix store
     gc = {
