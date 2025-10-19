@@ -34,6 +34,7 @@ in
         pwvucontrol
         hyprsunset
         hyprshade
+        hypridle
         hyprshot
         hyprlock
         hyprpaper
