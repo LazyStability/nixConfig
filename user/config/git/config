@@ -1,0 +1,50 @@
+[alias]
+	acm = "!git add -A && git commit"
+	acma = "!git add -A && git commit --amend"
+	acmae = "!git add -A && git commit --amend --no-edit"
+	br = "!git branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
+	cm = "!git commit"
+	cma = "!git commit --amend"
+	cmae = "!git commit --amend --no-edit"
+	co = "!git checkout"
+	cob = "!git checkout -b"
+	del = "!git branch -d"
+	l = "!git log"
+	lg = "!git log --pretty=format:\"%C(magenta)%h%Creset %G? -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30"
+	lo = "!git log --oneline"
+	recommit = "!git commit -e --file=$(git rev-parse --git-dir)/COMMIT_EDITMSG"
+	s = "!git status"
+	save = "!git add -A && git commit -m 'chore: commit save point'"
+	undo = "!git reset HEAD~1 --mixed"
+
+[commit]
+	gpgsign = true
+
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[gpg]
+	format = "ssh"
+
+[gpg "openpgp"]
+	program = "/nix/store/ccmli5f30agcxshc280ln34d69q8dcm2-gnupg-2.4.8/bin/gpg"
+
+[gpg "ssh"]
+	allowedSignersFile = "~/.ssh/allowed_signers"
+	defaultKeyCommand = "ssh-add -L | grep -i 'Klysmus'"
+
+[init]
+	defaultBranch = "main"
+
+[safe]
+	directory = "/etc/nixos"
+	directory = "/etc/nixos/user/editor/nvim"
+	directory = "/persist/etc/nixos"
+
+[user]
+	email = "LazilyStable@proton.me"
+	name = "LazyStability"
+
