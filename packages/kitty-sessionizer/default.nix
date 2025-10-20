@@ -9,12 +9,12 @@
 }:
 stdenv.mkDerivation {
   pname = "kitty-sessionizer";
-  version = "0.1.0";
+  version = "unstable-2025-10-21";
   src = fetchFromGitHub {
     owner = "LazyStability";
     repo = "kitty-sessionizer";
-    rev = "bff958214fef6a171fdaf2766bbdc0f315d01c0b";
-    sha256 = "sha256-Uf8rWl/gKWlh3fXejMthyxv7z2DyizwaFsIGpnDZ274=";
+    rev = "1df3edc32f26e80b1b80a0b8a18051c4aaea964e";
+    sha256 = "sha256-4Pr1tOK4jlTkTtIY38VQUIugVgKPJQSi+TiZ3zTKHZo=";
   };
   buildInputs = [
     bash
