@@ -23,4 +23,5 @@ mkdir -p "$HOME"/.config/hypr
 # symlink git ~/.config/git
 ln -s "$SCRIPT_DIR"/hypr/*.conf "$HOME"/.config/hypr
 symlink waybar "$HOME"/.config/waybar
+symlink kitty "$HOME"/.config/kitty
 

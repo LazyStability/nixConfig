@@ -14,7 +14,6 @@
     };
     desktopEnvironment.powerSavingMode.enable = true;
   };
-  programs.kitty.enable = true;
   programs.yazi.enable = true;
   programs.firefox.enable = true;
 }
