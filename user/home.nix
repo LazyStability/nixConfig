@@ -53,6 +53,17 @@
       });
       dungeondraft = pkgs.callPackage ../packages/dungeondraft { };
       kitty-sessionizer = pkgs.callPackage ../packages/kitty-sessionizer { };
+      patched-sioyek = (
+        pkgs.symlinkJoin {
+          name = "sioyek";
+          paths = [ pkgs.sioyek ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/sioyek \
+              --set QT_QPA_PLATFORM xcb
+          '';
+        }
+      );
       # From here https://github.com/Builditluc/wiki-tui/issues/267#issuecomment-3223496743
       patched-kitty = pkgs.kitty.overrideAttrs (oldAttrs: rec {
         version = "0.43.1";
