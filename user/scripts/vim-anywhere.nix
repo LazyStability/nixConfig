@@ -12,7 +12,7 @@ writeShellApplication {
   text =
     let
       terminalCommand =
-        if config.programs.kitty.enable then
+        if true then
           "kitty --class vim-anywhere"
         else if config.programs.wezterm.enable then
           "wezterm"

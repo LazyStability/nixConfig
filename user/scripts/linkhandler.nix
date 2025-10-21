@@ -42,7 +42,7 @@ writeShellApplication {
   text =
     let
       terminal =
-        if config.programs.kitty.enable then
+        if true then
           "kitty"
         else if config.programs.wezterm.enable then
           "wezterm"

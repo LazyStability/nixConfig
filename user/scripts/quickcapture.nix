@@ -9,7 +9,7 @@ writeShellApplication {
   text =
     let
       terminalCommand =
-        if config.programs.kitty.enable then
+        if true then
           "kitty --class scratchpad_quick_capture"
         else if config.programs.wezterm.enable then
           "wezterm"
