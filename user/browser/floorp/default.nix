@@ -12,7 +12,7 @@
     # Use the ESR for more policies for example search engines
     package = (
       lib.mkDefault (
-        pkgs.wrapFirefox pkgs.floorp-unwrapped (
+        pkgs.wrapFirefox pkgs.floorp-bin-unwrapped (
           import ../firefox-wrapping.nix {
             inherit pkgs lib;
           }

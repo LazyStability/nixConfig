@@ -144,9 +144,9 @@
     syncthing.enable = true;
     playerctld.enable = true;
     # Handle lid behaviour
-    logind = {
-      lidSwitchDocked = "ignore";
-      lidSwitch = "poweroff";
+    logind.settings.Login = {
+      HandleLidSwitchDocked = "ignore";
+      HandleLidSwitch = "poweroff";
     };
   };
 
