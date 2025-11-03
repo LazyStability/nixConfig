@@ -12,18 +12,6 @@ in
   };
   programs.vesktop = {
     enable = true;
-    package = pkgs.vesktop.overrideAttrs (old: {
-      buildInputs = [ pkgs.curl ] ++ old.buildInputs;
-      src = pkgs.fetchFromGitHub {
-        owner = old.src.owner;
-        repo = old.src.repo;
-        rev = old.src.rev;
-        hash = "sha256-CEkXs1fgYRlPiH6Qh+RUdVO4PbZ0P5do06m0x3K2KUc=";
-        postFetch = ''
-          cp ${loading-gif} $out/static/shiggy.gif
-        '';
-      };
-    });
     settings = {
       appBadge = false;
       checkUpdates = false;

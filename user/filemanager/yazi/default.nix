@@ -14,7 +14,7 @@
     fzf
     zoxide
     imagemagick
-    xdragon
+    dragon-drop
     exiftool
   ];
   # Use stylix

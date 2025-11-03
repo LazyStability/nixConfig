@@ -65,22 +65,6 @@
         }
       );
       # From here https://github.com/Builditluc/wiki-tui/issues/267#issuecomment-3223496743
-      patched-kitty = pkgs.kitty.overrideAttrs (oldAttrs: rec {
-        version = "0.43.1";
-        src = pkgs.fetchFromGitHub {
-          owner = oldAttrs.src.owner;
-          repo = oldAttrs.src.repo;
-          rev = "7f24dd68c98d8f4712457560f25e8056cce52ec8";
-          hash = "sha256-Wd61Q1sG55oDxPuHJpmvSWuptwJIuzgn2sB/dzNRc1c=";
-        };
-        goModules =
-          (pkgs.buildGo124Module {
-            pname = "kitty-go-modules";
-            inherit version src;
-            vendorHash = "sha256-bjtzvEQmpsrwD0BArw9N6/HqMB3T5xeqxpx89FV7p2A=";
-          }).goModules;
-
-      });
       patched-wiki-tui = wiki-tui.overrideAttrs (old: {
         nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
           gnugrep
@@ -160,10 +144,10 @@
       remmina
       w3m
       komikku
+      kitty
       kitty-sessionizer
       patched-keepassxc
       patched-wiki-tui
-      patched-kitty
       patched-sioyek
     ]
   );
