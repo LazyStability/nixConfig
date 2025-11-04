@@ -48,3 +48,5 @@
 	email = "LazilyStable@proton.me"
 	name = "LazyStability"
 
+[core]
+	excludesFile = ~/.config/git/ignore
