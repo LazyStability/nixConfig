@@ -9,3 +9,4 @@ launch --hold onefetch
 new_tab @@session@@ - zsh
 cd @@session-path@@ 
 launch zsh
+focus_tab 0
