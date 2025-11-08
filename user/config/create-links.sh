@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+# link, delete, copy
+ACTION="${1//[^a-zA-Z0-9 ]/}"
+echo "$ACTION"
+
 function symlink() {
     if [[ -e "$2" && ! -L "$2" ]] ; then
         echo "$2 exists and is not a symlink. Ignoring it." >&2
@@ -17,13 +21,34 @@ function symlink() {
     ln -sv "${SCRIPT_DIR}/$1" "$2"
 }
 
-mkdir -p "$HOME"/.config/hypr
-
+if [ "$ACTION" == "link" ]; then
 # symlink nvim ~/.config/nvim
 # symlink git ~/.config/git
-ln -s "$SCRIPT_DIR"/hypr/*.conf "$HOME"/.config/hypr
-symlink waybar "$HOME"/.config/waybar
-symlink kitty "$HOME"/.config/kitty
-symlink git "$HOME"/.config/git
-symlink sioyek "$HOME"/.config/sioyek
+    echo "linking..."
+    mkdir -p "$HOME"/.config/hypr
+    ln -s "$SCRIPT_DIR"/hypr/*.conf "$HOME"/.config/hypr
+    symlink "$SCRIPT_DIR"/waybar "$HOME"/.config/waybar
+    symlink "$SCRIPT_DIR"/kitty "$HOME"/.config/kitty
+    symlink "$SCRIPT_DIR"/git "$HOME"/.config/git
+    symlink "$SCRIPT_DIR"/sioyek "$HOME"/.config/sioyek
 
+elif [ "$ACTION" == "delete" ]; then
+    echo "Deleting..."
+    rm -rf "$HOME"/.config/hypr
+    rm "$HOME"/.config/waybar
+    rm "$HOME"/.config/kitty
+    rm "$HOME"/.config/git
+    rm "$HOME"/.config/sioyek
+
+elif [ "$ACTION" == "copy" ]; then
+    echo "Copy..."
+    mkdir -p "$HOME"/.config/hypr
+    cp "$SCRIPT_DIR"/hypr/*.conf "$HOME"/.config/hypr/
+    cp -R "$SCRIPT_DIR"/waybar "$HOME"/.config/waybar
+    cp -R "$SCRIPT_DIR"/kitty "$HOME"/.config/kitty
+    cp -R "$SCRIPT_DIR"/git "$HOME"/.config/git
+    cp -R "$SCRIPT_DIR"/sioyek "$HOME"/.config/sioyek
+else 
+    echo "Operation not supported"
+    exit 1
+fi
