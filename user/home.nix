@@ -141,8 +141,6 @@
       kdePackages.okular
 
       imv
-      glance
-      wealthfolio
       keymapp
       piper
       networkmanagerapplet
@@ -151,7 +149,6 @@
       element-desktop
       iamb
 
-      obs-studio
       gimp
       brave
       nautilus
@@ -189,9 +186,8 @@
       dungeondraft
       rnote
       hyperfine
-      tor
+      tor-browser
       reddit-tui
-      zathura
       anki
       zotero
       prismlauncher
