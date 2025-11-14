@@ -35,10 +35,10 @@ if [ "$ACTION" == "link" ]; then
 elif [ "$ACTION" == "delete" ]; then
     echo "Deleting..."
     rm -rf "$HOME"/.config/hypr
-    rm "$HOME"/.config/waybar
-    rm "$HOME"/.config/kitty
-    rm "$HOME"/.config/git
-    rm "$HOME"/.config/sioyek
+    rm -rf "$HOME"/.config/waybar
+    rm -rf "$HOME"/.config/kitty
+    rm -rf "$HOME"/.config/git
+    rm -rf "$HOME"/.config/sioyek
 
 elif [ "$ACTION" == "copy" ]; then
     echo "Copy..."
