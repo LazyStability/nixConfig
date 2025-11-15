@@ -46,12 +46,12 @@ elif [ "$ACTION" == "copy" ]; then
     echo "Copy..."
     mkdir -p "$HOME"/.config/hypr
     cp "$SCRIPT_DIR"/hypr/*.conf "$HOME"/.config/hypr/
-    cp -R "$SCRIPT_DIR"/waybar "$HOME"/.config/waybar
-    cp -R "$SCRIPT_DIR"/kitty "$HOME"/.config/kitty
-    cp -R "$SCRIPT_DIR"/git "$HOME"/.config/git
-    cp -R "$SCRIPT_DIR"/sioyek "$HOME"/.config/sioyek
-    cp -R "$SCRIPT_DIR"/vesktop "$HOME"/.config/vesktop
-    cp -R "$SCRIPT_DIR"/mpv "$HOME"/.config/mpv
+    cp -R "$SCRIPT_DIR"/waybar/. "$HOME"/.config/waybar
+    cp -R "$SCRIPT_DIR"/kitty/. "$HOME"/.config/kitty
+    cp -R "$SCRIPT_DIR"/git/. "$HOME"/.config/git
+    cp -R "$SCRIPT_DIR"/sioyek/. "$HOME"/.config/sioyek
+    cp -R "$SCRIPT_DIR"/vesktop/. "$HOME"/.config/vesktop
+    cp -R "$SCRIPT_DIR"/mpv/. "$HOME"/.config/mpv
 else 
     echo "Operation not supported"
     exit 1
