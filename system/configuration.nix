@@ -143,6 +143,13 @@
       NIXOS_OZONE_PLATFORM = 1;
     };
   };
+  programs.neovim = {
+    enable = true;
+
+    viAlias = true;
+    vimAlias = true;
+    # vimdiffAlias = true;
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
