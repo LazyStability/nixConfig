@@ -39,6 +39,7 @@ elif [ "$ACTION" == "delete" ]; then
     rm -rf "$HOME"/.config/kitty
     rm -rf "$HOME"/.config/git
     rm -rf "$HOME"/.config/sioyek
+    rm -rf "$HOME"/.config/vesktop
 
 elif [ "$ACTION" == "copy" ]; then
     echo "Copy..."
@@ -48,6 +49,7 @@ elif [ "$ACTION" == "copy" ]; then
     cp -R "$SCRIPT_DIR"/kitty "$HOME"/.config/kitty
     cp -R "$SCRIPT_DIR"/git "$HOME"/.config/git
     cp -R "$SCRIPT_DIR"/sioyek "$HOME"/.config/sioyek
+    cp -R "$SCRIPT_DIR"/vesktop "$HOME"/.config/vesktop
 else 
     echo "Operation not supported"
     exit 1

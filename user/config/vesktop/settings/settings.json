@@ -1,0 +1,129 @@
+{
+  "autoUpdate": false,
+  "autoUpdateNotification": false,
+  "cloud": {
+    "authenticated": false,
+    "settingsSync": false,
+    "settingsSyncVersion": 1743698969732,
+    "url": "https://api.vencord.dev/"
+  },
+  "disableMinSize": false,
+  "enableReactDevtools": false,
+  "enabledThemes": [
+    "stylix.css",
+    "stylix.theme.css"
+  ],
+  "frameless": false,
+  "notifications": {
+    "logLimit": 50,
+    "position": "bottom-right",
+    "timeout": 5000,
+    "useNative": "not-focused"
+  },
+  "plugins": {
+    "AnonymiseFileNames": {
+      "enabled": true
+    },
+    "BadgeAPI": {
+      "enabled": true
+    },
+    "BetterRoleContext": {
+      "enabled": true
+    },
+    "CallTimer": {
+      "enabled": true,
+      "format": "stopwatch"
+    },
+    "ClearURLs": {
+      "enabled": true
+    },
+    "CommandsAPI": {
+      "enabled": true
+    },
+    "CrashHandler": {
+      "enabled": true
+    },
+    "DynamicImageModalAPI": {
+      "enabled": true
+    },
+    "Experiments": {
+      "enabled": true
+    },
+    "FakeNitro": {
+      "enableEmojiBypass": true,
+      "enableStickerBypass": true,
+      "enableStreamQualityBypass": true,
+      "enabled": true,
+      "transformCompoundSentence": false,
+      "transformEmojis": true,
+      "transformStickers": true
+    },
+    "FriendsSince": {
+      "enabled": true
+    },
+    "GameActivityToggle": {
+      "enabled": true,
+      "oldIcon": false
+    },
+    "MemberCount": {
+      "enabled": true,
+      "memberList": true,
+      "toolTip": true
+    },
+    "MessageAccessoriesAPI": {
+      "enabled": true
+    },
+    "MessageEventsAPI": {
+      "enabled": true
+    },
+    "NoTrack": {
+      "disableAnalytics": true,
+      "enabled": true
+    },
+    "NoTypingAnimation": {
+      "enabled": true
+    },
+    "OnePingPerDM": {
+      "allowEveryone": false,
+      "allowMentions": false,
+      "channelToAffect": "both_dms",
+      "enabled": true
+    },
+    "ServerInfo": {
+      "enabled": true
+    },
+    "Settings": {
+      "enabled": true,
+      "settingsLocation": "aboveNitro"
+    },
+    "ShowHiddenChannels": {
+      "enabled": true,
+      "hideUnreads": true,
+      "showMode": 0
+    },
+    "SupportHelper": {
+      "enabled": true
+    },
+    "UserSettingsAPI": {
+      "enabled": true
+    },
+    "WebContextMenus": {
+      "addBack": true,
+      "enabled": true
+    },
+    "WebKeybinds": {
+      "enabled": true
+    },
+    "WebScreenShareFixes": {
+      "enabled": true
+    },
+    "WhoReacted": {
+      "enabled": true
+    }
+  },
+  "themeLinks": [],
+  "transparent": false,
+  "useQuickCss": true,
+  "winCtrlQ": false,
+  "winNativeTitleBar": false
+}

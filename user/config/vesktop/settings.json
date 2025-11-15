@@ -1,0 +1,19 @@
+{
+  "appBadge": false,
+  "arRPC": true,
+  "checkUpdates": false,
+  "customTitleBar": false,
+  "disableMinSize": true,
+  "discordBranch": "stable",
+  "hardwareAcceleration": true,
+  "minimizeToTray": false,
+  "spellCheckLanguages": [
+    "de",
+    "de-DE"
+  ],
+  "splashBackground": "rgba(0, 0, 0, 0)",
+  "splashColor": "rgb(223, 224, 226)",
+  "staticTitle": true,
+  "transparencyOption": "epic banana",
+  "tray": false
+}
