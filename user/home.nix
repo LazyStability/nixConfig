@@ -38,6 +38,20 @@
   home.packages = (
     with pkgs;
     let
+      patched-mpv = pkgs.mpv-unwrapped.wrapper {
+        scripts = with pkgs.mpvScripts; [
+          modernz
+          mpris
+          mpv-discord
+          sponsorblock
+        ];
+
+        mpv = pkgs.mpv-unwrapped.override {
+          waylandSupport = true;
+          sdl2Support = true;
+        };
+      };
+
       patched-keepassxc = keepassxc.overrideAttrs (previousAttrs: {
         version = "patched";
         src = fetchFromGitHub {
@@ -175,6 +189,7 @@
       komikku
       kitty
       kitty-sessionizer
+      patched-mpv
       patched-keepassxc
       patched-wiki-tui
       patched-sioyek
