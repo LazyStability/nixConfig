@@ -186,6 +186,7 @@
       piper
       remmina
       w3m
+      vesktop
       komikku
       kitty
       kitty-sessionizer
