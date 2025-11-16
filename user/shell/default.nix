@@ -13,6 +13,7 @@ let
   };
 in
 {
+  services.ssh-agent.enable = true;
   # CLI Tools
   home.packages = with pkgs; [
     bat
