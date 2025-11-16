@@ -36,7 +36,7 @@
       "format": "{:%H:%M}",
       "interval": 60,
       "tooltip": true,
-      "tooltip-format": "{:%Y-%m-%d}"
+      "tooltip-format": "{:%a %Y-%m-%d}"
     },
     "cpu": {
       "format": "{usage}% "
@@ -50,8 +50,6 @@
       "clock"
     ],
     "modules-left": [
-      "cpu",
-      "memory",
       "bluetooth",
       "privacy",
       "hyprland/submap"
@@ -59,7 +57,6 @@
     "modules-right": [
       "mpd",
       "battery",
-      "temperature",
       "network"
     ],
     "mpd": {
