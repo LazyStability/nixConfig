@@ -85,32 +85,4 @@ in
     enable = true;
     enableZshIntegration = true;
   };
-
-  programs.starship = {
-    enable = true;
-    enableNushellIntegration = true;
-    enableZshIntegration = true;
-    settings = {
-      add_newline = true;
-      character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[](bold red)";
-      };
-      nix_shell = {
-        format = ''via [$symbol$state]($style)'';
-      };
-      directory.substitutions = {
-        "~/Dokumente" = "󰈙 ";
-        "~/Downloads" = " ";
-        "~/.config/nvim" = "";
-        "~/Musik" = " ";
-        "~/Software" = "";
-        "~/Games" = "󰊗";
-        "~/Bilder" = " ";
-      };
-      #[custom.unreal]
-      #symbol = "󰦱"  # symbol for this
-      #files = ["*.uproject"]       # can specify filters
-    };
-  };
 }
