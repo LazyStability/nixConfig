@@ -1,0 +1,21 @@
+default_profile = "uni"
+
+[profiles.uni]
+user_id = "@qf226:matrix-im.uni-heidelberg.de"
+
+[profiles.ginyu]
+user_id = "@klysmus:ginyu.win"
+url = "https://matrix.ginyu.win"
+
+[settings.notifications]
+enabled = true
+
+[macros.normal]
+"gc" = ":chats<Enter>"
+"gs" = ":spaces<Enter>"
+"gg" = ":welcome<Enter>"
+"ZQ" = ":qa<Enter>"
+
+[settings.image_preview]
+protocol.type = "kitty"
+

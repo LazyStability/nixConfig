@@ -135,6 +135,8 @@
       networkmanager-openvpn
       blueberry
       element-desktop
+      vesktop
+      iamb
 
       obs-studio
       gimp
@@ -186,7 +188,6 @@
       piper
       remmina
       w3m
-      vesktop
       komikku
       kitty
       kitty-sessionizer

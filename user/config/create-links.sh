@@ -53,6 +53,7 @@ elif [ "$ACTION" == "copy" ]; then
     cp -R "$SCRIPT_DIR"/vesktop/. "$HOME"/.config/vesktop
     cp -R "$SCRIPT_DIR"/mpv/. "$HOME"/.config/mpv
     cp -R "$SCRIPT_DIR"/ssh/. "$HOME"/.ssh
+    cp -R "$SCRIPT_DIR"/iamb/. "$HOME"/.config/iamb
 else 
     echo "Operation not supported"
     exit 1
