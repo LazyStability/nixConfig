@@ -1,0 +1,1 @@
+A lot of these things are from [this wonderful article](https://saylesss88.github.io/intro_to_nushell_on_NixOS.html) and in [this repo](https://github.com/saylesss88/flaked/tree/main/home/shells/nushell/config).

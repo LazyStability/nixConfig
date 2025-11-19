@@ -97,6 +97,7 @@
       hyperfine
       tor-browser
       newsboat
+      nushell
       reddit-tui
       anki
       zotero
