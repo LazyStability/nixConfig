@@ -1,11 +1,7 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 let
   # Shell aliases
   myShellAliases = {
-    test = "cd ..";
     cat = "bat";
     ls = "eza";
     ll = "eza -l";
@@ -13,23 +9,27 @@ let
   };
 in
 {
-  services.ssh-agent.enable = true;
-  # CLI Tools
-  home.packages = with pkgs; [
+
+  environment.systemPackages = with pkgs; [
     bat
     croc
     onefetch
     fastfetch
     tree
     ripgrep
-    pandoc
     hwinfo
     zoxide
+    eza
+    fzf
     btop
     # For autocompletes
     carapace
   ];
-  # Shells
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
   programs.bash = {
     enable = false;
     shellAliases = myShellAliases;
@@ -37,7 +37,7 @@ in
   programs.zsh = {
     enable = true;
 
-    autosuggestion.enable = false;
+    # autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     shellAliases = myShellAliases;
@@ -47,27 +47,9 @@ in
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    enableNushellIntegration = true;
-    options = [
-      "--cmd cd"
+    flags = [
+      "--no-cmd"
+      "--cmd j"
     ];
   };
-  programs.eza = {
-    enable = true;
-    enableZshIntegration = true;
-    # enableNushellIntegration = true;
-  };
-
-  # configure direnv
-  programs.direnv = {
-    enable = true;
-    enableNushellIntegration = true;
-    enableZshIntegration = true;
-    nix-direnv.enable = true;
-  };
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
 }
