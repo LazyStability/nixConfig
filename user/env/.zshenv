@@ -1,0 +1,14 @@
+if [ -z "$SSH_AUTH_SOCK" -o -z "$SSH_CONNECTION" ]; then
+  export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
+fi
+
+export EDITOR="nvim"
+export FZF_DEFAULT_OPTS="--color bg:#24283b,bg+:#1f2335,fg:#a9b1d6,fg+:#c0caf5,header:#41a6b5,hl:#41a6b5,hl+:#41a6b5,info:#e0af68,marker:#1abc9c,pointer:#1abc9c,prompt:#e0af68,spinner:#1abc9c"
+export GTK2_RC_FILES="/home/me/.gtkrc-2.0"
+export MPD_HOST="127.0.0.1"
+export MPD_PORT="6600"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_STYLE_OVERRIDE="kvantum"
+export TERMINAL="kitty"
+export XCURSOR_SIZE="24"
+export XCURSOR_THEME="Bibata-Modern-Ice"
