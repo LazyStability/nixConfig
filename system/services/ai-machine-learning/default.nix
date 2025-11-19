@@ -22,12 +22,15 @@
   #   };
   # };
   environment.systemPackages = (
-    # lib.mkIf config.services.llama-cpp.enable [
-    #     (pkgs.whisper-cpp.override { cudaSupport = true; })
-    with pkgs;
-    [
-      opencode
-      (llama-cpp.override { cudaSupport = true; })
-    ]
+    if config.networking.hostName == "Kronos" then
+      # lib.mkIf config.services.llama-cpp.enable [
+      #     (pkgs.whisper-cpp.override { cudaSupport = true; })
+      with pkgs;
+      [
+        opencode
+        (llama-cpp.override { cudaSupport = true; })
+      ]
+    else
+      [ ]
   );
 }
