@@ -78,6 +78,20 @@
           '';
         }
       );
+      patched-vesktop = vesktop.override {
+        withSystemVencord = true;
+        vencord = patched-vencord;
+      };
+      patched-vencord = vencord.overrideAttrs (old: {
+        version = "unstable-2025-11-19";
+        src = fetchFromGitHub {
+          owner = old.src.owner;
+          repo = old.src.repo;
+          rev = "9c3163da5e31bdfea0645df93f12a8be40d37e38";
+          hash = "sha256-qSZghHypLITL+X36M2Uf2eNPRkD7+YfaOFfpmN8fIVA=";
+        };
+      });
+
       # From here https://github.com/Builditluc/wiki-tui/issues/267#issuecomment-3223496743
       patched-wiki-tui = wiki-tui.overrideAttrs (old: {
         nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
@@ -135,7 +149,6 @@
       networkmanager-openvpn
       blueberry
       element-desktop
-      vesktop
       iamb
 
       obs-studio
@@ -195,6 +208,7 @@
       patched-keepassxc
       patched-wiki-tui
       patched-sioyek
+      patched-vesktop
     ]
   );
 
