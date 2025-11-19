@@ -127,6 +127,10 @@
   virtualisation.vmware.guest.enable = true;
 
   # List services that you want to enable:
+  services.gitolite = {
+    enable = true;
+    adminPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQUQQWdmgdktQTRgBq0phM5fh5+QCBBtaeGmUouWwkv Klysmus@online.de";
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh = {
