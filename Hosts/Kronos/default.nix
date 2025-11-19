@@ -121,7 +121,11 @@
     };
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    spiceUSBRedirection.enable = true;
+    libvirtd.enable = true;
+  };
   programs = {
     wireshark.enable = true;
     wireshark.package = pkgs.wireshark;
