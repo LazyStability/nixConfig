@@ -14,6 +14,14 @@ let
     Useragent = "AnyConnect-compatible OpenConnect VPN Agent";
     vpnname = "uni";
   };
+  full-univpn = pkgs.callPackage ./univpn.nix {
+    entryname = "Unizugang";
+    database = "/home/me/Dokumente/Software/Keepass/Uni.kdbx";
+    Host = "vpn-ac.urz.uni-heidelberg.de";
+    User = "qf226";
+    Useragent = "AnyConnect-compatible OpenConnect VPN Agent";
+    vpnname = "uni-full";
+  };
   quickcapture = pkgs.callPackage ./quickcapture.nix { config = config; };
   vim-anywhere = pkgs.callPackage ./vim-anywhere.nix { config = config; };
   linkhandler = pkgs.callPackage ./linkhandler.nix { config = config; };
@@ -28,6 +36,7 @@ in
     {
       packages = [
         univpn
+        full-univpn
         vim-anywhere
         quickcapture
         linkhandler
