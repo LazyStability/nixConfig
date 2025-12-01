@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -14,6 +15,11 @@ in
     programs.steam = {
       enable = true;
       gamescopeSession.enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+        steamtinkerlaunch
+      ];
+
     };
 
     programs.gamemode.enable = true;
