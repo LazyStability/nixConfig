@@ -103,17 +103,18 @@
       select = "hyprland";
       monitors = [
         {
-          name = "DP-2";
+          name = "DP-1";
           enable = true;
-          mode = "1920x1200";
-          position = "1280x0";
+          position = "1200x0";
+          mode = "3840x2160";
+          scale = "1.5";
           rate = "60";
           primary = true;
         }
         {
-          name = "DP-1";
+          name = "DP-2";
           enable = true;
-          mode = "1280x1024";
+          mode = "1920x1200";
           position = "0x0";
           rate = "60";
         }

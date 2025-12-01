@@ -37,6 +37,11 @@ let
         type = lib.types.strMatching "[0-9]{2,3}";
         description = "Refreshrate of the monitor, format ";
       };
+      scale = lib.mkOption {
+        default = "60";
+        type = lib.types.str;
+        description = "Refreshrate of the monitor, format ";
+      };
       primary = lib.mkOption {
         default = false;
         type = lib.types.bool;

@@ -94,7 +94,17 @@ in
         let
           monitor-hypr = lib.lists.forEach cfg.monitors (
             Monitor:
-            (Monitor.name + "," + Monitor.mode + "@" + Monitor.rate + "," + Monitor.position + "," + "1")
+            (
+              Monitor.name
+              + ","
+              + Monitor.mode
+              + "@"
+              + Monitor.rate
+              + ","
+              + Monitor.position
+              + ","
+              + Monitor.scale
+            )
           );
 
           windowswitcher = lib.getExe (
