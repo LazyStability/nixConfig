@@ -114,12 +114,9 @@
       devShells.${system}.default = pkgs.mkShellNoCC {
         FLAKE = ./.;
         # Allows us to work with sops in the repository
-        shellHook = ''
-          export SOPS_AGE_KEY=$(printf "url=https://example.com" | git-credential-keepassxc get | sed -n 's/^password=//1p')
-        '';
+        shellHook = '''';
         packages = with pkgs; [
           sops
-          (git-credential-keepassxc.override { withNotification = true; })
           # Formatter
           treefmt
           nixfmt-rfc-style

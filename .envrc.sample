@@ -1,0 +1,3 @@
+use flake
+export SOPS_AGE_KEY=
+export DUNGEONDRAFT_PURCHASE_KEY=
