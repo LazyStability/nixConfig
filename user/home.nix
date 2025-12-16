@@ -201,7 +201,8 @@
       kitty
       kitty-sessionizer
       patched-mpv
-      patched-keepassxc
+      # patched-keepassxc
+      keepassxc
       patched-wiki-tui
       patched-sioyek
       patched-vesktop
