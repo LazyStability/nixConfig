@@ -105,7 +105,7 @@
         {
           name = "DP-1";
           enable = true;
-          position = "1200x0";
+          position = "1920x0";
           mode = "3840x2160";
           scale = "1.5";
           rate = "60";
@@ -116,6 +116,7 @@
           enable = true;
           mode = "1920x1200";
           position = "0x0";
+          scale = "1";
           rate = "60";
         }
       ];
