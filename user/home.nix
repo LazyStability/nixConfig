@@ -158,6 +158,7 @@
       pyright
       # texlab
       nixd
+      harper
       llvmPackages_19.clang-unwrapped
       stylua
       typescript-language-server
