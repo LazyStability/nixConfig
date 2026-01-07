@@ -1,0 +1,136 @@
+"---Query Feeds---"
+"query:Primeagen Youtube:tags #\"Primeagen\""
+"query:Coding memes:tags #\"memes\" and tags # \"memes\" and unread = \"yes\""
+"query:Webnovels:tags #\"webnovel\" and unread = \"yes\""
+"query:News:tags #\"news\" and unread = \"yes\""
+"query:Game coding:tags #\"games\" and tags #\"coding\" and unread = \"yes\""
+"query:Gaming:tags #\"games\" and tags !#\"coding\" and unread = \"yes\""
+"query:New yt:rssurl=~ \"youtube\" and unread = \"yes\" and tags !# \"memes\" "
+
+" "
+"---Important---"
+"filter:/home/me/.newsboat/youtube-filter.sh \"Fab Marketplace Free Stuff\":https://www.youtube.com/feeds/videos.xml?channel_id=UC8_RNwftEO4isrX2LJowcpg" "~Free unreal engine assets"
+
+"---Companies---"
+https://github.blog/feed/ tech "~Github"
+https://signal.org/blog/rss.xml tech "~Signal"
+https://stackoverflow.blog/feed tech "~Stackoverflow"
+" "
+"---Blogs---"
+https://jade.fyi/rss.xml nix coding
+https://xeiaso.net/blog.rss nix devops coding
+https://landchad.net/index.xml IT devops
+https://christitus.com/categories/linux/index.xml IT tech
+https://linkarzu.com/feed.xml productivity nvim
+https://fmhy.net/feed.rss productivity Research
+https://astrid.tech/feed.xml nix IT devops
+https://tjex.net/rss.xml tech 																"~tjex"
+https://codingotaku.com/blogs/atom.xml IT
+https://dataswamp.org/~solene/rss.xml IT nix
+https://www.joelonsoftware.com/feed/ IT coding
+https://jvns.ca/atom.xml
+https://krebsonsecurity.com/feed/ IT security
+https://mitchellh.com/feed.xml IT coding
+https://hamvocke.com/feed.xml IT coding
+https://xn--gckvb8fzb.com/index.xml privacy
+
+" "
+"---Computer Science---"
+https://www.aiweirdness.com/rss AI IT
+https://leancrew.com/all-this/feed/ IT AI
+https://medium.com/@karpathy/feed IT AI
+https://karpathy.bearblog.dev/feed/ IT AI
+https://www.cppstories.com/index.xml IT coding
+https://itrunsdoom.tumblr.com/rss IT "coding memes"
+https://learnbyexample.github.io/atom.xml 
+https://arne-mertz.de/feed/ coding IT 															"~Simplify cpp"
+
+" "
+"---Tech---"
+https://feeds.feedburner.com/HaveIBeenPwnedLatestBreaches security
+https://www.profgalloway.com/feed/ tech
+https://www.nasa.gov/feed/ science tech
+https://grapheneos.social/@GrapheneOS.rss tech																								"~GrapheneOs Mastadon"
+https://bluestream.deno.dev/did:plc:kym5w7pcv4v7xbz7lvbj24na?repost=include tech							"~GrapheneOs Bluesky"
+https://monero.observer/feed-mini.xml	crypto
+" "
+
+" "
+"---Papers---"
+http://www.nature.com/nmat/journal/vaop/ncurrent/rss.rdf science
+#https://rss.arxiv.org/rss/cs IT science
+
+"---Newsletters---"
+https://kill-the-newsletter.com/feeds/ul5gjy7a9cdf47lm8hzu.xml dnd ttrpg
+https://boilingsteam.com/feed/rss-feed.xml games
+https://newsletter.pessimistsarchive.org/feed
+https://kill-the-newsletter.com/feeds/b62p0yszf1q55i2vym8w.xml news											"~We're here"
+https://kill-the-newsletter.com/feeds/32s6kgw57tano9s4akrl.xml news											"~netzpolitik.org"
+
+" "
+"---News---"
+https://www.tagesschau.de/infoservices/alle-meldungen-100~rss2.xml news
+
+# Webnovels
+" "
+"---Webnovels---"
+https://www.royalroad.com/fiction/syndication/81642 webnovel 	 											"~Cultivation Nerd"
+https://www.royalroad.com/fiction/syndication/118891 webnovel	 											"~Max Level Archmage"
+https://www.royalroad.com/fiction/syndication/117689 webnovel	 	 										"~The Warcrowned"
+https://www.royalroad.com/fiction/syndication/76478 webnovel	 		 									"~Hoard"
+https://www.royalroad.com/fiction/syndication/81002 webnovel	 			 								"~Years of Apocalypse"
+https://www.royalroad.com/fiction/syndication/75345 webnovel	 											"~Changeling"
+https://www.royalroad.com/fiction/syndication/95704 webnovel	 	 										"~Elders Revolution"
+https://www.royalroad.com/fiction/syndication/125722 webnovel	 											"~Objects in Motion"
+https://www.royalroad.com/fiction/syndication/109390 webnovel	 											"~Heart Devil"
+https://www.royalroad.com/fiction/syndication/105295 webnovel	 											"~The Bell tolls for me"
+
+" "
+"---Youtube---"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCWQaM7SpSECp9FELz-cHzuQ coding IT				"~Dreams of Code"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEEVcDuBRDiwxfXAgQjLGug IT					"~Dreams of Autonomie"
+https://videos.lukesmith.xyz/feeds/videos.xml?videoChannelId=2  devops Privacy										"~Luke Smith"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVuqy-GCyY_I6ghX-V1kBRQ "games"				"~Beghast"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCgb_TbreMgfDdLKkr4yYJHw environment				"~Andrew Millison"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXzw-OdotBUcNA9yhuYQBwA coding IT				"~Awesome"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC5--wS0Ljbin1TjWQX6eafA "coding memes"			"~bigboxswe"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCZg4PvX48mgXQVySgIulX-Q IT devops				"~CertBros"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ IT devops				"~ChrisTitusTech"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCwD5YYkbYmN2iFHON9FyDXg health				"~David Sinclair"
+https://www.youtube.com/feeds/videos.xml?channel_id=UClHVl2N3jPEbkNJVx-ItQIQ "mental health"			"~Doctor K"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCWEVAMMyXF2NP5txDESGemg games coding			"~Fat Dino"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA "coding memes"			"~Fireship"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqJ-Xo29CKyLTjn6z2XwYAw games coding			"~Game Maker's Toolkit"
+https://www.youtube.com/feeds/videos.xml?channel_id=UChkC4u4KdnIDFh9hPqExLDg  games coding			"~Low Level Game Dev"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTGWWvmseOlcSqfDM3dXdaw music				"~Lydia the Bard"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCAv58974MByI1SL2Gy_jhjg "coding memes"			"~Sir Freelancealot"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCQ-W1KE9EYfdxhL6S4twUNw coding games			"~The Cherno"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw coding IT Primeagen ! 		"~ThePrimeagen"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUyeluBRhGPCW4rPe_UvBZQ coding IT nvim Primeagen ! 		"~ThePrimeTime"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVk4b-svNJoeytrrlOixebQ coding IT nvim Primeagen !		"~TheVimeagen"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCQvW_89l7f-hCMP1pzGm4xw "coding" games hacking		"~Nathan Baggs"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A Research				"~Tom Scott"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCo71RUe6DX4w-Vd47rFLXPg IT devops				"~Typecraft"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCzYaOq-wgxAWc14YT8q2cZA Research				"~Unity Research"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC_zBdZ0_H_jn41FDRG7q4Tw IT devops nix			"~Vimjoyer"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsrVDPJBYeXItETFHG0qzyw coding IT				"~Web Dev Cody"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVWhVAZwCdQsPZL-mDLcxPQ Research				"~Whitelight"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg IT devops				"~Wolfgangs Channel"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA Research				"~Veritasium"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSuHzQ3GrHSzoBbwrIq3LLA Privacy				"~Naomi Brockwell TV"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJXa3_WNNmIpewOtCHf3B0g IT coding				"~LaurieWired"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCuvSqzfO_LV_QzHdmEj84SQ games hacking coding		"~Super Mario Modder"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCQG40havu4kNpB4pxUDQhYQ games coding			"~Acerola Shader guy"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q science				"~Kurzgesagt"
+
+"---Productivity---"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCvK4bOhULCpmLabd2pDMtnA Research productivity		"~Yes Theory"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA coding productivity			"~No Boilerplate"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCcf1t1tH-Pp5bmu4hbAytwA productivity			"~Escaping Ordinary"
+
+" "
+"---Pol(ish)---"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSExr_QUT6h-4sGW5hGjrCA pol Research								"~Prof. Dr. Christian Rieck"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCgv4dPk_qZNAbUW9WkuLPSA pol news									"~Atrioc"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCdBXOyqr8cDshsp7kcKDAkg pol news				"~Atrioc second"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRRr_xrOm66qaigIbwFLvbQ pol environment								"~Simon Clark"
