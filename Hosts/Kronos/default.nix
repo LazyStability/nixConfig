@@ -7,7 +7,6 @@
 }:
 {
   imports = [
-    ./nvidia.nix
     ./secrets
     ./hardware-configuration.nix
     ./wireguard.nix

@@ -28,7 +28,7 @@
       with pkgs;
       [
         opencode
-        (llama-cpp.override { cudaSupport = true; })
+        (llama-cpp.override { rocmSupport = true; })
       ]
     else
       [ ]
