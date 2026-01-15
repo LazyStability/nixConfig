@@ -10,6 +10,10 @@
         type "pipewire"
         name "My PipeWire Output"
       }
+      decoder {
+        plugin "audiofile"
+        enabled "yes"
+      }
     '';
   };
   services.mpd-mpris.enable = true;
