@@ -50,3 +50,4 @@ else
     echo "Operation not supported"
     exit 1
 fi
+# interactive creation of kitty-sessionizer files
