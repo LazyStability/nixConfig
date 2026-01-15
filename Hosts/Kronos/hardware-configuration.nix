@@ -22,8 +22,8 @@
     "sd_mod"
   ];
 
+  # data  UUID=22138b0d-5278-48c4-9ba4-c4286a3952a1 ${config.sops.secrets.ArchKey.path}
   environment.etc."crypttab".text = ''
-    data  UUID=22138b0d-5278-48c4-9ba4-c4286a3952a1 ${config.sops.secrets.ArchKey.path}
     games UUID=c9a276cf-101b-4a6b-8ad2-128db28735b9 ${config.sops.secrets.Games.path} nofail,x-systemd.device-timeout=9
   '';
 
@@ -39,16 +39,6 @@
       "nofail"
       "noatime"
       "x-systemd.device-timeout=9"
-    ];
-  };
-  fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/99d95a7f-e257-4462-8663-c593f36d3484";
-    fsType = "btrfs";
-    options = [
-      "nofail"
-      "x-systemd.device-timeout=9"
-      "compress=zstd"
-      "subvol=data"
     ];
   };
 

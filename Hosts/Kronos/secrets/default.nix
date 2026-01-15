@@ -31,6 +31,8 @@
         sopsFile = ./Data_disk_keyfile.bin;
         format = "binary";
       };
+      luks_password = {
+      };
       "syncthing/key" = {
         owner = "me";
       };

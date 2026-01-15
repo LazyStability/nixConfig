@@ -32,7 +32,7 @@
             size = "100%";
             content = {
               type = "luks";
-              name = "luks";
+              name = "luks-new";
               extraOpenArgs = [ ];
               passwordFile = "/run/secrets/luks_password";
               settings = {
@@ -40,7 +40,7 @@
               };
               content = {
                 type = "lvm_pv";
-                vg = "root_vg";
+                vg = "new_root_vg";
               };
             };
           };
@@ -48,7 +48,7 @@
       };
     };
     lvm_vg = {
-      root_vg = {
+      new_root_vg = {
         type = "lvm_vg";
         lvs = {
           swap = {
@@ -67,6 +67,9 @@
               subvolumes = {
                 "/root" = {
                   mountpoint = "/";
+                };
+                "/data" = {
+                  mountpoint = "/data";
                 };
 
                 "/persist" = {
