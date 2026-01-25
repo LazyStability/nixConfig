@@ -186,6 +186,7 @@
       # calibre
       dungeondraft
       rnote
+      inkscape
       hyperfine
       tor-browser
       reddit-tui
