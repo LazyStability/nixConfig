@@ -136,7 +136,6 @@
       enable = true;
     };
 
-    adb.enable = true;
     kdeconnect.enable = true;
   };
 

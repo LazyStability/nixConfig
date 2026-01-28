@@ -38,18 +38,15 @@
   home.packages = (
     with pkgs;
     let
-      patched-mpv = pkgs.mpv-unwrapped.wrapper {
+      patched-mpv = pkgs.mpv.overrideAttrs {
+        waylandSupport = true;
+        sdl2Support = true;
         scripts = with pkgs.mpvScripts; [
           modernz
           mpris
           mpv-discord
           sponsorblock
         ];
-
-        mpv = pkgs.mpv-unwrapped.override {
-          waylandSupport = true;
-          sdl2Support = true;
-        };
       };
 
       patched-keepassxc = keepassxc.overrideAttrs (previousAttrs: {
@@ -83,12 +80,12 @@
         vencord = patched-vencord;
       };
       patched-vencord = vencord.overrideAttrs (old: {
-        version = "unstable-2025-11-19";
+        version = "unstable-2026-01-28";
         src = fetchFromGitHub {
           owner = old.src.owner;
           repo = old.src.repo;
-          rev = "9c3163da5e31bdfea0645df93f12a8be40d37e38";
-          hash = "sha256-qSZghHypLITL+X36M2Uf2eNPRkD7+YfaOFfpmN8fIVA=";
+          rev = "0126090c8f06849cde9df18030f52e31931ece49";
+          hash = "sha256-/DkTfi6fYlLQUSzPawHxZJK0C+vaZp5ho3ZiB/bGQAQ=";
         };
       });
 
@@ -175,7 +172,7 @@
       live-server
 
       #formatter
-      nixfmt-rfc-style
+      nixfmt
 
       # latex
       # tex

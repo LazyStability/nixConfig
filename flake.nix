@@ -114,12 +114,12 @@
       devShells.${system}.default = pkgs.mkShellNoCC {
         FLAKE = ./.;
         # Allows us to work with sops in the repository
-        shellHook = '''';
+        shellHook = "";
         packages = with pkgs; [
           sops
           # Formatter
           treefmt
-          nixfmt-rfc-style
+          nixfmt
           deadnix
         ];
       };

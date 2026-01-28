@@ -50,6 +50,7 @@
       stdenv.cc.cc
       curl
       openssl
+      android-tools
       attr
       libssh
       bzip2
