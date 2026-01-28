@@ -119,7 +119,10 @@
     },
     "WhoReacted": {
       "enabled": true
-    }
+    },
+    "VolumeBooster": {
+      "enabled": true
+    },
   },
   "themeLinks": [],
   "transparent": false,
