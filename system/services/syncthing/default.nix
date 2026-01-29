@@ -131,7 +131,7 @@
             ];
           };
           "newsboat" = {
-            path = "/home/me/.newsboat";
+            path = "/home/me/.config/newsboat";
             devices = remove config.networking.hostName [
               "Nyx"
               "Odin"
