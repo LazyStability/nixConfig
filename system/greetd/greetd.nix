@@ -26,6 +26,10 @@
     # };
   };
   # Run tuigreet, TODO: Try ReGreet
+  programs.uwsm.waylandCompositors.hyprland = {
+    binPath = lib.mkForce "/run/current-system/sw/bin/start-hyprland";
+    prettyName = "Hyprland";
+  };
   services.greetd = {
     enable = lib.mkDefault false;
     settings = {
@@ -36,7 +40,7 @@
             user = "me";
           })
           (lib.mkIf config.programs.uwsm.enable {
-            command = "${pkgs.uwsm}/bin/uwsm start -F /run/current-system/sw/bin/Hyprland";
+            command = "${pkgs.uwsm}/bin/uwsm start -e -D Hyprland hyprland-uwsm.desktop";
             user = "me";
           })
         ]
@@ -44,7 +48,7 @@
       default_session = (
         lib.mkMerge [
           (lib.mkIf (!config.programs.uwsm.enable) {
-            command = "${pkgs.tuigreet}/bin/tuigreet -d --remember --remember-user-session --user-menu --time -cmd Hyprland";
+            command = "${pkgs.tuigreet}/bin/tuigreet -d --remember --remember-user-session --user-menu --time -cmd /usr/bin/start-hyprland";
           })
 
           (lib.mkIf config.programs.uwsm.enable {
