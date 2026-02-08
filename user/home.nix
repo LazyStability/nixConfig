@@ -80,12 +80,12 @@
         vencord = patched-vencord;
       };
       patched-vencord = vencord.overrideAttrs (old: {
-        version = "unstable-2026-01-28";
+        version = "unstable-2026-02-08";
         src = fetchFromGitHub {
           owner = old.src.owner;
           repo = old.src.repo;
-          rev = "0126090c8f06849cde9df18030f52e31931ece49";
-          hash = "sha256-/DkTfi6fYlLQUSzPawHxZJK0C+vaZp5ho3ZiB/bGQAQ=";
+          rev = "50c5124e1cc95062a883c58fc2551b302bd5994f";
+          hash = "sha256-1459x8G0++jH6NO5n4B5LVjDFjAFkLKFAQygVdqgOAk=";
         };
       });
 

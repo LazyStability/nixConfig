@@ -10,8 +10,7 @@
   "disableMinSize": false,
   "enableReactDevtools": false,
   "enabledThemes": [
-    "stylix.css",
-    "stylix.theme.css"
+    "default-theme.css"
   ],
   "frameless": false,
   "notifications": {
