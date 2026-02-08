@@ -38,9 +38,11 @@
   home.packages = (
     with pkgs;
     let
-      patched-mpv = pkgs.mpv.overrideAttrs {
-        waylandSupport = true;
-        sdl2Support = true;
+      patched-mpv = pkgs.mpv.override {
+        mpv-unwrapped = pkgs.mpv-unwrapped.override {
+          waylandSupport = true;
+          sdl2Support = true;
+        };
         scripts = with pkgs.mpvScripts; [
           modernz
           mpris
