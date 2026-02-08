@@ -155,6 +155,7 @@
       pyright
       # texlab
       nixd
+      nix-init # Create derivations from git urls
       harper
       llvmPackages_19.clang-unwrapped
       stylua
