@@ -27,6 +27,7 @@
     };
   };
   networking.hostName = "Kronos"; # Define your hostname.
+  hardware.opentabletdriver.enable = true;
 
   ################
   ## Networking ##
