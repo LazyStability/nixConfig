@@ -130,6 +130,7 @@
           mode = "1920x1080";
           position = "0x0";
           rate = "60";
+          scale = "1";
         }
       ];
     };
