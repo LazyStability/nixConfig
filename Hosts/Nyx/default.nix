@@ -101,6 +101,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "wireshark"
       "adbusers"
       "kvm"
       "ydotool"
@@ -118,8 +119,8 @@
     };
   };
   myModules = {
-    disks.samba.enable = true;
-    wireguard.enable = true;
+    disks.samba.enable = false;
+    wireguard.enable = false;
     desktopEnvironment = {
       select = "hyprland";
       monitors = [
@@ -136,6 +137,7 @@
 
   programs = {
     wireshark.enable = true;
+    wireshark.package = pkgs.wireshark;
     ydotool.enable = true;
     thunderbird.enable = true;
 
