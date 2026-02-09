@@ -32,7 +32,7 @@
             size = "100%";
             content = {
               type = "luks";
-              name = "luks-new";
+              name = "luks";
               extraOpenArgs = [ ];
               passwordFile = "/run/secrets/luks_password";
               settings = {
@@ -40,7 +40,7 @@
               };
               content = {
                 type = "lvm_pv";
-                vg = "new_root_vg";
+                vg = "root_vg";
               };
             };
           };
@@ -48,7 +48,7 @@
       };
     };
     lvm_vg = {
-      new_root_vg = {
+      root_vg = {
         type = "lvm_vg";
         lvs = {
           swap = {
