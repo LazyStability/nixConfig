@@ -28,6 +28,12 @@
       NH_FLAKE = "/persist/etc/nixos";
     };
   };
+  ## Drucken
+  services.printing.drivers = with pkgs; [
+    gutenprint
+    hplip
+    splix
+  ];
 
   #################
   ## Secure Boot ##
