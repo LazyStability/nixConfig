@@ -43,6 +43,7 @@
     },
     "height": 32,
     "layer": "top",
+		"mode": "dock",
     "memory": {
       "format": "{}% "
     },
