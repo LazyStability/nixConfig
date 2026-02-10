@@ -33,6 +33,7 @@
     heroic
     # lutris
     r2modman
+    eepers # Cool game
 
     # Better Eldenring
     #     er-patcher
