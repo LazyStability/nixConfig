@@ -37,5 +37,4 @@
     # Better Eldenring
     #     er-patcher
   ];
-  imports = [ ./screen-recording.nix ];
 }

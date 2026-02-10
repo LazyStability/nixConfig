@@ -9,10 +9,6 @@
   home.homeDirectory = "/home/me";
   myHomeModules = {
     dataLinks.enable = true;
-    gaming.screenRecording = {
-      enable = true;
-      shadowplay.enable = true;
-    };
   };
   programs.yazi.enable = true;
   # programs.zen-browser.enable = true;

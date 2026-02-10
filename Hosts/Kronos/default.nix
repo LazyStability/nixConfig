@@ -130,8 +130,10 @@
     libvirtd.enable = true;
   };
   programs = {
-    wireshark.enable = true;
-    wireshark.package = pkgs.wireshark;
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
     ydotool.enable = true;
     thunderbird.enable = true;
     firejail = {

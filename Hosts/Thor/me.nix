@@ -15,9 +15,6 @@
 
   myHomeModules = {
     dataLinks.enable = false;
-    gaming.screenRecording = {
-      enable = false;
-    };
   };
   # programs.zen-browser.enable = true;
   # programs.floorp.enable = true;
