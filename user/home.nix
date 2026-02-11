@@ -201,7 +201,9 @@
       # calibre
       dungeondraft
       patched-rnote
-      inkscape
+      (inkscape-with-extensions.override {
+        inkscapeExtensions = [ inkscape-extensions.textext ];
+      })
       hyperfine
       tor-browser
       reddit-tui
