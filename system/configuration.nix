@@ -124,6 +124,7 @@
         ripgrep
         gh
         git
+        git-lfs
         zsh
         cryptsetup
 
