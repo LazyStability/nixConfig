@@ -80,6 +80,7 @@
       "wheel"
       "adbusers"
       "kvm"
+      "fuse"
       "wireshark"
       "ydotool"
     ]; # Enable ‘sudo’ for the user.
@@ -144,6 +145,7 @@
   # Mouse
   services = {
     ratbagd.enable = true;
+    gvfs.enable = true;
     # llama-cpp.enable = true;
     syncthing.enable = true;
     playerctld.enable = true;

@@ -103,6 +103,7 @@
       "wheel"
       "wireshark"
       "adbusers"
+      "fuse"
       "kvm"
       "ydotool"
     ]; # Enable ‘sudo’ for the user.
@@ -151,6 +152,7 @@
     ratbagd.enable = true;
     syncthing.enable = true;
     playerctld.enable = true;
+    gvfs.enable = true;
     # Handle lid behaviour
     logind.settings.Login = {
       HandleLidSwitchDocked = "ignore";
