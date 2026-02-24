@@ -120,8 +120,8 @@
     };
   };
   myModules = {
-    disks.samba.enable = false;
-    wireguard.enable = false;
+    disks.samba.enable = true;
+    wireguard.enable = true;
     desktopEnvironment = {
       select = "hyprland";
       monitors = [
