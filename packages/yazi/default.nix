@@ -1,44 +1,38 @@
 {
-  pkgs,
-  ...
-}:
-{
-  home.packages = with pkgs; [
-    fd
-    ffmpegthumbnailer
-    p7zip
-    jq
-    poppler
-    fd
-    ripgrep
-    fzf
-    zoxide
-    imagemagick
-    dragon-drop
-    exiftool
-  ];
-  # Use stylix
-  # stylix.targets.yazi.enable = false; # true;
+  fetchFromGitHub,
+  yazi,
+  yaziPlugins,
+  fd,
+  ffmpegthumbnailer,
+  jq,
+  ripgrep,
+  fzf,
+  zoxide,
+  imagemagick,
+  dragon-drop,
+  exiftool,
+  poppler-utils,
+  _7zz,
+  chafa,
+  resvg,
 
-  # TODO: Use wrapping provided by nixpkgs instead of homemanager
-  programs.yazi = {
-    enableZshIntegration = true;
-    shellWrapperName = "y";
-    settings = {
-      preview = {
-        maxWidth = 1000;
-        maxHeight = 1000;
-      };
-    };
-    plugins = with pkgs.yaziPlugins; {
-      # Get these plugins from here
-      # https://github.com/yazi-rs/plugins
-      toggle-pane = toggle-pane;
-      relative-motions = relative-motions;
-      chmod = chmod;
-      smart-enter = smart-enter;
-      smart-filter = smart-filter;
-      git = git;
+}:
+yazi.override {
+  plugins = {
+    inherit (yaziPlugins)
+      toggle-pane
+      relative-motions
+      chmod
+      smart-enter
+      smart-filter
+      git
+      ;
+  };
+  initLua = ./init.lua;
+  settings = {
+    yazi.preview = {
+      maxWidth = 1000;
+      maxHeight = 1000;
     };
     keymap = {
       mgr.prepend_keymap = [
@@ -162,25 +156,21 @@
         }
       ];
     };
-    initLua = ''
-       -- Show owner:group in status bar
-       Status:children_add(function()
-         local h = cx.active.current.hovered
-         if h == nil or ya.target_family() ~= "unix" then
-       	  return ui.Line {}
-         end
-
-         return ui.Line {
-           ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
-           ui.Span(":"),
-           ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
-           ui.Span(" "),
-         }
-
-         end, 500, Status.RIGHT)
-
-
-      require("relative-motions"):setup({ show_numbers="relative", show_motion = true })
-    '';
   };
+  optionalDeps = [
+    fd
+    ffmpegthumbnailer
+    _7zz
+    chafa
+    resvg
+    jq
+    poppler-utils
+    fd
+    ripgrep
+    fzf
+    zoxide
+    imagemagick
+    dragon-drop
+    exiftool
+  ];
 }
