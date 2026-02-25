@@ -2,6 +2,7 @@
   pkgs,
   config,
   pkgs-stable,
+  extraPackages,
   inputs,
   ...
 }:
@@ -88,9 +89,12 @@
   programs.fuse.userAllowOther = true;
   home-manager = {
     extraSpecialArgs = {
-      inherit pkgs;
-      inherit pkgs-stable;
-      inherit inputs;
+      inherit
+        pkgs
+        extraPackages
+        pkgs-stable
+        inputs
+        ;
     };
     users = {
       "me" = import ./me.nix;

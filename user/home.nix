@@ -1,5 +1,6 @@
 {
   pkgs,
+  extraPackages,
   config,
   lib,
   ...
@@ -37,116 +38,6 @@
 
   home.packages = (
     with pkgs;
-    let
-      patched-mpv = pkgs.mpv.override {
-        mpv-unwrapped = pkgs.mpv-unwrapped.override {
-          waylandSupport = true;
-          sdl2Support = true;
-        };
-        scripts = with pkgs.mpvScripts; [
-          modernz
-          mpris
-          mpv-discord
-          sponsorblock
-        ];
-      };
-
-      patched-rnote = pkgs.rnote.overrideAttrs (previousAttrs: rec {
-        version = "unstable-2025-09-30";
-        src = pkgs.fetchFromGitHub {
-          owner = "Doublonmousse";
-          # branch = "workaround_gtk_pen_down";
-          repo = previousAttrs.src.repo;
-          rev = "5ab7d7d3f510ba6f27a596f04252cda24b4b6dd4";
-          hash = "sha256-1XIJo8JA6vljZjBvMZ6/Q52EfGZtO58lBS2zUYvaSzQ=";
-        };
-        cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-          inherit (previousAttrs) pname;
-          inherit version src; # These now refer to the new version and src
-          hash = "sha256-fr1bDTzTKx7TLBqw94CyaB0/Jo2x1BzZcM6dcen1PHc=";
-        };
-      });
-      patched-keepassxc = keepassxc.overrideAttrs (previousAttrs: {
-        version = "patched";
-        src = fetchFromGitHub {
-          owner = "keepassxreboot";
-          repo = "keepassxc";
-          rev = "fc1bd2009959141e06f66d23f0908e0ac048c75d";
-          hash = "sha256-lZ/fDTeC77pv93fYvPf/ocnxU0JX+liSLQx+rhTxlaQ=";
-        };
-        patches = [ ];
-        # Tests fail so, fuck tests
-        checkFlags = [ "-skip" ];
-        buildInputs = previousAttrs.buildInputs ++ [ keyutils ];
-      });
-      dungeondraft = pkgs.callPackage ../packages/dungeondraft { };
-      kitty-sessionizer = pkgs.callPackage ../packages/kitty-sessionizer { };
-      patched-sioyek = (
-        pkgs.symlinkJoin {
-          name = "sioyek";
-          paths = [ pkgs.sioyek ];
-          buildInputs = [ pkgs.makeWrapper ];
-          postBuild = ''
-            wrapProgram $out/bin/sioyek \
-              --set QT_QPA_PLATFORM xcb
-          '';
-        }
-      );
-      patched-vesktop = vesktop.override {
-        withSystemVencord = true;
-        vencord = patched-vencord;
-      };
-      patched-vencord = vencord.overrideAttrs (old: {
-        version = "unstable-2026-02-08";
-        src = fetchFromGitHub {
-          owner = old.src.owner;
-          repo = old.src.repo;
-          rev = "50c5124e1cc95062a883c58fc2551b302bd5994f";
-          hash = "sha256-1459x8G0++jH6NO5n4B5LVjDFjAFkLKFAQygVdqgOAk=";
-        };
-      });
-
-      # From here https://github.com/Builditluc/wiki-tui/issues/267#issuecomment-3223496743
-      patched-wiki-tui = wiki-tui.overrideAttrs (old: {
-        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
-          gnugrep
-          findutils
-          gnused
-        ];
-        postPatch = (old.postPatch or "") + ''
-          set -e
-          UA='wiki-tui/0.9.1 (+https://github.com/Builditluc/wiki-tui; contact: you@example.com)'
-
-          # For each Rust file in wiki-api/, add a UA header on request builders like:
-          #   Client::... .get(endpoint|url) ...
-          while IFS= read -r -d "" f; do
-            changed=0
-
-            # Inject header after common patterns of .get(...)
-            for pat in '.get(endpoint)' '.get(&endpoint)' '.get(url)' '.get(&url)'; do
-              if grep -q "$pat" "$f"; then
-                substituteInPlace "$f" --replace "$pat" "$pat.header(reqwest::header::USER_AGENT, \"$UA\")"
-                changed=1
-              fi
-            done
-
-            # If we added headers, ensure USER_AGENT is imported (idempotent)
-            if [ "$changed" = 1 ] && ! grep -q 'header::USER_AGENT' "$f"; then
-              sed -i '1 i use reqwest::header::USER_AGENT;' "$f"
-            fi
-          done < <(find wiki-api -type f -name '*.rs' -print0)
-
-          # Also add origin=* wherever the Action API base params are set (avoids CORS oddities)
-          for f in $(grep -RIl --include='*.rs' '("formatversion", "2")' wiki-api || true); do
-            if ! grep -q '("origin"' "$f"; then
-              substituteInPlace "$f" \
-                --replace '("formatversion", "2"),' \
-                          '("formatversion", "2"), ("origin","*"),'
-            fi
-          done
-        '';
-      });
-    in
     [
       obsidian
       localsend
@@ -200,8 +91,6 @@
       wl-clipboard
 
       # calibre
-      dungeondraft
-      patched-rnote
       (inkscape-with-extensions.override {
         inkscapeExtensions = [ inkscape-extensions.textext ];
       })
@@ -220,14 +109,19 @@
       w3m
       komikku
       kitty
-      kitty-sessionizer
-      patched-mpv
       # patched-keepassxc
       keepassxc
-      patched-wiki-tui
-      patched-sioyek
-      patched-vesktop
     ]
+    ++ (with extraPackages; [
+      vesktop
+      wiki-tui
+      sioyek
+      mpv
+      rnote
+      kitty-sessionizer
+      dungeondraft
+      yazi
+    ])
   );
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

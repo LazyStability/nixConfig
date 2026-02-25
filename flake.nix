@@ -48,6 +48,7 @@
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      extraPackages = import ./packages/packages.nix { inherit (pkgs) lib callPackage; };
     in
     {
       nixosConfigurations = {
@@ -59,6 +60,7 @@
           specialArgs = {
             inherit
               inputs
+              extraPackages
               self
               ;
           };
@@ -72,6 +74,7 @@
             inherit
               inputs
               self
+              extraPackages
               ;
           };
         };
@@ -83,6 +86,7 @@
           specialArgs = {
             inherit
               inputs
+              extraPackages
               self
               ;
           };
@@ -107,6 +111,7 @@
           extraSpecialArgs = {
             inherit
               inputs
+              extraPackages
               ;
           };
         };
