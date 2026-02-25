@@ -6,7 +6,7 @@ in
   options.myHomeModules.dataLinks = {
     enable = lib.mkEnableOption "dataLinks";
     dataPath = lib.mkOption {
-      default = "/data";
+      default = "/mnt/data";
       type = lib.types.str;
       description = "Partition were all the data directories reside";
     };
@@ -23,7 +23,7 @@ in
       description = "All the Directories which should be linked to home";
     };
     gamesPath = lib.mkOption {
-      default = "/games";
+      default = "/mnt/games";
       type = lib.types.str;
       description = "partition were Games reside";
     };

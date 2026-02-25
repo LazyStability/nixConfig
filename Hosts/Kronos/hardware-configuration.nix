@@ -32,7 +32,7 @@
   boot.extraModulePackages = [ ];
   hardware.keyboard.zsa.enable = true;
 
-  fileSystems."/games" = {
+  fileSystems."/mnt/games" = {
     device = "/dev/disk/by-uuid/e6d45a8e-8c4c-41e4-bfd6-6b264abeed08";
     fsType = "ext4";
     options = [

@@ -69,7 +69,7 @@
                   mountpoint = "/";
                 };
                 "/data" = {
-                  mountpoint = "/data";
+                  mountpoint = "/mnt/data";
                 };
 
                 "/persist" = {
