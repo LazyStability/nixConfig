@@ -207,6 +207,7 @@
       })
       hyperfine
       tor-browser
+      newsboat
       reddit-tui
       anki
       zotero
