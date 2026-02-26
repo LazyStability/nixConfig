@@ -10,15 +10,15 @@
   stylix.targets.firefox.enable = false;
   programs.floorp = {
     # Use the ESR for more policies for example search engines
-    package = (
-      lib.mkDefault (
-        pkgs.wrapFirefox pkgs.floorp-bin-unwrapped (
-          import ../firefox-wrapping.nix {
-            inherit pkgs lib;
-          }
-        )
-      )
-    );
+    # package = (
+    # lib.mkDefault (
+    #   pkgs.wrapFirefox pkgs.floorp-bin-unwrapped (
+    #     import ../firefox-wrapping.nix {
+    #       inherit pkgs lib;
+    #     }
+    #   )
+    # )
+    # );
     profiles = (
       lib.mkMerge [
         (import ../firefox-profile.nix {

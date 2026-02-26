@@ -136,15 +136,8 @@
     };
     ydotool.enable = true;
     thunderbird.enable = true;
-    firejail = {
-      enable = true;
-      wrappedBinaries = {
-        firefox = {
-          executable = "${pkgs.lib.getBin pkgs.firefox-esr-unwrapped}/bin/firefox";
-          profile = "${pkgs.firejail}/etc/firejail/firefox.profile";
-        };
-      };
-    };
+    firejail.enable = true;
+    firefox.enable = true;
 
     kdeconnect.enable = true;
   };

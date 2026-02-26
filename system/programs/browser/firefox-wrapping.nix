@@ -4,20 +4,20 @@
 }:
 {
   # Allows communication between the browser and other apps
-  nativeMessagingHosts = [
-    # Gnome shell native connector
-    #TODO: make this an option with nix module system
-    # pkgs.gnome-browser-connector
-    # pkgs.keepassxc
-  ];
+  # nativeMessagingHosts = [
+  # Gnome shell native connector
+  #TODO: make this an option with nix module system
+  # pkgs.gnome-browser-connector
+  # pkgs.keepassxc
+  # ];
   # Enforced on all profiles
   # See here all available fields
   # https://github.com/mozilla/policy-templates/blob/master/linux/policies.json
   # And what they do
   # https://mozilla.github.io/policy-templates
-  extraPolicies = {
-    AppAutoUpdate = true;
-    ManualAppUpdateOnly = false;
+  policies = {
+    AppAutoUpdate = false;
+    ManualAppUpdateOnly = true;
     ManualAppUpdateOnly_comment = "Change to true to disable auto-updates.";
 
     DisableBuiltinPDFViewer = true;

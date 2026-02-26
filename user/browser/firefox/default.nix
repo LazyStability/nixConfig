@@ -1,5 +1,6 @@
 {
   config,
+  osConfig,
   lib,
   pkgs,
   inputs,
@@ -9,15 +10,7 @@
   stylix.targets.firefox.enable = false;
   programs.firefox = {
     # Use the ESR for more policies for example search engines
-    package = (
-      lib.mkDefault (
-        pkgs.wrapFirefox pkgs.firefox-esr-unwrapped (
-          import ../firefox-wrapping.nix {
-            inherit pkgs lib;
-          }
-        )
-      )
-    );
+    package = null;
     profiles = (
       lib.mkMerge [
         (import ../firefox-profile.nix {

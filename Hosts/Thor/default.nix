@@ -104,9 +104,12 @@
       ];
     };
   };
-  programs.wireshark.enable = true;
-  programs.thunderbird.enable = true;
-  programs.kdeconnect.enable = true;
+  programs = {
+    wireshark.enable = true;
+    thunderbird.enable = true;
+    kdeconnect.enable = true;
+    firefox.enable = true;
+  };
 
   # List services that you want to enable:
   # Mouse

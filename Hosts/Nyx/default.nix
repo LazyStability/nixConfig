@@ -142,6 +142,8 @@
     wireshark.package = pkgs.wireshark;
     ydotool.enable = true;
     thunderbird.enable = true;
+    firefox.enable = true;
+    firejail.enable = true;
 
     kdeconnect.enable = true;
   };
