@@ -180,6 +180,7 @@
       nodePackages.bash-language-server
       hyprls
 
+      starship
       # typst
       typst
       tinymist
