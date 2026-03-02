@@ -12,7 +12,6 @@
 "filter:/home/me/.newsboat/youtube-filter.sh \"Fab Marketplace Free Stuff\":https://www.youtube.com/feeds/videos.xml?channel_id=UC8_RNwftEO4isrX2LJowcpg" "~Free unreal engine assets"
 
 "---Companies---"
-https://github.blog/feed/ tech "~Github"
 https://signal.org/blog/rss.xml tech "~Signal"
 https://stackoverflow.blog/feed tech "~Stackoverflow"
 " "
@@ -33,6 +32,7 @@ https://krebsonsecurity.com/feed/ IT security
 https://mitchellh.com/feed.xml IT coding
 https://hamvocke.com/feed.xml IT coding
 https://xn--gckvb8fzb.com/index.xml privacy
+http://ghost.oxen.ai/rss/ ai
 
 " "
 "---Computer Science---"
@@ -115,7 +115,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A Res
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo71RUe6DX4w-Vd47rFLXPg IT devops				"~Typecraft"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCzYaOq-wgxAWc14YT8q2cZA Research				"~Unity Research"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC_zBdZ0_H_jn41FDRG7q4Tw IT devops nix			"~Vimjoyer"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCsrVDPJBYeXItETFHG0qzyw coding IT				"~Web Dev Cody"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCP_eG7JBgRWNlNIOLYS6GZA	IT coding memes							"~crin"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVWhVAZwCdQsPZL-mDLcxPQ Research				"~Whitelight"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg IT devops				"~Wolfgangs Channel"
@@ -125,6 +124,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCJXa3_WNNmIpewOtCHf3B0g IT 
 https://www.youtube.com/feeds/videos.xml?channel_id=UCuvSqzfO_LV_QzHdmEj84SQ games hacking coding		"~Super Mario Modder"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCQG40havu4kNpB4pxUDQhYQ games coding			"~Acerola Shader guy"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q science				"~Kurzgesagt"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9Q4rw4dkey9lhK5FnYuigg games coding hacking						"~ClarityCoders"
 
 "---Productivity---"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCvK4bOhULCpmLabd2pDMtnA Research productivity		"~Yes Theory"
@@ -133,7 +133,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCcf1t1tH-Pp5bmu4hbAytwA pro
 
 " "
 "---Pol(ish)---"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCSExr_QUT6h-4sGW5hGjrCA pol Research									"~Prof. Dr. Christian Rieck"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCgv4dPk_qZNAbUW9WkuLPSA pol news											"~Atrioc"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdBXOyqr8cDshsp7kcKDAkg pol news											"~Atrioc second"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRRr_xrOm66qaigIbwFLvbQ pol environment							"~Simon Clark"
