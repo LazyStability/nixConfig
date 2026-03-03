@@ -12,9 +12,22 @@ in
     enable = lib.mkEnableOption "enable gaming module required for gamescope session and shadowplay";
   };
   config = lib.mkIf cfg.enable {
-    programs.steam = {
-      enable = true;
-      gamescopeSession.enable = true;
+    programs = {
+      firejail.wrappedBinaries.steam = {
+        executable = "${lib.getBin pkgs.steam}/bin/steam";
+        profile = "${pkgs.firejail}/etc/firejail/steam.profile";
+        desktop = "${lib.getBin pkgs.steam}/share/applications/steam.desktop";
+      };
+
+      steam = {
+        enable = true;
+        gamescopeSession.enable = true;
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+          steamtinkerlaunch
+        ];
+
+      };
     };
 
     programs.gamemode.enable = true;
