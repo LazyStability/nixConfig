@@ -192,4 +192,8 @@
 
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  # Required for NetBird's DNS features
+  services.resolved.enable = true;
+
+  services.netbird.enable = true;
 }
