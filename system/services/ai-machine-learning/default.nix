@@ -28,7 +28,7 @@
       with pkgs;
       [
         opencode
-        (llama-cpp.override { rocmSupport = true; })
+        llama-cpp-rocm
       ]
     else
       [ ]
