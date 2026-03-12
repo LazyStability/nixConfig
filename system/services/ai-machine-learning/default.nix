@@ -28,7 +28,7 @@
       with pkgs;
       [
         opencode
-        llama-cpp-rocm
+        llama-cpp-vulkan
       ]
     else
       [ ]
