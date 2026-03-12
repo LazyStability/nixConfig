@@ -72,7 +72,7 @@ in
           let
             script = pkgs.writeShellApplication {
               name = "mainmon";
-              runtimeInputs = [ pkgs.xorg.xrandr ];
+              runtimeInputs = [ pkgs.xrandr ];
               text = ''
                 xrandr --output ${monitor-1} --primary
               '';

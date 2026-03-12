@@ -1,6 +1,11 @@
 # Credit to jonnywalker
 # https://github.com/hyprwm/Hyprland/discussions/830#discussioncomment-11848312
-{ writeShellApplication, config, ... }:
+{
+  writeShellApplication,
+  config,
+  jq,
+  ...
+}:
 
 let
   applauncher =
@@ -15,6 +20,7 @@ writeShellApplication
 
   {
     name = "windowswitcher";
+    runtimeInputs = [ jq ];
     text = ''
       set -e
       set -o pipefail
