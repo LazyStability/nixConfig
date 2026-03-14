@@ -1,0 +1,14 @@
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/nix/store/zjsq2xziskdvvvsvhldz96grlsw9gl8v-hyprpaper-0.8.3/bin/hyprpaper
+Restart=always
+RestartSec=10
+
+[Unit]
+After=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+Description=hyprpaper
+PartOf=graphical-session.target
+X-Restart-Triggers=/nix/store/lrw72alvpkr4bf9vsmnmv24hy67j9mid-hm_hyprhyprpaper.conf

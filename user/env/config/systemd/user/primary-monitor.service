@@ -1,0 +1,10 @@
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/nix/store/bv1nskjrfcbp5m2sacmd0kxfqh697kpz-mainmon/bin/mainmon
+Type=oneshot
+
+[Unit]
+After=graphical-session.target
+description=Set main monitor

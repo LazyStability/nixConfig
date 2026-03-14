@@ -1,0 +1,17 @@
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+BusName=org.freedesktop.Notifications
+ExecStart=/nix/store/289alvkw2yzcciv68bl2qars8h7phsg3-SwayNotificationCenter-0.12.3/bin/swaync
+Restart=on-failure
+Type=dbus
+
+[Unit]
+After=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+Description=Swaync notification daemon
+Documentation=https://github.com/ErikReider/SwayNotificationCenter
+PartOf=graphical-session.target
+X-Restart-Triggers=/nix/store/3783xykmgavym6zlxpalbrhrpxd5lkhy-config.json
+X-Restart-Triggers=/nix/store/qz3zzpmphybqywmvh1m3lajzbzj2ribc-swaync-style.css
