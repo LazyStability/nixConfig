@@ -54,6 +54,11 @@
       element-desktop
       iamb
 
+      # Musik
+      rmpc
+      mpd
+      mpd-mpris
+
       gimp
       brave
       nautilus

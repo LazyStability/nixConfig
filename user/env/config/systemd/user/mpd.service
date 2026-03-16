@@ -3,7 +3,7 @@ WantedBy=default.target
 
 [Service]
 Environment=PATH=/home/me/.nix-profile/bin
-ExecStart=/nix/store/28ga931c7dmlddm9jl6x3gi7nsb3x2kx-mpd-0.24.8/bin/mpd --no-daemon /nix/store/fd6q9xg4jibb7zkzsxipcv50iznk3ia9-mpd.conf 
+ExecStart=/nix/store/28ga931c7dmlddm9jl6x3gi7nsb3x2kx-mpd-0.24.8/bin/mpd --no-daemon
 ExecStartPre=/nix/store/0550j0i8bmzxbcnzrg1g51zigj7y12ih-bash-interactive-5.3p9/bin/bash -c "/nix/store/hlxw2q9qansq7bn52xvlb5badw3z1v8s-coreutils-9.10/bin/mkdir -p '/home/me/.local/share/mpd' '/home/me/.local/share/mpd/playlists'"
 Type=notify
 
