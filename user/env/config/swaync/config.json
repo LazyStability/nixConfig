@@ -1,0 +1,46 @@
+{
+  "$schema": "/nix/store/289alvkw2yzcciv68bl2qars8h7phsg3-SwayNotificationCenter-0.12.3/etc/xdg/swaync/configSchema.json",
+  "control-center-margin-bottom": 10,
+  "control-center-margin-left": 10,
+  "control-center-margin-right": 10,
+  "control-center-margin-top": 10,
+  "positionX": "right",
+  "positionY": "top",
+  "scripts": {
+    "notification-script": {
+      "exec": "/nix/store/n3ya36zj6aizlhl42rm0c95aw19h4ll4-swaync-soundscript/bin/swaync-soundscript"
+    }
+  },
+  "widget-config": {
+    "buttons-grid": {
+      "actions": [
+        {
+          "command": "systemctl poweroff",
+          "label": "󰐥"
+        },
+        {
+          "command": "systemctl reboot",
+          "label": "󰑐"
+        },
+        {
+          "command": "loginctl terminate-user me",
+          "label": "󰌿"
+        }
+      ]
+    },
+    "dnd": {
+      "text": "Do not disturb"
+    },
+    "title": {
+      "button-text": "󰆴",
+      "clear-all-button": true,
+      "text": "Notifications"
+    }
+  },
+  "widgets": [
+    "buttons-grid",
+    "dnd",
+    "title",
+    "notifications"
+  ]
+}
