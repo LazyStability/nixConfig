@@ -63,7 +63,7 @@ in
     # Needed for dual monitor setup to tell xwayland, which steam relies upon which monitor is the correct one to use
     systemd.user.services.Primary-Monitor = {
       Unit = {
-        description = "Set main monitor";
+        Description = "Set main monitor";
         After = [ "graphical-session.target" ];
       };
       Service = {

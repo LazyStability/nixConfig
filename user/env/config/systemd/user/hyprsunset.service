@@ -1,0 +1,52 @@
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/nix/store/7j2mb15s5cyjmqzmk3sxwbll2ny61ayb-hyprsunset-0.3.3/bin/hyprsunset --temperature 5500
+Restart=always
+RestartSec=10
+; Security flags
+KeyringMode=private
+PrivateIPC=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+PrivateTmp=disconnected
+PrivateDevices=true
+PrivateMounts=true
+PrivateNetwork=yes
+ProtectHostname=yes
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectProc=ptraceable
+ProcSubset=pid
+LockPersonality=true
+RestrictRealtime=true
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+ProtectClock=true
+MemoryDenyWriteExecute=true
+MountFlags=private  
+SystemCallArchitectures=native
+ReadOnlyPaths=-/
+TemporaryFileSystem=/:ro
+BindReadOnlyPaths=-/dev -/etc -/home -/nix -/run -/var
+NoExecPaths=-/
+ExecPaths=-/nix/store
+RestrictAddressFamilies=AF_UNIX
+SocketBindDeny=ipv4:tcp
+SocketBindDeny=ipv4:udp
+SocketBindDeny=ipv6:tcp
+SocketBindDeny=ipv6:udp
+IPAddressDeny=any
+CapabilityBoundingSet=~CAP_BLOCK_SUSPEND CAP_BPF CAP_CHOWN CAP_IPC_LOCK CAP_KILL CAP_MKNOD CAP_NET_RAW CAP_PERFMON CAP_SYS_BOOT CAP_SYS_CHROOT CAP_SYS_MODULE CAP_SYS_NICE CAP_SYS_PACCT CAP_SYS_PTRACE CAP_SYS_TIME CAP_SYS_TTY_CONFIG CAP_SYSLOG CAP_WAKE_ALARM
+SystemCallFilter=~@aio:EPERM @chown:EPERM @clock:EPERM @cpu-emulation:EPERM @debug:EPERM @ipc:EPERM @keyring:EPERM @memlock:EPERM @module:EPERM @mount:EPERM @obsolete:EPERM @pkey:EPERM @privileged:EPERM @raw-io:EPERM @reboot:EPERM @resources:EPERM @sandbox:EPERM @setuid:EPERM @swap:EPERM @sync:EPERM
+UMask=0077
+
+[Unit]
+After=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+Description=hyprsunset - Hyprland's blue-light filter
+PartOf=graphical-session.target
+X-Restart-Triggers=$XDG_CONFIG_HOME/hypr/hyprsunset.conf

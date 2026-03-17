@@ -1,0 +1,28 @@
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/nix/store/wh0m9pf702zm5cwh54ychz3c0a608vf0-udiskie-2.6.2/bin/udiskie
+Restart=on-failure
+; Security Flags
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+CapabilityBoundingSet=~
+KeyringMode=private
+PrivateNetwork=yes
+UMask=0077
+SystemCallFilter=@system-service
+PrivateIPC=yes
+ProtectClock=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectHostname=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+
+[Unit]
+After=graphical-session.target
+PartOf=graphical-session.target
+Description=udiskie mount daemon
