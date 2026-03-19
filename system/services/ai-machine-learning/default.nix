@@ -28,6 +28,7 @@
       with pkgs;
       [
         opencode
+        whisper-cpp-vulkan
         llama-cpp-vulkan
       ]
     else
