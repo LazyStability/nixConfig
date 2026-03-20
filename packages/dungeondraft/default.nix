@@ -18,13 +18,13 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "dungeondraft";
-  version = "1.1.0.6";
+  version = "1.2.0.1";
 
   src = requireFile {
     name = "Dungeondraft-${finalAttrs.version}-Linux64.deb";
     url = "https://dungeondraft.net/";
     # hash = "sha256-ffT2zOQWKb6W6dQGuKbfejNCl6dondo4CB6JKTReVDs=";
-    sha256 = "0fslbqs2k28y10wdm7b8lybl4cvsvykbh1nlx6bbwa8nwk6gdx3x";
+    sha256 = "04gwxwnicfbz75rjrqn5yq63nci6yhqgzbf77h0ir4ji1l4x9ysj";
   };
 
   dontBuild = true;
@@ -59,6 +59,9 @@ stdenv.mkDerivation (finalAttrs: {
     makeWrapper $out/opt/Dungeondraft/Dungeondraft.x86_64 $out/opt/Dungeondraft/Dungeondraft.x86_64.wrapped \
       --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ udev ]} \
       --prefix PATH : ${lib.makeBinPath [ zenity ]}
+
+    mkdir -p $out/src
+    ln -s $src $out/src
 
     mkdir -p $out/share/applications
     mv usr/share/applications/* $out/share/applications
