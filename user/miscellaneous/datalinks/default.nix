@@ -16,7 +16,7 @@ in
         "Bilder"
         "Videos"
         "Dokumente"
-        "Downloads"
+        # "Downloads"
         "Software"
       ];
       type = lib.types.listOf lib.types.str;
