@@ -8,7 +8,6 @@
   home.username = "me";
   home.homeDirectory = "/home/me";
   myHomeModules = {
-    dataLinks.enable = true;
   };
   # programs.zen-browser.enable = true;
   programs.firefox.enable = true;

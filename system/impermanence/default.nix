@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-  cfg = config.myHomeModules.dataLinks;
+  cfg = config.myModules.dataLinks;
 in
 {
-  options.myHomeModules.dataLinks = {
+  options.myModules.dataLinks = {
     enable = lib.mkEnableOption "dataLinks";
     dataPath = lib.mkOption {
       default = "/mnt/data";
@@ -29,7 +29,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    systemd.user.tmpfiles.rules =
+    systemd.tmpfiles.rules =
       let
         createSystemdTmpfileRule = subDir: "L+ /home/me/${subDir} - - - - /${cfg.dataPath}/${subDir}";
       in

@@ -94,6 +94,8 @@
   };
 
   myModules = {
+    datalinks.enable = false;
+
     desktopEnvironment = {
 
       select = "hyprland";

@@ -13,7 +13,6 @@
   programs.floorp.enable = true;
 
   myHomeModules = {
-    dataLinks.enable = false;
   };
   # programs.zen-browser.enable = true;
   # programs.floorp.enable = true;
