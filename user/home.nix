@@ -42,6 +42,7 @@
       obsidian
       localsend
       vscode
+      libnotify
       # xdg default
       kdePackages.okular
 
