@@ -104,22 +104,22 @@
       EnablePermissions = false;
     };
     # On the topic of pdfs, we disabled the pdf viewer earlier above so we need to use an external one
-    Handlers = {
-      mimeTypes."application/pdf".action = "saveToDisk";
-    };
-    extensions = {
-      pdf = {
-        action = "useHelperApp";
-        ask = true;
-        handlers = [
-          {
-            # TODO: Use template pdf viewer instead of hardcoding okular
-            name = "Pdf Viewer";
-            path = "${pkgs.kdePackages.okular}/bin/okular";
-          }
-        ];
-      };
-    };
+    # Handlers = {
+    #   mimeTypes."application/pdf".action = "saveToDisk";
+    # };
+    # extensions = {
+    #   pdf = {
+    #     action = "useHelperApp";
+    #     ask = true;
+    #     handlers = [
+    #       {
+    #         # TODO: Use template pdf viewer instead of hardcoding okular
+    #         name = "Pdf Viewer";
+    #         path = "${pkgs.kdePackages.okular}/bin/okular";
+    #       }
+    #     ];
+    #   };
+    # }
 
     ################
     ## Extensions ##
