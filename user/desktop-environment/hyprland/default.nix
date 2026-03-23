@@ -22,7 +22,6 @@ let
 in
 {
   imports = [
-    ./swaync.nix
   ];
 
   config = lib.mkIf (config.myHomeModules.desktopEnvironment.select == "hyprland") {
@@ -57,7 +56,6 @@ in
     };
     services = {
       # hyprpaper.enable = lib.mkForce (!cfg.powerSavingMode.enable);
-      swaync.enable = true;
     };
 
     # Needed for dual monitor setup to tell xwayland, which steam relies upon which monitor is the correct one to use

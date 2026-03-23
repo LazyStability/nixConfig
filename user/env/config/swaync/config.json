@@ -8,7 +8,7 @@
   "positionY": "top",
   "scripts": {
     "notification-script": {
-      "exec": "/nix/store/n3ya36zj6aizlhl42rm0c95aw19h4ll4-swaync-soundscript/bin/swaync-soundscript"
+      "exec": "$XDG_CONFIG_HOME/swaync/swaync-soundscript.sh"
     }
   },
   "widget-config": {
