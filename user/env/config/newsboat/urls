@@ -72,7 +72,16 @@ https://kill-the-newsletter.com/feeds/32s6kgw57tano9s4akrl.xml news											"~
 
 " "
 "---News---"
-https://www.tagesschau.de/infoservices/alle-meldungen-100~rss2.xml news
+https://feeds.arstechnica.com/arstechnica/index
+http://newsfeed.zeit.de/index																														"~Zeit"
+https://rss.sueddeutsche.de/rss/Topthemen
+https://www.faz.net/rss/aktuell/
+https://rss.dw.com/rdf/rss-en-ger																												
+https://rss.dw.com/rdf/rss-en-world
+https://rss.dw.com/rdf/rss-en-bus
+https://rss.dw.com/rdf/rss-en-bus
+https://rss.dw.com/xml/rss_en_environment
+https://rss.dw.com/rdf/rss-en-asia
 
 # Webnovels
 " "
@@ -127,6 +136,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCuvSqzfO_LV_QzHdmEj84SQ gam
 https://www.youtube.com/feeds/videos.xml?channel_id=UCQG40havu4kNpB4pxUDQhYQ games coding			"~Acerola Shader guy"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q science				"~Kurzgesagt"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9Q4rw4dkey9lhK5FnYuigg games coding hacking						"~ClarityCoders"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEbYhDd6c6vngsF5PQpFVWg coding hacking "~Tsucoding"
 
 "---Productivity---"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCvK4bOhULCpmLabd2pDMtnA Research productivity		"~Yes Theory"
