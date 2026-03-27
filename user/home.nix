@@ -51,9 +51,9 @@
       piper
       networkmanagerapplet
       networkmanager-openvpn
-      blueberry
+      # blueberry
       element-desktop
-      iamb
+      # iamb
 
       # Musik
       rmpc
@@ -76,6 +76,7 @@
       typescript-language-server
       nodePackages.bash-language-server
       hyprls
+      markdown-oxide
 
       starship
       # typst
