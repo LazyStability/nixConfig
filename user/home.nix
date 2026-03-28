@@ -76,6 +76,9 @@
       typescript-language-server
       nodePackages.bash-language-server
       hyprls
+      # needed for typst preview
+      imagemagick
+      ghostscript
       markdown-oxide
 
       starship
