@@ -66,10 +66,8 @@
 
       # lsps
       lua-language-server
-      pyright
       # texlab
       nixd
-      nix-init # Create derivations from git urls
       harper
       llvmPackages_19.clang-unwrapped
       stylua
@@ -90,9 +88,6 @@
       # Markdown
       pandoc
       live-server
-
-      #formatter
-      nixfmt
 
       # latex
       # tex
