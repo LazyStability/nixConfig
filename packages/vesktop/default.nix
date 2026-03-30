@@ -5,16 +5,16 @@
 }:
 let
   patched-vencord = vencord.overrideAttrs (old: {
-    version = "unstable-2026-02-08";
+    version = "unstable-2026-03-25";
     src = fetchFromGitHub {
       owner = old.src.owner;
       repo = old.src.repo;
-      rev = "50c5124e1cc95062a883c58fc2551b302bd5994f";
-      hash = "sha256-1459x8G0++jH6NO5n4B5LVjDFjAFkLKFAQygVdqgOAk=";
+      rev = "cba0eb9897419432e68277b0b60c301a6f8323cf";
+      hash = "sha256-Wl89sRv49os6uRuYQVB/LgsOD7Rz3DPoxqeeELyY/o4=";
     };
   });
 in
 vesktop.override {
   withSystemVencord = true;
-  vencord = patched-vencord;
+  vencord = vencord;
 }
