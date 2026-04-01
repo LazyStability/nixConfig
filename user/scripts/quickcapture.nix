@@ -1,7 +1,8 @@
 {
   writeShellApplication,
   neovim,
-  config,
+  pkgs,
+terminal
 }:
 writeShellApplication {
   name = "quickcapture";
@@ -9,9 +10,11 @@ writeShellApplication {
   text =
     let
       terminalCommand =
+        # if terminal == pkgs.kitty then
         if true then
           "kitty --class scratchpad_quick_capture"
-        else if config.programs.wezterm.enable then
+        # else if terminal == pkgs.wezterm then
+        else if false then
           "wezterm"
         else
 

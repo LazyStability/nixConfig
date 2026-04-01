@@ -2,16 +2,18 @@
 # https://github.com/hyprwm/Hyprland/discussions/830#discussioncomment-11848312
 {
   writeShellApplication,
-  config,
+  # config,
   jq,
   ...
 }:
 
 let
   applauncher =
-    if config.programs.fuzzel.enable then
+    # if config.programs.fuzzel.enable then
+    if true then
       "fuzzel"
-    else if config.programs.wofi.enable then
+    # else if config.programs.wofi.enable then
+    else if false then
       "wofi"
     else
       builtins.throw "No supported applauncher actived. Use programs.wofi.enable or programs.fuzzel.enable.";

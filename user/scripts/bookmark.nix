@@ -8,13 +8,15 @@
 
     You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
 */
-{ writeShellApplication, config, ... }:
+{ writeShellApplication,  ... }:
 
 let
   applauncher =
-    if config.programs.fuzzel.enable then
+    # if config.programs.fuzzel.enable then
+    if true then
       "fuzzel"
-    else if config.programs.wofi.enable then
+    else if false then
+    # else if config.programs.wofi.enable then
       "wofi"
     else
       builtins.throw "No supported applauncher actived. Use programs.wofi.enable or programs.fuzzel.enable.";

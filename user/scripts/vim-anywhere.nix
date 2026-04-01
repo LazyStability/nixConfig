@@ -2,7 +2,7 @@
 {
   writeShellApplication,
   neovim,
-  config,
+  # config,
 }:
 writeShellApplication {
   name = "vim-anywhere";
@@ -14,7 +14,8 @@ writeShellApplication {
       terminalCommand =
         if true then
           "kitty --class vim-anywhere"
-        else if config.programs.wezterm.enable then
+        # else if config.programs.wezterm.enable then
+        else if false then
           "wezterm"
         else
 

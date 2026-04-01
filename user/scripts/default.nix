@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   osConfig,
   lib,
   ...
@@ -22,14 +21,14 @@ let
     Useragent = "AnyConnect-compatible OpenConnect VPN Agent";
     vpnname = "uni-full";
   };
-  quickcapture = pkgs.callPackage ./quickcapture.nix { config = config; };
-  vim-anywhere = pkgs.callPackage ./vim-anywhere.nix { config = config; };
-  linkhandler = pkgs.callPackage ./linkhandler.nix { config = config; };
+  quickcapture = pkgs.callPackage ./quickcapture.nix {  };
+  vim-anywhere = pkgs.callPackage ./vim-anywhere.nix {  };
+  linkhandler = pkgs.callPackage ./linkhandler.nix {  };
   qndl = pkgs.callPackage ./qndl.nix { };
-  rssget = pkgs.callPackage ./rssget.nix { config = config; };
+  rssget = pkgs.callPackage ./rssget.nix {  };
   android-webcam = pkgs.callPackage ./android-webcam.nix { };
-  bookmark = pkgs.callPackage ./bookmark.nix { config = config; };
-  emoji-picker = pkgs.callPackage ./emoji-picker.nix { config = config; };
+  bookmark = pkgs.callPackage ./bookmark.nix {  };
+  emoji-picker = pkgs.callPackage ./emoji-picker.nix {  };
 in
 {
   home = lib.mkMerge [

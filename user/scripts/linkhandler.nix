@@ -10,7 +10,6 @@
     You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
 */
 {
-  config,
   writeShellApplication,
   pkgs,
   ...
@@ -44,7 +43,8 @@ writeShellApplication {
       terminal =
         if true then
           "kitty"
-        else if config.programs.wezterm.enable then
+        # else if config.programs.wezterm.enable then
+        else if false then
           "wezterm"
         else
 

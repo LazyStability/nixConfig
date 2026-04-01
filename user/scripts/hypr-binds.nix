@@ -12,14 +12,15 @@
 {
   lib,
   jq,
-  config,
   writeShellScriptBin,
 }:
 let
   launcherCommand =
-    if config.programs.fuzzel.enable then
+    # if config.programs.fuzzel.enable then
+    if true then
       "fuzzel --match-mode fzf --dmenu --width 100 -p 'Hypr binds'"
-    else if config.programs.wofi.enable then
+    # else if config.programs.wofi.enable then
+    else if false then
       "wofi --matching fuzzy --dmenu -i -p 'Hypr binds'"
     # else if config.programs.walker.enable then
     #   ''walker --dmenu -p 'Keybindings' -w 800 -h "$menu_height"''

@@ -12,16 +12,17 @@
 
 {
   writeShellApplication,
-  config,
   pkgs,
   ...
 }:
 
 let
   applauncher =
-    if config.programs.fuzzel.enable then
+    # if config.programs.fuzzel.enable then
+    if true then
       "fuzzel --match-mode fzf --dmenu"
-    else if config.programs.wofi.enable then
+    # else if config.programs.wofi.enable then
+    else if false then
       "wofi --matching fuzzy --dmenu"
     else
       builtins.throw "No supported applauncher actived. Use programs.wofi.enable or programs.fuzzel.enable.";
