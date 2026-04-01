@@ -126,7 +126,7 @@
   myModules = {
     disks.samba.enable = true;
     wireguard.enable = true;
-    datalinks.enable = false;
+    dataLinks.enable = false;
     desktopEnvironment = {
       select = "hyprland";
       monitors = [

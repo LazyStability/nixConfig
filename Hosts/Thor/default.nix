@@ -94,7 +94,7 @@
   };
 
   myModules = {
-    datalinks.enable = false;
+    dataLinks.enable = false;
 
     desktopEnvironment = {
 
