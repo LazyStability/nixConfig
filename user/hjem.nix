@@ -53,6 +53,7 @@
         hypridle
         hyprlock
         hyprsunset
+        hyprpolkitagent
         hyprshot
         waybar
         fuzzel
