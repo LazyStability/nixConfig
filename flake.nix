@@ -41,7 +41,6 @@
     {
       self,
       nixpkgs,
-      home-manager,
       ...
     }@inputs:
     let
@@ -100,18 +99,6 @@
             inherit
               inputs
               self
-              ;
-          };
-        };
-      };
-      homeConfigurations = {
-        me = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./user/home.nix ];
-          extraSpecialArgs = {
-            inherit
-              inputs
-              extraPackages
               ;
           };
         };

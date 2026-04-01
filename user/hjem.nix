@@ -1,6 +1,13 @@
-{ lib, inputs, pkgs, extraPackages, ...}:{
+{
+  lib,
+  inputs,
+  pkgs,
+  extraPackages,
+  ...
+}:
+{
 
-    imports =
+  imports =
     let
       go =
         dir:
@@ -30,18 +37,19 @@
     user = "me";
     directory = "/home/me";
     clobberFiles = false;
+    systemd.enable = false;
 
     packages = (
-    with pkgs;
-    [
-      obsidian
-      localsend
-      vscode
-      libnotify
-      # xdg default
-      kdePackages.okular
+      with pkgs;
+      [
+        obsidian
+        localsend
+        vscode
+        libnotify
+        # xdg default
+        kdePackages.okular
 
-      # Desktop
+        # Desktop
         hypridle
         hyprlock
         hyprsunset
@@ -50,90 +58,90 @@
         fuzzel
         pwvucontrol
 
-      imv
-      keymapp
-      piper
-      networkmanagerapplet
-      networkmanager-openvpn
-      # blueberry
-      element-desktop
-      # iamb
+        imv
+        keymapp
+        piper
+        networkmanagerapplet
+        networkmanager-openvpn
+        # blueberry
+        element-desktop
+        # iamb
 
-      # Musik
-      rmpc
-      mpd
-      mpd-mpris
+        # Musik
+        rmpc
+        mpd
+        mpd-mpris
 
-      gimp
-      brave
-      nautilus
+        gimp
+        brave
+        nautilus
 
-      # lsps
-      lua-language-server
-      # texlab
-      nixd
-      harper
-      llvmPackages_19.clang-unwrapped
-      stylua
-      typescript-language-server
-      nodePackages.bash-language-server
-      hyprls
-      # needed for typst preview
-      imagemagick
-      ghostscript
+        # lsps
+        lua-language-server
+        # texlab
+        nixd
+        harper
+        llvmPackages_19.clang-unwrapped
+        stylua
+        typescript-language-server
+        nodePackages.bash-language-server
+        hyprls
+        # needed for typst preview
+        imagemagick
+        ghostscript
         nixfmt
-      markdown-oxide
+        markdown-oxide
 
-      starship
-      # typst
-      typst
-      tinymist
-      typstyle
+        starship
+        # typst
+        typst
+        tinymist
+        typstyle
 
-      # Markdown
-      pandoc
-      live-server
+        # Markdown
+        pandoc
+        live-server
 
-      # latex
-      # tex
+        # latex
+        # tex
 
-      # Utility
-      wl-clipboard
+        # Utility
+        wl-clipboard
 
-      # calibre
-      (inkscape-with-extensions.override {
-        inkscapeExtensions = [ inkscape-extensions.textext ];
-      })
-      hyperfine
-      tor-browser
-      newsboat
-      nushell
-      reddit-tui
-      anki
-      zotero
-      prismlauncher
-      yt-dlp
-      wl-clipboard
-      signal-desktop
-      piper
-      remmina
-      w3m
-      komikku
-      kitty
-      # patched-keepassxc
-      keepassxc
-    ]
-    ++ (with extraPackages; [
-      vesktop
-      wiki-tui
-      sioyek
-      mpv
-      rnote
-      kitty-sessionizer
-      dungeondraft
-      yazi
-    ])
-  );
+        # calibre
+        (inkscape-with-extensions.override {
+          inkscapeExtensions = [ inkscape-extensions.textext ];
+        })
+        hyperfine
+        tor-browser
+        newsboat
+        nushell
+        reddit-tui
+        anki
+        zotero
+        prismlauncher
+        yt-dlp
+        wl-clipboard
+        signal-desktop
+        piper
+        remmina
+        w3m
+        komikku
+        kitty
+        # patched-keepassxc
+        keepassxc
+      ]
+      ++ (with extraPackages; [
+        vesktop
+        wiki-tui
+        sioyek
+        mpv
+        rnote
+        kitty-sessionizer
+        dungeondraft
+        yazi
+      ])
+    );
     files = {
       ".mozilla/firefox/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
       ".mozilla/firefox/me/chrome/natsumi-config.css".source =
