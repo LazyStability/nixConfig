@@ -47,6 +47,7 @@ elif [ "$ACTION" == "copy" ]; then
     echo "Copy env..."
     cp -R "$SCRIPT_DIR"/env/config/* "$HOME"/.config/
     cp -R "$SCRIPT_DIR"/env/ssh/* "$HOME"/.ssh/
+    cp -R "$SCRIPT_DIR"/env/mozilla/* "$HOME"/.mozilla/
 else 
     echo "Operation not supported"
     exit 1
