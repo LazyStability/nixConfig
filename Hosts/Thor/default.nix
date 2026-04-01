@@ -17,7 +17,8 @@
       device = "/dev/disk/by-id/wwn-0x5002538d41022ecc";
     })
 
-    inputs.home-manager.nixosModules.default
+    inputs.hjem.nixosModules.default
+    ../../user/hjem.nix
   ];
   environment = {
     sessionVariables = {
@@ -79,19 +80,6 @@
   };
 
   programs.fuse.userAllowOther = true;
-  home-manager = {
-    extraSpecialArgs = {
-      inherit
-        pkgs
-        extraPackages
-        pkgs-stable
-        inputs
-        ;
-    };
-    users = {
-      "me" = import ./me.nix;
-    };
-  };
 
   myModules = {
     dataLinks.enable = false;

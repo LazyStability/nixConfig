@@ -1,6 +1,6 @@
 {
   pkgs,
-  osConfig,
+  config,
   lib,
   ...
 }:
@@ -31,7 +31,7 @@ let
   emoji-picker = pkgs.callPackage ./emoji-picker.nix {  };
 in
 {
-  home = lib.mkMerge [
+  hjem.users.me = lib.mkMerge [
     {
       packages = [
         univpn
@@ -46,6 +46,6 @@ in
         emoji-picker
       ];
     }
-    { packages = (lib.mkIf osConfig.myModules.android-webcam.enable [ android-webcam ]); }
+    { packages = (lib.mkIf config.myModules.android-webcam.enable [ android-webcam ]); }
   ];
 }

@@ -22,7 +22,8 @@
       # inherit inputs;
     })
 
-    inputs.home-manager.nixosModules.default
+    inputs.hjem.nixosModules.default
+    ../../user/hjem.nix
   ];
   environment = {
     sessionVariables = {
@@ -110,19 +111,6 @@
     ]; # Enable ‘sudo’ for the user.
   };
   programs.fuse.userAllowOther = true;
-  home-manager = {
-    extraSpecialArgs = {
-      inherit
-        pkgs
-        extraPackages
-        pkgs-stable
-        inputs
-        ;
-    };
-    users = {
-      "me" = import ./me.nix;
-    };
-  };
   myModules = {
     disks.samba.enable = true;
     wireguard.enable = true;

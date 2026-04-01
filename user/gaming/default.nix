@@ -4,7 +4,7 @@
 }:
 # TODO: Overlay proton-ge
 {
-  home.packages = with pkgs; [
+  hjem.users.me.packages = with pkgs; [
     # Steam stuff
     steam-run
     gamescope
