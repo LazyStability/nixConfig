@@ -1,8 +1,6 @@
 {
   writeShellApplication,
   neovim,
-  pkgs,
-terminal
 }:
 writeShellApplication {
   name = "quickcapture";
