@@ -58,6 +58,7 @@
         waybar
         fuzzel
         pwvucontrol
+        swaynotificationcenter
 
         imv
         keymapp
