@@ -147,6 +147,8 @@
       ".mozilla/firefox/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
       ".mozilla/firefox/me/chrome/natsumi-config.css".source =
         inputs.natsumi-theme + "/natsumi-config.css";
+      ".mozilla/firefox/me/chrome/userChrome.css".text = ''@import "natsumi/natsumi.css";'';
+      ".mozilla/firefox/me/chrome/userContent.css".text = ''@import "natsumi/natsumi-pages.css";'';
     };
   };
 
