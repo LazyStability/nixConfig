@@ -29,7 +29,6 @@ let
   android-webcam = pkgs.callPackage ./android-webcam.nix { };
   bookmark = pkgs.callPackage ./bookmark.nix { };
   emoji-picker = pkgs.callPackage ./emoji-picker.nix { };
-  hyprland-windowswitcher = pkgs.callPackage ./window-quickswitcher.nix { };
 in
 {
   hjem.users.me = lib.mkMerge [
@@ -45,7 +44,6 @@ in
         android-webcam
         bookmark
         emoji-picker
-        hyprland-windowswitcher
       ];
     }
     { packages = (lib.mkIf config.myModules.android-webcam.enable [ android-webcam ]); }

@@ -144,13 +144,42 @@
         yazi
       ])
     );
-    files = {
-      ".mozilla/firefox/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
-      ".mozilla/firefox/me/chrome/natsumi-config.css".source =
-        inputs.natsumi-theme + "/natsumi-config.css";
-      ".mozilla/firefox/me/chrome/userChrome.css".text = ''@import "natsumi/natsumi.css";'';
-      ".mozilla/firefox/me/chrome/userContent.css".text = ''@import "natsumi/natsumi-pages.css";'';
-    };
+
+    # Firefox
+    files =
+      let
+        recurseIntoDir =
+          target_path: source_dir:
+          builtins.listToAttrs (
+            map (
+              x:
+              let
+                target = target_path + (lib.removePrefix (toString source_dir) (toString x));
+              in
+              {
+                name = target;
+                value = {
+                  type = "copy";
+                  source = x;
+                  inherit target;
+                };
+              }
+            ) (lib.filesystem.listFilesRecursive source_dir)
+          );
+      in
+      {
+        # Firefox
+        ".mozilla/firefox/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
+        ".mozilla/firefox/me/chrome/natsumi-config.css".source =
+          inputs.natsumi-theme + "/natsumi-config.css";
+        ".mozilla/firefox/me/chrome/userChrome.css".text = ''@import "natsumi/natsumi.css";'';
+        ".mozilla/firefox/me/chrome/userContent.css".text = ''@import "natsumi/natsumi-pages.css";'';
+
+        ".zshrc".source = ./env/.zshrc;
+        ".zshenv".source = ./env/.zshenv;
+      }
+      // (recurseIntoDir ".ssh" ./env/ssh)
+      // (recurseIntoDir ".mozilla" ./env/mozilla);
   };
 
 }
