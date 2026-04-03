@@ -1,5 +1,5 @@
 {
-  "$schema": "/nix/store/289alvkw2yzcciv68bl2qars8h7phsg3-SwayNotificationCenter-0.12.3/etc/xdg/swaync/configSchema.json",
+  "$schema": "/etc/profiles/per-user/me/etc/xdg/swaync/configSchema.json",
   "control-center-margin-bottom": 10,
   "control-center-margin-left": 10,
   "control-center-margin-right": 10,

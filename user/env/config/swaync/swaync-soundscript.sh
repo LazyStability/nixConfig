@@ -7,9 +7,10 @@ HAS_NOTIFICATION_SOUND=("Discord" "Thunderbird" "vesktop")
 
 SOUNDFILE="/run/current-system/sw/share/sounds/freedesktop/stereo/suspend-error.oga" 
 
+echo "SWAYNC_URGENCY"
 [[ "$SWAYNC_URGENCY" != "Critical" ]] && {
     # Got any sound files?
-if [[ -z "${SWAYNC_HINT_SOUND_FILE-}" ]] || [[ ! -f "${SWAYNC_HINT_SOUND_FILE//\'}" ]]; then
+    if [[ -z "${SWAYNC_HINT_SOUND_FILE-}" ]] || [[ ! -f "${SWAYNC_HINT_SOUND_FILE//\'}" ]]; then
       SOUNDFILE="/run/current-system/sw/share/sounds/freedesktop/stereo/message.oga"
     else
       SOUNDFILE="${SWAYNC_HINT_SOUND_FILE//\'}"
@@ -26,5 +27,5 @@ if [[ -z "${SWAYNC_HINT_SOUND_FILE-}" ]] || [[ ! -f "${SWAYNC_HINT_SOUND_FILE//\
         exit 0
     }
 }
-mpv --really-quiet --no-config "$SOUNDFILE"
-
+echo "$SOUNDFILE"
+/etc/profiles/per-user/me/bin/mpv --really-quiet --no-config "$SOUNDFILE"

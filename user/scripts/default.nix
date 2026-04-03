@@ -21,14 +21,15 @@ let
     Useragent = "AnyConnect-compatible OpenConnect VPN Agent";
     vpnname = "uni-full";
   };
-  quickcapture = pkgs.callPackage ./quickcapture.nix {  };
-  vim-anywhere = pkgs.callPackage ./vim-anywhere.nix {  };
-  linkhandler = pkgs.callPackage ./linkhandler.nix {  };
+  quickcapture = pkgs.callPackage ./quickcapture.nix { };
+  vim-anywhere = pkgs.callPackage ./vim-anywhere.nix { };
+  linkhandler = pkgs.callPackage ./linkhandler.nix { };
   qndl = pkgs.callPackage ./qndl.nix { };
-  rssget = pkgs.callPackage ./rssget.nix {  };
+  rssget = pkgs.callPackage ./rssget.nix { };
   android-webcam = pkgs.callPackage ./android-webcam.nix { };
-  bookmark = pkgs.callPackage ./bookmark.nix {  };
-  emoji-picker = pkgs.callPackage ./emoji-picker.nix {  };
+  bookmark = pkgs.callPackage ./bookmark.nix { };
+  emoji-picker = pkgs.callPackage ./emoji-picker.nix { };
+  hyprland-windowswitcher = pkgs.callPackage ./window-quickswitcher.nix { };
 in
 {
   hjem.users.me = lib.mkMerge [
@@ -44,6 +45,7 @@ in
         android-webcam
         bookmark
         emoji-picker
+        hyprland-windowswitcher
       ];
     }
     { packages = (lib.mkIf config.myModules.android-webcam.enable [ android-webcam ]); }
