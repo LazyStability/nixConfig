@@ -37,7 +37,6 @@
     user = "me";
     directory = "/home/me";
     clobberFiles = false;
-    systemd.enable = false;
 
     packages = (
       with pkgs;
