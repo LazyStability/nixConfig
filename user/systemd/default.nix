@@ -108,7 +108,7 @@
       wantedBy = [ "default.target" ];
       serviceConfig = {
 
-        ExecStart = "/usr/bin/mpd-mpris -no-instance";
+        ExecStart = "${pkgs.mpd-mpris}/bin/mpd-mpris -no-instance";
         Restart = "on-failure";
         RestartSec = "5s";
         Type = "simple";
@@ -209,7 +209,7 @@
         ExecStart = "${pkgs.waybar}/bin/waybar";
 
         Restart = "on-failure";
-        ExecReload = "/nix/store/ilk5qzvkadnj7lx58hfinfvl7jmhriq6-util-linux-2.41.3-bin/bin/kill -SIGUSR2 $MAINPID";
+        ExecReload = "${pkgs.util-linux}/bin/kill -SIGUSR2 $MAINPID";
         # Security flags
         ProtectSystem = "full";
         PrivateTmp = "disconnected";
