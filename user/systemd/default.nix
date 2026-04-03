@@ -125,7 +125,7 @@
       serviceConfig = {
         # Environment=
         ExecStart = "${pkgs.mpd}/bin/mpd --no-daemon";
-        ExecStartPre = "${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/mkdir -p ''/home/me/.local/share/mpd' '/home/me/.local/share/mpd/playlists'\"";
+        ExecStartPre = "${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/mkdir -p /home/me/.local/share/mpd /home/me/.local/share/mpd/playlists\"";
         Type = "notify";
       };
       unitConfig = {
