@@ -53,7 +53,7 @@ let
       base0E = "bb9af7";
       base0F = "ff007c";
     };
-    wallpaper = ../../wallpaper/DarkSoulsIIIAnorLondo.jpg;
+    wallpaper = ../../user/env/local/share/wallpaper/DarkSoulsIIIAnorLondo.jpg;
     ############
     ## Cursor ##
     ############
