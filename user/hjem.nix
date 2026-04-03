@@ -58,6 +58,7 @@
         fuzzel
         pwvucontrol
         swaynotificationcenter
+        bibata-cursors
 
         imv
         keymapp
