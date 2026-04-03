@@ -4,7 +4,7 @@
     hypridle = {
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = lib.getExe pkgs.hypridle;
+        ExecStart = "${pkgs.hypridle}/bin/hypridle";
         Restart = "always";
         SocketBindDeny = [
           "ipv4:tcp"
@@ -26,7 +26,7 @@
     hyprpaper = {
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = lib.getExe pkgs.hyprpaper;
+        ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
         Restart = "always";
         RestartSec = 10;
       };
@@ -39,10 +39,25 @@
       };
     };
 
+    hyprpolkit = {
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+        TimeoutStopSec = "5sec";
+        Restart = "on-failure";
+      };
+      unitConfig = {
+        Description = "Hyprland Polkit Authentication Agent";
+        PartOf = "graphical-session.target";
+        After = "graphical-session.target";
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+    };
+
     hyprsunset = {
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${lib.getExe pkgs.hyprsunset} --temperature 5500";
+        ExecStart = "${pkgs.hyprsunset}/bin/hyprsunset --temperature 5500";
         Restart = "always";
         RestartSec = "10";
         # Security flags
@@ -90,7 +105,7 @@
     };
 
     mpd-mpris = {
-      wantedby = [ "default.target" ];
+      wantedBy = [ "default.target" ];
       serviceConfig = {
 
         ExecStart = "/usr/bin/mpd-mpris -no-instance";
@@ -106,11 +121,11 @@
     };
 
     mpd = {
-      wantedby = [ "default.target" ];
+      wantedBy = [ "default.target" ];
       serviceConfig = {
         # Environment=
-        ExecStart = "${lib.getExe pkgs.mpd} --no-daemon";
-        ExecStartPre = "${lib.getExe pkgs.bash} -c \"${pkgs.coreutils}/bin/mkdir -p ''/home/me/.local/share/mpd' '/home/me/.local/share/mpd/playlists'\"";
+        ExecStart = "${pkgs.mpd}/bin/mpd --no-daemon";
+        ExecStartPre = "${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/mkdir -p ''/home/me/.local/share/mpd' '/home/me/.local/share/mpd/playlists'\"";
         Type = "notify";
       };
       unitConfig = {
@@ -127,7 +142,7 @@
     ssh-agent = {
       wantedBy = [ "default.target" ];
       serviceConfig = {
-        ExecStart = "${lib.getExe pkgs.openssh "ssh-agent"} -D -a %t/ssh-agent";
+        ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a %t/ssh-agent";
 
       };
       unitConfig = {
@@ -139,7 +154,7 @@
     swaync = {
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${lib.getExe pkgs.swaynotificationcenter}";
+        ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
         BusName = "org.freedesktop.Notifications";
         Restart = "on-failure";
         Type = "dbus";
@@ -160,7 +175,7 @@
     udiskie = {
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${lib.getExe pkgs.udiskie}";
+        ExecStart = "${pkgs.udiskie}/bin/udiskie";
         Restart = "on-failure";
         # Security Flags
         NoNewPrivileges = "yes";
@@ -191,7 +206,7 @@
     waybar = {
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = pkgs.getExe pkgs.waybar;
+        ExecStart = "${pkgs.waybar}/bin/waybar";
 
         Restart = "on-failure";
         ExecReload = "/nix/store/ilk5qzvkadnj7lx58hfinfvl7jmhriq6-util-linux-2.41.3-bin/bin/kill -SIGUSR2 $MAINPID";
