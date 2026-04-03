@@ -4,7 +4,7 @@ WantedBy=graphical-session.target
 [Service]
 ExecStart=/usr/bin/waybar
 Restart=on-failure
-ExecReload=/nix/store/ilk5qzvkadnj7lx58hfinfvl7jmhriq6-util-linux-2.41.3-bin/bin/kill -SIGUSR2 $MAINPID
+ExecReload=/usr/bin/kill -SIGUSR2 $MAINPID
 ; Security flags
 ProtectSystem=full
 PrivateTmp=disconnected

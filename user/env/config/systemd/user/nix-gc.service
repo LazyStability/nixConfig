@@ -1,6 +1,0 @@
-[Service]
-ExecStart=/nix/store/byr8xdnd4jslpzq5jvhnbv58zalgf8x7-nix-gc
-Type=oneshot
-
-[Unit]
-Description=Nix Garbage Collector

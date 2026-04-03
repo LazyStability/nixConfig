@@ -11,4 +11,4 @@ After=graphical-session.target
 ConditionEnvironment=WAYLAND_DISPLAY
 Description=hyprpaper
 PartOf=graphical-session.target
-X-Restart-Triggers=/nix/store/lrw72alvpkr4bf9vsmnmv24hy67j9mid-hm_hyprhyprpaper.conf
+X-Restart-Triggers=$XDG_CONFIG_HOME/hypr/hyprpaper.conf

@@ -2,7 +2,7 @@
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/nix/store/bv1nskjrfcbp5m2sacmd0kxfqh697kpz-mainmon/bin/mainmon
+ExecStart=/usr/bin/mainmon
 Type=oneshot
 ; Security flags
 ProtectSystem=strict
