@@ -2,7 +2,7 @@
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/nix/store/zjsq2xziskdvvvsvhldz96grlsw9gl8v-hyprpaper-0.8.3/bin/hyprpaper
+ExecStart=/usr/bin/hyprpaper
 Restart=always
 RestartSec=10
 

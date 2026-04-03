@@ -2,7 +2,7 @@
 WantedBy=default.target
 
 [Service]
-ExecStart=/nix/store/bi47k3l7gm54s883lrfk1k1c5d8zicnd-mpd-mpris-0.4.3/bin/mpd-mpris -no-instance
+ExecStart=/usr/bin/mpd-mpris -no-instance
 Restart=on-failure
 RestartSec=5s
 Type=simple

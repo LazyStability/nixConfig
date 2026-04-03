@@ -2,7 +2,7 @@
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/nix/store/wh0m9pf702zm5cwh54ychz3c0a608vf0-udiskie-2.6.2/bin/udiskie
+ExecStart=/usr/bin/udiskie
 Restart=on-failure
 ; Security Flags
 NoNewPrivileges=yes

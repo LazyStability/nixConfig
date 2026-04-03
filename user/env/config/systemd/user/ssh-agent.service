@@ -2,7 +2,7 @@
 WantedBy=default.target
 
 [Service]
-ExecStart=/nix/store/vlhrk50xg0lmivk049q8yygbsm86l6m0-openssh-10.2p1/bin/ssh-agent -D -a %t/ssh-agent
+ExecStart=/usr/bin/ssh-agent -D -a %t/ssh-agent
 
 [Unit]
 Description=SSH authentication agent

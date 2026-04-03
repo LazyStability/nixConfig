@@ -2,7 +2,7 @@
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/nix/store/0qmbn5xhlngn8y6yfykbpbdmpckng58g-waybar-0.15.0/bin/waybar
+ExecStart=/usr/bin/waybar
 Restart=on-failure
 ExecReload=/nix/store/ilk5qzvkadnj7lx58hfinfvl7jmhriq6-util-linux-2.41.3-bin/bin/kill -SIGUSR2 $MAINPID
 ; Security flags

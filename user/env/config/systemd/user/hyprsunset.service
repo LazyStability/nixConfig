@@ -2,7 +2,7 @@
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/nix/store/7j2mb15s5cyjmqzmk3sxwbll2ny61ayb-hyprsunset-0.3.3/bin/hyprsunset --temperature 5500
+ExecStart=/usr/bin/hyprsunset --temperature 5500
 Restart=always
 RestartSec=10
 ; Security flags
