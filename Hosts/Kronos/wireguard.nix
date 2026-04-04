@@ -20,10 +20,10 @@ in
       ];
     };
     networking.wg-quick.interfaces = {
-      wg0 = {
-        configFile = "/run/secrets/wg-ginyu.conf";
-        autostart = true; # set to false if you want manual control
-      };
+      # wg0 = {
+      #   configFile = "/run/secrets/wg-ginyu.conf";
+      #   autostart = true; # set to false if you want manual control
+      # };
     };
   };
 }

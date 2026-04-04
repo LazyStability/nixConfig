@@ -39,10 +39,10 @@
       "syncthing/cert" = {
         owner = "me";
       };
-      "wg-ginyu.conf" = {
-        sopsFile = ./wg-ginyu.bin;
-        format = "binary";
-      };
+      # "wg-ginyu.conf" = {
+      #   sopsFile = ./wg-ginyu.bin;
+      #   format = "binary";
+      # };
     };
   };
 }
