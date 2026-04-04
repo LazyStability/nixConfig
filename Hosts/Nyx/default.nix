@@ -60,7 +60,7 @@
       wifi.powersave = true;
     };
   };
-  # systemd.services.NetworkManager-wait-online.enable = false; # Takes forever on boot and is not necessary
+  systemd.services.NetworkManager-wait-online.enable = false; # Takes forever on boot and is not necessary
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
