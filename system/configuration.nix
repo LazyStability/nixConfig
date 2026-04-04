@@ -152,6 +152,22 @@
     vimAlias = true;
     # vimdiffAlias = true;
   };
+  fonts = {
+    enableDefaultPackages = true;
+    packages = [
+      pkgs.dejavu_fonts
+      pkgs.nerd-fonts.fira-code
+      pkgs.dejavu_fonts
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "FiraCode" ];
+        sansSerif = [ "DejaVu Sans" ];
+        serif = [ "DejaVu Serif" ];
+      };
+    };
+
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
