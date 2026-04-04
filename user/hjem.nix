@@ -172,14 +172,15 @@
         ".mozilla/firefox/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
         ".mozilla/firefox/me/chrome/natsumi-config.css".source =
           inputs.natsumi-theme + "/natsumi-config.css";
-        ".mozilla/firefox/me/chrome/userChrome.css".text = ''@import "natsumi/natsumi.css";'';
-        ".mozilla/firefox/me/chrome/userContent.css".text = ''@import "natsumi/natsumi-pages.css";'';
+        ".mozilla/firefox/me/user.js".text =
+          (builtins.readFile "${pkgs.arkenfox-userjs}/user.js")
+          + (builtins.readFile ./env/mozilla/firefox/me/user-overrides.js);
 
         ".zshrc".source = ./env/zshrc;
         ".zshenv".source = ./env/zshenv;
       }
-      // (recurseIntoDir ".ssh" ./env/ssh)
-      // (recurseIntoDir ".mozilla" ./env/mozilla);
+      // (recurseIntoDir ".mozilla" ./env/mozilla)
+      // (recurseIntoDir ".ssh" ./env/ssh);
   };
 
 }
