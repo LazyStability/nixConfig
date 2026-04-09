@@ -1,6 +1,5 @@
 {
   lib,
-  inputs,
   pkgs,
   extraPackages,
   ...
@@ -34,6 +33,15 @@
     (flatten (go ./.));
 
   hjem.users.me = {
+    environment.sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      XCURSOR_SIZE = 24;
+      XCURSOR_THEME = "Bibata-Modern-Ice";
+      HYPRCURSOR_THEME = "Bibata-Modern-Ice";
+      HYPRCURSOR_SIZE = 24;
+    };
+
     user = "me";
     directory = "/home/me";
     clobberFiles = false;
@@ -145,42 +153,6 @@
       ])
     );
 
-    # Firefox
-    files =
-      let
-        recurseIntoDir =
-          target_path: source_dir:
-          builtins.listToAttrs (
-            map (
-              x:
-              let
-                target = target_path + (lib.removePrefix (toString source_dir) (toString x));
-              in
-              {
-                name = target;
-                value = {
-                  type = "copy";
-                  source = x;
-                  inherit target;
-                };
-              }
-            ) (lib.filesystem.listFilesRecursive source_dir)
-          );
-      in
-      {
-        # Firefox
-        ".mozilla/firefox/me/chrome/natsumi".source = inputs.natsumi-theme + "/natsumi";
-        ".mozilla/firefox/me/chrome/natsumi-config.css".source =
-          inputs.natsumi-theme + "/natsumi-config.css";
-        ".mozilla/firefox/me/user.js".text =
-          (builtins.readFile "${pkgs.arkenfox-userjs}/user.js")
-          + (builtins.readFile ./env/mozilla/firefox/me/user-overrides.js);
-
-        ".zshrc".source = ./env/zshrc;
-        ".zshenv".source = ./env/zshenv;
-      }
-      // (recurseIntoDir ".mozilla" ./env/mozilla)
-      // (recurseIntoDir ".ssh" ./env/ssh);
   };
 
 }
