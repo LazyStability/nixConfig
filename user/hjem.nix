@@ -94,7 +94,7 @@
         llvmPackages_19.clang-unwrapped
         stylua
         typescript-language-server
-        nodePackages.bash-language-server
+        bash-language-server
         hyprls
         # needed for typst preview
         imagemagick
