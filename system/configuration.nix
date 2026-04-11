@@ -92,8 +92,10 @@
   services.xserver.xkb = {
     layout = "de";
     variant = "";
+
   };
 
+  boot.tmp.cleanOnBoot = true;
   services.journald.extraConfig = "SystemMaxFileSize=50M";
 
   # Configure console keymap
