@@ -140,6 +140,7 @@
 
     kdeconnect.enable = true;
   };
+  security.pam.u2f.enable = true;
 
   # List services that you want to enable:
   # Mouse
@@ -184,5 +185,4 @@
   # Required for NetBird's DNS features
   services.resolved.enable = true;
 
-  services.netbird.enable = true;
 }

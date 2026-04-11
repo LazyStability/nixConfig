@@ -1,12 +1,16 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   security.pam = {
     services = {
-      login.u2fAuth = true;
-      sudo.u2fAuth = true;
+      login.u2fAuth = config.security.pam.u2f.enable;
+      sudo.u2fAuth = config.security.pam.u2f.enable;
     };
     u2f = {
-      enable = true;
       settings = {
         cue = true;
         origin = "pam://yubi";
@@ -21,7 +25,7 @@
       };
     };
   };
-  services.udev.extraRules = ''
+  services.udev.extraRules = lib.mkIf config.security.pam.u2f.enable ''
     ACTION=="remove",\
      ENV{ID_BUS}=="usb",\
      ENV{ID_MODEL_ID}=="0407",\

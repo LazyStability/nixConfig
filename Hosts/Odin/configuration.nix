@@ -156,6 +156,7 @@
       key = lib.mkForce null;
     };
   };
+  hardware.bluetooth.enable = lib.mkForce false;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

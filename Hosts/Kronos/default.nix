@@ -137,6 +137,7 @@
 
   # List services that you want to enable:
   # Mouse
+  security.pam.u2f.enable = true;
   services = {
     ratbagd.enable = true;
     gvfs.enable = true;
