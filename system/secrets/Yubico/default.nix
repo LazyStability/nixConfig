@@ -4,11 +4,14 @@
   config,
   ...
 }:
+let
+  enableYubi = config.security.pam.u2f.enable;
+in
 {
   security.pam = {
     services = {
-      login.u2fAuth = config.security.pam.u2f.enable;
-      sudo.u2fAuth = config.security.pam.u2f.enable;
+      login.u2fAuth = enableYubi;
+      sudo.u2fAuth = enableYubi;
     };
     u2f = {
       settings = {
@@ -25,7 +28,7 @@
       };
     };
   };
-  services.udev.extraRules = lib.mkIf config.security.pam.u2f.enable ''
+  services.udev.extraRules = lib.mkIf enableYubi ''
     ACTION=="remove",\
      ENV{ID_BUS}=="usb",\
      ENV{ID_MODEL_ID}=="0407",\
@@ -34,4 +37,6 @@
      RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
   '';
 
+  services.pcscd.enable = enableYubi;
+  environment.systemPackages = lib.mkIf enableYubi [ pkgs.yubioath-flutter ];
 }
