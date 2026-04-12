@@ -146,7 +146,7 @@
         wiki-tui
         sioyek
         mpv
-        rnote
+        # rnote
         kitty-sessionizer
         dungeondraft
         yazi
