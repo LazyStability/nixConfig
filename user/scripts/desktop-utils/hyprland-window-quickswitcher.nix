@@ -21,7 +21,7 @@ in
 writeShellApplication
 
   {
-    name = "windowswitcher";
+    name = "hyprland-window-quickswitcher";
     runtimeInputs = [ jq ];
     text = ''
       set -e

@@ -35,10 +35,18 @@
               }
             ) (lib.filesystem.listFilesRecursive source_dir)
           );
-        hyprland-windowswitcher = pkgs.callPackage ../scripts/window-quickswitcher.nix { };
-        hyprland-move-workspace-to-monitor = pkgs.callPackage ../scripts/move-workpace-to-monitor.nix { };
-        hyprland-binds = pkgs.callPackage ../scripts/hypr-binds.nix { };
-        # hypr-lid-switch = pkgs.callPackage ../scripts/hyprland-switch-behaviour.nix { };
+        hyprland-window-quickswitcher =
+          pkgs.callPackage ../scripts/desktop-utils/hyprland-window-quickswitcher.nix
+            { };
+        hyprland-move-workpace-to-monitor =
+          pkgs.callPackage ../scripts/desktop-utils/hyprland-move-workpace-to-monitor.nix
+            { };
+        hyprland-binds = pkgs.callPackage ../scripts/desktop-utils/hyprland-binds.nix { };
+        hyprland-switch-behaviour =
+          pkgs.callPackage ../scripts/desktop-utils/hyprland-switch-behaviour.nix
+            { config = config; };
+        vim-anywhere = pkgs.callPackage ../scripts/desktop-utils/vim-anywhere.nix { };
+        quickcapture = pkgs.callPackage ../scripts/desktop-utils/quickcapture.nix { };
         swaync-soundscript = pkgs.callPackage ../scripts/desktop-utils/swaync-soundscript.nix { };
 
         directorySub =
@@ -94,12 +102,15 @@
           coreutils = pkgs.coreutils;
           folder = ./config/hypr;
           packages = [
-            hyprland-windowswitcher
+            hyprland-switch-behaviour
             hyprland-binds
-            # hypr-lid-switch
-            hyprland-move-workspace-to-monitor
-          ];
+            hyprland-window-quickswitcher
+            hyprland-switch-behaviour
+            hyprland-move-workpace-to-monitor
+            quickcapture
+            vim-anywhere
 
+          ];
         };
         ".config/swaync".source = directorySub {
           runCommand = pkgs.runCommand;

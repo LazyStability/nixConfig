@@ -27,7 +27,7 @@ let
     else
       builtins.throw "No supported applauncher actived. Use programs.wofi.enable or programs.fuzzel.enable.";
 in
-writeShellScriptBin "hypr-binds" ''
+writeShellScriptBin "hyprland-binds" ''
 
   dynamic_bindings() {
     hyprctl -j binds | \

@@ -21,8 +21,6 @@ let
     Useragent = "AnyConnect-compatible OpenConnect VPN Agent";
     vpnname = "uni-full";
   };
-  quickcapture = pkgs.callPackage ./quickcapture.nix { };
-  vim-anywhere = pkgs.callPackage ./vim-anywhere.nix { };
   linkhandler = pkgs.callPackage ./linkhandler.nix { };
   qndl = pkgs.callPackage ./qndl.nix { };
   rssget = pkgs.callPackage ./rssget.nix { };
@@ -36,8 +34,6 @@ in
       packages = [
         univpn
         full-univpn
-        vim-anywhere
-        quickcapture
         linkhandler
         qndl
         rssget

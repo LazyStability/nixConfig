@@ -13,6 +13,7 @@
           "ipv6:udp"
         ];
         IPAddressDeny = "any";
+        Environment = "PATH=${pkgs.hyprland}/bin:${pkgs.brightnessctl}/bin:${pkgs.hyprlock}/bin:${pkgs.dbus}/bin:${pkgs.systemd}/bin:${pkgs.coreutils}/bin";
         RestartSec = 10;
       };
       unitConfig = {

@@ -65,6 +65,7 @@
         waybar
         fuzzel
         pwvucontrol
+        networkmanager_dmenu
         swaynotificationcenter
         bibata-cursors
 
