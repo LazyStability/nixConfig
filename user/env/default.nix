@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   lib,
   ...
 }:
@@ -38,6 +39,7 @@
         hyprland-move-workspace-to-monitor = pkgs.callPackage ../scripts/move-workpace-to-monitor.nix { };
         hyprland-binds = pkgs.callPackage ../scripts/hypr-binds.nix { };
         # hypr-lid-switch = pkgs.callPackage ../scripts/hyprland-switch-behaviour.nix { };
+        swaync-soundscript = pkgs.callPackage ../scripts/desktop-utils/swaync-soundscript.nix { };
 
         directorySub =
           {
@@ -98,6 +100,14 @@
             hyprland-move-workspace-to-monitor
           ];
 
+        };
+        ".config/swaync".source = directorySub {
+          runCommand = pkgs.runCommand;
+          coreutils = pkgs.coreutils;
+          folder = ./config/swaync;
+          packages = [
+            swaync-soundscript
+          ];
         };
       }
       // (recurseIntoDir ".mozilla" ./mozilla)
