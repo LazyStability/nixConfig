@@ -38,5 +38,11 @@ in
   '';
 
   services.pcscd.enable = enableYubi;
-  environment.systemPackages = lib.mkIf enableYubi [ pkgs.yubioath-flutter ];
+  programs.gnupg.agent = {
+    enable = enableYubi;
+  };
+  environment.systemPackages = lib.mkIf enableYubi [
+    pkgs.yubioath-flutter
+    pkgs.gnupg
+  ];
 }
