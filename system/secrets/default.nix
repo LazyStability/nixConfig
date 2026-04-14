@@ -20,6 +20,10 @@
       "samba/destination" = {
         sopsFile = ./samba.yaml;
       };
+      restic-password = {
+        sopsFile = ./samba.yaml;
+      };
     };
+
   };
 }
