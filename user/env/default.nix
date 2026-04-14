@@ -19,21 +19,27 @@
         recurseIntoDir =
           target_path: source_dir:
           builtins.listToAttrs (
-            map (
-              x:
-              let
-                target = target_path + (lib.removePrefix (toString source_dir) (toString x));
-                executable = (lib.hasSuffix ".sh" (toString x));
-              in
-              {
-                name = target;
-                value = {
-                  type = "copy";
-                  source = x;
-                  inherit target executable;
-                };
-              }
-            ) (lib.filesystem.listFilesRecursive source_dir)
+            map
+              (
+                x:
+                let
+                  target = target_path + (lib.removePrefix (toString source_dir) (toString x));
+                  executable = (lib.hasSuffix ".sh" (toString x));
+                in
+                {
+                  name = target;
+                  value = {
+                    type = "copy";
+                    source = x;
+                    inherit target executable;
+                  };
+                }
+              )
+              (
+                lib.lists.filter (
+                  file: !(lib.strings.hasInfix "hypr" file) || !(lib.strings.hasInfix "swaync" file)
+                ) (lib.filesystem.listFilesRecursive source_dir)
+              )
           );
         hyprland-window-quickswitcher =
           pkgs.callPackage ../scripts/desktop-utils/hyprland-window-quickswitcher.nix
