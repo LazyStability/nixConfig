@@ -4,14 +4,12 @@
   config,
   ...
 }:
-let
-  enableYubi = config.security.pam.u2f.enable;
-in
-{
+lib.mkIf config.security.pam.u2f.enable {
+  # Passwordless sudo and login
   security.pam = {
     services = {
-      login.u2fAuth = enableYubi;
-      sudo.u2fAuth = enableYubi;
+      login.u2fAuth = true;
+      sudo.u2fAuth = true;
     };
     u2f = {
       settings = {
@@ -28,21 +26,32 @@ in
       };
     };
   };
-  services.udev.extraRules = lib.mkIf enableYubi ''
-    ACTION=="remove",\
-     ENV{ID_BUS}=="usb",\
-     ENV{ID_MODEL_ID}=="0407",\
-     ENV{ID_VENDOR_ID}=="1050",\
-     ENV{ID_VENDOR}=="Yubico",\
-     RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+  services.udev = {
+    packages = [ pkgs.yubikey-personalization ];
+    extraRules = ''
+      ACTION=="remove",\
+       ENV{ID_BUS}=="usb",\
+       ENV{ID_MODEL_ID}=="0407",\
+       ENV{ID_VENDOR_ID}=="1050",\
+       ENV{ID_VENDOR}=="Yubico",\
+       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+    '';
+  };
+  environment.shellInit = ''
+    gpg-connect-agent /bye
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    export GPG_TTY=$(tty)
+    gpg-connect-agent updatestartuptty /bye >/dev/null
   '';
 
-  services.pcscd.enable = enableYubi;
+  services.pcscd.enable = true;
   programs.gnupg.agent = {
-    enable = enableYubi;
+    enable = true;
+    # pinentryPackage = pkgs.pinentry-all;
   };
-  environment.systemPackages = lib.mkIf enableYubi [
+  environment.systemPackages = [
     pkgs.yubioath-flutter
     pkgs.gnupg
+    pkgs.yubikey-personalization
   ];
 }
