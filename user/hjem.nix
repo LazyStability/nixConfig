@@ -71,11 +71,9 @@
 
         imv
         keymapp
-        piper
         networkmanagerapplet
         networkmanager-openvpn
         # blueberry
-        element-desktop
         # iamb
 
         # Musik
@@ -83,7 +81,6 @@
         mpd
         mpd-mpris
 
-        gimp
         brave
         nautilus
 
@@ -97,9 +94,13 @@
         typescript-language-server
         bash-language-server
         hyprls
-        # needed for typst preview
+        # needed for typst preview and generally useful cli tools
         imagemagick
         ghostscript
+
+        zip
+        pdftk
+
         nixfmt
         markdown-oxide
 
@@ -120,27 +121,34 @@
         wl-clipboard
 
         # calibre
-        (inkscape-with-extensions.override {
-          inkscapeExtensions = [ inkscape-extensions.textext ];
-        })
         hyperfine
         tor-browser
         newsboat
         nushell
-        reddit-tui
-        anki
+        # reddit-tui
         zotero
-        prismlauncher
         yt-dlp
         wl-clipboard
         signal-desktop
-        piper
-        remmina
         w3m
-        komikku
         kitty
         # patched-keepassxc
+
+        # Gui applications
+        # TODO: Sandboxing
+        xournalpp
+        gimp
+        remmina
+        piper
+        komikku
         keepassxc
+        anki
+        element-desktop
+        (inkscape-with-extensions.override {
+          inkscapeExtensions = [ inkscape-extensions.textext ];
+        })
+
+        prismlauncher
       ]
       ++ (with extraPackages; [
         vesktop
