@@ -19,7 +19,7 @@
       unitConfig = {
         After = "graphical-session.target";
         ConditionEnvironment = "WAYLAND_DISPLAY";
-        X-Restart-Triggers = "$XDG_CONFIG_HOME/hypr/hypridle.conf";
+        X-Restart-Triggers = "/home/me/hypr/hypridle.conf";
         Description = "Idle daemon.";
       };
     };
@@ -36,7 +36,7 @@
         ConditionEnvironment = "WAYLAND_DISPLAY";
         Description = "hyprpaper";
         PartOf = "graphical-session.target";
-        X-Restart-Triggers = "$XDG_CONFIG_HOME/hypr/hyprpaper.conf";
+        X-Restart-Triggers = "/home/mehypr/hyprpaper.conf";
       };
     };
 
@@ -167,8 +167,8 @@
         Documentation = "https://github.com/ErikReider/SwayNotificationCenter";
         PartOf = "graphical-session.target";
         X-Restart-Triggers = [
-          "$XDG_CONFIG_HOME/waybar/config.json"
-          "$XDG_CONFIG_HOME/waybar/style.css"
+          "/home/me/waybar/config.json"
+          "/home/me/waybar/style.css"
         ];
       };
     };
@@ -267,8 +267,8 @@
         # Requisite="graphical-session.target";
         ConditionEnvironment = "WAYLAND_DISPLAY";
         X-Restart-Triggers = [
-          "$XDG_CONFIG_HOME/waybar/config"
-          "$XDG_CONFIG_HOME/waybar/style.css"
+          "/home/me/waybar/config"
+          "/home/me/waybar/style.css"
         ];
         Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors.";
         Documentation = "https://github.com/Alexays/Waybar/wiki";
