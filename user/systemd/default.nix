@@ -275,6 +275,30 @@
 
       };
     };
+    passSecretService =
+      let
+        binPath = "${pkgs.pass-secret-service}/bin/pass_secret_service";
+      in
+      {
+        unitConfig = {
+          AssertFileIsExecutable = binPath;
+          Description = "Pass libsecret service";
+          Documentation = "https://github.com/mdellweg/pass_secret_service";
+          PartOf = [ "default.target" ];
+        };
 
+        serviceConfig = {
+          Type = "dbus";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/me/.local/share/passSecretService";
+          ExecStart = binPath + " --path /home/me/.local/share/passSecretService";
+          BusName = "org.freedesktop.secrets";
+          Environment = [ "GNUPGHOME=$HOME/.config/gnupg" ];
+        };
+
+        wantedBy = [ "default.target" ];
+      };
   };
+  # For passSecretService
+  hjem.users.me.xdg.data.files."dbus-1/services/org.freedesktop.secrets.service".source =
+    "${pkgs.pass-secret-service}/share/dbus-1/services/org.freedesktop.secrets.service";
 }
