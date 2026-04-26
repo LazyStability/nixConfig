@@ -37,12 +37,6 @@ lib.mkIf config.security.pam.u2f.enable {
     #    RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
     # '';
   };
-  environment.shellInit = ''
-    gpg-connect-agent /bye
-    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-    export GPG_TTY=$(tty)
-    gpg-connect-agent updatestartuptty /bye >/dev/null
-  '';
 
   services.pcscd.enable = true;
   programs.gnupg.agent = {
