@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=SED cheatsheet
+Comment=SED cheatsheet
+Exec=firefox https://quickref.me/sed
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/bash-help.png
+StartupNotify=true

@@ -5,42 +5,48 @@
   lib,
   ...
 }:
+let
+  pathContains =
+    string: file:
+    if (builtins.match (".*" + string + ".*") (lib.toString file)) != null then true else false;
+  recurseIntoDir =
+    target_path: source_dir:
+    builtins.listToAttrs (
+      map
+        (
+          x:
+          let
+            target = target_path + (lib.removePrefix (toString source_dir) (toString x));
+            executable = (lib.hasSuffix ".sh" (toString x));
+          in
+          {
+            name = target;
+            value = {
+              type = "copy";
+              source = x;
+              inherit target executable;
+            };
+          }
+        )
+        (
+          lib.lists.filter (file: !(pathContains "hypr" file) || !(pathContains "swaync" file)) (
+            lib.filesystem.listFilesRecursive source_dir
+          )
+        )
+    );
+
+in
 {
   hjem.users.me = {
+    # Additional files from the nix store the rest is copied with recurseIntoDir
     xdg.data.files = {
       "icons/Bibata".source = "${pkgs.bibata-cursors.outPath}/share/icons/Bibata-Modern-Ice";
       "icons/Adwaita".source = "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";
-      "icons/default/index.theme".source = ./local/share/icons/default/index.theme;
-      "wallpaper".source = ./local/share/wallpaper;
+
     };
     # Firefox
     files =
       let
-        recurseIntoDir =
-          target_path: source_dir:
-          builtins.listToAttrs (
-            map
-              (
-                x:
-                let
-                  target = target_path + (lib.removePrefix (toString source_dir) (toString x));
-                  executable = (lib.hasSuffix ".sh" (toString x));
-                in
-                {
-                  name = target;
-                  value = {
-                    type = "copy";
-                    source = x;
-                    inherit target executable;
-                  };
-                }
-              )
-              (
-                lib.lists.filter (
-                  file: !(lib.strings.hasInfix "hypr" file) || !(lib.strings.hasInfix "swaync" file)
-                ) (lib.filesystem.listFilesRecursive source_dir)
-              )
-          );
         hyprland-window-quickswitcher =
           pkgs.callPackage ../scripts/desktop-utils/hyprland-window-quickswitcher.nix
             { };
@@ -129,6 +135,7 @@
       }
       // (recurseIntoDir ".mozilla" ./mozilla)
       // (recurseIntoDir ".config" ./config)
+      // (recurseIntoDir ".local" ./local)
       // (recurseIntoDir ".ssh" ./ssh);
   };
 }

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=cpp cheatsheet
+Comment=cpp cheatsheet
+Exec=firefox https://quickref.me/cpp
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/cpp-cheatsheet.png
+StartupNotify=true

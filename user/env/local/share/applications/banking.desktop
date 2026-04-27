@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=banking
+Comment=banking
+Exec=firefox https://www.ksn-northeim.de/de/home.html https://www.sparkasse-heidelberg.de/de/home.html
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/banking.png
+StartupNotify=true

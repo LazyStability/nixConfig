@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Proton
+Comment=Proton
+Exec=firefox https://account.proton.me/mail
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/proton.png
+StartupNotify=true

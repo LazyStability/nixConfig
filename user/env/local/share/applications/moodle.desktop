@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Moodle
+Comment=Moodle
+Exec=firefox https://moodle.uni-heidelberg.de
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/moodle.png
+StartupNotify=true

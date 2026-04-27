@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Legion2 website
+Comment=Legion2 website
+Exec=firefox https://drach.bot/
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/legion2-website.png
+StartupNotify=true

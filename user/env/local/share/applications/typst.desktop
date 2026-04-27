@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Typst
+Comment=Typst
+Exec=firefox https://typst.app/docs/reference/ 
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/typst.png
+StartupNotify=true

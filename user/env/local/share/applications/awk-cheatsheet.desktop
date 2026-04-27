@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=AWK cheatsheet
+Comment=AWK cheatsheet
+Exec=firefox https://quickref.me/awk.html
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/bash-help.png
+StartupNotify=true

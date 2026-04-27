@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Landchad
+Comment=Landchad
+Exec=firefox https://landchad.net
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/landchad.png
+StartupNotify=true

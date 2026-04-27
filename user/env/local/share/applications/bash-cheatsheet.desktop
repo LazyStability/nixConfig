@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Bash cheatsheet
+Comment=Bash help
+Exec=firefox https://devhints.io/bash
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/bash-help.png
+StartupNotify=true

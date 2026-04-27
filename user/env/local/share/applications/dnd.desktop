@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=DnD
+Comment=DnD
+Exec=firefox https://www.dndbeyond.com/ https://w2g.tv/ap2nbyk1gddxnpkmee https://5e.tools/ http://152.89.239.28/tagebuch
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/dnd.png
+StartupNotify=true

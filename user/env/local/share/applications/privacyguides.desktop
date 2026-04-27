@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Privacyguides
+Comment=Privacyguides
+Exec=firefox https://www.privacyguides.org
+Terminal=false
+Type=Application
+Icon=/home/me/.local/share/applications/icons/privacyguides.png
+StartupNotify=true
