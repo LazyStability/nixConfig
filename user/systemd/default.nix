@@ -290,9 +290,9 @@
         serviceConfig = {
           Type = "dbus";
           ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/me/.local/share/passSecretService";
-          ExecStart = binPath + " --path /home/me/.local/share/passSecretService";
+          ExecStart = binPath + " --notify-on-access --path /home/me/.local/share/passSecretService";
           BusName = "org.freedesktop.secrets";
-          Environment = [ "GNUPGHOME=$HOME/.config/gnupg" ];
+          Environment = [ "GNUPGHOME=.config/gnupg" ];
         };
 
         wantedBy = [ "default.target" ];
