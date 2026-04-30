@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  extraPackages,
+  ...
+}:
 {
   hjem.users.me.systemd.services = {
     hypridle = {
@@ -277,7 +282,7 @@
     };
     passSecretService =
       let
-        binPath = "${pkgs.pass-secret-service}/bin/pass_secret_service";
+        binPath = "${extraPackages.pass-secret-service}/bin/pass-secret-service";
       in
       {
         unitConfig = {
@@ -290,7 +295,7 @@
         serviceConfig = {
           Type = "dbus";
           ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/me/.local/share/passSecretService";
-          ExecStart = binPath + " --notify-on-access --path /home/me/.local/share/passSecretService";
+          ExecStart = binPath + " -n --path /home/me/.local/share/passSecretService";
           BusName = "org.freedesktop.secrets";
           Environment = [ "GNUPGHOME=.config/gnupg" ];
         };
@@ -300,5 +305,5 @@
   };
   # For passSecretService
   hjem.users.me.xdg.data.files."dbus-1/services/org.freedesktop.secrets.service".source =
-    "${pkgs.pass-secret-service}/share/dbus-1/services/org.freedesktop.secrets.service";
+    "${extraPackages.pass-secret-service}/share/dbus-1/services/org.freedesktop.secrets.service";
 }

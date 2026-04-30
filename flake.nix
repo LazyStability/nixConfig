@@ -103,6 +103,7 @@
           treefmt
           nixfmt
           deadnix
+          nix-init
         ];
       };
       # Is going to be deprecated
