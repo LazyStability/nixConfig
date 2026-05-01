@@ -92,6 +92,19 @@
               ;
           };
         };
+        Test = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./Hosts/Test/configuration.nix
+          ];
+          specialArgs = {
+            inherit
+              inputs
+              self
+              extraPackages
+              ;
+          };
+        };
       };
       devShells.${system}.default = pkgs.mkShellNoCC {
         FLAKE = ./.;
@@ -111,5 +124,12 @@
       # wrapped by treefmt-nix
       # formatter.${system} = pkgs.nixfmt-tree;
       packages.${system}.nvim = pkgs.callPackage ./packages/nvim/neovim.nix { };
+      apps = rec {
+        default = Test;
+        Test = {
+          type = "app";
+          program = lib.getExe self.nixosConfigurations.Test.config.system.build.vm;
+        };
+      };
     };
 }
