@@ -66,6 +66,7 @@
 
               subvolumes = {
                 "/root" = {
+                  mountOptions = [ "x-systemd.device-timeout=infinity" ];
                   mountpoint = "/";
                 };
                 "/data" = {
