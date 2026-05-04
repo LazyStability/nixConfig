@@ -131,7 +131,7 @@
   };
 
   programs = {
-    wireshark.enable = true;
+    wireshark.enable = false;
     wireshark.package = pkgs.wireshark;
     ydotool.enable = true;
     thunderbird.enable = true;

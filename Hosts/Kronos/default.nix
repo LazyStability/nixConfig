@@ -124,7 +124,7 @@
   };
   programs = {
     wireshark = {
-      enable = true;
+      # enable = true;
       package = pkgs.wireshark;
     };
     ydotool.enable = true;
