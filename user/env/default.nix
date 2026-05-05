@@ -9,6 +9,8 @@ let
   pathContains =
     string: file:
     if (builtins.match (".*" + string + ".*") (lib.toString file)) != null then true else false;
+  # TODO: Put in the paths contains as arguments instead of hardcoding and do the same with permissions
+  # Also create directories with similar permissions
   recurseIntoDir =
     target_path: source_dir:
     builtins.listToAttrs (
@@ -18,13 +20,21 @@ let
           let
             target = target_path + (lib.removePrefix (toString source_dir) (toString x));
             executable = (lib.hasSuffix ".sh" (toString x));
+            permissions =
+              if (pathContains "gnupg" (toString x)) then
+                "400"
+              else if (pathContains "vesktop" (toString x)) then
+                "660"
+              else
+                # Readonly
+                "400";
           in
           {
             name = target;
             value = {
               type = "copy";
               source = x;
-              inherit target executable;
+              inherit target executable permissions;
             };
           }
         )
@@ -124,6 +134,10 @@ in
             vim-anywhere
 
           ];
+        };
+        ".config/gnupg" = {
+          type = "directory";
+          permissions = "700";
         };
         ".config/swaync".source = directorySub {
           runCommand = pkgs.runCommand;
