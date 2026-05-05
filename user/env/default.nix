@@ -29,9 +29,10 @@ let
           }
         )
         (
-          lib.lists.filter (file: !(pathContains "hypr" file) || !(pathContains "swaync" file)) (
-            lib.filesystem.listFilesRecursive source_dir
-          )
+          lib.lists.filter (
+            file:
+            !(pathContains "hypr" file) && !(pathContains "swaync" file) && !(pathContains "systemd/user" file)
+          ) (lib.filesystem.listFilesRecursive source_dir)
         )
     );
 
