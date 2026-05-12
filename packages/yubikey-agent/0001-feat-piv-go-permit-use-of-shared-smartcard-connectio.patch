@@ -1,0 +1,31 @@
+From ccca06dcbd30fb0ba00215582e1b691319f311ea Mon Sep 17 00:00:00 2001
+From: LazyStability <LazilyStable@proton.me>
+Date: Tue, 12 May 2026 13:39:57 +0200
+Subject: [PATCH] feat(piv-go): permit use of shared smartcard connections
+
+https://github.com/go-piv/piv-go/pull/182
+---
+ go.mod | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/go.mod b/go.mod
+index a4e62c7..c0a3116 100644
+--- a/go.mod
++++ b/go.mod
+@@ -2,11 +2,13 @@ module filippo.io/yubikey-agent
+ 
+ go 1.19
+ 
++
+ require (
+ 	github.com/go-piv/piv-go v1.10.0
+ 	github.com/twpayne/go-pinentry-minimal v0.0.0-20220113210447-2a5dc4396c2a
+ 	golang.org/x/crypto v0.4.0
+ 	golang.org/x/term v0.3.0
+ )
++replace github.com/go-piv/piv-go/v2 v2.5.0 => github.com/tianon/piv-go/v2 v2.0.0-20250722230016-aee16e401953
+ 
+ require golang.org/x/sys v0.3.0 // indirect
+-- 
+2.53.0
+

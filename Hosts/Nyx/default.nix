@@ -146,6 +146,10 @@
   # Mouse
   services = {
     ratbagd.enable = true;
+    yubikey-agent = {
+      enable = true;
+      package = extraPackages.yubikey-agent;
+    };
     syncthing.enable = true;
     playerctld.enable = true;
     gvfs.enable = true;
