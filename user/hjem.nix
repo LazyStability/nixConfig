@@ -132,6 +132,11 @@
         signal-desktop
         w3m
         kitty
+        # age
+        rage
+        # passage, now in extraPackages
+        # (pass.withExtensions (ext: with ext; [ pass-otp ]))
+        age-plugin-yubikey
         # patched-keepassxc
 
         # Gui applications
@@ -155,6 +160,7 @@
         wiki-tui
         sioyek
         mpv
+        (passage.withExtensions (ext: with ext; [ pass-otp ]))
         # rnote
         kitty-sessionizer
         dungeondraft
