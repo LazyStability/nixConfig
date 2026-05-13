@@ -30,7 +30,7 @@
 	format = "ssh"
 
 [gpg "openpgp"]
-	program = "/usr/bin/gpg"
+	program = "/run/current-system/sw/bin/gpg"
 
 [gpg "ssh"]
 	allowedSignersFile = "~/.ssh/allowed_signers"
@@ -46,7 +46,7 @@
 [user]
 	email = "LazilyStable@proton.me"
 	name = "LazyStability"
-	signingkey = "~/.ssh/dev.pub"
+	signingkey = "~/.ssh/base.pub"
 
 [core]
 	excludesFile = ~/.config/git/ignore

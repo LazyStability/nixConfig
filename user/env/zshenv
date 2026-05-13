@@ -1,5 +1,7 @@
 if [ -z "$SSH_AUTH_SOCK" -o -z "$SSH_CONNECTION" ]; then
-  export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
+  # export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
+  # Use yubikey-agent
+  export export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/yubikey-agent/yubikey-agent.sock
 fi
 
 export EDITOR="nvim"
