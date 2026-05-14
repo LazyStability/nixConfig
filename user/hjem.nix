@@ -133,7 +133,7 @@
         w3m
         kitty
         # age
-        rage
+        # rage
         # passage, now in extraPackages
         # (pass.withExtensions (ext: with ext; [ pass-otp ]))
         age-plugin-yubikey
@@ -160,7 +160,8 @@
         wiki-tui
         sioyek
         mpv
-        (passage.withExtensions (ext: with ext; [ pass-otp ]))
+        ((passage.override { age = pkgs.rage; }).withExtensions (ext: with ext; [ pass-otp ]))
+        # passage
         # rnote
         kitty-sessionizer
         dungeondraft

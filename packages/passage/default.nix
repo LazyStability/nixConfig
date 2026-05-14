@@ -1,6 +1,7 @@
 {
   pkgs,
   passage,
+  rage,
   lib,
   ...
 }:
@@ -27,7 +28,7 @@ let
               mv $out/lib/password-store/extensions/${name}.bash $out/lib/passage/extensions/${name}.bash
               substituteInPlace $out/lib/passage/extensions/${name}.bash \
                 --replace '$EXTENSIONS' "$out/lib/passage/extensions/"
-              # rm $out/lib/password-store -r
+              rm $out/lib/password-store -r
             '';
           }
         )
@@ -56,16 +57,19 @@ let
         wrapProgram $out/bin/passage \
           --set SYSTEM_EXTENSION_DIR "$out/lib/passage/extensions" \
           --set PASSAGE_EXTENSIONS_DIR "$out/lib/passage/extensions" \
-          --set PASSWORD_STORE_ENABLE_EXTENSIONS true
+          --set PASSWORD_STORE_ENABLE_EXTENSIONS true \
       '';
       meta.mainProgram = "passage";
-      passthru = {
-        extensions = passageExtensions;
-        withExtensions = env;
-      };
     };
 in
-passage.overrideAttrs (old: {
+(passage.override { age = rage; }).overrideAttrs (old: {
+  # Using $0 is bad, it causes --help to mention ".passage-wrapped".
+  postInstall = ''
+    substituteInPlace $out/bin/passage \
+              --replace 'PROGRAM="''${0##*/}"' 'PROGRAM=passage' \
+              --replace 'AGE="''${PASSAGE_AGE:-age}"' 'AGE=${lib.getExe rage}'
+    wrapProgram $out/bin/passage --prefix PATH : $extraPath --argv0 $pname
+  '';
   passthru = {
     extensions = passageExtensions;
     withExtensions = env;

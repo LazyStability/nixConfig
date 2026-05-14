@@ -41,11 +41,13 @@ lib.mkIf config.security.pam.u2f.enable {
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    # pinentryPackage = pkgs.pinentry-all;
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
   environment.systemPackages = [
     pkgs.yubioath-flutter
+    pkgs.yubikey-manager
     pkgs.gnupg
+    pkgs.pinentry-gnome3
     pkgs.yubikey-personalization
   ];
 }
