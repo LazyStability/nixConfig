@@ -160,8 +160,11 @@
         wiki-tui
         sioyek
         mpv
-        ((passage.override { age = pkgs.rage; }).withExtensions (ext: with ext; [ pass-otp ]))
-        # passage
+        (
+          (extraPackages.passage.override { passage = extraPackages.passage.override { age = pkgs.rage; }; })
+          .withExtensions
+          (ext: with ext; [ pass-otp ])
+        )
         # rnote
         kitty-sessionizer
         dungeondraft

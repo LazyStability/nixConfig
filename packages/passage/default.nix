@@ -1,9 +1,24 @@
 {
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  makeBinaryWrapper,
+  replaceVars,
   pkgs,
   passage,
-  rage,
-  lib,
-  ...
+  age,
+  getopt,
+  coreutils,
+  findutils,
+  gnugrep,
+  gnused,
+  qrencode ? null,
+  wl-clipboard ? null,
+  git ? null,
+  xclip ? null,
+  # Used to pretty-print list of all stored passwords, but is not needed to fetch
+  # or store password by its name. Most users would want this dependency.
+  tree ? null,
 }:
 let
   passageExtensions = import ./extensions {
@@ -56,22 +71,90 @@ let
 
         wrapProgram $out/bin/passage \
           --set SYSTEM_EXTENSION_DIR "$out/lib/passage/extensions" \
-          --set PASSAGE_EXTENSIONS_DIR "$out/lib/passage/extensions" \
           --set PASSWORD_STORE_ENABLE_EXTENSIONS true \
       '';
       meta.mainProgram = "passage";
     };
 in
-(passage.override { age = rage; }).overrideAttrs (old: {
+stdenv.mkDerivation (finalAttrs: {
+  pname = "passage";
+  version = "1.7.4a2";
+
+  src = fetchFromGitHub {
+    owner = "FiloSottile";
+    repo = "passage";
+    rev = "${finalAttrs.version}";
+    hash = "sha256-tGHJFzDc2K117r5EMFdKsfw/+EpdZ0qzaExt+RGI4qo=";
+  };
+
+  patches = [
+    (replaceVars ./darwin-getopt-path.patch {
+      inherit getopt;
+    })
+    ./set-correct-program-name-for-sleep.patch
+    ./extension-dir.patch
+  ];
+  postPatch = ''
+    patchShebangs tests
+
+    substituteInPlace src/password-store.sh \
+      --replace-fail "@out@" "$out"'';
+
+  nativeBuildInputs = [ makeBinaryWrapper ];
+
+  extraPath = lib.makeBinPath (
+    [
+      age
+      coreutils
+      findutils
+      git
+      gnugrep
+      gnused
+      qrencode
+      tree
+    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+      wl-clipboard
+      xclip
+    ]
+  );
+
   # Using $0 is bad, it causes --help to mention ".passage-wrapped".
   postInstall = ''
     substituteInPlace $out/bin/passage \
-              --replace 'PROGRAM="''${0##*/}"' 'PROGRAM=passage' \
-              --replace 'AGE="''${PASSAGE_AGE:-age}"' 'AGE=${lib.getExe rage}'
+              --replace-fail 'PROGRAM="''${0##*/}"' 'PROGRAM=passage' \
+              --replace-fail 'AGE="''${PASSAGE_AGE:-age}"' 'AGE=${lib.getExe age}'
     wrapProgram $out/bin/passage --prefix PATH : $extraPath --argv0 $pname
   '';
+
+  installFlags = [
+    "PREFIX=$(out)"
+    "WITH_ALLCOMP=yes"
+  ];
   passthru = {
     extensions = passageExtensions;
     withExtensions = env;
+  };
+
+  meta = {
+    description = "Stores, retrieves, generates, and synchronizes passwords securely";
+    homepage = "https://github.com/FiloSottile/passage";
+    license = lib.licenses.gpl2Plus;
+    maintainers = with lib.maintainers; [
+      kaction
+      ma27
+    ];
+    platforms = lib.platforms.unix;
+    mainProgram = "passage";
+
+    longDescription = ''
+      passage is a fork of password-store (https://www.passwordstore.org) that uses
+      age (https://age-encryption.org) as a backend instead of GnuPG.
+
+      It keeps passwords inside age(1) encrypted files inside a simple
+      directory tree and provides a series of commands for manipulating the
+      password store, allowing the user to add, remove, edit and synchronize
+      passwords.
+    '';
   };
 })
