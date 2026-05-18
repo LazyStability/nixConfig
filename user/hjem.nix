@@ -68,6 +68,8 @@
         networkmanager_dmenu
         swaynotificationcenter
         bibata-cursors
+        # Alternative to uwsm app
+        runapp
 
         imv
         keymapp

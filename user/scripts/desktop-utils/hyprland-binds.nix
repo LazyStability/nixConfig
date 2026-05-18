@@ -38,6 +38,7 @@ writeShellScriptBin "hyprland-binds" ''
           -e 's,/nix/store/[0-9a-zA-Z\-]+/bin/,,' \
           -e '/submap\,reset/d' \
           -e 's,uwsm app -- ,,' \
+          -e 's,runapp ,,' \
           -e 's/@0//' \
           -e 's/,@/,code:/' \
           -e 's/^0,/,/' \
