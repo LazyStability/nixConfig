@@ -14,6 +14,7 @@ in
     bat
     croc
     onefetch
+    sysz
     fastfetch
     tree
     ripgrep
