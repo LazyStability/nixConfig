@@ -280,6 +280,22 @@
 
       };
     };
+    gpg-setup-oneshot =
+      let
+        gpg-setup-script = pkgs.callPackage ../scripts/gpg-setup.nix { };
+      in
+      {
+        unitConfig = {
+          Description = "A systemd service to garantie correct setup of gpg";
+          PartOf = [ "default.target" ];
+        };
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "${gpg-setup-script}/bin/gpg-setup";
+          Environment = [ "GNUPGHOME=.config/gnupg" ];
+        };
+        wantedBy = [ "default.target" ];
+      };
     passSecretService =
       let
         binPath = "${extraPackages.pass-secret-service}/bin/pass-secret-service";

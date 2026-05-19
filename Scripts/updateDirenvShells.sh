@@ -8,6 +8,6 @@ for link in /nix/var/nix/gcroots/auto/*; do
       # echo "$link -> $target"
       target=${target%%.direnv/*}
       echo "$target"
-      sh -c "cd \"$target\" && direnv allow"
+      bash -c "eval \"$(direnv export bash)\" && cd \"$target\""
   fi
 done
