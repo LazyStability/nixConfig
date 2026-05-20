@@ -49,12 +49,7 @@
     packages = (
       with pkgs;
       [
-        obsidian
-        localsend
-        vscode
         libnotify
-        # xdg default
-        kdePackages.okular
 
         # Desktop
         hypridle
@@ -122,8 +117,9 @@
         # Utility
         wl-clipboard
 
-        # calibre
         hyperfine
+        comma
+        nix-index
         tor-browser
         newsboat
         nushell
@@ -144,12 +140,19 @@
         # Gui applications
         # TODO: Sandboxing
         xournalpp
+        # calibre
+        abaddon
         gimp
         remmina
         piper
         komikku
         keepassxc
         anki
+        # xdg default
+        kdePackages.okular
+        obsidian
+        localsend
+        vscode
         element-desktop
         (inkscape-with-extensions.override {
           inkscapeExtensions = [ inkscape-extensions.textext ];
