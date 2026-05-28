@@ -4,7 +4,6 @@
     paths = [
       "/mnt/data/Bilder"
       "/mnt/data/Dokumente"
-      "/mnt/data/Videos"
     ];
     extraBackupArgs = [
       "--exclude-caches"
