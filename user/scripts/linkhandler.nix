@@ -11,7 +11,10 @@
 */
 {
   writeShellApplication,
-  pkgs,
+  wl-clipboard,
+  curl,
+  sioyek,
+  imv,
   ...
 }:
 let
@@ -32,10 +35,10 @@ writeShellApplication {
 
   name = "linkhandler";
   runtimeInputs = [
-    pkgs.wl-clipboard
-    pkgs.curl
-    pkgs.zathura
-    pkgs.nsxiv
+    wl-clipboard
+    curl
+    sioyek
+    imv
     mpv-wrapper
   ];
   text =
@@ -64,9 +67,9 @@ writeShellApplication {
       	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtube.com/shorts*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*)
       		setsid -f mpv-wrapper "$url" ;;
       	*png|*jpg|*jpe|*jpeg|*gif|*webp)
-      		([ -f "$url" ] && nsxiv -a "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && nsxiv -a "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
+      		([ -f "$url" ] && imv "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && imv "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
       	*pdf|*cbz|*cbr)
-      		([ -f "$url" ] && zathura "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && zathura "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
+      		([ -f "$url" ] && sioyek "$url" >/dev/null 2>&1) || (curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && zathura "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 &) ;;
       	*mp3|*flac|*opus|*mp3?source*)
       		([ -f "$url" ] && setsid -f mpv-wrapper "$url" ) || qndl "$url" 'curl -LO'  >/dev/null 2>&1 ;;
       	*)

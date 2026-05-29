@@ -48,6 +48,5 @@ lib.mkIf config.security.pam.u2f.enable {
     pkgs.yubikey-manager
     pkgs.gnupg
     pkgs.pinentry-gnome3
-    pkgs.yubikey-personalization
   ];
 }

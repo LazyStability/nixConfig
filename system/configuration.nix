@@ -41,28 +41,6 @@
 
   # This alllows nix to run binary programs which expect these libraries in FHS compliant paths
   # See here for more info: https://wiki.nixos.org/wiki/Nix-ld
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      # List by default
-      zlib
-      zstd
-      stdenv.cc.cc
-      curl
-      openssl
-      android-tools
-      attr
-      libssh
-      bzip2
-      libxml2
-      acl
-      libsodium
-      util-linux
-      glib
-      xz
-      systemd
-    ];
-  };
 
   nix = {
     # Garbage collection on the nix store
@@ -114,12 +92,14 @@
   environment = {
     # List packages installed in system profile. To search, run:
     # $ nix search wget
+    defaultPackages = lib.mkDefault [ ];
     systemPackages =
       (with pkgs; [
-        steam-run
         # veracrypt
         neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         wget
+        strace
+        rsync
         clang
         ffmpeg
         nh
@@ -147,12 +127,37 @@
       NIXOS_OZONE_PLATFORM = 1;
     };
   };
-  programs.neovim = {
-    enable = true;
+  programs = {
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        # List by default
+        zlib
+        zstd
+        stdenv.cc.cc
+        curl
+        openssl
+        android-tools
+        attr
+        libssh
+        bzip2
+        libxml2
+        acl
+        libsodium
+        util-linux
+        glib
+        xz
+        systemd
+      ];
+    };
+    nano.enable = false;
+    neovim = {
+      enable = true;
 
-    viAlias = true;
-    vimAlias = true;
-    # vimdiffAlias = true;
+      viAlias = true;
+      vimAlias = true;
+      # vimdiffAlias = true;
+    };
   };
   fonts = {
     enableDefaultPackages = true;

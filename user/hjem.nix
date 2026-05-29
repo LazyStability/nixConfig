@@ -108,8 +108,6 @@
         typstyle
 
         # Markdown
-        pandoc
-        live-server
 
         # latex
         # tex
@@ -128,7 +126,6 @@
         yt-dlp
         wl-clipboard
         signal-desktop
-        w3m
         kitty
         # age
         # rage
@@ -145,24 +142,18 @@
         gimp
         remmina
         piper
-        komikku
         keepassxc
-        anki
+        # anki
         # xdg default
         kdePackages.okular
-        obsidian
-        localsend
-        vscode
         element-desktop
         (inkscape-with-extensions.override {
           inkscapeExtensions = [ inkscape-extensions.textext ];
         })
 
-        prismlauncher
       ]
       ++ (with extraPackages; [
         vesktop
-        wiki-tui
         sioyek
         mpv
         (

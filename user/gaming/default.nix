@@ -22,6 +22,8 @@
       archipelago
       ryubing
 
+      # Minecraft
+      prismlauncher
       # Compatibility layer
       # wineWowPackages.waylandFull
       # inputs.umu.packages.${pkgs.system}.umu
