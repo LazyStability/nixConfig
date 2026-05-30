@@ -92,7 +92,6 @@
   environment = {
     # List packages installed in system profile. To search, run:
     # $ nix search wget
-    defaultPackages = lib.mkDefault [ ];
     systemPackages =
       (with pkgs; [
         # veracrypt
