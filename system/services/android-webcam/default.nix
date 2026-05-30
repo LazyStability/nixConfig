@@ -11,7 +11,7 @@ in
   options.myModules.android-webcam = {
     enable = lib.mkEnableOption "Enable scrcpy to stream with an android phone";
   };
-  config = lib.mkIf (cfg.enable) {
+  config = lib.mkIf cfg.enable {
     boot = {
       kernelModules = [ "v4l2loopback" ];
       extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];

@@ -21,8 +21,7 @@
   #     OLLAMA_API_BASE_URL = "http://127.0.0.1:" + builtins.toString config.services.ollama.port;
   #   };
   # };
-  environment.systemPackages = (
-    if config.networking.hostName == "Kronos" then
+  environment.systemPackages = if config.networking.hostName == "Kronos" then
       # lib.mkIf config.services.llama-cpp.enable [
       #     (pkgs.whisper-cpp.override { cudaSupport = true; })
       with pkgs;
@@ -32,6 +31,5 @@
         llama-cpp-vulkan
       ]
     else
-      [ ]
-  );
+      [ ];
 }

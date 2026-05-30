@@ -12,7 +12,7 @@ in
   options.myModules.wireguard = {
     enable = lib.mkEnableOption "Enable base wireguard modules";
   };
-  config = lib.mkIf (cfg.enable) {
+  config = lib.mkIf cfg.enable {
     networking.firewall = {
       allowedUDPPorts = [
         51820

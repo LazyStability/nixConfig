@@ -2,9 +2,7 @@
 { writeShellApplication, config, ... }:
 let
   monitor = builtins.elemAt config.myModules.desktopEnvironment.monitors 0;
-  monitorString = (
-    monitor.name + "," + monitor.mode + "@" + monitor.rate + "," + monitor.position + "," + "1"
-  );
+  monitorString = monitor.name + "," + monitor.mode + "@" + monitor.rate + "," + monitor.position + "," + "1";
   monitorName = monitor.name;
 in
 writeShellApplication {

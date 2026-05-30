@@ -16,10 +16,10 @@ let
     };
   });
 in
-(vesktop.override {
+vesktop.override {
   withSystemVencord = true;
   vencord = patched-vencord;
-})
+}
 # .overrideAttrs
 #   (previousAttr: {
 #     version = "unstable-2026-05-05";

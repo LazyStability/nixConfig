@@ -38,8 +38,7 @@
         "Kronos".id = "6RJ6Y7O-PNYWAZJ-DRG5OMC-5UUYE54-KKEMXAP-5W7MOK6-ORYPH52-M4QQBQG";
         # "Thor".id = "";
       } [ config.networking.hostName ];
-      folders = (
-        with lib.lists;
+      folders = with lib.lists;
         {
           "Zettelkasten" = {
             path = "/home/me/Dokumente/Zettelkasten";
@@ -139,8 +138,7 @@
               "Kronos"
             ];
           };
-        }
-      );
+        };
     };
   };
 }

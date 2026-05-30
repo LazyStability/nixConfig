@@ -137,7 +137,7 @@
           };
         };
       in
-      listToAttrs ([
+      listToAttrs [
         # To add additional extensions, find it on addons.mozilla.org, find
         # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
         # The UUID can be foun after installing it in
@@ -153,13 +153,6 @@
         (extension "vimium-c" "vimium-c@gdh1995.cn")
 
       ]
-
-      # zen extensions
-      # ++
-
-      # WARN: This extension makes it hard to read some websites
-      # lib.optional isZen (extension "transparent_zen" "{91aa3897-2634-4a8a-9092-279db23a7689}")
-      )
       # zotero is not in firefox store
       // {
         "zotero@chnm.gmu.edu" = {

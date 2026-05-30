@@ -32,9 +32,9 @@
               name: value: if builtins.isAttrs value then recurse (path ++ name) value else value
             );
         in
-        (lib.lists.flatten (recurse "" set));
+        lib.lists.flatten (recurse "" set);
     in
-    (flatten (go ./.));
+    flatten (go ./.);
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

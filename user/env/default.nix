@@ -19,7 +19,7 @@ let
           x:
           let
             target = target_path + (lib.removePrefix (toString source_dir) (toString x));
-            executable = (lib.hasSuffix ".sh" (toString x));
+            executable = lib.hasSuffix ".sh" (toString x);
             permissions =
               if (pathContains "gnupg" (toString x)) then
                 "400"
@@ -67,7 +67,7 @@ in
         hyprland-binds = pkgs.callPackage ../scripts/desktop-utils/hyprland-binds.nix { };
         hyprland-switch-behaviour =
           pkgs.callPackage ../scripts/desktop-utils/hyprland-switch-behaviour.nix
-            { config = config; };
+            { inherit config; };
         vim-anywhere = pkgs.callPackage ../scripts/desktop-utils/vim-anywhere.nix { };
         quickcapture = pkgs.callPackage ../scripts/desktop-utils/quickcapture.nix { };
         swaync-soundscript = pkgs.callPackage ../scripts/desktop-utils/swaync-soundscript.nix { };
@@ -121,8 +121,10 @@ in
         ".themes/adw-gtk3".source = "${pkgs.adw-gtk3.outPath}/share/themes/adw-gtk3";
 
         ".config/hypr".source = directorySub {
-          runCommand = pkgs.runCommand;
-          coreutils = pkgs.coreutils;
+          inherit (pkgs)
+            runCommand
+            coreutils
+            ;
           folder = ./config/hypr;
           packages = [
             hyprland-switch-behaviour
@@ -140,8 +142,10 @@ in
           permissions = "700";
         };
         ".config/swaync".source = directorySub {
-          runCommand = pkgs.runCommand;
-          coreutils = pkgs.coreutils;
+          inherit (pkgs)
+            runCommand
+            coreutils
+            ;
           folder = ./config/swaync;
           packages = [
             swaync-soundscript

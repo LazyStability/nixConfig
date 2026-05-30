@@ -28,9 +28,9 @@
               name: value: if builtins.isAttrs value then recurse (path ++ name) value else value
             );
         in
-        (lib.lists.flatten (recurse "" set));
+        lib.lists.flatten (recurse "" set);
     in
-    (flatten (go ./.));
+    flatten (go ./.);
 
   hjem.users.me = {
     environment.sessionVariables = {
@@ -46,8 +46,7 @@
     directory = "/home/me";
     clobberFiles = false;
 
-    packages = (
-      with pkgs;
+    packages = with pkgs;
       [
         libnotify
 
@@ -165,8 +164,7 @@
         kitty-sessionizer
         dungeondraft
         yazi
-      ])
-    );
+      ]);
 
   };
 
