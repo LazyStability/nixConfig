@@ -44,7 +44,7 @@ lib.mkIf config.security.pam.u2f.enable {
     pinentryPackage = pkgs.pinentry-gnome3;
   };
   environment.systemPackages = [
-    pkgs.yubioath-flutter
+    # pkgs.yubioath-flutter
     pkgs.yubikey-manager
     pkgs.gnupg
     pkgs.pinentry-gnome3
