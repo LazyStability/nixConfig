@@ -139,6 +139,10 @@
   # Mouse
   security.pam.u2f.enable = true;
   services = {
+    yubikey-agent = {
+      enable = true;
+      package = extraPackages.yubikey-agent;
+    };
     ratbagd.enable = true;
     gvfs.enable = true;
     # llama-cpp.enable = true;
