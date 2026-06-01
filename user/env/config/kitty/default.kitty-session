@@ -1,6 +1,6 @@
 new_tab @@session@@ - vim
 cd @@session-path@@ 
-launch --title "@@session@@ - vim" vim 
+launch --title "@@session@@ - vim" zsh -c vim '--var=IS_NVIM=1 '
 
 new_tab @@session@@ - onefetch
 cd @@session-path@@ 
