@@ -1,0 +1,14 @@
+#       Serial: 36951570, Slot: 1
+#         Name: base
+#      Created: Sun, 10 May 2026 07:14:58 +0000
+#   PIN policy: Once   (A PIN is required once per session, if set)
+# Touch policy: Always (A physical touch is required for every decryption)
+age1yubikey1qt08shzl553l7h7lnwgu5ujzz9fpchfnaq8qn6dz7qjkxe5zvfdxkq2hcdp
+
+#       Serial: 36951581, Slot: 1
+#         Name: backup
+#      Created: Mon, 11 May 2026 13:24:59 +0000
+#   PIN policy: Once   (A PIN is required once per session, if set)
+# Touch policy: Always (A physical touch is required for every decryption)
+age1yubikey1q2pskgryqly2uvfuccmtfktz82x3tq8cx5nk3pfqz509dd0ajncf2mq5mkl
+
