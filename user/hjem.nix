@@ -133,6 +133,9 @@
         age-plugin-yubikey
         # patched-keepassxc
 
+        bubblewrap
+        claude-code
+
         # Gui applications
         # TODO: Sandboxing
         xournalpp
@@ -162,7 +165,7 @@
         )
         # rnote
         kitty-sessionizer
-        dungeondraft
+        # dungeondraft
         yazi
       ]);
 
