@@ -298,12 +298,11 @@
         # Requisite="graphical-session.target";
         ConditionEnvironment = "WAYLAND_DISPLAY";
         X-Restart-Triggers = [
-          "%h/waybar/config"
-          "%h/waybar/style.css"
+          "%h/.config/waybar/config"
+          "%h/.config/waybar/style.css"
         ];
         Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors.";
         Documentation = "https://github.com/Alexays/Waybar/wiki";
-
       };
     };
     gpg-setup-oneshot =
