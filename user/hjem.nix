@@ -46,7 +46,8 @@
     directory = "/home/me";
     clobberFiles = false;
 
-    packages = with pkgs;
+    packages =
+      with pkgs;
       [
         libnotify
 
@@ -56,6 +57,7 @@
         hyprsunset
         hyprpolkitagent
         hyprshot
+        awww
         waybar
         fuzzel
         pwvucontrol

@@ -29,19 +29,18 @@
       };
     };
 
-    hyprpaper = {
+    awww = {
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
+        ExecStart = "${pkgs.awww}/bin/awww-daemon";
         Restart = "always";
         RestartSec = 10;
       };
       unitConfig = {
         After = "graphical-session.target";
         ConditionEnvironment = "WAYLAND_DISPLAY";
-        Description = "hyprpaper";
+        Description = "An Answer to your Wayland Wallpaper Woes";
         PartOf = "graphical-session.target";
-        X-Restart-Triggers = "/home/mehypr/hyprpaper.conf";
       };
     };
 

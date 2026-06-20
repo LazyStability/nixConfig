@@ -2,13 +2,12 @@
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/hyprpaper
+ExecStart=/usr/bin/awww
 Restart=always
 RestartSec=10
 
 [Unit]
 After=graphical-session.target
 ConditionEnvironment=WAYLAND_DISPLAY
-Description=hyprpaper
+Description=An Answer to your Wayland Wallpaper Woes
 PartOf=graphical-session.target
-X-Restart-Triggers=$XDG_CONFIG_HOME/hypr/hyprpaper.conf
