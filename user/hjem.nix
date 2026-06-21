@@ -141,8 +141,9 @@
         # Gui applications
         # TODO: Sandboxing
         xournalpp
-        # calibre
+        calibre
         abaddon
+        rnote
         gimp
         remmina
         piper
