@@ -1,6 +1,11 @@
 { config, ... }:
 {
   services.restic.backups.odin = {
+    timerConfig = {
+      OnCalendar = "Fri *-*-* 20:00:00";
+      Persistent = true;
+    };
+
     paths = [
       "/mnt/data/Bilder"
       "/mnt/data/Dokumente"
