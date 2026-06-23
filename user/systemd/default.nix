@@ -33,6 +33,7 @@
       wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.awww}/bin/awww-daemon";
+        ExecStartPost = "${pkgs.awww}/bin/awww img %h/.local/share/wallpaper/DarkSoulsIIIAnorLondo.jpg --all";
         Restart = "always";
         RestartSec = 10;
       };
