@@ -15,7 +15,7 @@ in
     croc
     onefetch
     sysz
-    fastfetch
+    microfetch
     tree
     ripgrep
     hwinfo
