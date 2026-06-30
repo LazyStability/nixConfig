@@ -23,6 +23,7 @@
     })
 
     inputs.hjem.nixosModules.default
+    inputs.watt.nixosModules.default
     ../../user/hjem.nix
   ];
   environment = {
@@ -164,22 +165,7 @@
   ## Laptop Power ##
   ##################
 
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-        energy_performance_preference = "power";
-        energy_perf_bias = "power";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-        energy_performance_preference = "performance";
-      };
-    };
-  };
+  services.watt.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

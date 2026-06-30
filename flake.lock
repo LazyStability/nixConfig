@@ -200,7 +200,8 @@
         "lanzaboote": "lanzaboote",
         "natsumi-theme": "natsumi-theme",
         "nixpkgs": "nixpkgs",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "watt": "watt"
       }
     },
     "rust-overlay": {
@@ -241,6 +242,26 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "watt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782399501,
+        "narHash": "sha256-1qEfa04gqCkkhHv+HJtEqrGCqJ3epJ2RepmOJZFEyiQ=",
+        "owner": "NotAShelf",
+        "repo": "watt",
+        "rev": "e65d029fda3eb77f6a464c37847f006c69bd0797",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NotAShelf",
+        "repo": "watt",
         "type": "github"
       }
     }
