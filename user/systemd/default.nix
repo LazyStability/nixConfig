@@ -24,7 +24,7 @@
       unitConfig = {
         After = "graphical-session.target";
         ConditionEnvironment = "WAYLAND_DISPLAY";
-        X-Restart-Triggers = "/home/me/hypr/hypridle.conf";
+        X-Restart-Triggers = "%h/hypr/hypridle.conf";
         Description = "Idle daemon.";
       };
     };
@@ -130,7 +130,7 @@
       serviceConfig = {
         # Environment=
         ExecStart = "${pkgs.mpd}/bin/mpd --no-daemon";
-        ExecStartPre = "${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/mkdir -p /home/me/.local/share/mpd /home/me/.local/share/mpd/playlists\"";
+        ExecStartPre = "${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/mkdir -p %h/.local/share/mpd /home/me/.local/share/mpd/playlists\"";
         Type = "notify";
       };
       unitConfig = {
@@ -171,8 +171,8 @@
         Documentation = "https://github.com/ErikReider/SwayNotificationCenter";
         PartOf = "graphical-session.target";
         X-Restart-Triggers = [
-          "/home/me/waybar/config.json"
-          "/home/me/waybar/style.css"
+          "%h/waybar/config.json"
+          "%h/waybar/style.css"
         ];
       };
     };
@@ -271,8 +271,8 @@
         # Requisite="graphical-session.target";
         ConditionEnvironment = "WAYLAND_DISPLAY";
         X-Restart-Triggers = [
-          "/home/me/waybar/config"
-          "/home/me/waybar/style.css"
+          "%h/waybar/config"
+          "%h/waybar/style.css"
         ];
         Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors.";
         Documentation = "https://github.com/Alexays/Waybar/wiki";
@@ -309,8 +309,8 @@
 
         serviceConfig = {
           Type = "dbus";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/me/.local/share/passSecretService";
-          ExecStart = binPath + " -n --path /home/me/.local/share/passSecretService";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/.local/share/passSecretService";
+          ExecStart = binPath + " -n --path %h/.local/share/passSecretService";
           BusName = "org.freedesktop.secrets";
           Environment = [ "GNUPGHOME=.config/gnupg" ];
         };
