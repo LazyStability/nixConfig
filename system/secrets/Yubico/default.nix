@@ -37,6 +37,18 @@ lib.mkIf config.security.pam.u2f.enable {
     #    RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
     # '';
   };
+  systemd.user = {
+    services.gpg-agent.environment = {
+      GNUPGHOME = "%h/.local/share/gnupg";
+    };
+    sockets.gpg-agent = {
+      listenStreams = [
+        "" # unset
+        # Hardcoded hash of the "me" user
+        "%t/gnupg/d.y9qw9fpb8io474w1acs65mc3/S.gpg-agent"
+      ];
+    };
+  };
 
   services.pcscd.enable = true;
   programs.gnupg.agent = {

@@ -21,9 +21,7 @@ let
             target = target_path + (lib.removePrefix (toString source_dir) (toString x));
             executable = lib.hasSuffix ".sh" (toString x);
             permissions =
-              if (pathContains "gnupg" (toString x)) then
-                "400"
-              else if (pathContains "vesktop" (toString x)) then
+              if (pathContains "vesktop" (toString x)) then
                 "660"
               else
                 # Readonly
@@ -53,6 +51,13 @@ in
     xdg.data.files = {
       "icons/Bibata".source = "${pkgs.bibata-cursors.outPath}/share/icons/Bibata-Modern-Ice";
       "icons/Adwaita".source = "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";
+      "gnupg" = {
+        type = "directory";
+        permissions = "700";
+      };
+      "gnupg/gpg.conf".source = ../env/config/gnupg/gpg.conf;
+      "gnupg/scdaemon.conf".source = ../env/config/gnupg/scdaemon.conf;
+      "gnupg/gpg-agent.conf".source = ../env/config/gnupg/gpg-agent.conf;
 
     };
     # Firefox

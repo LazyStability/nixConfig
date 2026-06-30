@@ -291,7 +291,7 @@
         serviceConfig = {
           Type = "oneshot";
           ExecStart = "${gpg-setup-script}/bin/gpg-setup";
-          Environment = [ "GNUPGHOME=.config/gnupg" ];
+          Environment = [ "GNUPGHOME=%h/.local/share/gnupg" ];
         };
         wantedBy = [ "default.target" ];
       };
@@ -312,7 +312,7 @@
           ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/.local/share/passSecretService";
           ExecStart = binPath + " -n --path %h/.local/share/passSecretService";
           BusName = "org.freedesktop.secrets";
-          Environment = [ "GNUPGHOME=.config/gnupg" ];
+          Environment = [ "GNUPGHOME=%h/.local/share/gnupg" ];
         };
 
         wantedBy = [ "default.target" ];
