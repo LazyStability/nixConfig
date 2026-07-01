@@ -129,9 +129,26 @@
       wantedBy = [ "default.target" ];
       serviceConfig = {
         # Environment=
-        ExecStart = "${pkgs.mpd}/bin/mpd --no-daemon";
+        ExecStart = "${pkgs.mpd}/bin/mpd --systemd";
         ExecStartPre = "${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/mkdir -p %h/.local/share/mpd /home/me/.local/share/mpd/playlists\"";
         Type = "notify";
+        # allow MPD to use real-time priority 40
+        LimitRTPRIO = 40;
+        LimitRTTIME = "infinity";
+
+        # for io_uring
+        LimitMEMLOCK = "64M";
+
+        # disallow writing to /usr, /bin, /sbin, ...
+        ProtectSystem = "yes";
+
+        # more paranoid security settings
+        NoNewPrivileges = "yes";
+        ProtectKernelTunables = "yes";
+        ProtectControlGroups = "yes";
+        ProtectKernelModules = "yes";
+        RestrictAddressFamilies = "AF_INET AF_INET6 AF_UNIX AF_NETLINK";
+        RestrictNamespaces = "yes";
       };
       unitConfig = {
         After = [
