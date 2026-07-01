@@ -39,9 +39,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # This alllows nix to run binary programs which expect these libraries in FHS compliant paths
-  # See here for more info: https://wiki.nixos.org/wiki/Nix-ld
-
   nix = {
     # Garbage collection on the nix store
     gc = {
@@ -126,6 +123,15 @@
       NIXOS_OZONE_PLATFORM = 1;
     };
   };
+  zramSwap = {
+    enable = true;
+    priority = 100;
+    algorithm = "lz4";
+    memoryPercent = 50;
+  };
+
+  # This alllows nix to run binary programs which expect these libraries in FHS compliant paths
+  # See here for more info: https://wiki.nixos.org/wiki/Nix-ld
   programs = {
     nix-ld = {
       enable = true;
