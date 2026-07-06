@@ -11,7 +11,9 @@ from kitty.tab_bar import (
     draw_attributed_string,
     draw_tab_with_powerline,
 )
+timer_id = None
 
+ICON = "  "
 LEFT_HALF_CIRCLE = ""
 CHARGING_ICON = "󰚥 "
 UNPLUGGED_ICONS = {
@@ -135,7 +137,36 @@ def _redraw_tab_bar(_) -> None:
         tm.mark_tab_bar_dirty()
 
 
-timer_id = None
+
+def _current_session_name(os_window_id: int) -> str:
+    tm = get_boss().os_window_map.get(os_window_id)
+    if tm is None:
+        return ""
+    tab = tm.active_tab
+    if tab is None:
+        return ""
+    return tab.active_session_name or tab.created_in_session_name
+
+def _draw_session_name(screen: Screen, index: int, draw_data: DrawData) -> int:
+    if index != 1: # Ensure this matches your logic for which tab gets the icon
+        return 0
+    
+    session_name = _current_session_name(draw_data.os_window_id)
+    if session_name:
+        # Save current state
+        tab_fg, tab_bg, orig_bold, orig_italic = screen.cursor.fg, screen.cursor.bg, screen.cursor.bold, screen.cursor.italic
+
+        screen.cursor.fg = as_rgb(int(draw_data.active_fg))
+        screen.cursor.bg = as_rgb(int(draw_data.active_bg))
+        screen.cursor.bold = True
+        screen.cursor.italic = False
+        
+        screen.draw(f'{ICON} {session_name} ')
+
+        # Restore state
+        screen.cursor.fg, screen.cursor.bg, screen.cursor.bold, screen.cursor.italic = tab_fg, tab_bg, orig_bold, orig_italic
+    
+    return screen.cursor.x
 
 
 def draw_tab(
@@ -149,6 +180,7 @@ def draw_tab(
     extra_data: ExtraData,
 ) -> int:
     global timer_id
+    _draw_session_name(screen, index, draw_data)
     if timer_id is None:
         timer_id = add_timer(_redraw_tab_bar, REFRESH_TIME, True)
     draw_tab_with_powerline(

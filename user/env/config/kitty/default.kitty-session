@@ -1,12 +1,12 @@
-new_tab @@session@@ - vim
+new_tab vim
 cd @@session-path@@ 
-launch --title "@@session@@ - vim" zsh -c vim '--var=IS_NVIM=1 '
+launch --title vim zsh -c vim '--var=IS_NVIM=1 '
 
-new_tab @@session@@ - onefetch
+new_tab onefetch
 cd @@session-path@@ 
 launch --hold onefetch 
 
-new_tab @@session@@ - zsh
+new_tab zsh
 cd @@session-path@@ 
 launch zsh
 focus_tab 0
