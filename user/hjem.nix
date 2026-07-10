@@ -94,7 +94,6 @@
         stylua
         typescript-language-server
         bash-language-server
-        hyprls
         # needed for typst preview and generally useful cli tools
         imagemagick
         ghostscript
