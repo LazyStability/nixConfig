@@ -108,6 +108,15 @@
         UMask = 0077;
 
       };
+      unitConfig = {
+        PartOf = "graphical-session.target";
+        After = "graphical-session.target";
+        # Requisite="graphical-session.target";
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+        Description = "An application to enable a blue-light filter on Hyprland ";
+        Documentation = "https://github.com/hyprwm/hyprsunset";
+
+      };
     };
 
     mpd-mpris = {
