@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+APP_STR="mpv"
+SOURCE_NAME="Chromium input"
+
+pkill "$APP_STR"
+POSSIBLE_SOURCES=$(pw-link -i | awk -F':' '!seen[$1]++ {print $1}')
+SELECTED_SOURCE_NAME=$(echo "$POSSIBLE_SOURCES" | grep "$SOURCE_NAME")
+
+[[ -z "$SELECTED_SOURCE_NAME"  ]] && SELECTED_SOURCE_NAME=$(printf %s "${POSSIBLE_SOURCES[@]}" | fzf)
+sound=$(find "$HOME/Videos/soundboard" | fzf)
+mpv --no-video "$sound" 1> /dev/null &
+
+sleep .5
+
+echo "Linking app ${APP_STR} to ${SELECTED_SOURCE_NAME}"
+pw-link "${APP_STR}":output_FL "$SELECTED_SOURCE_NAME:input_FL"
+pw-link "${APP_STR}":output_FR "$SELECTED_SOURCE_NAME:input_FR"

@@ -56,7 +56,9 @@
         hyprlock
         hyprsunset
         hyprpolkitagent
-        hyprshot
+        grim
+        slurp
+        satty
         awww
         waybar
         fuzzel

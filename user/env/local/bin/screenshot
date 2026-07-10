@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+# Screenshot tool for Hyprland
+# Modes: full, select, window
+
+set -e
+
+# Function to display usage
+usage() {
+    echo "Usage: $0 {full|select|window}"
+    echo "  full   : Screenshot full screen"
+    echo "  select : Screenshot selected region"
+    echo "  window : Screenshot the active window"
+    exit 1
+}
+
+# Check if necessary tools are installed
+for cmd in grim jq hyprctl; do
+    if ! command -v "$cmd" &> /dev/null; then
+        echo "Error: $cmd is not installed."
+        exit 1
+    fi
+done
+
+if ! command -v slurp &> /dev/null; then
+    echo "Error: slurp is not installed."
+    exit 1
+fi
+
+# Configuration
+DATE_STR=$(date +%Y-%m-%d_%H-%M-%S)
+SATTY_BASE_ARGS='-f - --initial-tool=arrow --copy-command=wl-copy --actions-on-escape=save-to-clipboard,exit --brush-smooth-history-size=5 --disable-notifications --fullscreen'
+
+# Determine if satty is available
+SATTY_AVAILABLE=false
+if command -v satty &> /dev/null; then
+    SATTY_AVAILABLE=true
+fi
+
+# Ensure an argument is provided
+if [[ $# -ne 1 ]]; then
+    usage
+fi
+
+MODE=$1
+
+case "$MODE" in
+    full)
+        # Filename: date.ppm
+        FILENAME="$XDG_PICTURES_DIR/${DATE_STR}"
+        if [ "$SATTY_AVAILABLE" = true ]; then
+            grim -t ppm - | satty $SATTY_BASE_ARGS --output-filename="${FILENAME}.png"
+        else
+            grim -t ppm - "${FILENAME}.png"
+        fi
+        ;;
+    select)
+        # Capture a selected region using slurp
+        REGION=$(slurp)
+        if [[ -n "$REGION" ]]; then
+            FILENAME="$XDG_PICTURES_DIR/${DATE_STR}"
+            if [ "$SATTY_AVAILABLE" = true ]; then
+                grim -t ppm -g "$REGION" - | satty $SATTY_BASE_ARGS --output-filename="${FILENAME}.png"
+            else
+                grim -t ppm -g "$REGION" - "${FILENAME}.png"
+            fi
+        fi
+        ;;
+    window)
+        # Capture the active window using its geometry from hyprctl
+        WINDOW_INFO=$(hyprctl -j activewindow)
+        GEOMETRY=$(echo "$WINDOW_INFO" | jq -r '.at[0] as $x | .at[1] as $y | .size[0] as $w | .size[1] as $h | "\($x),\($y) \($w)x\($h)"')
+        TITLE=$(echo "$WINDOW_INFO" | jq -r '.title // "unknown"')
+        
+        # Sanitize title for filename
+        SAFE_TITLE=$(echo "$TITLE" | sed 's/[^a-zA-Z0-9._-]/_/g')
+        FILENAME="$XDG_PICTURES_DIR/${DATE_STR}_${SAFE_TITLE}"
+
+        if [[ -z "$GEOMETRY" || "$GEOMETRY" == "null,null 0x0" ]]; then
+            echo "Error: Could not detect the active window."
+            exit 1
+        fi
+
+        if [ "$SATTY_AVAILABLE" = true ]; then
+            grim -t ppm -g "$GEOMETRY" - | satty $SATTY_BASE_ARGS --output-filename="${FILENAME}.png"
+        else
+            grim -t ppm -g "$GEOMETRY" - "${FILENAME}.png"
+        fi
+        ;;
+    *)
+        usage
+        ;;
+esac
