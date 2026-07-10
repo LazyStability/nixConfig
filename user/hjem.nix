@@ -87,6 +87,7 @@
         # texlab
         nixd
         harper
+        jq
         llvmPackages_19.clang-unwrapped
         stylua
         typescript-language-server

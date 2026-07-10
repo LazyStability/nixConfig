@@ -9,10 +9,8 @@ let
   pathContains =
     string: file:
     if (builtins.match (".*" + string + ".*") (lib.toString file)) != null then true else false;
-  # TODO: Put in the paths contains as arguments instead of hardcoding and do the same with permissions
-  # Also create directories with similar permissions
   recurseIntoDir =
-    target_path: source_dir:
+    target_path: source_dir: excludePaths:
     builtins.listToAttrs (
       map
         (
@@ -20,12 +18,7 @@ let
           let
             target = target_path + (lib.removePrefix (toString source_dir) (toString x));
             executable = lib.hasSuffix ".sh" (toString x);
-            permissions =
-              if (pathContains "vesktop" (toString x)) then
-                "660"
-              else
-                # Readonly
-                "400";
+            permissions = "700";
           in
           {
             name = target;
@@ -38,8 +31,7 @@ let
         )
         (
           lib.lists.filter (
-            file:
-            !(pathContains "hypr" file) && !(pathContains "swaync" file) && !(pathContains "systemd/user" file)
+            file: lib.lists.all (excludePath: !(pathContains excludePath file)) excludePaths
           ) (lib.filesystem.listFilesRecursive source_dir)
         )
     );
@@ -157,9 +149,13 @@ in
           ];
         };
       }
-      // (recurseIntoDir ".mozilla" ./mozilla)
-      // (recurseIntoDir ".config" ./config)
-      // (recurseIntoDir ".local" ./local)
-      // (recurseIntoDir ".ssh" ./ssh);
+      // (recurseIntoDir ".mozilla" ./mozilla [ ])
+      // (recurseIntoDir ".config" ./config [
+        "hypr"
+        "swaync"
+        "systemd/user"
+      ])
+      // (recurseIntoDir ".local" ./local [ ])
+      // (recurseIntoDir ".ssh" ./ssh [ ]);
   };
 }
