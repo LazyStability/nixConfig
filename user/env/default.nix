@@ -129,6 +129,7 @@ in
         ".Xresources".source = ./Xresources;
         ".gtkrc-2.0".source = ./gtkrc-2.0;
         ".themes/adw-gtk3".source = "${pkgs.adw-gtk3.outPath}/share/themes/adw-gtk3";
+        ".profile".text = ". ${config.hjem.users.me.environment.loadEnv}";
 
         ".config/hypr".source = directorySub {
           inherit (pkgs)

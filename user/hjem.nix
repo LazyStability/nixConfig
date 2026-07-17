@@ -36,10 +36,23 @@
     environment.sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      TERMINAL = "kitty";
       XCURSOR_SIZE = 24;
       XCURSOR_THEME = "Bibata-Modern-Ice";
       HYPRCURSOR_THEME = "Bibata-Modern-Ice";
       HYPRCURSOR_SIZE = 24;
+      QT_QPA_PLATFORMTHEME = "qt6ct"; # or qt6ct
+      QT_STYLE_OVERRIDE = "kvantum";
+      GTK2_RC_FILES = "/home/me/.gtkrc-2.0";
+      QT_PLUGIN_PATH = "${pkgs.libsForQt5.qtstyleplugin-kvantum}/lib:${pkgs.qt6Packages.qtstyleplugin-kvantum}/lib";
+      XDG_DESKTOP_DIR = "$HOME/Desktop";
+      MPD_HOST = "$XDG_RUNTIME_DIR/mpd/socket";
+      XDG_DOCUMENTS_DIR = "$HOME/Dokumente";
+      XDG_DOWNLOAD_DIR = "$HOME/Downloads";
+      XDG_MUSIC_DIR = "$HOME/Musik";
+      XDG_PICTURES_DIR = "$HOME/Bilder";
+      XDG_PROJECTS_DIR = "$HOME/Software";
+      XDG_VIDEOS_DIR = "$HOME/Videos";
     };
 
     user = "me";
@@ -66,6 +79,8 @@
         networkmanager_dmenu
         swaynotificationcenter
         bibata-cursors
+        libsForQt5.qtstyleplugin-kvantum
+        qt6Packages.qtstyleplugin-kvantum
         # Alternative to uwsm app
         runapp
 
