@@ -50,14 +50,20 @@ writeShellApplication
 
       if [[ "$window" != "" ]]; then
           if [[ "$fullscreen_on_same_ws" == "" ]]; then
-              hyprctl dispatch focuswindow address:"''${addr}"
+              hyprctl dispatch "hl.dsp.focus({window='address:''${addr}'})"
           else
               # If we want to focus app_A and app_B is fullscreen on the same workspace,
               # app_A will get focus, but app_B will remain on top.
               # This monstrosity is to make sure app_A will end up on top instead.
               # XXX: doesn't handle fullscreen 0, but I don't care.
               notify-send 'Complex switch' "$window"
-              hyprctl --batch "dispatch focuswindow address:''${fullscreen_on_same_ws}; dispatch fullscreen 1; dispatch focuswindow address:''${addr}; dispatch fullscreen 1"
+              hyprctl dispatch "
+                  function()
+                      hl.dispatch(hl.dsp.focus({window='address:''${fullscreen_on_same_ws}'}))
+                      hl.dispatch(hl.dsp.window.fullscreen({mode = 'fullscreen', action = 'unset', window = 'address:''${fullscreen_on_same_ws}'}))
+                      hl.dispatch(hl.dsp.focus({window='address:''${addr}'}))
+                      hl.dispatch(hl.dsp.window.fullscreen({mode = 'fullscreen', action = 'set', window = 'address:''${addr}'}))
+                  end"
           fi
       fi
     '';

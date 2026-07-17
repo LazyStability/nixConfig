@@ -20,6 +20,6 @@ writeShellApplication
     name = "hyprland-move-workspace-to-monitor";
     text = ''
       SWITCH_TO_MONITOR=$(hyprctl monitors -j | jq '.[] | .name'  | sed 's/"//g'| ${applauncher})
-      hyprctl dispatch movecurrentworkspacetomonitor "$SWITCH_TO_MONITOR"
+      hyprctl dispatch "hl.dsp.workspace.move({monitor='$SWITCH_TO_MONITOR'})"
     '';
   }
