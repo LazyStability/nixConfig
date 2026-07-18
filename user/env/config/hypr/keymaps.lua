@@ -5,25 +5,29 @@
 -- See https://wiki.hyprland.org/Configuring/Keywords/
 
 -- Search bindings
-hl.bind(MAINMOD .. ' + y', hl.dsp.exec_cmd(HYPR_BINDS))
+hl.bind(
+  MAINMOD .. ' + y',
+  hl.dsp.exec_cmd(HYPR_BINDS),
+  { description = 'Search bindings' }
+)
 
 -- technicely a bind, but not really
 hl.bind(
   'switch:Lid Switch',
   hl.dsp.exec_cmd(HYPR_LID_SWITCH),
-  { locked = true }
+  { locked = true, description = 'Handle lid switch' }
 )
 
 -- Volume control
 hl.bind(
   'XF86AudioRaiseVolume',
   hl.dsp.exec_cmd 'wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+',
-  { repeating = true, description = 'Lower Volume' }
+  { repeating = true, description = 'Raise Volume' }
 )
 hl.bind(
   'XF86AudioLowerVolume',
   hl.dsp.exec_cmd 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-',
-  { repeating = true, description = 'Raise Volume' }
+  { repeating = true, description = 'Lower Volume' }
 )
 hl.bind(
   'XF86AudioMute',
@@ -43,22 +47,22 @@ hl.bind(
 hl.bind(
   'XF86MonBrightnessDown',
   hl.dsp.exec_cmd 'hyprctl hyprsunset gamma -10',
-  { locked = true, repeating = true }
+  { locked = true, repeating = true, description = 'Lower brightness' }
 )
 hl.bind(
   'XF86MonBrightnessUp',
   hl.dsp.exec_cmd 'hyprctl hyprsunset gamma +10',
-  { locked = true, repeating = true }
+  { locked = true, repeating = true, description = 'Raise brightness' }
 )
 hl.bind(
   MAINMOD .. ' + XF86MonBrightnessDown',
   hl.dsp.exec_cmd 'hyprctl hyprsunset temperature -500',
-  { locked = true, repeating = true }
+  { locked = true, repeating = true, description = 'Lower color temperature' }
 )
 hl.bind(
   MAINMOD .. ' + XF86MonBrightnessUp',
   hl.dsp.exec_cmd 'hyprctl hyprsunset temperature +500',
-  { locked = true, repeating = true }
+  { locked = true, repeating = true, description = 'Raise color temperature' }
 )
 
 hl.bind(
@@ -377,9 +381,13 @@ hl.bind(
 ---------------------
 
 hl.define_submap('powermenu', function()
-  hl.bind('p', hl.dsp.exec_cmd 'poweroff')
-  hl.bind('r', hl.dsp.exec_cmd 'reboot')
-  hl.bind('h', hl.dsp.exec_cmd 'systemctl hibernate')
+  hl.bind('p', hl.dsp.exec_cmd 'poweroff', { description = 'Power off' })
+  hl.bind('r', hl.dsp.exec_cmd 'reboot', { description = 'Reboot' })
+  hl.bind(
+    'h',
+    hl.dsp.exec_cmd 'systemctl hibernate',
+    { description = 'Hibernate' }
+  )
   hl.bind(
     'm',
     hl.dsp.exec_cmd 'loginctl terminate-user $(whoami)',
@@ -392,7 +400,11 @@ hl.define_submap('powermenu', function()
     { description = 'Lock all keepass databases' }
   )
 
-  hl.bind('catchall', hl.dsp.submap 'reset', { repeating = true })
+  hl.bind(
+    'catchall',
+    hl.dsp.submap 'reset',
+    { repeating = true, description = 'Exit submap' }
+  )
 end)
 
 --------------------
@@ -404,26 +416,26 @@ hl.define_submap('resize', function()
   hl.bind(
     'h',
     hl.dsp.window.resize { x = -30, y = 0, relative = true },
-    { repeating = true }
+    { repeating = true, description = 'Resize window left' }
   )
   hl.bind(
     'j',
     hl.dsp.window.resize { x = 0, y = 30, relative = true },
-    { repeating = true }
+    { repeating = true, description = 'Resize window down' }
   )
   hl.bind(
     'k',
     hl.dsp.window.resize { x = 0, y = -30, relative = true },
-    { repeating = true }
+    { repeating = true, description = 'Resize window up' }
   )
   hl.bind(
     'l',
     hl.dsp.window.resize { x = 30, y = 0, relative = true },
-    { repeating = true }
+    { repeating = true, description = 'Resize window right' }
   )
 
   -- Use `reset` to go back to the global submap
-  hl.bind('escape', hl.dsp.submap 'reset')
+  hl.bind('escape', hl.dsp.submap 'reset', { description = 'Exit submap' })
 
   -- Reset the submap, which will return to the global submap
 end)
@@ -434,13 +446,29 @@ end)
 
 hl.define_submap('swap', function()
   -- Set repeatable binds for resizing the active window.
-  hl.bind('h', hl.dsp.window.swap { direction = 'l' }, { repeating = true })
-  hl.bind('j', hl.dsp.window.swap { direction = 'd' }, { repeating = true })
-  hl.bind('k', hl.dsp.window.swap { direction = 'u' }, { repeating = true })
-  hl.bind('l', hl.dsp.window.swap { direction = 'r' }, { repeating = true })
+  hl.bind(
+    'h',
+    hl.dsp.window.swap { direction = 'l' },
+    { repeating = true, description = 'Switch to window left' }
+  )
+  hl.bind(
+    'j',
+    hl.dsp.window.swap { direction = 'd' },
+    { repeating = true, description = 'Switch to window down' }
+  )
+  hl.bind(
+    'k',
+    hl.dsp.window.swap { direction = 'u' },
+    { repeating = true, description = 'Switch to window up' }
+  )
+  hl.bind(
+    'l',
+    hl.dsp.window.swap { direction = 'r' },
+    { repeating = true, description = 'Switch to window right' }
+  )
 
   -- Use `reset` to go back to the global submap
-  hl.bind('escape', hl.dsp.submap 'reset')
+  hl.bind('escape', hl.dsp.submap 'reset', { description = 'Exit submap' })
 
   -- Reset the submap, which will return to the global submap
 end)
@@ -452,7 +480,6 @@ hl.define_submap('scratch', 'reset', function()
   --------------
   --- Scripts --
   --------------
-  hl.bind('J', hl.dsp.exec_cmd 'notify-send test')
   hl.bind(
     MAINMOD .. ' + i',
     hl.dsp.exec_cmd(PREFIX .. ' ' .. WINDOWSWITCHER),
@@ -556,5 +583,9 @@ hl.define_submap('scratch', 'reset', function()
     { repeating = true, description = 'Open scratchpad workspace 2' }
   )
 
-  hl.bind('catchall', hl.dsp.submap 'reset', { repeating = true })
+  hl.bind(
+    'catchall',
+    hl.dsp.submap 'reset',
+    { repeating = true, description = 'Exit submap' }
+  )
 end)
