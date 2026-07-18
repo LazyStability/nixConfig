@@ -113,13 +113,28 @@
       devShells.${system}.default = pkgs.mkShellNoCC {
         FLAKE = ./.;
         # Allows us to work with sops in the repository
-        shellHook = "";
+        shellHook = ''
+          unset PYTHONPATH
+        '';
+        env = {
+          UV_PYTHON_DOWNLOADS = "never";
+          UV_PYTHON = pkgs.python312.interpreter;
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath pkgs.pythonManylinuxPackages.manylinux1;
+        };
         packages = with pkgs; [
           sops
           # Formatter
           treefmt
           nixfmt
           deadnix
+          # For ai
+          python312
+          nodejs_26
+          uv
+          ty
+          fd
+          ripgrep
+
           nix-init
         ];
       };
