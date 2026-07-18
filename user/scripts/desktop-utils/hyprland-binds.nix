@@ -31,7 +31,7 @@ writeShellScriptBin "hyprland-binds" ''
 
   dynamic_bindings() {
     hyprctl -j binds | \
-      ${lib.getExe jq} -r '.[] | {modmask, key, keycode, description, dispatcher, arg} | "\(.modmask),\(.key)@\(.keycode),\(.description),\(.dispatcher),\(.arg)"' | \
+      ${lib.getExe jq} -r '.[] | {modmask, submap, key, keycode, description, dispatcher, arg} | "\(.modmask),\(.submap),\(.key)@\(.keycode),\(.description),\(.dispatcher),\(.arg)"' | \
       sed -r \
           -e 's/null//' \
           -e 's,~/.local/share/omarchy/bin/,,' \
@@ -69,19 +69,24 @@ writeShellScriptBin "hyprland-binds" ''
   parse_bindings() {
     awk -F, '
   {
-      # Combine the modifier and key (first two fields)
-      key_combo = $1 " + " $2;
+      # Combine the modifier and key (first and third fields)
+      key_part = $1 " + " $3;
 
       # Clean up: strip leading "+" if present, trim spaces
-      gsub(/^[ \t]*\+?[ \t]*/, "", key_combo);
-      gsub(/[ \t]+$/, "", key_combo);
+      gsub(/^[ \t]*\+?[ \t]*/, "", key_part);
+      gsub(/[ \t]+$/, "", key_part);
+      gsub(/[ \t]+/, " ", key_part);
+
+      # Add submap prefix if not empty
+      submap_prefix = ($2 == "" ? "" : "[" $2 "] ");
+      key_combo = submap_prefix key_part;
 
       # Use description, if set
-      action = $3;
+      action = $4;
 
       if (action == "") {
           # Reconstruct the command from the remaining fields
-          for (i = 4; i <= NF; i++) {
+          for (i = 5; i <= NF; i++) {
               action = action $i (i < NF ? "," : "");
           }
 
@@ -89,7 +94,6 @@ writeShellScriptBin "hyprland-binds" ''
           sub(/,$/, "", action);
           gsub(/(^|,)[[:space:]]*exec[[:space:]]*,?/, "", action);
           gsub(/^[ \t]+|[ \t]+$/, "", action);
-          gsub(/[ \t]+/, " ", key_combo);  # Collapse multiple spaces to one
 
           # Escape XML entities
           gsub(/&/, "\\&amp;", action);
@@ -109,7 +113,7 @@ writeShellScriptBin "hyprland-binds" ''
   menu_height=$((monitor_height * 40 / 100))
 
   dynamic_bindings | \
-    sort -u | \
+    sort -t, -k2,2 -k1,1 -k3,3 -u | \
     parse_bindings | \
     ${launcherCommand}
 ''
