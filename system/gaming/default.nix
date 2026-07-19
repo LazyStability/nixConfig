@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  extraPackages,
   ...
 }:
 let
@@ -68,6 +69,9 @@ in
       # );
       enable = true;
     };
-    environment.systemPackages = [ pkgs.gpu-screen-recorder-gtk ];
+    environment.systemPackages = [
+      pkgs.gpu-screen-recorder-gtk
+      pkgs.protonup-rs
+    ];
   };
 }
