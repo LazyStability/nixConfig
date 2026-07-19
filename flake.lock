@@ -155,7 +155,7 @@
         "lanzaboote": "lanzaboote",
         "natsumi-theme": "natsumi-theme",
         "nixpkgs": "nixpkgs",
-        "sops-nix": "sops-nix",
+        "sops-nix": "sops-nix"
       }
     },
     "rust-overlay": {

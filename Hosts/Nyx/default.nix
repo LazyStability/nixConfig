@@ -23,7 +23,6 @@
     })
 
     inputs.hjem.nixosModules.default
-    inputs.watt.nixosModules.default
     ../../user/hjem.nix
   ];
   environment = {
