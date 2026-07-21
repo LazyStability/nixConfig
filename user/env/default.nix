@@ -43,14 +43,6 @@ in
     xdg.data.files = {
       "icons/Bibata".source = "${pkgs.bibata-cursors.outPath}/share/icons/Bibata-Modern-Ice";
       "icons/Adwaita".source = "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";
-      "gnupg" = {
-        type = "directory";
-        permissions = "700";
-      };
-      "gnupg/gpg.conf".source = ../env/config/gnupg/gpg.conf;
-      "gnupg/scdaemon.conf".source = ../env/config/gnupg/scdaemon.conf;
-      "gnupg/gpg-agent.conf".source = ../env/config/gnupg/gpg-agent.conf;
-
     };
     # Firefox
     files =
@@ -156,6 +148,8 @@ in
         "systemd/user"
       ])
       // (recurseIntoDir ".local" ./local [ ])
-      // (recurseIntoDir ".ssh" ./ssh [ ]);
+      // (recurseIntoDir ".ssh" ./ssh [ ])
+      // (recurseIntoDir ".local/share/gnupg" ./config/gnupg [ ]);
+
   };
 }

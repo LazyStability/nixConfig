@@ -44,7 +44,7 @@
 
     user = "me";
     directory = "/home/me";
-    clobberFiles = false;
+    clobberFiles = true;
 
     packages =
       with pkgs;
