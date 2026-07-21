@@ -18,7 +18,7 @@ let
 in
 vesktop.override {
   withSystemVencord = true;
-  vencord = patched-vencord;
+  vencord = vencord;
 }
 # .overrideAttrs
 #   (previousAttr: {
