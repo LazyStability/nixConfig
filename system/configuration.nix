@@ -63,6 +63,11 @@
   # Links the configuration with its git rev
   system.configurationRevision = self.rev or "dirty";
 
+  # https://discourse.nixos.org/t/i-can-unbloat-systemd/74021/4
+  systemd.generators.systemd-ssh-generator = "/dev/null";
+  systemd.sockets.sshd-unix-local.enable = lib.mkForce false;
+  systemd.sockets.sshd-vsock.enable = lib.mkForce false;
+
   # Default keyboard layout
   services.xserver.xkb = {
     layout = "de";
