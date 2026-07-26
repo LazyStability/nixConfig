@@ -61,7 +61,8 @@ https://github.com/privacyguides/privacyguides.org/releases.atom tech											
 
 " "
 "---Papers---"
-http://www.nature.com/nmat/journal/vaop/ncurrent/rss.rdf science
+#http://www.nature.com/nmat/journal/vaop/ncurrent/rss.rdf science
+#https://www.nature.com/nature.rss science
 #https://rss.arxiv.org/rss/cs IT science
 
 "---Newsletters---"
@@ -83,6 +84,7 @@ https://rss.dw.com/rdf/rss-en-bus
 https://rss.dw.com/rdf/rss-en-bus
 https://rss.dw.com/xml/rss_en_environment
 https://rss.dw.com/rdf/rss-en-asia
+https://news.ycombinator.com/rss
 
 # Webnovels
 " "
@@ -91,10 +93,8 @@ https://www.royalroad.com/fiction/syndication/81642 webnovel 	 											"~Cult
 https://www.royalroad.com/fiction/syndication/118891 webnovel	 											"~Max Level Archmage"
 https://www.royalroad.com/fiction/syndication/117689 webnovel	 	 										"~The Warcrowned"
 https://www.royalroad.com/fiction/syndication/76478 webnovel	 		 									"~Hoard"
-https://www.royalroad.com/fiction/syndication/81002 webnovel	 			 								"~Years of Apocalypse"
 https://www.royalroad.com/fiction/syndication/75345 webnovel	 											"~Changeling"
 https://www.royalroad.com/fiction/syndication/95704 webnovel	 	 										"~Elders Revolution"
-https://www.royalroad.com/fiction/syndication/125722 webnovel	 											"~Objects in Motion"
 https://www.royalroad.com/fiction/syndication/105295 webnovel	 											"~The Bell tolls for me"
 
 " "
@@ -115,7 +115,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCWEVAMMyXF2NP5txDESGemg gam
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA "coding memes"			"~Fireship"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqJ-Xo29CKyLTjn6z2XwYAw games coding			"~Game Maker's Toolkit"
 https://www.youtube.com/feeds/videos.xml?channel_id=UChkC4u4KdnIDFh9hPqExLDg  games coding			"~Low Level Game Dev"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCTGWWvmseOlcSqfDM3dXdaw music				"~Lydia the Bard"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCAv58974MByI1SL2Gy_jhjg "coding memes"			"~Sir Freelancealot"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCQ-W1KE9EYfdxhL6S4twUNw coding games			"~The Cherno"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw coding IT Primeagen ! 		"~ThePrimeagen"
