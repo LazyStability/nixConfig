@@ -2,8 +2,8 @@
   description = "My first flake";
 
   inputs = {
-    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
+    # nixpkgs-stable.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
     disko = {
       url = "github:nix-community/disko";
