@@ -170,6 +170,9 @@
         )
         # rnote
         kitty-sessionizer
+        hyprland-preview-share-picker
+        # rofi-xdph
+        # hyprselect
         # dungeondraft
         yazi
       ]);
