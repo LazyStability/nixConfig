@@ -121,6 +121,7 @@
         hyperfine
         comma
         nix-index
+        nix-init
         tor-browser
         newsboat
         nushell
