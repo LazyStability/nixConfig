@@ -93,6 +93,7 @@
     gaming.enable = true;
     wireguard.enable = true;
     dataLinks.enable = true;
+    android-webcam.enable = true;
     desktopEnvironment = {
       select = "hyprland";
       monitors = [

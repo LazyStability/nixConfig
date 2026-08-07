@@ -9,7 +9,6 @@ let
   linkhandler = pkgs.callPackage ./linkhandler.nix { inherit (extraPackages) sioyek; };
   qndl = pkgs.callPackage ./qndl.nix { };
   rssget = pkgs.callPackage ./rssget.nix { };
-  android-webcam = pkgs.callPackage ./android-webcam.nix { };
   bookmark = pkgs.callPackage ./bookmark.nix { };
   emoji-picker = pkgs.callPackage ./emoji-picker.nix { };
 in
@@ -26,6 +25,5 @@ in
         emoji-picker
       ];
     }
-    { packages = lib.mkIf config.myModules.android-webcam.enable [ android-webcam ]; }
   ];
 }

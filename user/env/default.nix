@@ -43,6 +43,27 @@ in
     xdg.data.files = {
       "icons/Bibata".source = "${pkgs.bibata-cursors.outPath}/share/icons/Bibata-Modern-Ice";
       "icons/Adwaita".source = "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";
+      "applications/androic-cam.desktop".source = pkgs.writeTextFile {
+        name = "android-cam.desktop";
+        text =
+          let
+            exec = "${pkgs.writeScript "andcam" ''
+              ${pkgs.android-tools}/bin/adb start-server
+              ${pkgs.scrcpy}/bin/scrcpy --camera-facing=back --video-source=camera --no-audio --v4l2-sink=/dev/video0 -m1024
+            ''}";
+          in
+          ''
+            [Desktop Entry]
+            Version=1.0
+            Name=andcam
+            Comment=android-camera
+            Exec=bash -c ${exec}
+            Terminal=true
+            Type=Application
+            Icon=/home/me/.local/share/applications/icons/bash-help.png
+            StartupNotify=true
+          '';
+      };
     };
     # Firefox
     files =
