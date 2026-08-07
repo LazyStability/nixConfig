@@ -16,6 +16,7 @@
 	s = "!git status"
 	save = "!git add -A && git commit -m 'chore: commit save point'"
 	undo = "!git reset HEAD~1 --mixed"
+	resign = rebase --exec 'GIT_COMMITTER_DATE=\"$(git log -n 1 --format=%aD)\" git commit --amend --no-edit -n -S' -i
 
 [commit]
 	gpgsign = true
