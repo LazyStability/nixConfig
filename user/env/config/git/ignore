@@ -1,2 +1,5 @@
 **/.direnv/**
 **/mnt/**
+.envrc
+**/target/**
+**/result/**
