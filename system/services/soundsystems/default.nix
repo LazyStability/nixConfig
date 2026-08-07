@@ -192,7 +192,7 @@
 
   environment.systemPackages = with pkgs; [
     # --- Utilities & Routing ---
-    qpwgraph # Visual patchbay for PipeWire
+    # qpwgraph # Visual patchbay for PipeWire
     pwvucontrol # Modern native PipeWire volume control
     # pavucontrol # Fallback for Pro Audio profile selection
     # easyeffects # System-wide real-time EQ and effects
@@ -203,7 +203,7 @@
     # bitwig-studio # Native Linux commercial DAW, excellent CLAP support
 
     # --- Plugin Hosts ---
-    carla # Modular plugin host / pedalboard, supports Windows VST via yabridge
+    # carla # Modular plugin host / pedalboard, supports Windows VST via yabridge
 
     # --- Standalone Guitar Processors ---
     # guitarix

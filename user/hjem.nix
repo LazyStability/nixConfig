@@ -139,7 +139,6 @@
         # patched-keepassxc
 
         bubblewrap
-        claude-code
 
         # Gui applications
         # TODO: Sandboxing
