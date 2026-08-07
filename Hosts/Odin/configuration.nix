@@ -150,6 +150,7 @@
   services = {
     radicale.enable = true;
     paperless.enable = true;
+    immich.enable = true;
     syncthing = {
       enable = false;
       cert = lib.mkForce null;
