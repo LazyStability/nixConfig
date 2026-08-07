@@ -128,7 +128,7 @@
 
   # List services that you want to enable:
   services.gitolite = {
-    enable = true;
+    enable = false;
     adminPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQUQQWdmgdktQTRgBq0phM5fh5+QCBBtaeGmUouWwkv Klysmus@online.de";
   };
 
