@@ -144,6 +144,7 @@
         # TODO: Sandboxing
         xournalpp
         calibre
+        ausweisapp
         abaddon
         rnote
         gimp
