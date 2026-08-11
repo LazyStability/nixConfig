@@ -7,14 +7,10 @@
   # source: https://docs.syncthing.net/users/firewall.html
   networking.firewall.allowedTCPPorts = lib.mkIf config.services.syncthing.enable [
     22000
-    # Localsend
-    53317
   ];
   networking.firewall.allowedUDPPorts = lib.mkIf config.services.syncthing.enable [
     22000
     21027
-    # Localsend
-    53317
   ];
 
   services.syncthing = lib.mkIf config.services.syncthing.enable {

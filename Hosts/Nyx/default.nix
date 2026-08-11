@@ -166,6 +166,18 @@
   ##################
 
   services.watt.enable = true;
+  networking.firewall = {
+    allowedTCPPorts = [
+      # Localsend
+      53317
+    ];
+    allowedUDPPorts = [
+      # Localsend
+      53317
+      # Ausweisapp
+      24727
+    ];
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
