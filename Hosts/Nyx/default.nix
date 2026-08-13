@@ -157,7 +157,7 @@
     # Handle lid behaviour
     logind.settings.Login = {
       HandleLidSwitchDocked = "ignore";
-      HandleLidSwitch = "poweroff";
+      HandleLidSwitch = "hibernate";
     };
   };
 
