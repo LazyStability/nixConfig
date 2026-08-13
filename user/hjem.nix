@@ -164,9 +164,11 @@
         vesktop
         sioyek
         mpv
+        rage
         (
-          (extraPackages.passage.override { passage = extraPackages.passage.override { age = pkgs.rage; }; })
-          .withExtensions
+          (extraPackages.passage.override {
+            passage = extraPackages.passage.override { age = extraPackages.rage; };
+          }).withExtensions
           (ext: with ext; [ pass-otp ])
         )
         # rnote

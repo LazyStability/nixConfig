@@ -1,0 +1,67 @@
+From 20eb4faa8ba59f419d24eb2b8826e8e3240bb392 Mon Sep 17 00:00:00 2001
+From: LazyStability <LazilyStable@proton.me>
+Date: Thu, 13 Aug 2026 22:59:28 +0200
+Subject: [PATCH] feat: Add notifcation after 2 seconds
+
+---
+ age/src/cli_common.rs | 14 ++++++++++++--
+ age/src/plugin.rs     |  4 ++--
+ 2 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/age/src/cli_common.rs b/age/src/cli_common.rs
+index c0a1e58..35105a2 100644
+--- a/age/src/cli_common.rs
++++ b/age/src/cli_common.rs
+@@ -10,7 +10,7 @@ use rand::{
+ };
+ use rpassword::prompt_password;
+ 
+-use std::io;
++use std::{io, process::Command};
+ use subtle::ConstantTimeEq;
+ 
+ use crate::{Callbacks, fl};
+@@ -156,7 +156,17 @@ pub struct UiCallbacks;
+ 
+ impl Callbacks for UiCallbacks {
+     fn display_message(&self, message: &str) {
+-        eprintln!("{message}");
++        // eprintln!("{message}");
++        Command::new("notify-send")
++            .args([
++                message,
++                "-i",
++                "dialog-password",
++                "--app-name",
++                "age-yubikey-agent",
++            ])
++            .output()
++            .expect("Failed to execute notify-send");
+     }
+ 
+     fn confirm(&self, message: &str, yes_string: &str, no_string: Option<&str>) -> Option<bool> {
+diff --git a/age/src/plugin.rs b/age/src/plugin.rs
+index 83e0420..9eccdaf 100644
+--- a/age/src/plugin.rs
++++ b/age/src/plugin.rs
+@@ -41,7 +41,7 @@ const CMD_REQUEST_SECRET: &str = "request-secret";
+ const CMD_FILE_KEY: &str = "file-key";
+ 
+ const ONE_HUNDRED_MS: Duration = Duration::from_millis(100);
+-const TEN_SECONDS: Duration = Duration::from_secs(10);
++const TWO_SECONDS: Duration = Duration::from_secs(2);
+ 
+ #[inline]
+ fn valid_plugin_name(plugin_name: &str) -> bool {
+@@ -77,7 +77,7 @@ impl SlowPluginGuard {
+ 
+                 // If we've waited long enough, emit the progress message and exit.
+                 match SystemTime::now().duration_since(start) {
+-                    Ok(end) if end >= TEN_SECONDS => {
++                    Ok(end) if end >= TWO_SECONDS => {
+                         callbacks.display_message(&fl!(
+                             "plugin-waiting-on-binary",
+                             binary_name = plugin_binary_name,
+-- 
+2.55.0
+
