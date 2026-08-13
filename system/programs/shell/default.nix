@@ -12,7 +12,10 @@ in
 
   environment.systemPackages = with pkgs; [
     bat
-    croc
+    # Secure filetransfer
+    #croc
+    wormhole-william
+
     onefetch
     sysz
     microfetch
