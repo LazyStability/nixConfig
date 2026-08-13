@@ -28,14 +28,14 @@ lib.mkIf config.security.pam.u2f.enable {
   };
   services.udev = {
     packages = [ pkgs.yubikey-personalization ];
-    # extraRules = ''
-    #   ACTION=="remove",\
-    #    ENV{ID_BUS}=="usb",\
-    #    ENV{ID_MODEL_ID}=="0407",\
-    #    ENV{ID_VENDOR_ID}=="1050",\
-    #    ENV{ID_VENDOR}=="Yubico",\
-    #    RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
-    # '';
+    # The one from archwiki and nixos wiki also locks when using keepassxc and weirdly enough on inserting the device
+    # https://github.com/keepassxreboot/keepassxc/issues/10077#issuecomment-2047444637
+    extraRules = ''
+      ACTION=="remove",\
+      ENV{SUBSYSTEM}=="usb",\
+      ENV{PRODUCT}=="1050/407/574",\
+      RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+    '';
   };
   systemd.user = {
     services.gpg-agent.environment = {
