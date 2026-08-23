@@ -25,6 +25,8 @@
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # jail-nix.url = "sourcehut:~alexdavid/jail.nix";
+    jail-nix.url = "/mnt/data/Software/jail.nix";
     # yazi.url = "github:sxyazi/yazi";
   };
   outputs =
@@ -37,6 +39,7 @@
       inherit (nixpkgs) lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      jail = inputs.jail-nix.lib.init pkgs;
       extraPackages = import ./packages/packages.nix { inherit (pkgs) lib callPackage; };
     in
     {
@@ -51,6 +54,7 @@
               inputs
               extraPackages
               self
+              jail
               ;
           };
         };
@@ -63,6 +67,7 @@
             inherit
               inputs
               self
+              jail
               extraPackages
               ;
           };
@@ -77,6 +82,7 @@
               inputs
               extraPackages
               self
+              jail
               ;
           };
         };
@@ -101,6 +107,7 @@
             inherit
               inputs
               self
+              jail
               extraPackages
               ;
           };
