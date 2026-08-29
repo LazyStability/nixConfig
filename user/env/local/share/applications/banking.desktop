@@ -2,7 +2,7 @@
 Version=1.0
 Name=banking
 Comment=banking
-Exec=firefox https://www.ksn-northeim.de/de/home.html https://www.sparkasse-heidelberg.de/de/home.html
+Exec=firefox https://www.ksn-northeim.de/de/home.html https://www.sparkasse-heidelberg.de/de/home.html https://ksklb.de
 Terminal=false
 Type=Application
 Icon=/home/me/.local/share/applications/icons/banking.png
