@@ -27,6 +27,7 @@
     sessionVariables = {
       NH_FLAKE = "/persist/etc/nixos";
     };
+    systemPackages = [ pkgs.nvtopPackages.amd ];
   };
   networking.hostName = "Kronos"; # Define your hostname.
   hardware.opentabletdriver.enable = true;
