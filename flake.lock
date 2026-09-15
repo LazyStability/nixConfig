@@ -75,8 +75,6 @@
       "locked": {
         "lastModified": 1790254704,
         "narHash": "sha256-PhnIok5aXef1pDi2aXUV1XWai4LV+tHlJ0KPWjDspQU=",
-        "lastModified": 1788250088,
-        "narHash": "sha256-RCGaF8tRQ+Am4mCM0cX0KPCN6R2w9lFMrLZudSB5grM=",
         "path": "/mnt/data/Software/jail.nix",
         "type": "path"
       },

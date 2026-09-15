@@ -2,8 +2,83 @@
   lib,
   pkgs,
   extraPackages,
+  jail,
   ...
 }:
+let
+  gui-app = (
+    appName: appID: with jail.combinators; [
+      gui
+
+      # Usually the one unsandboxed path
+      (readwrite (noescape "\"$HOME/Downloads\""))
+
+      # Directly bind XDG_BASE_DIRS into the sandbox
+      (readwrite (noescape "\"$XDG_CONFIG_HOME/${appName}\""))
+      (readwrite (noescape "\"$XDG_CACHE_HOME/${appName}\""))
+      (readwrite (noescape "\"$XDG_DATA_HOME/${appName}\""))
+      (readwrite (noescape "\"$XDG_STATE_HOME/${appName}\""))
+      (add-runtime ''
+        mkdir -p "$XDG_STATE_HOME/${appName}" "$XDG_DATA_HOME/${appName}" "$XDG_CONFIG_HOME/${appName}" "$XDG_CACHE_HOME/${appName}" "$XDG_RUNTIME_DIR/app/${appID}"
+      '')
+
+      # Bind all the gtk/qt configs into the sandbox
+      (readonly (noescape "\"$HOME/.themes/\""))
+      (readonly (noescape "\"$HOME/.local/share/icons\""))
+      (readonly (noescape "\"$HOME/.gtkrc-2.0\""))
+      (readonly (noescape "\"$HOME/.config/gtk-3.0\""))
+      (readonly (noescape "\"$HOME/.config/Kvantum\""))
+      (readonly (noescape "\"$HOME/.config/qt5ct\""))
+      (readonly (noescape "\"$HOME/.config/qt6ct\""))
+      (readonly (noescape "\"$HOME/.Xresources\""))
+      (set-env "GTK2_RC_FILES" "/home/me/.gtkrc-2.0")
+      (set-env "QT_QPA_PLATFORMTHEME" "qt5ct")
+      (set-env "QT_STYLE_OVERRIDE" "kvantum")
+
+      (dbus {
+        own = [
+          "${appID}"
+        ];
+        talk = [
+          "org.kde.StatusNotifierWatcher" # Tray functionalities on KDE
+          "com.canonical.AppMenu.Registrar"
+          "org.freedesktop.portal.*"
+          "org.freedesktop.FileChooser"
+          "org.freedesktop.portal.Documents"
+          "org.freedesktop.portal.Flatpak"
+          "org.freedesktop.portal.Desktop"
+          "org.freedesktop.portal.FileChooser"
+        ];
+        call = [
+        ];
+        broadcast = [
+        ];
+
+        flatpakId = "${appID}";
+      })
+    ]
+  );
+  jailed-vesktop = jail "vesktop" extraPackages.vesktop (
+    with jail.combinators;
+    [
+      gpu
+      network
+      (try-readwrite (noescape "\"$XDG_DATA_HOME/steam-sandbox/.steam\""))
+      (try-readwrite (noescape "\"$XDG_RUNTIME_DIR/speech-dispatcher\""))
+    ]
+    ++ gui-app "vesktop" "dev.vencord.Vesktop"
+  );
+  jailed-signal-desktop = jail "signal-desktop" pkgs.signal-desktop (
+    with jail.combinators;
+    [
+      gpu
+      network
+      pulse
+    ]
+    ++ gui-app "Signal" "org.signal.Signal"
+  );
+
+in
 {
 
   imports =
@@ -144,7 +219,7 @@
         zotero
         yt-dlp
         wl-clipboard
-        signal-desktop
+        jailed-signal-desktop
         kitty
         # age
         # rage
@@ -176,7 +251,7 @@
 
       ]
       ++ (with extraPackages; [
-        vesktop
+        jailed-vesktop
         sioyek
         mpv
         rage
