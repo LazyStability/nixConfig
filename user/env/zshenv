@@ -11,7 +11,7 @@ fi
 export EDITOR="nvim"
 export FZF_DEFAULT_OPTS="--color bg:#24283b,bg+:#1f2335,fg:#a9b1d6,fg+:#c0caf5,header:#41a6b5,hl:#41a6b5,hl+:#41a6b5,info:#e0af68,marker:#1abc9c,pointer:#1abc9c,prompt:#e0af68,spinner:#1abc9c"
 export TERMINAL="kitty"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 export XDG_DESKTOP_DIR="$HOME/Desktop"
 export XDG_DOCUMENTS_DIR="$HOME/Dokumente"
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
