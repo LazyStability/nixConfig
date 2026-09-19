@@ -44,7 +44,7 @@ in
           "--bind \"$HOME/.config/qt5ct\" \"$HOME/.config/qt5ct\""
           "--bind \"$HOME/.config/qt6ct\" \"$HOME/.config/qt6ct\""
           "--bind \"$HOME/.Xresources\" \"$HOME/.Xresources\""
-          "--bind-try \"$XDG_DOCUMENTS_DIR\" \"$XDG_DOCUMENTS_DIR/My\ Games\""
+          "--bind-try \"$XDG_DOCUMENTS_DIR/My\ Games\" \"$XDG_DOCUMENTS_DIR\" "
         ];
       };
       extraCompatPackages = with pkgs; [
