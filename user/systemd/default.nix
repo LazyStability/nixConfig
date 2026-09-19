@@ -140,7 +140,7 @@
       serviceConfig = {
         # Environment=
         ExecStart = "${pkgs.mpd}/bin/mpd --systemd";
-        ExecStartPre = "${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/mkdir -p %h/.local/share/mpd /home/me/.local/share/mpd/playlists\"";
+        ExecStartPre = "${pkgs.bash}/bin/bash -c \"${pkgs.coreutils}/bin/mkdir -p %h/.local/share/mpd %h/.local/share/mpd/playlists %t/mpd\"";
         Type = "notify";
         # allow MPD to use real-time priority 40
         LimitRTPRIO = 40;
