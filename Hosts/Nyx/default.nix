@@ -31,11 +31,15 @@
     };
   };
   ## Drucken
-  services.printing.drivers = with pkgs; [
-    gutenprint
-    hplip
-    splix
-  ];
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      gutenprint
+      hplip
+      hplipWithPlugin
+      splix
+    ];
+  };
 
   #################
   ## Secure Boot ##
