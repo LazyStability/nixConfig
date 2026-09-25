@@ -164,6 +164,15 @@
       24727
     ];
   };
+  # Enable CUPS to print documents.
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      gutenprint
+      hplipWithPlugin
+      splix
+    ];
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
