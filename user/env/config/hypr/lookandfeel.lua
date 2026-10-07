@@ -61,6 +61,9 @@ hl.animation {
   style = 'slidefadevert -50%',
 }
 
+-- Smart gaps/ No gaps if single window
+-- https://wiki.hypr.land/Configuring/Workspace-Rules/#smart-gaps
+-- https://wiki.hyprland.org/Configuring/Variables/#misc
 hl.workspace_rule {
   workspace = 'w[tv1]s[false]',
   gaps_out = 0,
@@ -102,6 +105,7 @@ hl.config {
     allow_tearing = false,
     layout = 'dwindle',
   },
+  scrolling = {},
   -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/XWayland/
   xwayland = {
     force_zero_scaling = true,
@@ -141,9 +145,6 @@ hl.config {
   master = {
     new_status = 'master',
   },
-  -- Smart gaps/ No gaps if single window
-  -- https://wiki.hypr.land/Configuring/Workspace-Rules/#smart-gaps
-  -- https://wiki.hyprland.org/Configuring/Variables/#misc
   misc = {
     force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
     disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(

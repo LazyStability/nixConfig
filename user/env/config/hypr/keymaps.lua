@@ -162,16 +162,65 @@ hl.bind(
   hl.dsp.window.fullscreen { mode = 'fullscreen', action = 'toggle' },
   { description = 'Fullscreen' }
 )
-hl.bind(
-  MAINMOD .. ' + O',
-  hl.dsp.layout '',
-  { description = 'Change spliting' }
-)
 
--- LDUR
+-- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Uncommon-tips-and-tricks/#cycle-layout-for-current-workspace
+hl.bind(MAINMOD .. ' + O', function()
+  local layouts = { 'scrolling', 'dwindle', 'master', 'monocle' }
+  local workspace = hl.get_active_workspace()
+  if hl.get_active_special_workspace() then
+    workspace = hl.get_active_special_workspace()
+  end
+
+  local next_layout = 'dwindle'
+
+  if not workspace then
+    return
+  end
+
+  for i = 1, #layouts do
+    if layouts[i] == workspace.tiled_layout then
+      local next_layout_idx = (i % #layouts) + 1
+      next_layout = layouts[next_layout_idx]
+      break
+    end
+  end
+
+  if workspace.special then
+    hl.workspace_rule {
+      workspace = tostring(workspace.name),
+      layout = next_layout,
+    }
+  else
+    hl.workspace_rule { workspace = tostring(workspace.id), layout = next_layout }
+  end
+end, { description = 'Cycle through layouts for this workspace' })
+
+-- LDUR with per layout bindings
+local function layout_bind(bind_table)
+  return function()
+    local workspace = hl.get_active_special_workspace()
+      or hl.get_active_workspace()
+
+    if not workspace then
+      return
+    end
+
+    local layout = workspace.tiled_layout
+
+    if bind_table[layout] then
+      hl.dispatch(bind_table[layout])
+    end
+  end
+end
+
 hl.bind(
   MAINMOD .. ' + h',
-  hl.dsp.focus { direction = 'left' },
+  layout_bind {
+    dwindle = hl.dsp.focus { direction = 'left' },
+    scrolling = hl.dsp.layout 'focus l',
+    monocle = hl.dsp.layout 'cycleprev',
+    master = hl.dsp.focus { direction = 'left' },
+  },
   { description = 'Switch to window left' }
 )
 hl.bind(
@@ -186,14 +235,24 @@ hl.bind(
 )
 hl.bind(
   MAINMOD .. ' + l',
-  hl.dsp.focus { direction = 'right' },
+  layout_bind {
+    dwindle = hl.dsp.focus { direction = 'right' },
+    scrolling = hl.dsp.layout 'focus r',
+    monocle = hl.dsp.layout 'cyclenext',
+    master = hl.dsp.focus { direction = 'right' },
+  },
   { description = 'Switch to window right' }
 )
 
 -- Switch windows
 hl.bind(
   MAINMOD .. ' + SHIFT + h',
-  hl.dsp.window.swap { direction = 'l' },
+  layout_bind {
+    dwindle = hl.dsp.window.swap { direction = 'left' },
+    scrolling = hl.dsp.layout 'swapcol l',
+    monocle = hl.dsp.layout 'cycleprev',
+    master = hl.dsp.layout 'cycleprev',
+  },
   { description = 'Switch to window left' }
 )
 hl.bind(
@@ -208,7 +267,12 @@ hl.bind(
 )
 hl.bind(
   MAINMOD .. ' + SHIFT + l',
-  hl.dsp.window.swap { direction = 'r' },
+  layout_bind {
+    dwindle = hl.dsp.window.swap { direction = 'right' },
+    scrolling = hl.dsp.layout 'swapcol r',
+    monocle = hl.dsp.layout 'cyclenext',
+    master = hl.dsp.layout 'cyclenext',
+  },
   { description = 'Switch to window right' }
 )
 
@@ -229,18 +293,6 @@ for i = 1, 10 do
     )
   )
 end
-
--- Move to scratchpads
-hl.bind(
-  MAINMOD .. ' + SHIFT + K',
-  hl.dsp.window.move { workspace = 'special:scratchpad_1' },
-  { description = 'Move to scratchpad 1' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + L',
-  hl.dsp.window.move { workspace = 'special:scratchpad_2' },
-  { description = 'Move to scratchpad 2' }
-)
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(
@@ -463,5 +515,16 @@ hl.define_submap('scratch', 'reset', function()
     'catchall',
     hl.dsp.submap 'reset',
     { repeating = true, description = 'Exit submap' }
+  )
+  -- Move to scratchpads
+  hl.bind(
+    MAINMOD .. ' + SHIFT + K',
+    hl.dsp.window.move { workspace = 'special:scratchpad_1' },
+    { description = 'Move to scratchpad 1' }
+  )
+  hl.bind(
+    MAINMOD .. ' + SHIFT + L',
+    hl.dsp.window.move { workspace = 'special:scratchpad_2' },
+    { description = 'Move to scratchpad 2' }
   )
 end)

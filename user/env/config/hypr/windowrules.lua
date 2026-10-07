@@ -26,12 +26,14 @@ hl.workspace_rule {
   workspace = '1',
   default_name = 'Browser',
   monitor = MONITOR1,
+  layout = 'scrolling',
 }
 
 hl.workspace_rule {
   workspace = '7',
   default_name = 'Gaming',
   monitor = MONITOR1,
+  layout = 'scrolling',
 }
 
 hl.workspace_rule {
