@@ -212,109 +212,23 @@ hl.bind(
   { description = 'Switch to window right' }
 )
 
--- Switch workspaces with mainMod + [0-9]
-hl.bind(
-  MAINMOD .. ' + 1',
-  hl.dsp.focus { workspace = 1 },
-  { description = 'Switch to workspace 1' }
-)
-hl.bind(
-  MAINMOD .. ' + 2',
-  hl.dsp.focus { workspace = 2 },
-  { description = 'Switch to workspace 2' }
-)
-hl.bind(
-  MAINMOD .. ' + 3',
-  hl.dsp.focus { workspace = 3 },
-  { description = 'Switch to workspace 3' }
-)
-hl.bind(
-  MAINMOD .. ' + 4',
-  hl.dsp.focus { workspace = 4 },
-  { description = 'Switch to workspace 4' }
-)
-hl.bind(
-  MAINMOD .. ' + 5',
-  hl.dsp.focus { workspace = 5 },
-  { description = 'Switch to workspace 5' }
-)
-hl.bind(
-  MAINMOD .. ' + 6',
-  hl.dsp.focus { workspace = 6 },
-  { description = 'Switch to workspace 6' }
-)
-hl.bind(
-  MAINMOD .. ' + 7',
-  hl.dsp.focus { workspace = 7 },
-  { description = 'Switch to workspace 7' }
-)
-hl.bind(
-  MAINMOD .. ' + 8',
-  hl.dsp.focus { workspace = 8 },
-  { description = 'Switch to workspace 8' }
-)
-hl.bind(
-  MAINMOD .. ' + 9',
-  hl.dsp.focus { workspace = 9 },
-  { description = 'Switch to workspace 9' }
-)
-hl.bind(
-  MAINMOD .. ' + 0',
-  hl.dsp.focus { workspace = 10 },
-  { description = 'Switch to workspace 10' }
-)
-
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
-hl.bind(
-  MAINMOD .. ' + SHIFT + 1',
-  hl.dsp.window.move { workspace = 1 },
-  { description = 'Move to workspace 1' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 2',
-  hl.dsp.window.move { workspace = 2 },
-  { description = 'Move to workspace 2' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 3',
-  hl.dsp.window.move { workspace = 3 },
-  { description = 'Move to workspace 3' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 4',
-  hl.dsp.window.move { workspace = 4 },
-  { description = 'Move to workspace 4' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 5',
-  hl.dsp.window.move { workspace = 5 },
-  { description = 'Move to workspace 5' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 6',
-  hl.dsp.window.move { workspace = 6 },
-  { description = 'Move to workspace 6' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 7',
-  hl.dsp.window.move { workspace = 7 },
-  { description = 'Move to workspace 7' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 8',
-  hl.dsp.window.move { workspace = 8 },
-  { description = 'Move to workspace 8' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 9',
-  hl.dsp.window.move { workspace = 9 },
-  { description = 'Move to workspace 9' }
-)
-hl.bind(
-  MAINMOD .. ' + SHIFT + 0',
-  hl.dsp.window.move { workspace = 10 },
-  { description = 'Move to workspace 10' }
-)
+for i = 1, 10 do
+  local key = i % 10 -- 10 maps to key 0
+  -- Switch workspaces with mainMod + [0-9]
+  hl.bind(
+    MAINMOD .. ' + ' .. key,
+    hl.dsp.focus { workspace = i },
+    { description = 'Switch to workspace ' .. i }
+  )
+  -- Move active window to a workspace with mainMod + SHIFT + [0-9]
+  hl.bind(
+    MAINMOD .. ' + SHIFT + ' .. key,
+    hl.dsp.window.move(
+      { workspace = i },
+      { description = 'Move window to workspace ' .. i }
+    )
+  )
+end
 
 -- Move to scratchpads
 hl.bind(
@@ -355,11 +269,6 @@ hl.bind(
 ---------------
 ---- submaps --
 ---------------
-hl.bind(
-  MAINMOD .. ' + S',
-  hl.dsp.submap 'swap',
-  { description = 'Enter swap submap' }
-)
 hl.bind(
   MAINMOD .. ' + D',
   hl.dsp.submap 'scratch',
@@ -432,39 +341,6 @@ hl.define_submap('resize', function()
     'l',
     hl.dsp.window.resize { x = 30, y = 0, relative = true },
     { repeating = true, description = 'Resize window right' }
-  )
-
-  -- Use `reset` to go back to the global submap
-  hl.bind('escape', hl.dsp.submap 'reset', { description = 'Exit submap' })
-
-  -- Reset the submap, which will return to the global submap
-end)
-
---------------------
---- swap submap --
---------------------
-
-hl.define_submap('swap', function()
-  -- Set repeatable binds for resizing the active window.
-  hl.bind(
-    'h',
-    hl.dsp.window.swap { direction = 'l' },
-    { repeating = true, description = 'Switch to window left' }
-  )
-  hl.bind(
-    'j',
-    hl.dsp.window.swap { direction = 'd' },
-    { repeating = true, description = 'Switch to window down' }
-  )
-  hl.bind(
-    'k',
-    hl.dsp.window.swap { direction = 'u' },
-    { repeating = true, description = 'Switch to window up' }
-  )
-  hl.bind(
-    'l',
-    hl.dsp.window.swap { direction = 'r' },
-    { repeating = true, description = 'Switch to window right' }
   )
 
   -- Use `reset` to go back to the global submap
