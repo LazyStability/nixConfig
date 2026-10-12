@@ -18,6 +18,9 @@
     defaultSopsFormat = "yaml";
 
     secrets = {
+      forgejo-admin-password = {
+        owner = "forgejo";
+      };
       "paperless-admin" = { };
       "syncthing/key" = {
       };
