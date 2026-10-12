@@ -109,6 +109,7 @@
       description = "Hagen";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQUQQWdmgdktQTRgBq0phM5fh5+QCBBtaeGmUouWwkv Klysmus@online.de"
+        "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIujGMZjW+D/bbywnmZ10KK1PrwIHgn8rD6b/rRI77YzuhgR3GnXnGH8MQc0gTftoHDCF12KDyB+CVrYynudRuA= LazilyStable@proton.me"
       ];
       extraGroups = [
         "networkmanager"
