@@ -21,6 +21,7 @@ https://saylesss88.github.io/rss nix
 https://xeiaso.net/blog.rss nix devops coding
 https://landchad.net/index.xml IT devops
 https://christitus.com/categories/linux/index.xml IT tech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ IT devops				"~ChrisTitusTech"
 https://linkarzu.com/feed.xml productivity nvim
 https://fmhy.net/feed.rss productivity Research
 https://astrid.tech/feed.xml nix IT devops
@@ -74,24 +75,14 @@ https://kill-the-newsletter.com/feeds/32s6kgw57tano9s4akrl.xml news											"~
 
 " "
 "---News---"
-https://feeds.arstechnica.com/arstechnica/index
-http://newsfeed.zeit.de/index																														"~Zeit"
 https://rss.sueddeutsche.de/rss/Topthemen
-https://www.faz.net/rss/aktuell/
-https://rss.dw.com/rdf/rss-en-ger																												
-https://rss.dw.com/rdf/rss-en-world
-https://rss.dw.com/rdf/rss-en-bus
-https://rss.dw.com/xml/rss_en_environment
-https://rss.dw.com/rdf/rss-en-asia
+https://www.faz.net/rss/aktuell/																												"~FAZ"
 https://news.ycombinator.com/rss
 
-# Webnovels
 " "
 "---Webnovels---"
-https://www.royalroad.com/fiction/syndication/81642 webnovel 	 											"~Cultivation Nerd"
 https://www.royalroad.com/fiction/syndication/118891 webnovel	 											"~Max Level Archmage"
 https://www.royalroad.com/fiction/syndication/117689 webnovel	 	 										"~The Warcrowned"
-https://www.royalroad.com/fiction/syndication/76478 webnovel	 		 									"~Hoard"
 https://www.royalroad.com/fiction/syndication/75345 webnovel	 											"~Changeling"
 https://www.royalroad.com/fiction/syndication/95704 webnovel	 	 										"~Elders Revolution"
 https://www.royalroad.com/fiction/syndication/105295 webnovel	 											"~The Bell tolls for me"
@@ -107,7 +98,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCgb_TbreMgfDdLKkr4yYJHw env
 https://www.youtube.com/feeds/videos.xml?channel_id=UCXzw-OdotBUcNA9yhuYQBwA coding IT				"~Awesome"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5--wS0Ljbin1TjWQX6eafA "coding memes"			"~bigboxswe"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCZg4PvX48mgXQVySgIulX-Q IT devops				"~CertBros"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ IT devops				"~ChrisTitusTech"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCwD5YYkbYmN2iFHON9FyDXg health				"~David Sinclair"
 https://www.youtube.com/feeds/videos.xml?channel_id=UClHVl2N3jPEbkNJVx-ItQIQ "mental health"			"~Doctor K"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWEVAMMyXF2NP5txDESGemg games coding			"~Fat Dino"
