@@ -122,9 +122,6 @@
     };
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   virtualisation.vmware.guest.enable = true;
 
   # List services that you want to enable:
