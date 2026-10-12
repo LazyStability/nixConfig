@@ -151,6 +151,7 @@
     radicale.enable = true;
     paperless.enable = true;
     immich.enable = true;
+    forgejo.enable = true;
     syncthing = {
       enable = false;
       cert = lib.mkForce null;
