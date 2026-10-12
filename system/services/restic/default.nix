@@ -1,6 +1,6 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
-  services.restic.backups.odin = {
+  services.restic.backups.odin = lib.mkIf (config.networking.hostName != "OdinNix") {
     timerConfig = {
       OnCalendar = "Fri *-*-* 20:00:00";
       Persistent = true;
