@@ -15,7 +15,6 @@
   ...
 }:
 let
-  rssadd = pkgs.callPackage ./rssadd.nix { };
   applauncher =
     # if config.programs.fuzzel.enable then
     if true then
@@ -32,7 +31,6 @@ writeShellApplication {
   runtimeInputs = [
     pkgs.wl-clipboard
     pkgs.curl
-    rssadd
   ];
   text = ''
     # Searches the website for RSS feeds and adds them to newsboat url list. Can
@@ -155,6 +153,5 @@ writeShellApplication {
     [ "$(echo "''${list[*]}" | wc -l)" -eq 1 ] && chosen_link="''${list[*]}" || chosen_link=$(printf '%s\n' "''${list[@]}" | ${applauncher} -d -p "Choose a feed:")
     tags="''${2-}"
     echo "$chosen_link" "$tags"
-    rssadd "$chosen_link" "$tags"
   '';
 }
