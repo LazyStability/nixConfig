@@ -142,7 +142,7 @@
   myModules = {
     disks.samba.enable = true;
     desktopEnvironment = {
-      select = "kde";
+      select = null;
     };
   };
   services = {
