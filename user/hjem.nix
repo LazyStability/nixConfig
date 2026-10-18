@@ -81,12 +81,12 @@ let
 in
 {
 
-  imports =
-    let
-      new-lib = import ../lib { lib = lib; };
-    in
-
-    new-lib.flatten (new-lib.go ./.);
+  imports = [
+    ./env
+    ./gaming
+    ./scripts
+    ./systemd
+  ];
 
   hjem.users.me = {
     environment.sessionVariables = {
