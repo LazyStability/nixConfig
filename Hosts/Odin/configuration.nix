@@ -13,7 +13,18 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../system/configuration.nix
+    ../../system/base.nix
+    # Feature modules
+    ../../system/secrets
+    ../../system/disk/samba
+    ../../system/desktop-environment
+    ../../system/services/server/radicale
+    ../../system/services/server/invidious
+    ../../system/services/server/paperless
+    ../../system/services/server/immich
+    ../../system/services/server/forgejo
+    ../../system/services/desktop/host-files
+    ../../system/programs/shell
     ./secrets
   ];
   # enable auto updates

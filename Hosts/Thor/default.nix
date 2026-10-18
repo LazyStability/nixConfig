@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  pkgs-stable,
   extraPackages,
   inputs,
   ...
@@ -10,7 +9,21 @@
   imports = [
     ./hardware-configuration.nix
     ./secrets
-    ../../system/configuration.nix
+    ../../system/base.nix
+    # Feature modules
+    ../../system/secrets
+    ../../system/impermanence
+    ../../system/desktop-environment
+    ../../system/desktop-environment/hyprland
+    ../../system/services/tailscale
+    ../../system/services/syncthing
+    ../../system/services/desktop/bluetooth
+    ../../system/services/desktop/kde-connect
+    ../../system/services/desktop/host-files
+    ../../system/services/desktop/restic
+    ../../system/services/desktop/soundsystems
+    ../../system/programs/browser
+    ../../system/programs/shell
 
     inputs.disko.nixosModules.default
     (import ../../system/disko.nix {

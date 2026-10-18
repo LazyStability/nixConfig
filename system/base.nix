@@ -3,39 +3,11 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   pkgs,
-  pkgs-stable,
   self,
   lib,
   ...
 }:
 {
-  # Imports all default.nix files in subdirectories
-  imports =
-    let
-      go =
-        dir:
-        builtins.mapAttrs (
-          n: v:
-          if v == "regular" && n == "default.nix" then
-            dir + "/${n}"
-          else if v == "directory" then
-            go (dir + "/${n}")
-          else
-            { }
-        ) (builtins.readDir dir);
-      flatten =
-        set:
-        let
-          recurse =
-            path:
-            lib.attrsets.mapAttrsToList (
-              name: value: if builtins.isAttrs value then recurse (path ++ name) value else value
-            );
-        in
-        lib.lists.flatten (recurse "" set);
-    in
-    flatten (go ./.);
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -108,9 +80,6 @@
         git-lfs
         zsh
         cryptsetup
-
-      ])
-      ++ (with pkgs-stable; [
       ]);
     sessionVariables = {
       EDITOR = "nvim";

@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  pkgs-stable,
   extraPackages,
   inputs,
   ...
@@ -12,7 +11,26 @@
     ./hardware-configuration.nix
     ./wireguard.nix
 
-    ../../system/configuration.nix
+    ../../system/base.nix
+    # Feature modules
+    ../../system/secrets
+    ../../system/gaming
+    ../../system/disk/samba
+    ../../system/impermanence
+    ../../system/desktop-environment
+    ../../system/desktop-environment/hyprland
+    ../../system/services/docker
+    ../../system/services/tailscale
+    ../../system/services/syncthing
+    ../../system/services/desktop/bluetooth
+    ../../system/services/desktop/android-webcam
+    ../../system/services/desktop/kde-connect
+    ../../system/services/desktop/ai-machine-learning
+    ../../system/services/desktop/host-files
+    ../../system/services/desktop/restic
+    ../../system/services/desktop/soundsystems
+    ../../system/programs/browser
+    ../../system/programs/shell
 
     inputs.disko.nixosModules.default
     (import ../../system/disko.nix {

@@ -15,7 +15,16 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     # <nixpkgs/nixos/modules/virtualisation/qemu-vm.nix>
-    ../../system/configuration.nix
+    ../../system/base.nix
+    # Feature modules
+    ../../system/secrets
+    ../../system/desktop-environment
+    ../../system/desktop-environment/hyprland
+    ../../system/services/desktop/host-files
+    ../../system/services/desktop/restic
+    ../../system/services/desktop/soundsystems
+    ../../system/programs/browser
+    ../../system/programs/shell
     inputs.hjem.nixosModules.default
     ../../user/hjem.nix
   ];

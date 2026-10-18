@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  pkgs-stable,
   inputs,
   extraPackages,
   lib,
@@ -12,7 +11,23 @@
     ./secrets
     ./hardware-configuration.nix
 
-    ../../system/configuration.nix
+    ../../system/base.nix
+    # Feature modules
+    ../../system/secrets
+    ../../system/disk/samba
+    ../../system/impermanence
+    ../../system/desktop-environment
+    ../../system/desktop-environment/hyprland
+    ../../system/services/tailscale
+    ../../system/services/syncthing
+    ../../system/services/desktop/bluetooth
+    ../../system/services/desktop/android-webcam
+    ../../system/services/desktop/kde-connect
+    ../../system/services/desktop/host-files
+    ../../system/services/desktop/restic
+    ../../system/services/desktop/soundsystems
+    ../../system/programs/browser
+    ../../system/programs/shell
     ./wireguard.nix
 
     inputs.disko.nixosModules.default
