@@ -2,12 +2,8 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }:
-let
-  desktop = config.services.pipewire.enable;
-in
 {
   systemd.user.services.pipewire = {
     serviceConfig = {
@@ -16,20 +12,17 @@ in
   };
   # 1. Sound Server: PipeWire with JACK/PulseAudio support
   services.pipewire = {
-    alsa.enable = lib.mkForce desktop;
-    alsa.support32Bit = lib.mkForce desktop; # Required for yabridge/wine VST bridging
-    pulse.enable = lib.mkForce desktop;
-    jack.enable = lib.mkForce desktop;
+    jack.enable = true;
     extraLadspaPackages = [
       pkgs.rnnoise-plugin
     ];
+    # Single bundled derivation in nixpkgs (whole LSP suite); the LV2 URIs
+    # actually used are in user/env/config/pipewire/pipewire.conf.d/:
+    # para_equalizer_x8_stereo, para_equalizer_x8_mono, limiter_stereo,
+    # gate_mono, compressor_mono
     extraLv2Packages = [
       pkgs.lsp-plugins
-      pkgs.rnnoise-plugin
     ];
-    wireplumber = {
-      enable = lib.mkForce desktop;
-    };
 
     # Global low-latency defaults for native JACK and ALSA clients
     # Note: PulseAudio specific latency settings (pulse.min.req) are deprecated
@@ -63,10 +56,10 @@ in
 
   # 2. Real-time Scheduling
   # RTKit handles real-time privileges via D-Bus/Polkit.
-  security.rtkit.enable = lib.mkDefault desktop;
+  security.rtkit.enable = lib.mkDefault true;
 
   # Critical: Allow unlimited memlock and high rtprio for real-time audio buffers
-  security.pam.loginLimits = lib.mkIf desktop [
+  security.pam.loginLimits = [
     {
       domain = "@audio";
       item = "memlock";
@@ -89,7 +82,7 @@ in
 
   environment.systemPackages =
     with pkgs;
-    lib.mkIf desktop [
+    [
       # --- Utilities & Routing ---
       # qpwgraph # Visual patchbay for PipeWire
       pwvucontrol # Modern native PipeWire volume control
@@ -110,8 +103,8 @@ in
       # --- Plugins (LV2/CLAP) ---
       # neural-amp-modeler-lv2 # NAM: loads .nam files from tone3000.com
       # proteus # Neural network modeling (LSTM) by GuitarML
-      lsp-plugins # Includes latency meter, compressors, IR loader
-      rnnoise-plugin
+      # lsp-plugins # Provided via services.pipewire.extraLv2Packages
+      # rnnoise-plugin # Provided via services.pipewire.extraLadspaPackages
       # calf
       # dragonfly-reverb
       # gxplugins-lv2

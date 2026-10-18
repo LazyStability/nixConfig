@@ -141,7 +141,6 @@
     packages = [
       pkgs.dejavu_fonts
       pkgs.nerd-fonts.fira-code
-      pkgs.dejavu_fonts
     ];
     fontconfig = {
       defaultFonts = {

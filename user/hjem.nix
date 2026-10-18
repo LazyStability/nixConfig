@@ -199,7 +199,6 @@ in
         # reddit-tui
         zotero
         yt-dlp
-        wl-clipboard
         jailed-signal-desktop
         kitty
         # age

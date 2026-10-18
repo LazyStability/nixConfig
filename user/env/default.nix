@@ -141,7 +141,6 @@ in
             hyprland-switch-behaviour
             hyprland-binds
             hyprland-window-quickswitcher
-            hyprland-switch-behaviour
             hyprland-move-workpace-to-monitor
             quickcapture
             vim-anywhere
