@@ -1,7 +1,7 @@
 # https://github.com/hyprwm/Hyprland/issues/1754#issue-1618824532
 { writeShellApplication, config, ... }:
 let
-  monitor = builtins.elemAt config.myModules.desktopEnvironment.monitors 0;
+  monitor = builtins.elemAt config.desktopEnvironment.monitors 0;
   monitorString = monitor.name + "," + monitor.mode + "@" + monitor.rate + "," + monitor.position + "," + "1";
   monitorName = monitor.name;
 in

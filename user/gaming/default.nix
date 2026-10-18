@@ -50,7 +50,7 @@
       steamcmd = jail "steamcmd" pkgs.steamcmd steam-commons;
       steam-tui = jail "steamtui" pkgs.steam-tui steam-commons;
     in
-    (lib.mkIf config.myModules.gaming.enable) [
+    [
       # Steam stuff
       pkgs.steam-run
       pkgs.gamescope

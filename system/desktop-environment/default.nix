@@ -4,11 +4,6 @@
   ...
 }:
 let
-  subDirsIn =
-    dir:
-    lib.attrsets.mapAttrsToList (name: _: name) (
-      lib.filterAttrs (name: type: type == "directory" && name != "desktopUtils") (builtins.readDir dir)
-    );
   monitorType = lib.types.submodule {
     options = {
       enable = lib.mkOption {
@@ -50,15 +45,7 @@ let
   };
 in
 {
-  options.myModules.desktopEnvironment = {
-    # Gets every non nix file, which hopefully are all directories
-    select = lib.mkOption {
-      default = null;
-      type = lib.types.enum ((subDirsIn ./.) ++ [ null ]);
-      description = ''
-        Select the desktop environment that should be used.
-      '';
-    };
+  options.desktopEnvironment = {
     monitors = lib.mkOption {
       default = [
         {

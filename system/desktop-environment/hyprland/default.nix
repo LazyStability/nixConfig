@@ -8,7 +8,7 @@
   imports = [
     ../../greetd/greetd.nix
   ];
-  config = lib.mkIf (config.myModules.desktopEnvironment.select == "hyprland") {
+  config = {
 
     environment.systemPackages = with pkgs; [
       # For automounting cd or usbsticks

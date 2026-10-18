@@ -63,8 +63,6 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  myModules.desktopEnvironment.select = "hyprland";
-
   services.pulseaudio.enable = false;
 
   # Enable touchpad support (enabled default in most desktopManager).

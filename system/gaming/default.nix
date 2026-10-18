@@ -5,14 +5,7 @@
   extraPackages,
   ...
 }:
-let
-  cfg = config.myModules.gaming;
-in
 {
-  options.myModules.gaming = {
-    enable = lib.mkEnableOption "enable gaming module required for gamescope session and shadowplay";
-  };
-  config = lib.mkIf cfg.enable {
     programs.steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -74,5 +67,4 @@ in
       pkgs.gpu-screen-recorder-gtk
       pkgs.protonup-rs
     ];
-  };
 }

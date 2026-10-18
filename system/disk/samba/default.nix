@@ -4,15 +4,7 @@
   lib,
   ...
 }:
-let
-  cfg = config.myModules.disks.samba;
-in
 {
-  options.myModules.disks.samba = {
-    enable = lib.mkEnableOption "Enable samba drive to home";
-  };
-
-  config = lib.mkIf cfg.enable {
     # For mount.cifs, required unless domain name resolution is not needed.
     environment.systemPackages = [ pkgs.cifs-utils ];
     fileSystems."/mnt/share" = {
@@ -43,5 +35,4 @@ in
       '';
       deps = [ "setupSecrets" ];
     };
-  };
 }

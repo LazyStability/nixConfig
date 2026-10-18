@@ -41,6 +41,7 @@
 
     inputs.hjem.nixosModules.default
     ../../user/hjem.nix
+    ../../user/gaming
   ];
   environment = {
     sessionVariables = {
@@ -108,35 +109,25 @@
     ]; # Enable ‘sudo’ for the user.
   };
   programs.fuse.userAllowOther = true;
-  myModules = {
-    disks.samba.enable = true;
-    gaming.enable = true;
-    wireguard.enable = true;
-    dataLinks.enable = true;
-    android-webcam.enable = true;
-    desktopEnvironment = {
-      select = "hyprland";
-      monitors = [
-        {
-          name = "DP-1";
-          enable = true;
-          position = "1920x0";
-          mode = "3840x2160";
-          scale = "1.5";
-          rate = "60";
-          primary = true;
-        }
-        {
-          name = "DP-2";
-          enable = true;
-          mode = "1920x1200";
-          position = "0x0";
-          scale = "1";
-          rate = "60";
-        }
-      ];
-    };
-  };
+  desktopEnvironment.monitors = [
+    {
+      name = "DP-1";
+      enable = true;
+      position = "1920x0";
+      mode = "3840x2160";
+      scale = "1.5";
+      rate = "60";
+      primary = true;
+    }
+    {
+      name = "DP-2";
+      enable = true;
+      mode = "1920x1200";
+      position = "0x0";
+      scale = "1";
+      rate = "60";
+    }
+  ];
 
   virtualisation = {
     docker.enable = true;

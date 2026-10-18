@@ -6,7 +6,7 @@
 }:
 {
 
-  config = lib.mkIf (config.myModules.desktopEnvironment.select == "gnome") {
+  config = {
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;

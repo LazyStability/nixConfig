@@ -12,7 +12,6 @@
     ../../system/base.nix
     # Feature modules
     ../../system/secrets
-    ../../system/impermanence
     ../../system/desktop-environment
     ../../system/desktop-environment/hyprland
     ../../system/services/tailscale
@@ -94,23 +93,15 @@
 
   programs.fuse.userAllowOther = true;
 
-  myModules = {
-    dataLinks.enable = false;
-
-    desktopEnvironment = {
-
-      select = "hyprland";
-      monitors = [
-        {
-          name = "DP-1";
-          enable = true;
-          mode = "2560x1440";
-          position = "0x0";
-          rate = "60";
-        }
-      ];
-    };
-  };
+  desktopEnvironment.monitors = [
+    {
+      name = "DP-1";
+      enable = true;
+      mode = "2560x1440";
+      position = "0x0";
+      rate = "60";
+    }
+  ];
   programs = {
     wireshark.enable = true;
     thunderbird.enable = true;

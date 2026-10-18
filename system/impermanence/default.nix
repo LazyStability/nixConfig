@@ -1,10 +1,6 @@
 { config, lib, ... }:
-let
-  cfg = config.myModules.dataLinks;
-in
 {
-  options.myModules.dataLinks = {
-    enable = lib.mkEnableOption "dataLinks";
+  options.dataLinks = {
     dataPath = lib.mkOption {
       default = "/mnt/data";
       type = lib.types.str;
@@ -28,14 +24,14 @@ in
       description = "partition were Games reside";
     };
   };
-  config = lib.mkIf cfg.enable {
+  config = {
     systemd.tmpfiles.rules =
       let
-        createSystemdTmpfileRule = subDir: "L+ /home/me/${subDir} - - - - /${cfg.dataPath}/${subDir}";
+        createSystemdTmpfileRule = subDir: "L+ /home/me/${subDir} - - - - /${config.dataLinks.dataPath}/${subDir}";
       in
-      lib.map createSystemdTmpfileRule cfg.dataDirectoryList
+      lib.map createSystemdTmpfileRule config.dataLinks.dataDirectoryList
       ++
         # TODO: Use the same function as above to generate from gamesPath
-        [ "L+ /home/me/Games - - - - ${cfg.gamesPath}" ];
+        [ "L+ /home/me/Games - - - - ${config.dataLinks.gamesPath}" ];
   };
 }

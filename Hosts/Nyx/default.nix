@@ -16,7 +16,6 @@
     ../../system/secrets
     ../../system/secrets/Yubico
     ../../system/disk/samba
-    ../../system/impermanence
     ../../system/desktop-environment
     ../../system/desktop-environment/hyprland
     ../../system/services/tailscale
@@ -131,25 +130,16 @@
     ]; # Enable ‘sudo’ for the user.
   };
   programs.fuse.userAllowOther = true;
-  myModules = {
-    disks.samba.enable = true;
-    wireguard.enable = true;
-    dataLinks.enable = false;
-    android-webcam.enable = true;
-    desktopEnvironment = {
-      select = "hyprland";
-      monitors = [
-        {
-          name = "eDP-1";
-          enable = true;
-          mode = "1920x1080";
-          position = "0x0";
-          rate = "60";
-          scale = "1";
-        }
-      ];
-    };
-  };
+  desktopEnvironment.monitors = [
+    {
+      name = "eDP-1";
+      enable = true;
+      mode = "1920x1080";
+      position = "0x0";
+      rate = "60";
+      scale = "1";
+    }
+  ];
 
   programs = {
     wireshark.enable = false;

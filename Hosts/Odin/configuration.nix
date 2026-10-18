@@ -150,12 +150,6 @@
     };
   };
 
-  myModules = {
-    disks.samba.enable = true;
-    desktopEnvironment = {
-      select = null;
-    };
-  };
   services = {
     radicale.enable = true;
     paperless.enable = true;
