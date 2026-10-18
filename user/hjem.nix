@@ -83,7 +83,6 @@ in
 
   imports = [
     ./env
-    ./gaming
     ./scripts
     ./systemd
   ];
