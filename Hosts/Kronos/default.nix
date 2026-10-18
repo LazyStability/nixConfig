@@ -14,6 +14,7 @@
     ../../system/base.nix
     # Feature modules
     ../../system/secrets
+    ../../system/secrets/Yubico
     ../../system/gaming
     ../../system/disk/samba
     ../../system/impermanence
