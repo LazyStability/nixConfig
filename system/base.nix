@@ -48,7 +48,9 @@
   };
 
   boot.tmp.cleanOnBoot = true;
-  services.journald.extraConfig = "SystemMaxFileSize=50M";
+  services.journald.settings.Journal = {
+    SystemMaxFileSize = "50M";
+  };
 
   # Configure console keymap
   console.keyMap = "de";
