@@ -18,6 +18,10 @@
           # OBS_VKCAPTURE = true;
           # RADV_TEX_ANISO = 16;
         };
+        # From here: https://github.com/NixOS/nixpkgs/issues/354887#issuecomment-6461714698
+        extraPreBwrapCmds = ''
+          export LOCALE_ARCHIVE="$(readlink -f "$LOCALE_ARCHIVE")"
+        '';
         extraBwrapArgs = [
           # Sandboxing steam
           "--tmpfs /home"
