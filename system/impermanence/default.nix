@@ -27,7 +27,8 @@
   config = {
     systemd.tmpfiles.rules =
       let
-        createSystemdTmpfileRule = subDir: "L+ /home/me/${subDir} - - - - /${config.dataLinks.dataPath}/${subDir}";
+        createSystemdTmpfileRule =
+          subDir: "L+ /home/me/${subDir} - - - - /${config.dataLinks.dataPath}/${subDir}";
       in
       lib.map createSystemdTmpfileRule config.dataLinks.dataDirectoryList
       ++

@@ -1,5 +1,4 @@
-_:
-{
+_: {
   networking = {
     stevenblack = {
       enable = true;

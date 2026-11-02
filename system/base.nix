@@ -66,8 +66,9 @@
   environment = {
     # List packages installed in system profile. To search, run:
     # $ nix search wget
-    systemPackages =
-      (with pkgs; [
+    systemPackages = (
+      with pkgs;
+      [
         # veracrypt
         neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         wget
@@ -82,7 +83,8 @@
         git-lfs
         zsh
         cryptsetup
-      ]);
+      ]
+    );
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";

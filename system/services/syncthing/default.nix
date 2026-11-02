@@ -34,107 +34,106 @@
         "Kronos".id = "6RJ6Y7O-PNYWAZJ-DRG5OMC-5UUYE54-KKEMXAP-5W7MOK6-ORYPH52-M4QQBQG";
         # "Thor".id = "";
       } [ config.networking.hostName ];
-      folders = with lib.lists;
-        {
-          "Zettelkasten" = {
-            path = "/home/me/Dokumente/Zettelkasten";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Thor"
-              "Odin"
-              "Kronos"
-            ];
-          };
-          "Personal" = {
-            path = "/home/me/Dokumente/Personal";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Thor"
-              "Odin"
-              "Kronos"
-            ];
-          };
-          "Books" = {
-            path = "/home/me/Dokumente/Books";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Thor"
-              "Odin"
-              "Kronos"
-            ];
-          };
-          "dnd" = {
-            path = "/home/me/Dokumente/DNDVault";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Thor"
-              "Odin"
-              "Kronos"
-            ];
-          };
-          "Uni" = {
-            path = "/home/me/Dokumente/Uni";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Thor"
-              "Odin"
-              "Kronos"
-            ];
-          };
-          "OffDokumente" = {
-            path = "/home/me/Dokumente/Offizielle_Dokumente/";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Thor"
-              "Odin"
-              "Kronos"
-            ];
-          };
-          "Keepass" = {
-            path = "/home/me/Dokumente/Software/Keepass/";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Odin"
-              "Thor"
-              "Kronos"
-            ];
-          };
-          "Videos" = {
-            path = "/home/me/Videos/";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Odin"
-              "Kronos"
-            ];
-          };
-          "Bilder" = {
-            path = "/home/me/Bilder/";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Thor"
-              "Odin"
-              "Kronos"
-            ];
-          };
-          "Local Thunderbird" = {
-            path = "/home/me/.thunderbird/b0b2l4n9.default-default/Mail/Local\ Folders";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Odin"
-              "Thor"
-              "Kronos"
-            ];
-          };
-          "newsboat" = {
-            path = "/home/me/.config/newsboat";
-            devices = remove config.networking.hostName [
-              "Nyx"
-              "Odin"
-              "Thor"
-              "Kronos"
-            ];
-          };
+      folders = with lib.lists; {
+        "Zettelkasten" = {
+          path = "/home/me/Dokumente/Zettelkasten";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Thor"
+            "Odin"
+            "Kronos"
+          ];
         };
+        "Personal" = {
+          path = "/home/me/Dokumente/Personal";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Thor"
+            "Odin"
+            "Kronos"
+          ];
+        };
+        "Books" = {
+          path = "/home/me/Dokumente/Books";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Thor"
+            "Odin"
+            "Kronos"
+          ];
+        };
+        "dnd" = {
+          path = "/home/me/Dokumente/DNDVault";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Thor"
+            "Odin"
+            "Kronos"
+          ];
+        };
+        "Uni" = {
+          path = "/home/me/Dokumente/Uni";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Thor"
+            "Odin"
+            "Kronos"
+          ];
+        };
+        "OffDokumente" = {
+          path = "/home/me/Dokumente/Offizielle_Dokumente/";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Thor"
+            "Odin"
+            "Kronos"
+          ];
+        };
+        "Keepass" = {
+          path = "/home/me/Dokumente/Software/Keepass/";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Odin"
+            "Thor"
+            "Kronos"
+          ];
+        };
+        "Videos" = {
+          path = "/home/me/Videos/";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Odin"
+            "Kronos"
+          ];
+        };
+        "Bilder" = {
+          path = "/home/me/Bilder/";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Thor"
+            "Odin"
+            "Kronos"
+          ];
+        };
+        "Local Thunderbird" = {
+          path = "/home/me/.thunderbird/b0b2l4n9.default-default/Mail/Local\ Folders";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Odin"
+            "Thor"
+            "Kronos"
+          ];
+        };
+        "newsboat" = {
+          path = "/home/me/.config/newsboat";
+          devices = remove config.networking.hostName [
+            "Nyx"
+            "Odin"
+            "Thor"
+            "Kronos"
+          ];
+        };
+      };
     };
   };
 }

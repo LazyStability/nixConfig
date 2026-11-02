@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.invidious = {
     enable = false;
     nginx.enable = false;

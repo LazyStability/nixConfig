@@ -244,7 +244,7 @@ in
           (extraPackages.passage.override {
             passage = extraPackages.passage.override { age = extraPackages.rage; };
           }).withExtensions
-          (ext: with ext; [ pass-otp ])
+            (ext: with ext; [ pass-otp ])
         )
         # rnote
         kitty-sessionizer

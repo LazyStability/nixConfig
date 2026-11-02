@@ -80,45 +80,43 @@
     }
   ];
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      # --- Utilities & Routing ---
-      # qpwgraph # Visual patchbay for PipeWire
-      pwvucontrol # Modern native PipeWire volume control
-      # pavucontrol # Fallback for Pro Audio profile selection
-      # easyeffects # System-wide real-time EQ and effects
+  environment.systemPackages = with pkgs; [
+    # --- Utilities & Routing ---
+    # qpwgraph # Visual patchbay for PipeWire
+    pwvucontrol # Modern native PipeWire volume control
+    # pavucontrol # Fallback for Pro Audio profile selection
+    # easyeffects # System-wide real-time EQ and effects
 
-      # --- DAWs ---
-      # ardour
-      # reaper
-      # bitwig-studio # Native Linux commercial DAW, excellent CLAP support
+    # --- DAWs ---
+    # ardour
+    # reaper
+    # bitwig-studio # Native Linux commercial DAW, excellent CLAP support
 
-      # --- Plugin Hosts ---
-      # carla # Modular plugin host / pedalboard, supports Windows VST via yabridge
+    # --- Plugin Hosts ---
+    # carla # Modular plugin host / pedalboard, supports Windows VST via yabridge
 
-      # --- Standalone Guitar Processors ---
-      # guitarix
+    # --- Standalone Guitar Processors ---
+    # guitarix
 
-      # --- Plugins (LV2/CLAP) ---
-      # neural-amp-modeler-lv2 # NAM: loads .nam files from tone3000.com
-      # proteus # Neural network modeling (LSTM) by GuitarML
-      # lsp-plugins # Provided via services.pipewire.extraLv2Packages
-      # rnnoise-plugin # Provided via services.pipewire.extraLadspaPackages
-      # calf
-      # dragonfly-reverb
-      # gxplugins-lv2
-      # kapitonov-plugins-pack # Profile-based amp models (KPP)
-      # chow-centaur # Klon Centaur emulation
-      # chow-phaser
-      #
-      # # --- Practice & Learning ---
-      # tuxguitar
-      # hydrogen
-      #
-      # # --- Windows VST Compatibility ---
-      # yabridge
-      # (yabridgectl.override { wine = wineWowPackages.stable; }) # Explicit Wine path
-      # wineWow64Packages.stable # Use wineWow64Packages, as wineWowPackages is deprecated
-    ];
+    # --- Plugins (LV2/CLAP) ---
+    # neural-amp-modeler-lv2 # NAM: loads .nam files from tone3000.com
+    # proteus # Neural network modeling (LSTM) by GuitarML
+    # lsp-plugins # Provided via services.pipewire.extraLv2Packages
+    # rnnoise-plugin # Provided via services.pipewire.extraLadspaPackages
+    # calf
+    # dragonfly-reverb
+    # gxplugins-lv2
+    # kapitonov-plugins-pack # Profile-based amp models (KPP)
+    # chow-centaur # Klon Centaur emulation
+    # chow-phaser
+    #
+    # # --- Practice & Learning ---
+    # tuxguitar
+    # hydrogen
+    #
+    # # --- Windows VST Compatibility ---
+    # yabridge
+    # (yabridgectl.override { wine = wineWowPackages.stable; }) # Explicit Wine path
+    # wineWow64Packages.stable # Use wineWow64Packages, as wineWowPackages is deprecated
+  ];
 }

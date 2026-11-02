@@ -34,27 +34,27 @@
     enable = lib.mkDefault false;
     settings = {
       initial_session = lib.mkMerge [
-          (lib.mkIf (!config.programs.uwsm.enable) {
-            command = "Hyprland";
-            user = "me";
-          })
-          (lib.mkIf config.programs.uwsm.enable {
-            command = "${pkgs.uwsm}/bin/uwsm start -e -D Hyprland hyprland-uwsm.desktop";
-            user = "me";
-          })
-        ];
+        (lib.mkIf (!config.programs.uwsm.enable) {
+          command = "Hyprland";
+          user = "me";
+        })
+        (lib.mkIf config.programs.uwsm.enable {
+          command = "${pkgs.uwsm}/bin/uwsm start -e -D Hyprland hyprland-uwsm.desktop";
+          user = "me";
+        })
+      ];
       default_session = lib.mkMerge [
-          (lib.mkIf (!config.programs.uwsm.enable) {
-            command = "${pkgs.tuigreet}/bin/tuigreet -d --remember --remember-user-session --user-menu --time -cmd /usr/bin/start-hyprland";
-          })
+        (lib.mkIf (!config.programs.uwsm.enable) {
+          command = "${pkgs.tuigreet}/bin/tuigreet -d --remember --remember-user-session --user-menu --time -cmd /usr/bin/start-hyprland";
+        })
 
-          (lib.mkIf config.programs.uwsm.enable {
-            command = "${pkgs.tuigreet}/bin/tuigreet -d --remember --remember-user-session --user-menu --time --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
-          })
-          {
-            user = "greeter";
-          }
-        ];
+        (lib.mkIf config.programs.uwsm.enable {
+          command = "${pkgs.tuigreet}/bin/tuigreet -d --remember --remember-user-session --user-menu --time --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+        })
+        {
+          user = "greeter";
+        }
+      ];
       # initial_session = {
       #   command = "Hyprland --config /etc/greetd/hyprland.conf";
       #   user = "me";
