@@ -73,14 +73,19 @@
     },
     "jail-nix": {
       "locked": {
-        "lastModified": 1790254704,
-        "narHash": "sha256-PhnIok5aXef1pDi2aXUV1XWai4LV+tHlJ0KPWjDspQU=",
-        "path": "/mnt/data/Software/jail.nix",
-        "type": "path"
+        "lastModified": 1789720602,
+        "narHash": "sha256-pKrbr2LeZXv4ay0oGIZStvBoI3TlzffPkvBmWitIO4M=",
+        "ref": "beta",
+        "rev": "638be9b811b87f633e5743ef7f3eaa2085328a17",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@codeberg.org/LazilyStableProton/jail.nix.git"
       },
       "original": {
-        "path": "/mnt/data/Software/jail.nix",
-        "type": "path"
+        "ref": "beta",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@codeberg.org/LazilyStableProton/jail.nix.git"
       }
     },
     "lanzaboote": {
