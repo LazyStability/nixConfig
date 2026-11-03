@@ -21,6 +21,7 @@
     ../../system/services/server/radicale
     ../../system/services/server/invidious
     ../../system/services/server/paperless
+    ../../system/services/server/wealthfolio
     ../../system/services/server/immich
     ../../system/services/server/forgejo
     ../../system/services/desktop/host-files

@@ -26,6 +26,8 @@
       };
       "syncthing/cert" = {
       };
+      "wealthfolio/authPasswordHashFile" = { };
+      "wealthfolio/secretKeyFile" = { };
     };
   };
 }
