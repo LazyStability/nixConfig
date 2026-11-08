@@ -3,22 +3,33 @@
   vencord,
   vesktop,
   fetchPnpmDeps,
-  pnpm_10_29_2,
+  pnpm_11,
 }:
 let
-  patched-vencord = vencord.overrideAttrs (previousAttr: {
-    version = "unstable-2026-05-05";
+  pnpm = pnpm_11;
+  patched-vencord = vencord.overrideAttrs (previousAttr: rec {
+    version = "unstable-2026-11-07";
     src = fetchFromGitHub {
       owner = previousAttr.src.owner;
       repo = previousAttr.src.repo;
-      rev = "2fbe267499205d0854a1d0b7079f39db1d5dbc40";
-      hash = "sha256-sx3CGdOxkm4O0eM5s3K6N+FClNG6f6Jup1r86w0SaT8=";
+      rev = "383409e6a6ec9008ee8a7496500f1e75f17824d1";
+      hash = "sha256-aUJubLJpyLAZWiOezqFxPY6oVPgWVPQpajFqrJvrO9U=";
     };
+    pnpmDeps = fetchPnpmDeps {
+      inherit (previousAttr)
+        pname
+        ;
+      inherit pnpm src;
+      fetcherVersion = 4;
+      hash = "sha256-HS8uZNepvDefjrsG3buVLFCVv7sHvazcwdpcT3EQ/78=";
+    };
+    patches = [ ];
+    postPatch = "";
   });
 in
 vesktop.override {
   withSystemVencord = true;
-  vencord = vencord;
+  vencord = patched-vencord;
 }
 # .overrideAttrs
 #   (previousAttr: {
