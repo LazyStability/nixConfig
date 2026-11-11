@@ -3,6 +3,7 @@ keys:
   - &nyx age1cchyax4lttttjqvvc6r9kcm9d095gvr2f4k9zjkfl8lathat4pns8vpwwv
   - &thor age1kfeslxmhmwvl42v4kwqte2d9mux8yydz0q530vwdzpdcmlygdppqv6xfvy
   - &odin age1lnvshyzr3jva7kvfcfmym0hc5j64k4emea9qv9s5mtx8mesu9cesnza4tt
+  - &vidar age1qxqtc7vx8cv9tphhng6h00a2k78wdd8yegnyfq4a5dx5m5zj398q6dumaw
   - &yubi1 age1yubikey1qt08shzl553l7h7lnwgu5ujzz9fpchfnaq8qn6dz7qjkxe5zvfdxkq2hcdp
   - &yubi2 age1yubikey1q2pskgryqly2uvfuccmtfktz82x3tq8cx5nk3pfqz509dd0ajncf2mq5mkl
 creation_rules:
@@ -13,6 +14,7 @@ creation_rules:
           - *nyx
           - *thor
           - *odin
+          - *vidar
           - *yubi1
           - *yubi2
   - path_regex: Hosts/Kronos/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
@@ -37,5 +39,11 @@ creation_rules:
     key_groups:
       - age:
           - *odin
+          - *yubi1
+          - *yubi2
+  - path_regex: Hosts/Vidar/secrets/[^/]+\.(yaml|json|env|ini|sops|bin)$
+    key_groups:
+      - age:
+          - *vidar
           - *yubi1
           - *yubi2

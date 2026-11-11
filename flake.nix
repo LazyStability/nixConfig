@@ -98,6 +98,18 @@
               ;
           };
         };
+        VidarNix = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./Hosts/Vidar/configuration.nix
+          ];
+          specialArgs = {
+            inherit
+              inputs
+              self
+              ;
+          };
+        };
         Test = lib.nixosSystem {
           inherit system;
           modules = [
