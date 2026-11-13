@@ -58,6 +58,7 @@
     firewall.checkReversePath = "loose";
     hosts = {
       "192.168.105.51" = [ "OdinNix" ];
+      "192.168.108.9" = [ "VidarNix" ];
     };
   };
   # Enable touchpad support (enabled default in most desktopManager).

@@ -174,6 +174,16 @@
       24727
     ];
   };
+
+  # Enable Vidar binary cache
+  nix.settings = {
+    substituters = [ "http://VidarNix:5000" ];
+    # replaces the default, so the nixos.org key must be re-added
+    trusted-public-keys = [
+      "VidarNix:m5kTqkl+cR1/Dt0NwswkfiBJNCXF94VkU+ff/GqusX0="
+    ];
+  };
+
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;

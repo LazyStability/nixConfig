@@ -189,6 +189,15 @@
     ];
   };
 
+  # Enable Vidar binary cache
+  nix.settings = {
+    substituters = [ "http://VidarNix:5000" ];
+    # replaces the default, so the nixos.org key must be re-added
+    trusted-public-keys = [
+      "VidarNix:m5kTqkl+cR1/Dt0NwswkfiBJNCXF94VkU+ff/GqusX0="
+    ];
+  };
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 

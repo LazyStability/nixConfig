@@ -18,22 +18,10 @@
     # Feature modules
     ../../system/secrets
     ../../system/programs/shell
-    #../../system/services/server/harmonia
-    #../../system/services/server/auto-build-service
+    ../../system/services/server/harmonia
+    ../../system/services/server/auto-build-service
     ./secrets
   ];
-  # enable auto updates
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "-L" # print build logs
-    ];
-    dates = "06:00";
-    randomizedDelaySec = "45min";
-  };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
 
@@ -46,7 +34,7 @@
 
   # Enable networking
   networking = {
-    networkmanager.enable = false;
+    networkmanager.enable = true;
     nameservers = [
       "192.168.108.30"
       "fdc3:c37b:a1e0:0:b2f2:8ff:fede:8265"
