@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # jail-nix.url = "sourcehut:~alexdavid/jail.nix";
-    jail-nix.url = "git+ssh://git@codeberg.org/LazilyStableProton/jail.nix.git?ref=beta&shallow=1";
+    jail-nix.url = "git+https://codeberg.org/LazilyStableProton/jail.nix.git?ref=beta&shallow=1";
     # yazi.url = "github:sxyazi/yazi";
   };
   outputs =

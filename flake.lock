@@ -79,13 +79,13 @@
         "rev": "638be9b811b87f633e5743ef7f3eaa2085328a17",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@codeberg.org/LazilyStableProton/jail.nix.git"
+        "url": "https://codeberg.org/LazilyStableProton/jail.nix.git"
       },
       "original": {
         "ref": "beta",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@codeberg.org/LazilyStableProton/jail.nix.git"
+        "url": "https://codeberg.org/LazilyStableProton/jail.nix.git"
       }
     },
     "lanzaboote": {
