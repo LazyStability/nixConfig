@@ -174,6 +174,7 @@
       24727
     ];
   };
+  services.oo7.enable = true;
 
   # Enable Vidar binary cache
   nix.settings = {

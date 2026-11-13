@@ -321,28 +321,6 @@
         };
         wantedBy = [ "default.target" ];
       };
-    passSecretService =
-      let
-        binPath = "${extraPackages.pass-secret-service}/bin/pass-secret-service";
-      in
-      {
-        unitConfig = {
-          AssertFileIsExecutable = binPath;
-          Description = "Pass libsecret service";
-          Documentation = "https://github.com/mdellweg/pass_secret_service";
-          PartOf = [ "default.target" ];
-        };
-
-        serviceConfig = {
-          Type = "dbus";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/.local/share/passSecretService";
-          ExecStart = binPath + " -n --path %h/.local/share/passSecretService";
-          BusName = "org.freedesktop.secrets";
-          Environment = [ "GNUPGHOME=%h/.local/share/gnupg" ];
-        };
-
-        wantedBy = [ "default.target" ];
-      };
   };
   # For passSecretService
   hjem.users.me.xdg.data.files."dbus-1/services/org.freedesktop.secrets.service".source =

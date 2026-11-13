@@ -30,6 +30,8 @@
     binPath = lib.mkForce "/run/current-system/sw/bin/start-hyprland";
     prettyName = "Hyprland";
   };
+
+  security.pam.services.greetd.oo7.enable = true;
   services.greetd = {
     enable = lib.mkDefault false;
     settings = {
