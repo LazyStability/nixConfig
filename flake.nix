@@ -130,6 +130,15 @@
         # Allows us to work with sops in the repository
         shellHook = ''
           unset PYTHONPATH
+          repo() {
+            if [ "$1" = "update" ]; then
+              shift
+              repo-update "$@"
+            else
+              echo "usage: repo update" >&2
+              return 1
+            fi
+          }
         '';
         env = {
           UV_PYTHON_DOWNLOADS = "never";
@@ -151,6 +160,7 @@
           ripgrep
 
           nix-init
+          (callPackage ./Scripts/repo-update.nix { })
         ];
       };
       # Is going to be deprecated
