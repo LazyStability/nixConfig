@@ -31,13 +31,13 @@ user_pref("sidebar.visibility", "always-show");
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
 // Disable annoying Ai Stuff
-user_pref("browser.ml.chat.enabled", false)
-user_pref("browser.ml.chat.menu")
-user_pref("browser.ml.chat.page", false)
-user_pref("browser.ml.linkPreview.enabled", false)
-user_pref("extensions.htmlaboutaddons.recommendations.enabled", false)
-user_pref("extensions.ml.enabled", false)
-user_pref("extensions.ui.mlmodel.hidden", true)
+user_pref("browser.ml.chat.enabled", false);
+user_pref("browser.ml.chat.menu", false);
+user_pref("browser.ml.chat.page", false);
+user_pref("browser.ml.linkPreview.enabled", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+user_pref("extensions.ml.enabled", false);
+user_pref("extensions.ui.mlmodel.hidden", true);
 
 
 
