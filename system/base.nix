@@ -84,6 +84,10 @@
         git-lfs
         zsh
         cryptsetup
+        # network diagnostics (vmxnet3 drop counters, iostat)
+        ethtool
+        sysstat
+        nmap
       ]
     );
     sessionVariables = {
