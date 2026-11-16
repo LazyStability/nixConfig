@@ -287,10 +287,8 @@ for i = 1, 10 do
   -- Move active window to a workspace with mainMod + SHIFT + [0-9]
   hl.bind(
     MAINMOD .. ' + SHIFT + ' .. key,
-    hl.dsp.window.move(
-      { workspace = i },
-      { description = 'Move window to workspace ' .. i }
-    )
+    hl.dsp.window.move { workspace = i },
+    { description = 'Move window to workspace ' .. i }
   )
 end
 
