@@ -24,7 +24,7 @@
     ../../system/services/tailscale
     ../../system/services/syncthing
     ../../system/services/desktop/bluetooth
-    # ../../system/services/desktop/android-webcam
+    ../../system/services/desktop/android-webcam
     ../../system/services/desktop/kde-connect
     ../../system/services/desktop/ai-machine-learning
     ../../system/services/desktop/host-files
@@ -190,7 +190,7 @@
     enable = true;
     drivers = with pkgs; [
       gutenprint
-      # hplipWithPlugin
+      hplipWithPlugin
       splix
     ];
   };

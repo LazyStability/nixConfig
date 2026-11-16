@@ -218,7 +218,7 @@ in
         # Gui applications
         # TODO: Sandboxing
         xournalpp
-        # calibre
+        calibre
         ausweisapp
         abaddon
         rnote
