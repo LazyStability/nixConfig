@@ -41,3 +41,4 @@ user_pref("extensions.ui.mlmodel.hidden", true);
 
 
 
+user_pref("privacy.clearOnShutdown.openWindows", true);
