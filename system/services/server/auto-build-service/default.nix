@@ -30,7 +30,7 @@
 
        # Snapshot pre-update closures of all toplevels
          declare -A OLD_CLOSURE
-       for host in Kronos  VidarNix ; do
+       for host in Kronos Nyx VidarNix ; do
            OLD_CLOSURE[$host]=$(nix build .#nixosConfigurations.$host.config.system.build.toplevel \
                --print-out-paths --keep-going --cores 2 --max-jobs 2)
        done
