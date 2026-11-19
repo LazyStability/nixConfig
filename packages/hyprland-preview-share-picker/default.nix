@@ -16,8 +16,8 @@ rustPlatform.buildRustPackage (finalAttrs: {
   src = fetchFromGitHub {
     owner = "WhySoBad";
     repo = "hyprland-preview-share-picker";
-    rev = "e2f30ff85486e557018523da45ccbc846e3a499c";
-    hash = "sha256-XE6RD/4Mhw/ZRBj0v94kLOERElat5V+e/X0L9eUGf7M=";
+    rev = "90ee200c6876174e434fefa124a9ce9a721e01b1";
+    hash = "sha256-C9GCiIYatCWHA1qwGir4o9bOJngQ4UWV8w52kOVhdWY=";
     fetchSubmodules = true;
   };
   nativeBuildInputs = [
@@ -32,7 +32,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
 
   strictDeps = true;
   # cargoLock.lockFile = src/Cargo.lock;
-  cargoHash = "sha256-AqX9jKj7JLEx1SLefyaWYGbRdk0c3H/NDTIsZy6B6hY=";
+  cargoHash = "sha256-4nd0X6Ii6pbpQgzFCw2yXhl2+C5FyqDsHtbzKNpGW5o=";
 
   meta = {
     homepage = "https://github.com/WhySoBad/hyprland-preview-share-picker";
