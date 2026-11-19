@@ -19,7 +19,6 @@ hl.workspace_rule {
   workspace = '4',
   default_name = 'Terminal',
   monitor = MONITOR1,
-  on_created_empty = PREFIX .. ' ' .. TERMINAL,
 }
 
 hl.workspace_rule {
@@ -66,7 +65,6 @@ hl.workspace_rule {
   workspace = '3',
   default_name = 'Secret',
   monitor = MONITOR2,
-  on_created_empty = PREFIX .. ' keepassxc',
 }
 
 hl.workspace_rule {
@@ -141,6 +139,13 @@ hl.window_rule {
   float = true,
 }
 
+hl.window_rule {
+  match = {
+    class = 'org.keepassxc.KeePassXC',
+  },
+  workspace = '3',
+}
+
 --# Comms ##
 hl.window_rule {
   match = {
@@ -193,19 +198,34 @@ hl.window_rule {
   workspace = '7',
 }
 
---All steam windows are gaming
 hl.window_rule {
   match = {
-    class = 'steam',
+    class = 'steam\\_app\\_[0-9]{6,}',
+    title = '[^B][^a][^t][^t][^l][^e][^\\.][^n][^e][^t]',
   },
   tag = '+Gaming',
+  fullscreen = true,
+  idle_inhibit = 'focus',
+  float = false,
+  scrolling_width = 1,
 }
 
+--All steam windows and other launcher windows are gaming
 hl.window_rule {
   match = {
-    class = 'steam\\_app\\_[0-9]{6}|steam\\_app\\_[0-9]{7}',
+    class = 'steam|com.heroicgameslauncher.hgl|r2modman',
   },
   tag = '+Gaming',
+  suppress_event = 'activatefocus',
+  scrolling_width = 0.85,
+}
+hl.window_rule {
+  match = {
+    title = 'Battle.net',
+  },
+  tag = '+Gaming',
+  suppress_event = 'activatefocus',
+  scrolling_width = 0.85,
 }
 
 hl.window_rule {
@@ -214,20 +234,8 @@ hl.window_rule {
   },
   tag = '+Gaming',
   fullscreen = true,
-}
-
-hl.window_rule {
-  match = {
-    class = 'steam\\_app\\_[0-9]{6}|steam\\_app\\_[0-9]{7}',
-  },
   idle_inhibit = 'focus',
-}
-
-hl.window_rule {
-  match = {
-    class = 'gamescope',
-  },
-  idle_inhibit = 'focus',
+  scrolling_width = 1,
 }
 
 --# PDF Viewer ##
