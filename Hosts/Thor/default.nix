@@ -93,15 +93,6 @@
 
   programs.fuse.userAllowOther = true;
 
-  desktopEnvironment.monitors = [
-    {
-      name = "DP-1";
-      enable = true;
-      mode = "2560x1440";
-      position = "0x0";
-      rate = "60";
-    }
-  ];
   programs = {
     wireshark.enable = true;
     thunderbird.enable = true;

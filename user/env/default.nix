@@ -77,7 +77,7 @@ in
         hyprland-binds = pkgs.callPackage ../scripts/desktop-utils/hyprland-binds.nix { };
         hyprland-switch-behaviour =
           pkgs.callPackage ../scripts/desktop-utils/hyprland-switch-behaviour.nix
-            { inherit config; };
+            { };
         vim-anywhere = pkgs.callPackage ../scripts/desktop-utils/vim-anywhere.nix { };
         quickcapture = pkgs.callPackage ../scripts/desktop-utils/quickcapture.nix { };
         swaync-soundscript = pkgs.callPackage ../scripts/desktop-utils/swaync-soundscript.nix { };

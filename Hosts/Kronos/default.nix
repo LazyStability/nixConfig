@@ -18,7 +18,6 @@
     ../../system/gaming
     ../../system/disk/samba
     ../../system/impermanence
-    ../../system/desktop-environment
     ../../system/desktop-environment/hyprland
     ../../system/services/docker
     ../../system/services/tailscale
@@ -109,25 +108,6 @@
     ]; # Enable ‘sudo’ for the user.
   };
   programs.fuse.userAllowOther = true;
-  desktopEnvironment.monitors = [
-    {
-      name = "DP-1";
-      enable = true;
-      position = "1920x0";
-      mode = "3840x2160";
-      scale = "1.5";
-      rate = "60";
-      primary = true;
-    }
-    {
-      name = "DP-2";
-      enable = true;
-      mode = "1920x1200";
-      position = "0x0";
-      scale = "1";
-      rate = "60";
-    }
-  ];
 
   virtualisation = {
     docker.enable = true;
