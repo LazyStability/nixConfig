@@ -12,7 +12,9 @@
   };
   # 1. Sound Server: PipeWire with JACK/PulseAudio support
   services.pipewire = {
-    jack.enable = true;
+    # This introduces impurity
+    # https://github.com/NixOS/nixpkgs/pull/582717
+    # jack.enable = true;
     extraLadspaPackages = [
       pkgs.rnnoise-plugin
     ];
